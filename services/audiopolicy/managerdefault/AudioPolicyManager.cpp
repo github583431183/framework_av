@@ -7935,6 +7935,21 @@ status_t AudioPolicyManager::checkAndSetVolume(IVolumeCurves &curves,
                     isSingleDeviceType(deviceTypes, audio_is_bluetooth_out_sco_device))) {
         volumeDb = 0.0f;
     }
+    if (audio_flags::volume_group_management_update()) {
+        // Force VOICE_CALL to track BLUETOOTH_SCO volume when bluetooth audio is enabled
+        if (isBtScoVolSrc) {
+            const VolumeSource callVolSrc =
+                    toVolumeSource(attributes_initializer(AUDIO_USAGE_VOICE_COMMUNICATION), false);
+            if (callVolSrc != VOLUME_SOURCE_NONE) {
+                outputDesc->setVolume(volumeDb, false, callVolSrc, curves.getStreamTypes(),
+                        deviceTypes, delayMs, force, isVoiceVolSrc);
+                outputDesc->setCurVolume(callVolSrc, outputDesc->getCurVolume(volumeSource), true);
+            }
+        }
+        LOG_ALWAYS_FATAL_IF(
+                hasStream(curves.getStreamTypes(), AUDIO_STREAM_PATCH) && volumeDb != 0.0f,
+                "AUDIO_STREAM_PATCH must have full scale volume");
+    }
     const bool muted = (index == 0) && (volumeDb != 0.0f);
     outputDesc->setVolume(volumeDb, muted, volumeSource, curves.getStreamTypes(),
             deviceTypes, delayMs, force, isVoiceVolSrc);

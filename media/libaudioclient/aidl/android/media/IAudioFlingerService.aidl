@@ -99,6 +99,18 @@ interface IAudioFlingerService {
     void setStreamVolume(AudioStreamType stream, float value, int /* audio_io_handle_t */ output);
     void setStreamMute(AudioStreamType stream, boolean muted);
 
+    /*
+     * Set port(s) volume attribute. This will probably be used by the preference panel, mostly.
+     * @FlaggedApi(FLAG_VOLUME_GROUP_MANAGEMENT_UPDATE)
+     */
+    void setPortsVolume(in int[] /* audio_port_handle_t[] */ portIds, float value,
+            int /* audio_io_handle_t */ output);
+    /*
+     * Set port(s)  mute attribute. This will probably be used by the preference panel, mostly.
+     * @FlaggedApi(FLAG_VOLUME_GROUP_MANAGEMENT_UPDATE)
+     */
+    void setPortsMute(in int[] /* audio_port_handle_t[] */ portIds, boolean muted);
+
     // set audio mode.
     void setMode(AudioMode mode);
 
