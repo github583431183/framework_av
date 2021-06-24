@@ -216,6 +216,10 @@ cc_library {
         "libpermission",
     ],
 
+    shared_libs: [
+        "android.media.audiopolicy-aconfig-cc",
+    ],
+
     header_libs: [
         "libaaudio_headers",
         "libaudioclient_headers",
@@ -223,6 +227,7 @@ cc_library {
         "libaudioutils_headers",
         "libmedia_headers",
     ],
+
 
     export_shared_lib_headers: [
         "libpermission",

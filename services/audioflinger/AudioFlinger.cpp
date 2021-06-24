@@ -129,9 +129,11 @@ BINDER_METHOD_ENTRY(latency) \
 BINDER_METHOD_ENTRY(setMasterVolume) \
 BINDER_METHOD_ENTRY(setMasterMute) \
 BINDER_METHOD_ENTRY(masterVolume) \
-BINDER_METHOD_ENTRY(masterMute) \
+BINDER_METHOD_ENTRY(masterMute)                \
 BINDER_METHOD_ENTRY(setStreamVolume) \
 BINDER_METHOD_ENTRY(setStreamMute) \
+BINDER_METHOD_ENTRY(setPortsVolume) \
+BINDER_METHOD_ENTRY(setPortsMute) \
 BINDER_METHOD_ENTRY(setMode) \
 BINDER_METHOD_ENTRY(setMicMute) \
 BINDER_METHOD_ENTRY(getMicMute) \
@@ -1520,7 +1522,7 @@ status_t AudioFlinger::checkStreamType(audio_stream_type_t stream)
 }
 
 status_t AudioFlinger::setStreamVolume(audio_stream_type_t stream, float value,
-        audio_io_handle_t output)
+                                       audio_io_handle_t output)
 {
     // check calling permissions
     if (!settingsAllowed()) {
@@ -1544,6 +1546,32 @@ status_t AudioFlinger::setStreamVolume(audio_stream_type_t stream, float value,
     }
     volumeInterface->setStreamVolume(stream, value);
 
+    return NO_ERROR;
+}
+
+status_t AudioFlinger::setPortsVolume(
+        const std::vector<audio_port_handle_t> &ports, float value, audio_io_handle_t output)
+{
+    // check calling permissions
+    if (!settingsAllowed()) {
+        return PERMISSION_DENIED;
+    }
+    for (const auto& port : ports) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
+    }
+    if (output == AUDIO_IO_HANDLE_NONE) {
+        return BAD_VALUE;
+    }
+    audio_utils::lock_guard lock(mutex());
+    for (const auto& port : ports) {
+        sp<VolumePortInterface> volumePortInterface = getVolumePortInterface_l(output, port);
+        if (volumePortInterface == nullptr) {
+            return BAD_VALUE;
+        }
+        volumePortInterface->setPortVolume(value);
+    }
     return NO_ERROR;
 }
 
@@ -1621,8 +1649,7 @@ status_t AudioFlinger::getSoundDoseInterface(const sp<media::ISoundDoseCallback>
     return NO_ERROR;
 }
 
-status_t AudioFlinger::setStreamMute(audio_stream_type_t stream, bool muted)
-{
+status_t AudioFlinger::setStreamMute(audio_stream_type_t stream, bool muted) {
     // check calling permissions
     if (!settingsAllowed()) {
         return PERMISSION_DENIED;
@@ -1641,11 +1668,33 @@ status_t AudioFlinger::setStreamMute(audio_stream_type_t stream, bool muted)
 
     audio_utils::lock_guard lock(mutex());
     mStreamTypes[stream].mute = muted;
-    std::vector<sp<VolumeInterface>> volumeInterfaces = getAllVolumeInterfaces_l();
+    std::vector <sp<VolumeInterface>> volumeInterfaces = getAllVolumeInterfaces_l();
     for (size_t i = 0; i < volumeInterfaces.size(); i++) {
         volumeInterfaces[i]->setStreamMute(stream, muted);
     }
 
+    return NO_ERROR;
+}
+
+status_t AudioFlinger::setPortsMute(const std::vector<audio_port_handle_t> &ports, bool muted)
+{
+    // check calling permissions
+    if (!settingsAllowed()) {
+        return PERMISSION_DENIED;
+    }
+    for (const auto& port : ports) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
+    }
+    audio_utils::lock_guard lock(mutex());
+    for (const auto& port : ports) {
+        const auto &volumePortInterface = getVolumePortInterface_l(port);
+        if (volumePortInterface == nullptr) {
+            continue;
+        }
+        volumePortInterface->setPortMute(muted);
+    }
     return NO_ERROR;
 }
 
@@ -3639,22 +3688,59 @@ IAfMmapThread* AudioFlinger::checkMmapThread_l(audio_io_handle_t io) const
     return mMmapThreads.valueFor(io).get();
 }
 
-
 // checkPlaybackThread_l() must be called with AudioFlinger::mutex() held
-sp<VolumeInterface> AudioFlinger::getVolumeInterface_l(audio_io_handle_t output) const
-{
-    sp<VolumeInterface> volumeInterface = mPlaybackThreads.valueFor(output).get();
+sp<VolumeInterface> AudioFlinger::getVolumeInterface_l(audio_io_handle_t output) const {
+    sp <VolumeInterface> volumeInterface = mPlaybackThreads.valueFor(output).get();
     if (volumeInterface == nullptr) {
-        IAfMmapThread* const mmapThread = mMmapThreads.valueFor(output).get();
+        IAfMmapThread *const mmapThread = mMmapThreads.valueFor(output).get();
         if (mmapThread != nullptr) {
             if (mmapThread->isOutput()) {
-                IAfMmapPlaybackThread* const mmapPlaybackThread =
+                IAfMmapPlaybackThread *const mmapPlaybackThread =
                         mmapThread->asIAfMmapPlaybackThread().get();
                 volumeInterface = mmapPlaybackThread;
             }
         }
     }
     return volumeInterface;
+}
+
+sp<VolumePortInterface> AudioFlinger::getVolumePortInterface_l(audio_io_handle_t output,
+        audio_port_handle_t port) const
+{
+    IAfPlaybackThread *thread = checkPlaybackThread_l(output);
+    if (thread != nullptr) {
+        return thread->getVolumePortInterface(port);
+    }
+    IAfMmapThread *mmapThread = mMmapThreads.valueFor(output).get();
+    if (mmapThread != nullptr) {
+        if (mmapThread->isOutput()) {
+            IAfMmapPlaybackThread *mmapPlaybackThread =
+                    mmapThread->asIAfMmapPlaybackThread().get();
+            return mmapPlaybackThread->asVolumePortInterface();
+        }
+    }
+    return nullptr;
+}
+
+sp<VolumePortInterface> AudioFlinger::getVolumePortInterface_l(audio_port_handle_t port) const
+{
+    for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
+        IAfPlaybackThread *thread = mPlaybackThreads.valueAt(i).get();
+        sp<VolumePortInterface> volumePortInterface = thread->getVolumePortInterface(port);
+        if (volumePortInterface != nullptr) {
+            return volumePortInterface;
+        }
+    }
+    for (size_t i = 0; i < mMmapThreads.size(); i++) {
+        if (mMmapThreads.valueAt(i)->isOutput()) {
+            IAfMmapPlaybackThread *mmapPlaybackThread =
+                    mMmapThreads.valueAt(i)->asIAfMmapPlaybackThread().get();
+            if (mmapPlaybackThread->portId() == port) {
+                return mmapPlaybackThread;
+            }
+        }
+    }
+    return nullptr;
 }
 
 std::vector<sp<VolumeInterface>> AudioFlinger::getAllVolumeInterfaces_l() const
@@ -4731,6 +4817,8 @@ status_t AudioFlinger::onTransactWrapper(TransactionCode code,
     switch (code) {
         case TransactionCode::SET_STREAM_VOLUME:
         case TransactionCode::SET_STREAM_MUTE:
+        case TransactionCode::SET_PORTS_VOLUME:
+        case TransactionCode::SET_PORTS_MUTE:
         case TransactionCode::OPEN_OUTPUT:
         case TransactionCode::OPEN_DUPLICATE_OUTPUT:
         case TransactionCode::CLOSE_OUTPUT:

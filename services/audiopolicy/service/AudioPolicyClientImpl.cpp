@@ -185,7 +185,14 @@ status_t AudioPolicyService::AudioPolicyClient::setStreamVolume(audio_stream_typ
                      int delay_ms)
 {
     return mAudioPolicyService->setStreamVolume(stream, volume, output,
-                                               delay_ms);
+                                                delay_ms);
+}
+
+status_t AudioPolicyService::AudioPolicyClient::setPortsVolume(
+        const std::vector<audio_port_handle_t> &ports, float volume, audio_io_handle_t output,
+        int delayMs)
+{
+    return mAudioPolicyService->setPortsVolume(ports, volume, output, delayMs);
 }
 
 void AudioPolicyService::AudioPolicyClient::setParameters(audio_io_handle_t io_handle,
