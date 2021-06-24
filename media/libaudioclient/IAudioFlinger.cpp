@@ -350,6 +350,23 @@ status_t AudioFlingerClientAdapter::setStreamMute(audio_stream_type_t stream, bo
     return statusTFromBinderStatus(mDelegate->setStreamMute(streamAidl, muted));
 }
 
+status_t AudioFlingerClientAdapter::setPortsVolume(
+        const std::vector<audio_port_handle_t>& portIds, float value, audio_io_handle_t output) {
+    std::vector<audio_port_handle_t> portIdsAidl = VALUE_OR_RETURN_STATUS(
+            convertContainer<std::vector<int32_t>>(
+                    portIds, legacy2aidl_audio_port_handle_t_int32_t));
+    int32_t outputAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_io_handle_t_int32_t(output));
+    return statusTFromBinderStatus(mDelegate->setPortsVolume(portIdsAidl, value, outputAidl));
+}
+
+status_t AudioFlingerClientAdapter::setPortsMute(
+        const std::vector<audio_port_handle_t>& portIds, bool muted) {
+    std::vector<audio_port_handle_t> portIdsAidl = VALUE_OR_RETURN_STATUS(
+            convertContainer<std::vector<int32_t>>(
+                    portIds, legacy2aidl_audio_port_handle_t_int32_t));
+    return statusTFromBinderStatus(mDelegate->setPortsMute(portIdsAidl, muted));
+}
+
 status_t AudioFlingerClientAdapter::setMode(audio_mode_t mode) {
     AudioMode modeAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_mode_t_AudioMode(mode));
     return statusTFromBinderStatus(mDelegate->setMode(modeAidl));
@@ -999,6 +1016,24 @@ Status AudioFlingerServerAdapter::setStreamMute(AudioStreamType stream, bool mut
     audio_stream_type_t streamLegacy = VALUE_OR_RETURN_BINDER(
             aidl2legacy_AudioStreamType_audio_stream_type_t(stream));
     return Status::fromStatusT(mDelegate->setStreamMute(streamLegacy, muted));
+}
+
+Status AudioFlingerServerAdapter::setPortsVolume(
+        const std::vector<int32_t>& portIds, float value, int32_t output) {
+    std::vector<audio_port_handle_t> portIdsLegacy = VALUE_OR_RETURN_BINDER(
+            convertContainer<std::vector<audio_port_handle_t>>(
+                    portIds, aidl2legacy_int32_t_audio_port_handle_t));
+    audio_io_handle_t outputLegacy = VALUE_OR_RETURN_BINDER(
+            aidl2legacy_int32_t_audio_io_handle_t(output));
+    return Status::fromStatusT(mDelegate->setPortsVolume(portIdsLegacy, value, outputLegacy));
+}
+
+Status AudioFlingerServerAdapter::setPortsMute(
+        const std::vector<int32_t>& portIds, bool muted) {
+    std::vector<audio_port_handle_t> portIdsLegacy = VALUE_OR_RETURN_BINDER(
+            convertContainer<std::vector<audio_port_handle_t>>(
+                    portIds, aidl2legacy_int32_t_audio_port_handle_t));
+    return Status::fromStatusT(mDelegate->setPortsMute(portIdsLegacy, muted));
 }
 
 Status AudioFlingerServerAdapter::setMode(AudioMode mode) {

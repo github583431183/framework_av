@@ -34,12 +34,16 @@
 #include <media/IAudioFlinger.h>
 #include "fuzzer/FuzzedDataProvider.h"
 
+#include <android_media_audiopolicy.h>
+
 #define MAX_STRING_LENGTH 256
 #define MAX_ARRAY_LENGTH 256
 
 constexpr int32_t kMinSampleRateHz = 4000;
 constexpr int32_t kMaxSampleRateHz = 192000;
 constexpr int32_t kSampleRateUnspecified = 0;
+
+namespace audio_flags = android::media::audiopolicy;
 
 using namespace std;
 using namespace android;
@@ -501,13 +505,21 @@ void AudioFlingerFuzzer::invokeAudioSystem() {
     AudioSystem::getMasterMute(&state);
     AudioSystem::isMicrophoneMuted(&state);
 
-    audio_stream_type_t stream = getValue(&mFdp, kStreamtypes);
-    AudioSystem::setStreamMute(getValue(&mFdp, kStreamtypes), mFdp.ConsumeBool());
+    if (!audio_flags::audiotrack_portid_volume_mngt()) {
+        audio_stream_type_t stream = getValue(&mFdp, kStreamtypes);
+        AudioSystem::setStreamMute(getValue(&mFdp, kStreamtypes), mFdp.ConsumeBool());
 
-    stream = getValue(&mFdp, kStreamtypes);
-    AudioSystem::setStreamVolume(stream, mFdp.ConsumeFloatingPoint<float>(),
-                                 mFdp.ConsumeIntegral<int32_t>());
+        stream = getValue(&mFdp, kStreamtypes);
+        AudioSystem::setStreamVolume(stream, mFdp.ConsumeFloatingPoint<float>(),
+                                     mFdp.ConsumeIntegral<int32_t>());
+    } else {
+        std::vector <audio_port_handle_t> portsToMute{};
+        AudioSystem::setPortsMute(portsToMute, mFdp.ConsumeBool());
 
+        std::vector <audio_port_handle_t> portsForVolumeChange{};
+        AudioSystem::setPortsVolume(portsForVolumeChange, mFdp.ConsumeFloatingPoint<float>(),
+                                    mFdp.ConsumeIntegral<int32_t>());
+    }
     audio_mode_t mode = getValue(&mFdp, kModes);
     AudioSystem::setMode(mode);
 
