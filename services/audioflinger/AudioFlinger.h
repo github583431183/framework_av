@@ -44,6 +44,7 @@
 #include <atomic>
 #include <functional>
 #include <map>
+#include <numeric>
 #include <optional>
 #include <set>
 
@@ -88,9 +89,9 @@ private:
     status_t setMasterBalance(float balance) final EXCLUDES_AudioFlinger_Mutex;
     status_t getMasterBalance(float* balance) const final EXCLUDES_AudioFlinger_Mutex;
 
-    status_t setStreamVolume(audio_stream_type_t stream, float value,
-            audio_io_handle_t output) final EXCLUDES_AudioFlinger_Mutex;
-    status_t setStreamMute(audio_stream_type_t stream, bool muted) final
+    status_t setPortsVolume(const std::vector<audio_port_handle_t>& portIds, float value,
+        audio_io_handle_t output) final EXCLUDES_AudioFlinger_Mutex;
+    status_t setPortsMute(const std::vector<audio_port_handle_t>& portIds, bool muted) final
             EXCLUDES_AudioFlinger_Mutex;
 
     status_t setMode(audio_mode_t mode) final EXCLUDES_AudioFlinger_Mutex;
@@ -344,10 +345,6 @@ private:
     float masterVolume_l() const final REQUIRES(mutex());
     bool masterMute_l() const final REQUIRES(mutex());
     float getMasterBalance_l() const REQUIRES(mutex());
-    // no range check, AudioFlinger::mutex() held
-    bool streamMute_l(audio_stream_type_t stream) const final REQUIRES(mutex()) {
-        return mStreamTypes[stream].mute;
-    }
     audio_mode_t getMode() const final { return mMode; }
     bool isLowRamDevice() const final { return mIsLowRamDevice; }
     uint32_t getScreenState() const final { return mScreenState; }
@@ -529,7 +526,10 @@ private:
     IAfThreadBase* checkThread_l(audio_io_handle_t ioHandle) const REQUIRES(mutex());
     IAfPlaybackThread* checkMixerThread_l(audio_io_handle_t output) const REQUIRES(mutex());
 
-    sp<VolumeInterface> getVolumeInterface_l(audio_io_handle_t output) const REQUIRES(mutex());
+    sp<VolumePortInterface> getVolumePortInterface_l(
+            audio_io_handle_t output, audio_port_handle_t port) const REQUIRES(mutex());
+    sp<VolumePortInterface> getVolumePortInterface_l(audio_port_handle_t port) const
+            REQUIRES(mutex());
     std::vector<sp<VolumeInterface>> getAllVolumeInterfaces_l() const REQUIRES(mutex());
 
 
@@ -660,7 +660,6 @@ private:
     mutable hardware_call_state mHardwareStatus = AUDIO_HW_IDLE;  // for dump only
     DefaultKeyedVector<audio_io_handle_t, sp<IAfPlaybackThread>> mPlaybackThreads
             GUARDED_BY(mutex());
-    stream_type_t mStreamTypes[AUDIO_STREAM_CNT] GUARDED_BY(mutex());
 
     float mMasterVolume GUARDED_BY(mutex()) = 1.f;
     bool mMasterMute GUARDED_BY(mutex()) = false;
@@ -704,8 +703,6 @@ private:
     void setAudioHwSyncForSession_l(IAfPlaybackThread* thread, audio_session_t sessionId)
             REQUIRES(mutex());
 
-    static status_t checkStreamType(audio_stream_type_t stream);
-
     // no mutex needed.
     void        filterReservedParameters(String8& keyValuePairs, uid_t callingUid);
     void        logFilteredParameters(size_t originalKVPSize, const String8& originalKVPs,
@@ -720,6 +717,12 @@ private:
     bool mIsDeviceTypeKnown GUARDED_BY(mutex()) = false;
     int64_t mTotalMemory GUARDED_BY(mutex()) = 0;
     std::atomic<size_t> mClientSharedHeapSize = kMinimumClientSharedHeapSizeBytes;
+
+    static std::string dumpPorts(const std::vector<audio_port_handle_t> &ports) {
+        return std::accumulate(std::begin(ports), std::end(ports), std::string{},
+                        [] (std::string& ls, int rs) {return ls +=  std::to_string(rs) + " "; });
+    }
+
     static constexpr size_t kMinimumClientSharedHeapSizeBytes = 1024 * 1024; // 1MB
 
     // when a global effect was last enabled

@@ -25,6 +25,7 @@
 #include <datapath/AudioStreamIn.h>
 #include <datapath/AudioStreamOut.h>
 #include <datapath/VolumeInterface.h>
+#include <datapath/VolumePortInterface.h>
 #include <fastpath/FastMixerDumpState.h>
 #include <media/DeviceDescriptorBase.h>
 #include <media/MmapStreamInterface.h>
@@ -78,8 +79,6 @@ public:
     virtual bool masterMute_l() const
             REQUIRES(mutex()) = 0;
     virtual float getMasterBalance_l() const
-            REQUIRES(mutex()) = 0;
-    virtual bool streamMute_l(audio_stream_type_t stream) const
             REQUIRES(mutex()) = 0;
     virtual audio_mode_t getMode() const = 0;
     virtual bool isLowRamDevice() const = 0;
@@ -535,6 +534,8 @@ public:
     virtual const std::atomic<int64_t>& framesWritten() const = 0;
 
     virtual bool usesHwAvSync() const = 0;
+
+    virtual sp<VolumePortInterface> getVolumePortInterface(audio_port_handle_t port) const = 0;
 };
 
 class IAfDirectOutputThread : public virtual IAfPlaybackThread {
@@ -667,13 +668,18 @@ public:
     virtual sp<IAfMmapCaptureThread> asIAfMmapCaptureThread() { return nullptr; }
 };
 
-class IAfMmapPlaybackThread : public virtual IAfMmapThread, public virtual VolumeInterface {
+class IAfMmapPlaybackThread : public virtual IAfMmapThread, public virtual VolumeInterface,
+        public virtual VolumePortInterface {
 public:
     static sp<IAfMmapPlaybackThread> create(
             const sp<IAfThreadCallback>& afThreadCallback, audio_io_handle_t id,
             AudioHwDevice* hwDev, AudioStreamOut* output, bool systemReady);
 
     virtual AudioStreamOut* clearOutput() EXCLUDES_ThreadBase_Mutex = 0;
+
+    virtual audio_port_handle_t portId() const EXCLUDES_ThreadBase_Mutex = 0;
+
+    virtual sp<VolumePortInterface> asVolumePortInterface() = 0;
 };
 
 class IAfMmapCaptureThread : public virtual IAfMmapThread {

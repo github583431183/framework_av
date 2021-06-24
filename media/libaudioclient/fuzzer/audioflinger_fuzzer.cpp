@@ -501,12 +501,12 @@ void AudioFlingerFuzzer::invokeAudioSystem() {
     AudioSystem::getMasterMute(&state);
     AudioSystem::isMicrophoneMuted(&state);
 
-    audio_stream_type_t stream = getValue(&mFdp, kStreamtypes);
-    AudioSystem::setStreamMute(getValue(&mFdp, kStreamtypes), mFdp.ConsumeBool());
+    std::vector<audio_port_handle_t> portsToMute{};
+    AudioSystem::setPortsMute(portsToMute, mFdp.ConsumeBool());
 
-    stream = getValue(&mFdp, kStreamtypes);
-    AudioSystem::setStreamVolume(stream, mFdp.ConsumeFloatingPoint<float>(),
-                                 mFdp.ConsumeIntegral<int32_t>());
+    std::vector<audio_port_handle_t> portsForVolumeChange{};
+    AudioSystem::setPortsVolume(portsForVolumeChange, mFdp.ConsumeFloatingPoint<float>(),
+                                mFdp.ConsumeIntegral<int32_t>());
 
     audio_mode_t mode = getValue(&mFdp, kModes);
     AudioSystem::setMode(mode);
