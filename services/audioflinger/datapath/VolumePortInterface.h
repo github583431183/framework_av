@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,12 @@
 
 namespace android {
 
-class VolumeInterface : public virtual RefBase {
+class VolumePortInterface : public virtual RefBase {
 public:
-    virtual void setMasterVolume(float value) = 0;
-    virtual void setMasterBalance(float balance) = 0;
-    virtual void setMasterMute(bool muted) = 0;
+    virtual void setPortVolume(float value) = 0;
+    virtual void setPortMute(bool muted) = 0;
+    virtual float getPortVolume() const = 0;
+    virtual bool isPortMuted() const = 0;
 };
 
 }  // namespace android
