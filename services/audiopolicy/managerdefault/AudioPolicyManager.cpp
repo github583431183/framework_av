@@ -3335,7 +3335,7 @@ status_t AudioPolicyManager::setVolumeIndexForAttributes(const audio_attributes_
         if (desc->useHwGain()) {
             applyVolume = false;
             // If the volume source is active with higher priority source, ensure at least Sw Muted
-            desc->setSwMute((index == 0), vs, curves.getStreamTypes(), curDevices, 0 /*delayMs*/);
+            desc->setSwMute((index == 0), vs, curDevices, 0 /*delayMs*/);
             for (const auto &productStrategy : mEngine->getOrderedProductStrategies()) {
                 auto activeClients = desc->clientsList(true /*activeOnly*/, productStrategy,
                                                        false /*preferredDevice*/);
@@ -7919,9 +7919,20 @@ status_t AudioPolicyManager::checkAndSetVolume(IVolumeCurves &curves,
                     isSingleDeviceType(deviceTypes, audio_is_bluetooth_out_sco_device))) {
         volumeDb = 0.0f;
     }
+    // Force VOICE_CALL to track BLUETOOTH_SCO stream volume when bluetooth audio is enabled
+    if (isBtScoVolSrc) {
+        const VolumeSource callVolSrc = toVolumeSource(AUDIO_STREAM_VOICE_CALL, false);
+        if (callVolSrc != VOLUME_SOURCE_NONE) {
+            outputDesc->setVolume(volumeDb, false, callVolSrc, deviceTypes, delayMs, force,
+                                  isVoiceVolSrc);
+            outputDesc->setCurVolume(callVolSrc, outputDesc->getCurVolume(volumeSource), true);
+        }
+    }
+    LOG_ALWAYS_FATAL_IF(hasStream(curves.getStreamTypes(), AUDIO_STREAM_PATCH) && volumeDb != 0.0f,
+                        "AUDIO_STREAM_PATCH must have full scale volume");
     const bool muted = (index == 0) && (volumeDb != 0.0f);
-    outputDesc->setVolume(volumeDb, muted, volumeSource, curves.getStreamTypes(),
-            deviceTypes, delayMs, force, isVoiceVolSrc);
+    outputDesc->setVolume(volumeDb, muted, volumeSource, deviceTypes, delayMs, force,
+            isVoiceVolSrc);
 
     if (outputDesc == mPrimaryOutput && (isVoiceVolSrc || isBtScoVolSrc)) {
         setVoiceVolume(index, curves, isVoiceVolSrc, delayMs);
