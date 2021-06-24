@@ -321,6 +321,31 @@ status_t AudioSystem::setStreamMute(audio_stream_type_t stream, bool mute) {
     return NO_ERROR;
 }
 
+status_t AudioSystem::setPortsVolume(
+        const std::vector<int32_t>& portIds, float value, audio_io_handle_t output) {
+    for (const auto& port : portIds) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
+    }
+    const sp<IAudioFlinger> af = get_audio_flinger();
+    if (af == 0) return PERMISSION_DENIED;
+    af->setPortsVolume(portIds, value, output);
+    return NO_ERROR;
+}
+
+status_t AudioSystem::setPortsMute(const std::vector<int32_t>& portIds, bool mute) {
+    for (const auto& port : portIds) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
+    }
+    const sp<IAudioFlinger> af = get_audio_flinger();
+    if (af == 0) return PERMISSION_DENIED;
+    af->setPortsMute(portIds, mute);
+    return NO_ERROR;
+}
+
 status_t AudioSystem::setMode(audio_mode_t mode) {
     if (uint32_t(mode) >= AUDIO_MODE_CNT) return BAD_VALUE;
     const sp<IAudioFlinger> af = get_audio_flinger();

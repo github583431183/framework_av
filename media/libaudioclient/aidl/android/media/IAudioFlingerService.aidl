@@ -99,6 +99,17 @@ interface IAudioFlingerService {
     void setStreamVolume(AudioStreamType stream, float value, int /* audio_io_handle_t */ output);
     void setStreamMute(AudioStreamType stream, boolean muted);
 
+    /*
+     * Set AudioTrack port ids volume attribute. This will be the new way of controlling
+     * volume from AudioPolicyManager to AudioFlinger.
+     */
+    void setPortsVolume(in int[] /* audio_port_handle_t[] */ portIds, float value,
+            int /* audio_io_handle_t */ output);
+    /*
+     * Set AudioTrack port ids mute attribute.
+     */
+    void setPortsMute(in int[] /* audio_port_handle_t[] */ portIds, boolean muted);
+
     // set audio mode.
     void setMode(AudioMode mode);
 

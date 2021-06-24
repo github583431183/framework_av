@@ -505,6 +505,18 @@ public:
     // for each output (destination device) it is attached to.
     virtual status_t setStreamVolume(audio_stream_type_t stream, float volume,
                                      audio_io_handle_t output, int delayMs = 0) = 0;
+    /**
+     * Set volume for given AudioTrack port ids for a particular output.
+     * For the same user setting, a given volume group and associated output port id
+     * can have different volumes for each output (destination device) it is attached to.
+     * @param ports to consider
+     * @param volume to apply
+     * @param output to consider
+     * @param delayMs to use
+     * @return NO_ERROR if successful
+     */
+    virtual status_t setPortsVolume(const std::vector<audio_port_handle_t> &ports, float volume,
+            audio_io_handle_t output, int delayMs = 0) = 0;
 
     // function enabling to send proprietary informations directly from audio policy manager to
     // audio hardware interface.

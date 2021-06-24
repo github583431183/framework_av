@@ -997,6 +997,7 @@ public:
     void setStreamVolume(audio_stream_type_t stream, float value) final EXCLUDES_ThreadBase_Mutex;
     void setStreamMute(audio_stream_type_t stream, bool muted) final EXCLUDES_ThreadBase_Mutex;
     float streamVolume(audio_stream_type_t stream) const final EXCLUDES_ThreadBase_Mutex;
+    sp<VolumePortInterface> getVolumePortInterface(audio_port_handle_t port) const;
     void setVolumeForOutput_l(float left, float right) const final;
 
     sp<IAfTrack> createTrack_l(
@@ -2348,6 +2349,9 @@ public:
     sp<IAfMmapPlaybackThread> asIAfMmapPlaybackThread() final {
         return sp<IAfMmapPlaybackThread>::fromExisting(this);
     }
+    sp<VolumePortInterface> asVolumePortInterface() final {
+        return sp<VolumePortInterface>::fromExisting(this);
+    }
 
     void configure(const audio_attributes_t* attr,
                                       audio_stream_type_t streamType,
@@ -2366,6 +2370,17 @@ public:
     void setStreamVolume(audio_stream_type_t stream, float value) final EXCLUDES_ThreadBase_Mutex;
     void setStreamMute(audio_stream_type_t stream, bool muted) final EXCLUDES_ThreadBase_Mutex;
     float streamVolume(audio_stream_type_t stream) const final EXCLUDES_ThreadBase_Mutex;
+    void setPortVolume(float value) final EXCLUDES_ThreadBase_Mutex;
+    float getPortVolume() const final EXCLUDES_ThreadBase_Mutex;
+    void setPortMute(bool muted) final EXCLUDES_ThreadBase_Mutex;
+    bool isPortMuted() const final EXCLUDES_ThreadBase_Mutex;
+    bool isPortMuted_l() const REQUIRES(mutex());
+    float getPortVolume_l() const REQUIRES(mutex());
+
+    audio_port_handle_t portId() const EXCLUDES_ThreadBase_Mutex {
+        audio_utils::lock_guard l(mutex());
+        return mPortId;
+    }
 
     void setMasterMute_l(bool muted) REQUIRES(mutex()) { mMasterMute = muted; }
 
@@ -2407,6 +2422,8 @@ protected:
     stream_type_t mStreamTypes[AUDIO_STREAM_CNT] GUARDED_BY(mutex());
     audio_stream_type_t mStreamType GUARDED_BY(mutex());
     float mMasterVolume GUARDED_BY(mutex());
+    float mPortVolume GUARDED_BY(mutex()) = 1.0f ;
+    bool mPortMute GUARDED_BY(mutex()) = false ;
     bool mMasterMute GUARDED_BY(mutex());
     AudioStreamOut* mOutput;  // NO_THREAD_SAFETY_ANALYSIS
 

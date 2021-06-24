@@ -20,6 +20,7 @@
 #include <android/media/BnAudioTrack.h>
 #include <audiomanager/IAudioManager.h>
 #include <binder/IMemory.h>
+#include <datapath/VolumePortInterface.h>
 #include <fastpath/FastMixerDumpState.h>
 #include <media/AudioSystem.h>
 #include <media/VolumeShaper.h>
@@ -253,7 +254,7 @@ public:
 };
 
 // Common interface for Playback tracks.
-class IAfTrack : public virtual IAfTrackBase {
+class IAfTrack : public virtual IAfTrackBase, public virtual VolumePortInterface {
 public:
     // FillingStatus is used for suppressing volume ramp at begin of playing
     enum FillingStatus { FS_INVALID, FS_FILLING, FS_FILLED, FS_ACTIVE };
