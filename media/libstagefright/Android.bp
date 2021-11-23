@@ -271,6 +271,7 @@ cc_library {
         "Utils.cpp",
         "VideoFrameSchedulerBase.cpp",
         "VideoFrameScheduler.cpp",
+        "VvcUtils.cpp"
     ],
 
     shared_libs: [
