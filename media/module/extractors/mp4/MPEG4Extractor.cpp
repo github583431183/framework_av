@@ -60,6 +60,7 @@
 #endif
 
 #define ALAC_SPECIFIC_INFO_SIZE (36)
+#define MINOR_VVC_CSD_LEN       (5)
 
 // TODO : Remove the defines once mainline media is built against NDK >= 31.
 // The mp4 extractor is part of mainline and builds against NDK 29 as of
@@ -146,6 +147,7 @@ private:
 
     bool mIsAVC;
     bool mIsHEVC;
+    bool mIsVVC;
     bool mIsDolbyVision;
     bool mIsAC4;
     bool mIsMpegH = false;
@@ -364,6 +366,12 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC("hvc1"):
         case FOURCC("hev1"):
             return MEDIA_MIMETYPE_VIDEO_HEVC;
+
+        case FOURCC("vvc1"):
+        case FOURCC("vvi1"):
+        case FOURCC("vvs1"):
+        case FOURCC("vvcn"):
+            return MEDIA_MIMETYPE_VIDEO_VVC;
 
         case FOURCC("dvav"):
         case FOURCC("dva1"):
@@ -2103,6 +2111,10 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC("dav1"):
         case FOURCC("av01"):
         case FOURCC("vp09"):
+        case FOURCC("vvc1"):  // VVC(H266)
+        case FOURCC("vvi1"):  // VVC(H266)
+        case FOURCC("vvcN"):  // VVC(H266)
+        case FOURCC("vvs1"):  // VVC(H266)
         {
             uint8_t buffer[78];
             if (chunk_data_size < (ssize_t)sizeof(buffer)) {
@@ -2590,6 +2602,30 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
 
             AMediaFormat_setBuffer(mLastTrack->meta,
                     AMEDIAFORMAT_KEY_CSD_HEVC, buffer.get(), chunk_data_size);
+
+            *offset += chunk_size;
+            break;
+        }
+
+        case FOURCC("vvcC"):
+        {
+            auto buffer = heapbuffer<uint8_t>(chunk_data_size);
+
+            if (buffer.get() == NULL) {
+                ALOGE("b/28471206");
+                return NO_MEMORY;
+            }
+
+            if (mDataSource->readAt(
+                        data_offset, buffer.get(), chunk_data_size) < chunk_data_size) {
+                return ERROR_IO;
+            }
+
+            if (mLastTrack == NULL)
+                return ERROR_MALFORMED;
+
+            AMediaFormat_setBuffer(mLastTrack->meta,
+                    AMEDIAFORMAT_KEY_CSD_VVC, buffer.get(), chunk_data_size);
 
             *offset += chunk_size;
             break;
@@ -4559,6 +4595,18 @@ MediaTrackHelper *MPEG4Extractor::getTrack(size_t index) {
         if (size < 5 || ptr[0] != 0x01) {  // configurationVersion == 1
             return NULL;
         }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_VVC)) {
+        void *data;
+        size_t size;
+        if (!AMediaFormat_getBuffer(track->meta, AMEDIAFORMAT_KEY_CSD_VVC, &data, &size)) {
+            return NULL;
+        }
+
+        const uint8_t *ptr = (const uint8_t *)data;
+
+        if (size < MINOR_VVC_CSD_LEN || U32_AT(ptr) != 0) {  // version == 0
+            return NULL;
+        }
     }
 
     ALOGV("track->elst_shift_start_ticks :%" PRIu64, track->elst_shift_start_ticks);
@@ -4621,6 +4669,10 @@ status_t MPEG4Extractor::verifyTrack(Track *track) {
             || !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_MPEG2)
             || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AAC)) {
         if (!AMediaFormat_getBuffer(track->meta, AMEDIAFORMAT_KEY_ESDS, &data, &size)) {
+            return ERROR_MALFORMED;
+        }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_VVC)) {
+        if (!AMediaFormat_getBuffer(track->meta, AMEDIAFORMAT_KEY_CSD_VVC, &data, &size)) {
             return ERROR_MALFORMED;
         }
     }
@@ -5108,6 +5160,7 @@ MPEG4Source::MPEG4Source(
       mCurrentSampleInfoOffsets(NULL),
       mIsAVC(false),
       mIsHEVC(false),
+      mIsVVC(false),
       mIsDolbyVision(false),
       mIsAC4(false),
       mIsPcm(false),
@@ -5150,6 +5203,7 @@ MPEG4Source::MPEG4Source(
     mIsAVC = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_AVC);
     mIsHEVC = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_HEVC) ||
               !strcasecmp(mime, MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC);
+    mIsVVC = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_VVC);
     mIsAC4 = !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AC4);
     mIsDolbyVision = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION);
     mIsHeif = !strcasecmp(mime, MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC) && mItemTable != NULL;
@@ -5201,6 +5255,18 @@ MPEG4Source::MPEG4Source(
                 LOG_ALWAYS_FATAL("Invalid Dolby Vision profile = %d", profile);
             }
         }
+    } else if (mIsVVC) {
+        void *data = NULL;
+        size_t size = 0;
+        CHECK(AMediaFormat_getBuffer(format, AMEDIAFORMAT_KEY_CSD_VVC, &data, &size) && (data != NULL));
+
+        const uint8_t *ptr = (const uint8_t *)data;
+
+        CHECK(size >= MINOR_VVC_CSD_LEN);
+        uint32_t version = U32_AT(ptr);
+        CHECK_EQ((unsigned)version, 0);  // version == 0
+
+        mNALLengthSize = 1 + ((ptr[4] >> 1) & 3);
     }
 
     mIsPcm = !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_RAW);
@@ -6355,7 +6421,7 @@ media_status_t MPEG4Source::read(
         }
     }
 
-    if (!mIsAVC && !mIsHEVC && !(mIsDolbyVision && mNALLengthSize) && !mIsAC4) {
+    if (!mIsAVC && !mIsHEVC && !mIsVVC && !(mIsDolbyVision && mNALLengthSize) && !mIsAC4) {
         if (newBuffer) {
             if (mIsPcm) {
                 // The twos' PCM block reader assumes that all samples has the same size.
@@ -6808,7 +6874,7 @@ media_status_t MPEG4Source::fragmentedRead(
         AMediaFormat_setBuffer(bufmeta, AMEDIAFORMAT_KEY_CRYPTO_IV, iv, ivlength);
     }
 
-    if (!mIsAVC && !mIsHEVC && !(mIsDolbyVision && mNALLengthSize)) {
+    if (!mIsAVC && !mIsHEVC && !mIsVVC && !(mIsDolbyVision && mNALLengthSize)) {
         if (newBuffer) {
             if (!isInRange((size_t)0u, mBuffer->size(), size)) {
                 mBuffer->release();
@@ -6999,7 +7065,8 @@ static bool LegacySniffMPEG4(DataSourceHelper *source, float *confidence) {
         || !memcmp(header, "ftypkddi", 8) || !memcmp(header, "ftypM4VP", 8)
         || !memcmp(header, "ftypmif1", 8) || !memcmp(header, "ftypheic", 8)
         || !memcmp(header, "ftypmsf1", 8) || !memcmp(header, "ftyphevc", 8)
-        || !memcmp(header, "ftypavif", 8) || !memcmp(header, "ftypavis", 8)) {
+        || !memcmp(header, "ftypavif", 8) || !memcmp(header, "ftypavis", 8)
+        || !memcmp(header, "ftypvvc1", 8) || !memcmp(header, "ftypvvi1", 8)) {
         *confidence = 0.4;
 
         return true;
@@ -7037,6 +7104,8 @@ static bool isCompatibleBrand(uint32_t fourcc) {
         FOURCC("hevc"),  // HEIF image sequence
         FOURCC("avif"),  // AVIF image
         FOURCC("avis"),  // AVIF image sequence
+        FOURCC("vvc1"),
+        FOURCC("vvi1"),
     };
 
     for (size_t i = 0;
