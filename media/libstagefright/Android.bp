@@ -91,6 +91,7 @@ cc_library_static {
         "Utils.cpp",
         "MediaSource.cpp",
         "HevcUtils.cpp",
+        "VvcUtils.cpp",
     ],
 
     shared_libs: [
@@ -271,6 +272,7 @@ cc_library {
         "Utils.cpp",
         "VideoFrameSchedulerBase.cpp",
         "VideoFrameScheduler.cpp",
+        "VvcUtils.cpp"
     ],
 
     shared_libs: [
