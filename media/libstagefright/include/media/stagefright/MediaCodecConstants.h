@@ -502,6 +502,96 @@ inline static const char *asString_HEVCTierLevel(int32_t i, const char *def = "?
     }
 }
 
+inline constexpr int32_t VVCProfileMain10              = 0x1;
+inline constexpr int32_t VVCProfileMain10Still         = 0x2;
+inline constexpr int32_t VVCProfileMain10444           = 0x4;
+inline constexpr int32_t VVCProfileMain10444Still      = 0x8;
+inline constexpr int32_t VVCProfileMultilayerMain10    = 0x10;
+inline constexpr int32_t VVCProfileMultilayerMain10444 = 0x20;
+inline constexpr int32_t VVCProfileMain12              = 0x40;
+inline constexpr int32_t VVCProfileMain12Intra         = 0x80;
+inline constexpr int32_t VVCProfileMain12Still         = 0x100;
+inline constexpr int32_t VVCProfileMain12444           = 0x200;
+inline constexpr int32_t VVCProfileMain12444Intra      = 0x400;
+inline constexpr int32_t VVCProfileMain12444Still      = 0x800;
+inline constexpr int32_t VVCProfileMain16444           = 0x1000;
+inline constexpr int32_t VVCProfileMain16444Intra      = 0x2000;
+inline constexpr int32_t VVCProfileMain16444Still      = 0x4000;
+
+inline static const char *asString_VVCProfile(int32_t i, const char *def = "??") {
+    switch (i) {
+        case VVCProfileMain10:                     return "Main10";
+        case VVCProfileMain10Still:                return "Main10Still";
+        case VVCProfileMain10444:                  return "Main10444";
+        case VVCProfileMain10444Still:             return "Main10444Still";
+        case VVCProfileMultilayerMain10:           return "MultilayerMain10";
+        case VVCProfileMultilayerMain10444:        return "MultilayerMain10444";
+        case VVCProfileMain12:                     return "Main12";
+        case VVCProfileMain12Intra:                return "Main12Intra";
+        case VVCProfileMain12Still:                return "Main12Still";
+        case VVCProfileMain12444:                  return "Main12444";
+        case VVCProfileMain12444Intra:             return "Main12444Intra";
+        case VVCProfileMain12444Still:             return "Main12444Still";
+        case VVCProfileMain16444:                  return "Main16444";
+        case VVCProfileMain16444Intra:             return "Main16444Intra";
+        case VVCProfileMain16444Still:             return "Main16444Still";
+        default:                                   return def;
+    }
+}
+
+inline constexpr int32_t VVCMainTierLevel1   = 0x1;
+inline constexpr int32_t VVCMainTierLevel2   = 0x2;
+inline constexpr int32_t VVCMainTierLevel21  = 0x4;
+inline constexpr int32_t VVCMainTierLevel3   = 0x8;
+inline constexpr int32_t VVCMainTierLevel31  = 0x10;
+inline constexpr int32_t VVCMainTierLevel4   = 0x20;
+inline constexpr int32_t VVCHighTierLevel4   = 0x40;
+inline constexpr int32_t VVCMainTierLevel41  = 0x80;
+inline constexpr int32_t VVCHighTierLevel41  = 0x100;
+inline constexpr int32_t VVCMainTierLevel5   = 0x200;
+inline constexpr int32_t VVCHighTierLevel5   = 0x400;
+inline constexpr int32_t VVCMainTierLevel51  = 0x800;
+inline constexpr int32_t VVCHighTierLevel51  = 0x1000;
+inline constexpr int32_t VVCMainTierLevel52  = 0x2000;
+inline constexpr int32_t VVCHighTierLevel52  = 0x4000;
+inline constexpr int32_t VVCMainTierLevel6   = 0x8000;
+inline constexpr int32_t VVCHighTierLevel6   = 0x10000;
+inline constexpr int32_t VVCMainTierLevel61  = 0x20000;
+inline constexpr int32_t VVCHighTierLevel61  = 0x40000;
+inline constexpr int32_t VVCMainTierLevel62  = 0x80000;
+inline constexpr int32_t VVCHighTierLevel62  = 0x100000;
+inline constexpr int32_t VVCMainTierLevel63  = 0x200000;
+inline constexpr int32_t VVCHighTierLevel63  = 0x400000;
+
+inline static const char *asString_VVCTierLevel(int32_t i, const char *def = "??") {
+    switch (i) {
+        case VVCMainTierLevel1:    return "Main 1";
+        case VVCMainTierLevel2:    return "Main 2";
+        case VVCMainTierLevel21:   return "Main 2.1";
+        case VVCMainTierLevel3:    return "Main 3";
+        case VVCMainTierLevel31:   return "Main 3.1";
+        case VVCMainTierLevel4:    return "Main 4";
+        case VVCHighTierLevel4:    return "High 4";
+        case VVCMainTierLevel41:   return "Main 4.1";
+        case VVCHighTierLevel41:   return "High 4.1";
+        case VVCMainTierLevel5:    return "Main 5";
+        case VVCHighTierLevel5:    return "High 5";
+        case VVCMainTierLevel51:   return "Main 5.1";
+        case VVCHighTierLevel51:   return "High 5.1";
+        case VVCMainTierLevel52:   return "Main 5.2";
+        case VVCHighTierLevel52:   return "High 5.2";
+        case VVCMainTierLevel6:    return "Main 6";
+        case VVCHighTierLevel6:    return "High 6";
+        case VVCMainTierLevel61:   return "Main 6.1";
+        case VVCHighTierLevel61:   return "High 6.1";
+        case VVCMainTierLevel62:   return "Main 6.2";
+        case VVCHighTierLevel62:   return "High 6.2";
+        case VVCMainTierLevel63:   return "Main 6.3";
+        case VVCHighTierLevel63:   return "High 6.3";
+        default:                   return def;
+    }
+}
+
 inline constexpr int32_t DolbyVisionProfileDvavPer = 0x1;
 inline constexpr int32_t DolbyVisionProfileDvavPen = 0x2;
 inline constexpr int32_t DolbyVisionProfileDvheDer = 0x4;
