@@ -42,6 +42,8 @@ cc_library_shared {
         "framework-permission-aidl-cpp",
         "libaudioclient_aidl_conversion",
         "audioclient-types-aidl-cpp",
+        // Flag support
+        "android.media.audio-aconfig-cc",
     ],
 
     header_libs: [

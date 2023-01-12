@@ -40,6 +40,7 @@
 
 #include <Serializer.h>
 #include <android/media/audio/common/AudioPort.h>
+#include <android_media_audio.h>
 #include <cutils/bitops.h>
 #include <cutils/properties.h>
 #include <media/AudioParameter.h>
@@ -54,6 +55,8 @@
 #include "TypeConverter.h"
 
 namespace android {
+
+namespace audio_flags = android::media::audio;
 
 using android::media::audio::common::AudioDevice;
 using android::media::audio::common::AudioDeviceAddress;
@@ -4204,7 +4207,8 @@ void AudioPolicyManager::dump(String8 *dst) const
     dst->appendFormat(" TTS output %savailable\n", mTtsOutputAvailable ? "" : "not ");
     dst->appendFormat(" Master mono: %s\n", mMasterMono ? "on" : "off");
     dst->appendFormat(" Communication Strategy id: %d\n", mCommunnicationStrategy);
-    dst->appendFormat(" Config source: %s\n", mConfig->getSource().c_str());
+    dst->appendFormat(" Bluetooth SCO managed by audio: %s\n",
+                      mScoManagedByAudio ? "true" : "false");
 
     dst->append("\n");
     mAvailableOutputDevices.dump(dst, String8("Available output"), 1);
@@ -4909,9 +4913,9 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
         ALOG_ASSERT(!outputDesc->isDuplicated(),"duplicated output %d in source in ports",
                                                 outputDesc->mIoHandle);
         if (patchDesc != 0) {
+            ALOGV("%s source id differs for patch current id %d new id %d",
+                __func__, patchDesc->mPatch.sources[0].id, patch->sources[0].id);
             if (patchDesc->mPatch.sources[0].id != patch->sources[0].id) {
-                ALOGV("%s source id differs for patch current id %d new id %d",
-                      __func__, patchDesc->mPatch.sources[0].id, patch->sources[0].id);
                 return BAD_VALUE;
             }
         }
@@ -6140,6 +6144,9 @@ status_t AudioPolicyManager::initialize() {
         LOG_FATAL("Policy engine not initialized(err=%d)", status);
         return status;
     }
+
+    mScoManagedByAudio = audio_flags::sco_managed_by_audio()
+        && property_get_bool("bluetooth.sco.managed_by_audio", false /* default_value */);
 
     // The actual device selection cache will be updated when calling `updateDevicesAndOutputs`
     // at the end of this function.
@@ -7488,6 +7495,37 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
 
     ALOGV("%s changing device to %s", __func__, filteredDevices.toString().c_str());
 
+    DeviceVector btDevices;
+    if (isAnyDeviceTypeActive(getAudioDeviceOutAllScoSet())) {
+        btDevices = mAvailableOutputDevices.getDevicesFromTypes(getAudioDeviceOutAllScoSet());
+    } else if (isAnyDeviceTypeActive(getAudioDeviceOutAllA2dpSet())) {
+        btDevices = mAvailableOutputDevices.getDevicesFromTypes(getAudioDeviceOutAllA2dpSet());
+    } else if (isAnyDeviceTypeActive(getAudioDeviceOutAllBleSet())) {
+        btDevices = mAvailableOutputDevices.getDevicesFromTypes(getAudioDeviceOutAllBleSet());
+    }
+    sp<DeviceDescriptor> topBtActiveDevice = btDevices.isEmpty() ? nullptr : btDevices[0];
+
+    ALOGI_IF(topBtActiveDevice != nullptr, "%s topBtActiveDevice %s",
+              __func__, topBtActiveDevice->toString().c_str());
+    std::vector<sp<SwAudioOutputDescriptor>> outputsToReRoute;
+    if (topBtActiveDevice != nullptr) {
+        if (filteredDevices.containsDeviceAmongTypes(getAudioDeviceOutAllBluetoothSet())
+                || availPrevDevices.containsDeviceAmongTypes(getAudioDeviceOutAllBluetoothSet())) {
+            for (size_t i = 0; i < mOutputs.size(); i++) {
+                sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(i);
+                if (desc == outputDesc || !desc->isActive()
+                    || desc->devices().contains(topBtActiveDevice)
+                    || !desc->devices().containsDeviceAmongTypes(
+                            getAudioDeviceOutAllBluetoothSet())) {
+                    continue;
+                }
+                ALOGI("%s resetting bluetooth devices %s",
+                      __func__, desc->devices().toString().c_str());
+                resetOutputDevice(desc, 0, NULL);
+                outputsToReRoute.push_back(desc);
+            }
+        }
+    }
     // do the routing
     if (filteredDevices.isEmpty() || mAvailableOutputDevices.filter(filteredDevices).empty()) {
         resetOutputDevice(outputDesc, delayMs, NULL);
@@ -7496,7 +7534,15 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
         patchBuilder.addSource(outputDesc);
         ALOG_ASSERT(filteredDevices.size() <= AUDIO_PATCH_PORTS_MAX, "Too many sink ports");
         for (const auto &filteredDevice : filteredDevices) {
-            patchBuilder.addSink(filteredDevice);
+            if (topBtActiveDevice != nullptr
+                    && getAudioDeviceOutAllBluetoothSet().find(filteredDevice->type())
+                        != getAudioDeviceOutAllBluetoothSet().end()) {
+                ALOGI("%s forcing top bluetooth device %s on output",
+                      __func__, topBtActiveDevice->toString().c_str());
+                patchBuilder.addSink(topBtActiveDevice);
+            } else {
+                patchBuilder.addSink(filteredDevice);
+            }
         }
 
         // Add half reported latency to delayMs when muteWaitMs is null in order
@@ -7506,6 +7552,26 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
         installPatch(__func__, patchHandle, outputDesc.get(), patchBuilder.patch(), actualDelayMs);
     }
 
+    for (const auto& desc : outputsToReRoute) {
+        PatchBuilder patchBuilder;
+        patchBuilder.addSource(desc);
+        for (const auto &device : desc->devices()) {
+            if (topBtActiveDevice != nullptr
+                    && getAudioDeviceOutAllBluetoothSet().find(device->type())
+                        != getAudioDeviceOutAllBluetoothSet().end()) {
+                ALOGI("%s forcing top bluetooth device %s on other output %d",
+                      __func__, topBtActiveDevice->toString().c_str(), desc->mIoHandle);
+                patchBuilder.addSink(topBtActiveDevice);
+            } else {
+                patchBuilder.addSink(device);
+            }
+        }
+
+        // Add half reported latency to delayMs when muteWaitMs is null in order
+        // to avoid disordered sequence of muting volume and changing devices.
+        installPatch(__func__, patchHandle, outputDesc.get(), patchBuilder.patch(),
+                muteWaitMs == 0 ? (delayMs + (outputDesc->latency() / 2)) : delayMs);
+    }
     // Since the mute is skip, also skip the apply stream volume as that will be applied externally
     if (!skipMuteDelay) {
         // update stream volumes according to new device

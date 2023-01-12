@@ -1015,6 +1015,11 @@ protected:
                  std::map<product_strategy_t,
                           sp<PreferredMixerAttributesInfo>>> mPreferredMixerAttrInfos;
 
+        // True if Bluetooth SCO audio activation is managed via the audio HAL.
+        // Both flag sco_managed_by_audio and bluetooth.sco.managed_by_audio property
+        // must be true.
+        bool mScoManagedByAudio = false;
+
         // Support for Multi-Stream Decoder (MSD) module
         sp<DeviceDescriptor> getMsdAudioInDevice() const;
         DeviceVector getMsdAudioOutDevices() const;
