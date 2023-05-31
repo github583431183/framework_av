@@ -352,6 +352,11 @@ class Camera3Device :
      */
     status_t injectSessionParams(const CameraMetadata& sessionParams);
 
+	/**
+	 * signal mLatestRequestmutex
+	 * */
+    void wakeupLatestRequest(bool latestRequestFailed, int32_t latestRequestId);
+
   protected:
     status_t disconnectImpl();
     static status_t removeFwkOnlyRegionKeys(CameraMetadata *request);
