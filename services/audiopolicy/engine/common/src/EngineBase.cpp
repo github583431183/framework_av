@@ -249,7 +249,8 @@ engineConfig::ParsingResult EngineBase::processParsingResult(
         loadVolumeConfig(mVolumeGroups, volumeConfig);
     }
     for (auto& strategyConfig : result.parsedConfig->productStrategies) {
-        sp<ProductStrategy> strategy = new ProductStrategy(strategyConfig.name, strategyConfig.id);
+        sp<ProductStrategy> strategy = new ProductStrategy(strategyConfig.name, strategyConfig.id,
+                strategyConfig.zoneId);
         for (const auto &group : strategyConfig.attributesGroups) {
             const auto &iter = std::find_if(begin(mVolumeGroups), end(mVolumeGroups),
                                          [&group](const auto &volumeGroup) {
@@ -336,7 +337,7 @@ status_t EngineBase::listAudioProductStrategies(AudioProductStrategyVector &stra
         const auto &productStrategy = iter.second;
         strategies.push_back(
         {productStrategy->getName(), productStrategy->listVolumeGroupAttributes(),
-         productStrategy->getId()});
+         productStrategy->getId(), productStrategy->getZoneId()});
     }
     return NO_ERROR;
 }
