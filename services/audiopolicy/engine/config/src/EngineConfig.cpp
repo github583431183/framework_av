@@ -201,6 +201,7 @@ struct ProductStrategyTraits : public BaseSerializerTraits<ProductStrategy, Prod
     struct Attributes {
         static constexpr const char *name = "name";
         static constexpr const char *id = "id";
+        static constexpr const char *zoneId = "zoneId";
     };
     static android::status_t deserialize(_xmlDoc *doc, const _xmlNode *root, Collection &ps);
 };
@@ -567,13 +568,20 @@ status_t ProductStrategyTraits::deserialize(_xmlDoc *doc, const _xmlNode *child,
         }
         ALOGV("%s: %s, %s = %d", __FUNCTION__, name.c_str(), Attributes::id, id);
     }
+    int zoneId = 0;
+    std::string zoneIdLiteral = getXmlAttribute(child, Attributes::zoneId);
+    if (!zoneIdLiteral.empty()) {
+        if (!convertTo(zoneIdLiteral, zoneId)) {
+            return BAD_VALUE;
+        }
+        ALOGV("%s: %s, %s = %d", __FUNCTION__, name.c_str(), Attributes::zoneId, zoneId);
+    }
     ALOGV("%s: %s = %s", __FUNCTION__, Attributes::name, name.c_str());
-
     size_t skipped = 0;
     AttributesGroups attrGroups;
     deserializeCollection<AttributesGroupTraits>(doc, child, attrGroups, skipped);
 
-    strategies.push_back({name, id, attrGroups});
+    strategies.push_back({name, id, zoneId, attrGroups});
     return NO_ERROR;
 }
 

@@ -33,14 +33,15 @@ public:
     AudioProductStrategy() {}
     AudioProductStrategy(const std::string &name,
                          const std::vector<VolumeGroupAttributes> &attributes,
-                         product_strategy_t id) :
-        mName(name), mVolumeGroupAttributes(attributes), mId(id) {}
+                         product_strategy_t id, int zoneId) :
+        mName(name), mVolumeGroupAttributes(attributes), mId(id), mZoneId(zoneId) {}
 
     const std::string &getName() const { return mName; }
     std::vector<VolumeGroupAttributes> getVolumeGroupAttributes() const {
         return mVolumeGroupAttributes;
     }
     product_strategy_t getId() const { return mId; }
+    int getZoneId() const { return mZoneId; }
 
     status_t readFromParcel(const Parcel *parcel) override;
     status_t writeToParcel(Parcel *parcel) const override;
@@ -54,31 +55,40 @@ public:
      * Reference attributes "default" shall be considered as a weak match case. This convention
      * is used to identify the default strategy.
      * @param refAttributes to be considered
-     * @param clientAttritubes to be considered
+     * @param clientAttributes to be considered
      * @return {@code INVALID_SCORE} if not matching, {@code MATCH_ON_DEFAULT_SCORE} if matching
      * to default strategy, non zero positive score if matching a strategy.
      */
     static int attributesMatchesScore(const audio_attributes_t refAttributes,
-                                      const audio_attributes_t clientAttritubes);
-
-    static bool attributesMatches(const audio_attributes_t refAttributes,
-                                      const audio_attributes_t clientAttritubes) {
-        return attributesMatchesScore(refAttributes, clientAttritubes) > 0;
+            const audio_attributes_t clientAttributes, int refZoneId, int clientZoneId);
+    static int attributesMatchesScore(const audio_attributes_t refAttributes,
+                                      const audio_attributes_t clientAttributes) {
+        return attributesMatchesScore(refAttributes, clientAttributes, DEFAULT_ZONE_ID,
+                                      DEFAULT_ZONE_ID);
     }
 
+    static bool attributesMatches(const audio_attributes_t refAttributes,
+                                      const audio_attributes_t clientAttributes) {
+        return attributesMatchesScore(refAttributes, clientAttributes) > 0;
+    }
+
+    static const int DEFAULT_ZONE_ID = 0;
+    static const int MATCH_ON_ZONE_ID_SCORE = 1 << 4;
     static const int MATCH_ON_TAGS_SCORE = 1 << 3;
     static const int MATCH_ON_FLAGS_SCORE = 1 << 2;
     static const int MATCH_ON_USAGE_SCORE = 1 << 1;
     static const int MATCH_ON_CONTENT_TYPE_SCORE = 1 << 0;
     static const int MATCH_ON_DEFAULT_SCORE = 0;
-    static const int MATCH_EQUALS = MATCH_ON_TAGS_SCORE | MATCH_ON_FLAGS_SCORE
+    static const int MATCH_ATTRIBUTES_EQUALS = MATCH_ON_TAGS_SCORE | MATCH_ON_FLAGS_SCORE
             | MATCH_ON_USAGE_SCORE | MATCH_ON_CONTENT_TYPE_SCORE;
+    static const int MATCH_EQUALS = MATCH_ON_ZONE_ID_SCORE | MATCH_ATTRIBUTES_EQUALS;
     static const int NO_MATCH = -1;
 
 private:
     std::string mName;
     std::vector<VolumeGroupAttributes> mVolumeGroupAttributes;
     product_strategy_t mId;
+    int mZoneId;
 };
 
 using AudioProductStrategyVector = std::vector<AudioProductStrategy>;

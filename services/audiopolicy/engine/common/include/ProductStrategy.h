@@ -24,6 +24,7 @@
 #include <vector>
 
 #include <HandleGenerator.h>
+#include <media/AudioProductStrategy.h>
 #include <media/VolumeGroupAttributes.h>
 #include <media/AudioContainers.h>
 #include <media/AudioDeviceTypeAddr.h>
@@ -46,7 +47,8 @@ private:
     using VolumeGroupAttributesVector = std::vector<VolumeGroupAttributes>;
 
 public:
-    ProductStrategy(const std::string &name, int id = PRODUCT_STRATEGY_NONE);
+    ProductStrategy(const std::string &name, int id = PRODUCT_STRATEGY_NONE,
+            int zoneId = AudioProductStrategy::DEFAULT_ZONE_ID);
 
     void addAttributes(const VolumeGroupAttributes &volumeGroupAttributes);
 
@@ -55,8 +57,12 @@ public:
     std::string getName() const { return mName; }
     AttributesVector getAudioAttributes() const;
     product_strategy_t getId() const { return mId; }
+    int getZoneId() const { return mZoneId; }
     StreamTypeVector getSupportedStreams() const;
     VolumeGroupAttributesVector getVolumeGroupAttributes() const { return mAttributesVector; }
+
+    std::pair<int, VolumeGroupAttributes> getScoredVolumeGroupAttributesForAttributes(
+            const audio_attributes_t attributes, int zoneId) const;
 
     /**
      * @brief matches checks if the given audio attributes shall follow the strategy.
@@ -66,7 +72,7 @@ public:
      * @param attributes to consider
      * @return matching score, negative value if no match.
      */
-    int matchesScore(const audio_attributes_t attributes) const;
+    int matchesScore(const audio_attributes_t attributes, int zoneId) const;
 
     bool supportStreamType(const audio_stream_type_t &streamType) const;
 
@@ -101,6 +107,8 @@ private:
 
     product_strategy_t mId;
 
+    int mZoneId;
+
     std::string mDeviceAddress; /**< Device address applicable for this strategy, maybe empty */
 
     /**
@@ -122,13 +130,28 @@ public:
      * @return applicable product strategy for the given attribute, default if none applicable.
      */
     product_strategy_t getProductStrategyForAttributes(
-            const audio_attributes_t &attr, bool fallbackOnDefault = true) const;
+            const audio_attributes_t &attr, int zoneId, bool fallbackOnDefault = true) const;
+    product_strategy_t getProductStrategyForAttributes(
+            const audio_attributes_t &attr, bool fallbackOnDefault = true) const {
+        return getProductStrategyForAttributes(attr, AudioProductStrategy::DEFAULT_ZONE_ID,
+                                               fallbackOnDefault);
+    }
 
-    product_strategy_t getProductStrategyForStream(audio_stream_type_t stream) const;
+    product_strategy_t getProductStrategyForStream(audio_stream_type_t stream, int zoneId) const;
+    product_strategy_t getProductStrategyForStream(audio_stream_type_t stream) const {
+        return getProductStrategyForStream(stream, AudioProductStrategy::DEFAULT_ZONE_ID);
+    }
 
-    audio_attributes_t getAttributesForStreamType(audio_stream_type_t stream) const;
+    audio_attributes_t getAttributesForStreamType(audio_stream_type_t stream, int zoneId) const;
+    audio_attributes_t getAttributesForStreamType(audio_stream_type_t stream) const {
+        return getAttributesForStreamType(stream, AudioProductStrategy::DEFAULT_ZONE_ID);
+    }
 
-    audio_stream_type_t getStreamTypeForAttributes(const audio_attributes_t &attr) const;
+    audio_stream_type_t getStreamTypeForAttributes(
+            const audio_attributes_t &attr, int zoneId) const;
+    audio_stream_type_t getStreamTypeForAttributes(const audio_attributes_t &attr) const {
+        return getStreamTypeForAttributes(attr, AudioProductStrategy::DEFAULT_ZONE_ID);
+    }
 
     /**
      * @brief getAttributesForProductStrategy can be called from
@@ -147,22 +170,39 @@ public:
     std::string getDeviceAddressForProductStrategy(product_strategy_t strategy) const;
 
     volume_group_t getVolumeGroupForAttributes(
-            const audio_attributes_t &attr, bool fallbackOnDefault = true) const;
+            const audio_attributes_t &attr, int zoneId, bool fallbackOnDefault = true) const;
+    volume_group_t getVolumeGroupForAttributes(
+            const audio_attributes_t &attr, bool fallbackOnDefault = true) const {
+        return getVolumeGroupForAttributes(attr, AudioProductStrategy::DEFAULT_ZONE_ID,
+                                           fallbackOnDefault);
+    }
 
     volume_group_t getVolumeGroupForStreamType(
-            audio_stream_type_t stream, bool fallbackOnDefault = true) const;
+            audio_stream_type_t stream, int zoneId, bool fallbackOnDefault = true) const;
+    volume_group_t getVolumeGroupForStreamType(
+            audio_stream_type_t stream, bool fallbackOnDefault = true) const {
+        return getVolumeGroupForStreamType(
+                stream, AudioProductStrategy::DEFAULT_ZONE_ID, fallbackOnDefault);
+    }
 
-    volume_group_t getDefaultVolumeGroup() const;
+    volume_group_t getDefaultVolumeGroup(int zoneId) const;
+    volume_group_t getDefaultVolumeGroup() const {
+        return getDefaultVolumeGroup(AudioProductStrategy::DEFAULT_ZONE_ID);
+    }
 
-    product_strategy_t getDefault() const;
+    product_strategy_t getDefault(int zoneId) const;
+    product_strategy_t getDefault() const {
+        return getDefault(AudioProductStrategy::DEFAULT_ZONE_ID);
+    }
 
     void dump(String8 *dst, int spaces = 0) const;
 
 private:
     VolumeGroupAttributes getVolumeGroupAttributesForAttributes(
-            const audio_attributes_t &attr, bool fallbackOnDefault = true) const;
+            const audio_attributes_t &attr, int zoneId, bool fallbackOnDefault = true) const;
 
     product_strategy_t mDefaultStrategy = PRODUCT_STRATEGY_NONE;
+    volume_group_t mDefaultVolumeGroup = VOLUME_GROUP_NONE;
 };
 
 using ProductStrategyDevicesRoleMap =
