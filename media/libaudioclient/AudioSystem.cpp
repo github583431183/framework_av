@@ -2911,9 +2911,6 @@ void AudioSystem::AudioPolicyServiceClient::binderDied(const wp<IBinder>& who __
         for (const auto& callback : mAudioPortCallbacks) {
             callback->onServiceDied();
         }
-        for (const auto& callback : mAudioVolumeGroupCallbacks) {
-            callback->onServiceDied();
-        }
     }
     AudioSystem::clearAudioPolicyService();
 
