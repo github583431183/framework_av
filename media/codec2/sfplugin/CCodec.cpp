@@ -1178,6 +1178,20 @@ void CCodec::configure(const sp<AMessage> &msg) {
             }
         }
 
+        /*
+         * configure mock region of interest if Feature_Roi is enabled
+         */
+        if ((config->mDomain & Config::IS_ENCODER) && (config->mDomain & Config::IS_VIDEO)) {
+            int32_t enableRoi;
+            if (msg->findInt32("feature-region-of-interest", &enableRoi) && enableRoi != 0) {
+                if (!msg->contains(PARAMETER_KEY_QP_OFFSET_MAP) &&
+                    !msg->contains(PARAMETER_KEY_QP_OFFSET_RECTS)) {
+                    msg->setString(PARAMETER_KEY_QP_OFFSET_RECTS,
+                                   AStringPrintf("%d,%d-%d,%d=%d;", 0, 0, height, width, 0));
+                }
+            }
+        }
+
         std::vector<std::unique_ptr<C2Param>> configUpdate;
         // NOTE: We used to ignore "video-bitrate" at configure; replicate
         //       the behavior here.
