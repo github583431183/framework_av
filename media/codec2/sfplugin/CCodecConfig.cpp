@@ -591,6 +591,10 @@ void CCodecConfig::initializeStandardParams() {
             }
             return C2Value();
         }));
+    add(ConfigMapper(KEY_QP_OFFSET_MAP, C2_PARAMKEY_QP_OFFSET_MAP, "value")
+        .limitTo((D::VIDEO | D::IMAGE) & (D::CONFIG | D::PARAM) & D::ENCODER & D::INPUT));
+    add(ConfigMapper(C2_PARAMKEY_QP_OFFSET_RECTS, C2_PARAMKEY_QP_OFFSET_RECTS, "")
+        .limitTo((D::VIDEO | D::IMAGE) & (D::CONFIG | D::PARAM) & D::ENCODER & D::INPUT));
     deprecated(ConfigMapper(PARAMETER_KEY_REQUEST_SYNC_FRAME,
                      "coding.request-sync", "value")
         .limitTo(D::PARAM & D::ENCODER)
@@ -1121,6 +1125,8 @@ status_t CCodecConfig::initialize(
     mParamUpdater->clear();
     mParamUpdater->supportWholeParam(
             C2_PARAMKEY_TEMPORAL_LAYERING, C2StreamTemporalLayeringTuning::CORE_INDEX);
+    mParamUpdater->supportWholeParam(
+            C2_PARAMKEY_QP_OFFSET_RECTS, C2StreamQpOffsetRects::CORE_INDEX);
     mParamUpdater->addParamDesc(mReflector, mParamDescs);
 
     // TEMP: add some standard fields even if not reflected
@@ -1475,6 +1481,29 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
                 }
             }
             msg->removeEntryAt(msg->findEntryByName(C2_PARAMKEY_TEMPORAL_LAYERING));
+        }
+    }
+
+    { // convert c2 RoI info to MediaFormat RoI info
+        sp<ABuffer> tmp;
+        if (msg->findBuffer(C2_PARAMKEY_QP_OFFSET_RECTS, &tmp) && tmp != nullptr) {
+            C2StreamQpOffsetRects *regions =
+                C2StreamQpOffsetRects::From(C2Param::From(tmp->data(), tmp->size()));
+            AString info;
+            for (int i = 0; i < regions->flexCount(); i++) {
+                int left = regions->m.values[i].left;
+                int top = regions->m.values[i].top;
+                int right = left + regions->m.values[i].width;
+                int bot = top + regions->m.values[i].height;
+                int qpOffset = regions->m.values[i].qpOffset;
+                info.append(AStringPrintf("%d,%d-%d,%d=%d;", top, left, bot, right, qpOffset));
+            }
+            msg->setString(KEY_QP_OFFSET_RECTS, info);
+            msg->removeEntryAt(msg->findEntryByName(C2_PARAMKEY_QP_OFFSET_RECTS));
+        }
+        if (msg->findBuffer(C2_PARAMKEY_QP_OFFSET_MAP, &tmp) && tmp != nullptr) {
+            msg->setBuffer(KEY_QP_OFFSET_MAP, tmp);
+            msg->removeEntryAt(msg->findEntryByName(C2_PARAMKEY_QP_OFFSET_MAP));
         }
     }
 
@@ -1867,6 +1896,43 @@ ReflectedParamUpdater::Dict CCodecConfig::getReflectedFormat(
                 params->setInt32((prefix + ".type").c_str(),
                                  HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
                 params->setBuffer((prefix + ".data").c_str(), hdrDynamicInfo);
+            }
+        }
+    }
+
+    if (mDomain == (IS_VIDEO | IS_ENCODER)) {
+        // feature region of interest encoding is supported only in non surface mode
+        if (mInputSurface) {
+            AString qpOffsetRects;
+            if (params->findString(KEY_QP_OFFSET_RECTS, &qpOffsetRects)) {
+                params->removeEntryAt(params->findEntryByName(KEY_QP_OFFSET_RECTS));
+            }
+            sp<ABuffer> qpOffsetMap;
+            if (params->findBuffer(KEY_QP_OFFSET_MAP, &qpOffsetMap)) {
+                params->removeEntryAt(params->findEntryByName(KEY_QP_OFFSET_MAP));
+            }
+        } else {
+            AString qpOffsetRects;
+            if (params->findString(KEY_QP_OFFSET_RECTS, &qpOffsetRects)) {
+                std::vector<C2QpOffsetRectStruct> c2QpOffsetRects;
+                char* box = strtok(strdup(qpOffsetRects.c_str()), ";");
+                while (box != nullptr) {
+                    int top, left, bot, right, qpOffset;
+                    if (sscanf(box, "%d,%d-%d,%d=%d", &top, &left, &bot, &right, &qpOffset) == 5) {
+                        if (top >= 0 && left >= 0 && right >= left && bot >= top) {
+                            c2QpOffsetRects.push_back(C2QpOffsetRectStruct(
+                                    right - left, bot - top, left, top, qpOffset));
+                        }
+                    }
+                    box = strtok(nullptr, ";");
+                }
+                if (c2QpOffsetRects.size() != 0) {
+                    const std::unique_ptr<C2StreamQpOffsetRects::output> regions =
+                            C2StreamQpOffsetRects::output::AllocUnique(
+                                    c2QpOffsetRects.size(), 0u, c2QpOffsetRects);
+                    params->setBuffer(C2_PARAMKEY_QP_OFFSET_RECTS,
+                                      ABuffer::CreateAsCopy(regions.get(), regions->size()));
+                }
             }
         }
     }
