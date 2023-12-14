@@ -25,8 +25,12 @@
 #include <media/AidlConversionCppNdk.h>
 #include <media/IAudioFlinger.h>
 
+#include <android_media_audiopolicy.h>
+
 #include "audio_test_utils.h"
 #include "test_execution_tracer.h"
+
+namespace audio_flags = android::media::audiopolicy;
 
 using android::media::audio::common::AudioDeviceAddress;
 using android::media::audio::common::AudioDeviceDescription;
@@ -439,7 +443,7 @@ TEST_F(AudioSystemTest, VolumeIndexForAttributes) {
     AudioVolumeGroupVector groups;
     EXPECT_EQ(OK, AudioSystem::listAudioVolumeGroups(groups));
     for (const auto& group : groups) {
-        if (group.getAudioAttributes().empty()) continue;
+    if (group.getAudioAttributes().empty()) continue;
         const audio_attributes_t attr = group.getAudioAttributes()[0];
         if (attr == AUDIO_ATTRIBUTES_INITIALIZER) continue;
         audio_stream_type_t streamType = AudioSystem::attributesToStreamType(attr);
@@ -452,6 +456,30 @@ TEST_F(AudioSystemTest, VolumeIndexForAttributes) {
         int index;
         EXPECT_EQ(OK,
                   AudioSystem::getVolumeIndexForAttributes(attr, index, AUDIO_DEVICE_OUT_SPEAKER));
+
+        int indexTest;
+        EXPECT_EQ(OK, AudioSystem::getStreamVolumeIndex(streamType, &indexTest,
+                                                        AUDIO_DEVICE_OUT_SPEAKER));
+        EXPECT_EQ(index, indexTest);
+    }
+}
+/**
+ * @RequiresFlagsEnabled("android.media.audiopolicy.volume_group_management_update")
+ */
+TEST_F(AudioSystemTest, VolumeIndexForVolumeGroup) {
+    if (!audio_flags::volume_group_management_update()) {
+        GTEST_SKIP() << "RequiresFlagsEnabled olume_group_management_update";
+    }
+    AudioVolumeGroupVector groups;
+    EXPECT_EQ(OK, AudioSystem::listAudioVolumeGroups(groups));
+    for (const auto& group : groups) {
+        if (group.getStreamTypes().empty()) continue;
+        volume_group_t vg = group.getId();
+        audio_stream_type_t streamType = group.getStreamTypes()[0];
+        if (streamType >= AUDIO_STREAM_PUBLIC_CNT) continue;
+
+        int index;
+        EXPECT_EQ(OK, AudioSystem::getVolumeGroupVolumeIndex(vg, index, AUDIO_DEVICE_OUT_SPEAKER));
 
         int indexTest;
         EXPECT_EQ(OK, AudioSystem::getStreamVolumeIndex(streamType, &indexTest,

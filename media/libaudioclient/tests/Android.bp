@@ -15,6 +15,7 @@ cc_defaults {
         "-Werror",
     ],
     shared_libs: [
+        "android.media.audiopolicy-aconfig-cc",
         "libbinder",
         "libcutils",
         "liblog",
