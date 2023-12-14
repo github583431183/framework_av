@@ -380,16 +380,16 @@ public:
                                          int *index,
                                          audio_devices_t device);
 
-    static status_t setVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                int index,
-                                                audio_devices_t device);
-    static status_t getVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                int &index,
-                                                audio_devices_t device);
+    static status_t setVolumeGroupVolumeIndex(volume_group_t groupId,
+                                              int index,
+                                              audio_devices_t device);
+    static status_t getVolumeGroupVolumeIndex(volume_group_t groupId,
+                                              int &index,
+                                              audio_devices_t device);
 
-    static status_t getMaxVolumeIndexForAttributes(const audio_attributes_t &attr, int &index);
+    static status_t getVolumeGroupMaxVolumeIndex(volume_group_t groupId, int &index);
 
-    static status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr, int &index);
+    static status_t getVolumeGroupMinVolumeIndex(volume_group_t groupId, int &index);
 
     static product_strategy_t getStrategyForStream(audio_stream_type_t stream);
     static status_t getDevicesForAttributes(const audio_attributes_t &aa,

@@ -130,16 +130,16 @@ public:
     binder::Status getStreamVolumeIndex(AudioStreamType stream,
                                         const AudioDeviceDescription& device,
                                         int32_t* _aidl_return) override;
-    binder::Status setVolumeIndexForAttributes(const media::audio::common::AudioAttributes& attr,
-                                               const AudioDeviceDescription& device,
-                                               int32_t index) override;
-    binder::Status getVolumeIndexForAttributes(const media::audio::common::AudioAttributes& attr,
-                                               const AudioDeviceDescription& device,
-                                               int32_t* _aidl_return) override;
-    binder::Status getMaxVolumeIndexForAttributes(const media::audio::common::AudioAttributes& attr,
-                                                  int32_t* _aidl_return) override;
-    binder::Status getMinVolumeIndexForAttributes(const media::audio::common::AudioAttributes& attr,
-                                                  int32_t* _aidl_return) override;
+    binder::Status setVolumeGroupVolumeIndex(int32_t groupId,
+                                             const AudioDeviceDescription& device,
+                                             int32_t index) override;
+    binder::Status getVolumeGroupVolumeIndex(int32_t groupId,
+                                             const AudioDeviceDescription& device,
+                                             int32_t* _aidl_return) override;
+    binder::Status getVolumeGroupMaxVolumeIndex(int32_t groupId,
+                                                int32_t* _aidl_return) override;
+    binder::Status getVolumeGroupMinVolumeIndex(int32_t groupId,
+                                                int32_t* _aidl_return) override;
     binder::Status getStrategyForStream(AudioStreamType stream,
                                         int32_t* _aidl_return) override;
     binder::Status getDevicesForAttributes(const media::audio::common::AudioAttributes& attr,
