@@ -168,15 +168,15 @@ public:
                                               int *index,
                                               audio_devices_t device);
 
-        virtual status_t setVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                     int index,
-                                                     audio_devices_t device);
-        virtual status_t getVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                     int &index,
-                                                     audio_devices_t device);
-        virtual status_t getMaxVolumeIndexForAttributes(const audio_attributes_t &attr, int &index);
+        virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId,
+                                                   int index,
+                                                   audio_devices_t device);
+        virtual status_t getVolumeGroupVolumeIndex(volume_group_t groupId,
+                                                   int &index,
+                                                   audio_devices_t device);
+        virtual status_t getVolumeGroupMaxVolumeIndex(volume_group_t groupId, int &index);
 
-        virtual status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr, int &index);
+        virtual status_t getVolumeGroupMinVolumeIndex(volume_group_t groupId, int &index);
 
         status_t setVolumeCurveIndex(int index,
                                      audio_devices_t device,
@@ -503,12 +503,15 @@ protected:
             return toVolumeSource(mEngine->getVolumeGroupForStreamType(
                 stream, fallbackOnDefault));
         }
+        IVolumeCurves &getVolumeCurves(volume_group_t volumeGroupId)
+        {
+            auto *curves = mEngine->getVolumeCurvesForVolumeGroup(volumeGroupId);
+            ALOG_ASSERT(curves != nullptr, "No curves for volume group %d", volumeGroupId);
+            return *curves;
+        }
         IVolumeCurves &getVolumeCurves(VolumeSource volumeSource)
         {
-          auto *curves = mEngine->getVolumeCurvesForVolumeGroup(
-              static_cast<volume_group_t>(volumeSource));
-          ALOG_ASSERT(curves != nullptr, "No curves for volume source %d", volumeSource);
-          return *curves;
+          return getVolumeCurves(static_cast<volume_group_t>(volumeSource));
         }
         IVolumeCurves &getVolumeCurves(const audio_attributes_t &attr)
         {
