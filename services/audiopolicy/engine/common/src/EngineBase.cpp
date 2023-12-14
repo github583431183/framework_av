@@ -393,6 +393,16 @@ volume_group_t EngineBase::getVolumeGroupForAttributes(
     return mProductStrategies.getVolumeGroupForAttributes(attr, fallbackOnDefault);
 }
 
+audio_attributes_t EngineBase::getAttributesForVolumeGroup(
+        volume_group_t group, bool fallbackOnDefault) const {
+    const auto &iter = mVolumeGroups.find(group);
+    if (iter != std::end(mVolumeGroups)) {
+        return mVolumeGroups.at(group)->getSupportedAttributes().front();
+    }
+    return fallbackOnDefault ?
+            attributes_initializer(AUDIO_USAGE_MEDIA) : AUDIO_ATTRIBUTES_INITIALIZER;
+}
+
 volume_group_t EngineBase::getVolumeGroupForStreamType(
         audio_stream_type_t stream, bool fallbackOnDefault) const
 {
