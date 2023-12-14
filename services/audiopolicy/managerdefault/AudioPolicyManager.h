@@ -178,6 +178,50 @@ public:
 
         virtual status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr, int &index);
 
+        /**
+         * Set the volume index for a given volume group.
+         *
+         * @param groupId the volume group id
+         * @param index the volume index to set
+         * @param device the device to set the volume index for
+         * @return NO_ERROR if the call is successful, otherwise an error code
+         * @FlaggedApi("android.media.audiopolicy.volume_group_management_update")
+         */
+        virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId, int index,
+                audio_devices_t device);
+
+        /**
+         * Get the volume index for a given volume group.
+         *
+         * @param groupId the volume group id
+         * @param index the volume index to get
+         * @param device the device to get the volume index for
+         * @return NO_ERROR if the call is successful, otherwise an error code
+         * @FlaggedApi("android.media.audiopolicy.volume_group_management_update")
+         */
+        virtual status_t getVolumeGroupVolumeIndex(volume_group_t groupId, int &index,
+                audio_devices_t device);
+
+        /**
+         * Get the maximum volume index for a given volume group
+         *
+         * @param groupId the volume group id
+         * @param index the max volume index to get
+         * @return NO_ERROR if the call is successful, otherwise an error code
+         * @FlaggedApi("android.media.audiopolicy.volume_group_management_update")
+         */
+        virtual status_t getVolumeGroupMaxVolumeIndex(volume_group_t groupId, int &index);
+
+        /**
+         * Get the minimum volume index for a given volume group.
+         *
+         * @param groupId
+         * @param index the min volume index to get
+         * @return NO_ERROR if the call is successful, otherwise an error code
+         * @FlaggedApi("android.media.audiopolicy.volume_group_management_update")
+         */
+        virtual status_t getVolumeGroupMinVolumeIndex(volume_group_t groupId, int &index);
+
         status_t setVolumeCurveIndex(int index,
                                      audio_devices_t device,
                                      IVolumeCurves &volumeCurves);
@@ -503,12 +547,15 @@ protected:
             return toVolumeSource(mEngine->getVolumeGroupForStreamType(
                 stream, fallbackOnDefault));
         }
+        IVolumeCurves &getVolumeCurves(volume_group_t volumeGroupId)
+        {
+            auto *curves = mEngine->getVolumeCurvesForVolumeGroup(volumeGroupId);
+            ALOG_ASSERT(curves != nullptr, "No curves for volume group %d", volumeGroupId);
+            return *curves;
+        }
         IVolumeCurves &getVolumeCurves(VolumeSource volumeSource)
         {
-          auto *curves = mEngine->getVolumeCurvesForVolumeGroup(
-              static_cast<volume_group_t>(volumeSource));
-          ALOG_ASSERT(curves != nullptr, "No curves for volume source %d", volumeSource);
-          return *curves;
+          return getVolumeCurves(static_cast<volume_group_t>(volumeSource));
         }
         IVolumeCurves &getVolumeCurves(const audio_attributes_t &attr)
         {
