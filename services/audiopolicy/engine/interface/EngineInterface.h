@@ -301,6 +301,8 @@ public:
      */
     virtual volume_group_t getVolumeGroupForAttributes(
             const audio_attributes_t &attr, bool fallbackOnDefault = true) const = 0;
+    virtual audio_attributes_t getAttributesForVolumeGroup(
+            volume_group_t group, bool fallbackOnDefault = true) const = 0;
 
     /**
      * @brief getVolumeGroupForStreamType gets the appropriate volume group to be used for a given

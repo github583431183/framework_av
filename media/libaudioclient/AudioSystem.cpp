@@ -1332,60 +1332,56 @@ status_t AudioSystem::getStreamVolumeIndex(audio_stream_type_t stream,
     return OK;
 }
 
-status_t AudioSystem::setVolumeIndexForAttributes(const audio_attributes_t& attr,
-                                                  int index,
-                                                  audio_devices_t device) {
+status_t AudioSystem::setVolumeGroupVolumeIndex(volume_group_t groupId,
+                                                int index,
+                                                audio_devices_t device) {
     const sp<IAudioPolicyService> aps = get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
 
-    media::audio::common::AudioAttributes attrAidl = VALUE_OR_RETURN_STATUS(
-            legacy2aidl_audio_attributes_t_AudioAttributes(attr));
+    int32_t groupIdAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_volume_group_t_int32_t(groupId));
     int32_t indexAidl = VALUE_OR_RETURN_STATUS(convertIntegral<int32_t>(index));
     AudioDeviceDescription deviceAidl = VALUE_OR_RETURN_STATUS(
             legacy2aidl_audio_devices_t_AudioDeviceDescription(device));
     return statusTFromBinderStatus(
-            aps->setVolumeIndexForAttributes(attrAidl, deviceAidl, indexAidl));
+            aps->setVolumeGroupVolumeIndex(groupIdAidl, deviceAidl, indexAidl));
 }
 
-status_t AudioSystem::getVolumeIndexForAttributes(const audio_attributes_t& attr,
-                                                  int& index,
-                                                  audio_devices_t device) {
+status_t AudioSystem::getVolumeGroupVolumeIndex(volume_group_t groupId,
+                                                int& index,
+                                                audio_devices_t device) {
     const sp<IAudioPolicyService> aps = get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
 
-    media::audio::common::AudioAttributes attrAidl = VALUE_OR_RETURN_STATUS(
-            legacy2aidl_audio_attributes_t_AudioAttributes(attr));
+    int32_t groupIdAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_volume_group_t_int32_t(groupId));
     AudioDeviceDescription deviceAidl = VALUE_OR_RETURN_STATUS(
             legacy2aidl_audio_devices_t_AudioDeviceDescription(device));
     int32_t indexAidl;
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
-            aps->getVolumeIndexForAttributes(attrAidl, deviceAidl, &indexAidl)));
+            aps->getVolumeGroupVolumeIndex(groupIdAidl, deviceAidl, &indexAidl)));
     index = VALUE_OR_RETURN_STATUS(convertIntegral<int>(indexAidl));
     return OK;
 }
 
-status_t AudioSystem::getMaxVolumeIndexForAttributes(const audio_attributes_t& attr, int& index) {
+status_t AudioSystem::getVolumeGroupMaxVolumeIndex(volume_group_t groupId, int& index) {
     const sp<IAudioPolicyService> aps = get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
 
-    media::audio::common::AudioAttributes attrAidl = VALUE_OR_RETURN_STATUS(
-            legacy2aidl_audio_attributes_t_AudioAttributes(attr));
+    int32_t groupIdAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_volume_group_t_int32_t(groupId));
     int32_t indexAidl;
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
-            aps->getMaxVolumeIndexForAttributes(attrAidl, &indexAidl)));
+            aps->getVolumeGroupMaxVolumeIndex(groupIdAidl, &indexAidl)));
     index = VALUE_OR_RETURN_STATUS(convertIntegral<int>(indexAidl));
     return OK;
 }
 
-status_t AudioSystem::getMinVolumeIndexForAttributes(const audio_attributes_t& attr, int& index) {
+status_t AudioSystem::getVolumeGroupMinVolumeIndex(volume_group_t groupId, int& index) {
     const sp<IAudioPolicyService> aps = get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
 
-    media::audio::common::AudioAttributes attrAidl = VALUE_OR_RETURN_STATUS(
-            legacy2aidl_audio_attributes_t_AudioAttributes(attr));
+    int32_t groupIdAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_volume_group_t_int32_t(groupId));
     int32_t indexAidl;
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
-            aps->getMinVolumeIndexForAttributes(attrAidl, &indexAidl)));
+            aps->getVolumeGroupMinVolumeIndex(groupIdAidl, &indexAidl)));
     index = VALUE_OR_RETURN_STATUS(convertIntegral<int>(indexAidl));
     return OK;
 }

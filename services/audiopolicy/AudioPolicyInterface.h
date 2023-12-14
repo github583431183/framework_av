@@ -197,18 +197,16 @@ public:
                                           int *index,
                                           audio_devices_t device) = 0;
 
-    virtual status_t setVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                 int index,
-                                                 audio_devices_t device) = 0;
-    virtual status_t getVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                 int &index,
-                                                 audio_devices_t device) = 0;
+    virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId,
+                                               int index,
+                                               audio_devices_t device) = 0;
+    virtual status_t getVolumeGroupVolumeIndex(volume_group_t groupId,
+                                               int &index,
+                                               audio_devices_t device) = 0;
 
-    virtual status_t getMaxVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                    int &index) = 0;
+    virtual status_t getVolumeGroupMaxVolumeIndex(volume_group_t groupId, int &index) = 0;
 
-    virtual status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr,
-                                                    int &index) = 0;
+    virtual status_t getVolumeGroupMinVolumeIndex(volume_group_t groupId, int &index) = 0;
 
     // return the strategy corresponding to a given stream type
     virtual product_strategy_t getStrategyForStream(audio_stream_type_t stream) = 0;

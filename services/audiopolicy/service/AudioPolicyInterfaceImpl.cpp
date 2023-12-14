@@ -1073,16 +1073,13 @@ Status AudioPolicyService::getStreamVolumeIndex(AudioStreamType streamAidl,
     return Status::ok();
 }
 
-Status AudioPolicyService::setVolumeIndexForAttributes(
-        const media::audio::common::AudioAttributes& attrAidl,
-        const AudioDeviceDescription& deviceAidl, int32_t indexAidl) {
-    audio_attributes_t attributes = VALUE_OR_RETURN_BINDER_STATUS(
-            aidl2legacy_AudioAttributes_audio_attributes_t(attrAidl));
+Status AudioPolicyService::setVolumeGroupVolumeIndex(
+        int32_t groupIdAidl, const AudioDeviceDescription& deviceAidl, int32_t indexAidl) {
+    volume_group_t groupId = VALUE_OR_RETURN_BINDER_STATUS(
+            aidl2legacy_int32_t_volume_group_t(groupIdAidl));
     int index = VALUE_OR_RETURN_BINDER_STATUS(convertIntegral<int>(indexAidl));
     audio_devices_t device = VALUE_OR_RETURN_BINDER_STATUS(
             aidl2legacy_AudioDeviceDescription_audio_devices_t(deviceAidl));
-    RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            AudioValidator::validateAudioAttributes(attributes, "169572641")));
 
     if (mAudioPolicyManager == NULL) {
         return binderStatusFromStatusT(NO_INIT);
@@ -1093,65 +1090,55 @@ Status AudioPolicyService::setVolumeIndexForAttributes(
     audio_utils::lock_guard _l(mMutex);
     AutoCallerClear acc;
     return binderStatusFromStatusT(
-            mAudioPolicyManager->setVolumeIndexForAttributes(attributes, index, device));
+            mAudioPolicyManager->setVolumeGroupVolumeIndex(groupId, index, device));
 }
 
-Status AudioPolicyService::getVolumeIndexForAttributes(
-        const media::audio::common::AudioAttributes& attrAidl,
-        const AudioDeviceDescription& deviceAidl, int32_t* _aidl_return) {
-    audio_attributes_t attributes = VALUE_OR_RETURN_BINDER_STATUS(
-            aidl2legacy_AudioAttributes_audio_attributes_t(attrAidl));
+Status AudioPolicyService::getVolumeGroupVolumeIndex(
+        int32_t groupIdAidl, const AudioDeviceDescription& deviceAidl, int32_t* _aidl_return) {
+    volume_group_t groupId = VALUE_OR_RETURN_BINDER_STATUS(
+            aidl2legacy_int32_t_volume_group_t(groupIdAidl));
     audio_devices_t device = VALUE_OR_RETURN_BINDER_STATUS(
             aidl2legacy_AudioDeviceDescription_audio_devices_t(deviceAidl));
     int index;
-    RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            AudioValidator::validateAudioAttributes(attributes, "169572641")));
-
     if (mAudioPolicyManager == NULL) {
         return binderStatusFromStatusT(NO_INIT);
     }
     audio_utils::lock_guard _l(mMutex);
     AutoCallerClear acc;
     RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            mAudioPolicyManager->getVolumeIndexForAttributes(attributes, index, device)));
+            mAudioPolicyManager->getVolumeGroupVolumeIndex(groupId, index, device)));
     *_aidl_return = VALUE_OR_RETURN_BINDER_STATUS(convertIntegral<int32_t>(index));
     return Status::ok();
 }
 
-Status AudioPolicyService::getMinVolumeIndexForAttributes(
-        const media::audio::common::AudioAttributes& attrAidl, int32_t* _aidl_return) {
-    audio_attributes_t attributes = VALUE_OR_RETURN_BINDER_STATUS(
-            aidl2legacy_AudioAttributes_audio_attributes_t(attrAidl));
+Status AudioPolicyService::getVolumeGroupMinVolumeIndex(
+        int32_t groupIdAidl, int32_t* _aidl_return) {
+    volume_group_t groupId = VALUE_OR_RETURN_BINDER_STATUS(
+            aidl2legacy_int32_t_volume_group_t(groupIdAidl));
     int index;
-    RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            AudioValidator::validateAudioAttributes(attributes, "169572641")));
-
     if (mAudioPolicyManager == NULL) {
         return binderStatusFromStatusT(NO_INIT);
     }
     audio_utils::lock_guard _l(mMutex);
     AutoCallerClear acc;
     RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            mAudioPolicyManager->getMinVolumeIndexForAttributes(attributes, index)));
+            mAudioPolicyManager->getVolumeGroupMinVolumeIndex(groupId, index)));
     *_aidl_return = VALUE_OR_RETURN_BINDER_STATUS(convertIntegral<int32_t>(index));
     return Status::ok();
 }
 
-Status AudioPolicyService::getMaxVolumeIndexForAttributes(
-        const media::audio::common::AudioAttributes& attrAidl, int32_t* _aidl_return) {
-    audio_attributes_t attributes = VALUE_OR_RETURN_BINDER_STATUS(
-            aidl2legacy_AudioAttributes_audio_attributes_t(attrAidl));
+Status AudioPolicyService::getVolumeGroupMaxVolumeIndex(
+        int32_t groupIdAidl, int32_t* _aidl_return) {
+    volume_group_t groupId = VALUE_OR_RETURN_BINDER_STATUS(
+            aidl2legacy_int32_t_volume_group_t(groupIdAidl));
     int index;
-    RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            AudioValidator::validateAudioAttributes(attributes, "169572641")));
-
     if (mAudioPolicyManager == NULL) {
         return binderStatusFromStatusT(NO_INIT);
     }
     audio_utils::lock_guard _l(mMutex);
     AutoCallerClear acc;
     RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            mAudioPolicyManager->getMaxVolumeIndexForAttributes(attributes, index)));
+            mAudioPolicyManager->getVolumeGroupMaxVolumeIndex(groupId, index)));
     *_aidl_return = VALUE_OR_RETURN_BINDER_STATUS(convertIntegral<int32_t>(index));
     return Status::ok();
 }

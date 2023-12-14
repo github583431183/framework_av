@@ -450,8 +450,7 @@ TEST_F(AudioSystemTest, VolumeIndexForAttributes) {
         EXPECT_EQ(group.getId(), vg);
 
         int index;
-        EXPECT_EQ(OK,
-                  AudioSystem::getVolumeIndexForAttributes(attr, index, AUDIO_DEVICE_OUT_SPEAKER));
+        EXPECT_EQ(OK, AudioSystem::getVolumeGroupVolumeIndex(vg, index, AUDIO_DEVICE_OUT_SPEAKER));
 
         int indexTest;
         EXPECT_EQ(OK, AudioSystem::getStreamVolumeIndex(streamType, &indexTest,
