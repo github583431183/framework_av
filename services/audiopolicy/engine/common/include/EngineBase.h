@@ -81,7 +81,8 @@ public:
     }
 
     VolumeGroupVector getVolumeGroups() const override;
-
+    audio_attributes_t getAttributesForVolumeGroup(
+            volume_group_t group, bool fallbackOnDefault = true) const override;
     volume_group_t getVolumeGroupForAttributes(
             const audio_attributes_t &attr, bool fallbackOnDefault = true) const override;
 
