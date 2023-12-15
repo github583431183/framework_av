@@ -53,4 +53,8 @@ cc_library_shared {
         "libutils",
         "libxml2",
     ],
+    whole_static_libs: [
+        "android.media.audiopolicy-aconfig-cc",
+        "server_configurable_flags",
+    ],
 }
