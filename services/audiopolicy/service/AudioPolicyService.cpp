@@ -144,6 +144,8 @@ BINDER_METHOD_ENTRY(isHapticPlaybackSupported) \
 BINDER_METHOD_ENTRY(isUltrasoundSupported) \
 BINDER_METHOD_ENTRY(isHotwordStreamSupported) \
 BINDER_METHOD_ENTRY(listAudioProductStrategies) \
+BINDER_METHOD_ENTRY(setProductStrategiesZoneIdForUserId) \
+BINDER_METHOD_ENTRY(resetProductStrategiesZoneIdForUserId) \
 BINDER_METHOD_ENTRY(getProductStrategyFromAudioAttributes) \
 BINDER_METHOD_ENTRY(listAudioVolumeGroups) \
 BINDER_METHOD_ENTRY(getVolumeGroupFromAudioAttributes) \

@@ -38,12 +38,16 @@
 #include <android/media/AudioMixerAttributesInternal.h>
 #include <android/media/audio/common/AudioVolumeGroupChangeEvent.h>
 
+#include <android_media_audiopolicy.h>
+
 #define VALUE_OR_RETURN_BINDER_STATUS(x) \
     ({ auto _tmp = (x); \
        if (!_tmp.ok()) return aidl_utils::binderStatusFromStatusT(_tmp.error()); \
        std::move(_tmp.value()); })
 
 // ----------------------------------------------------------------------------
+
+namespace audio_flags = android::media::audiopolicy;
 
 namespace android {
 using aidl_utils::statusTFromBinderStatus;
@@ -2250,6 +2254,28 @@ status_t AudioSystem::listAudioProductStrategies(AudioProductStrategyVector& str
             convertContainer<AudioProductStrategyVector>(strategiesAidl,
                                                          aidl2legacy_AudioProductStrategy));
     return OK;
+}
+
+status_t AudioSystem::setProductStrategiesZoneIdForUserId(userid_t userId, int zoneId) {
+    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+    if (aps == 0) return PERMISSION_DENIED;
+    if (!audio_flags::multi_zone_audio()) {
+        return INVALID_OPERATION;
+    }
+    int32_t userIdAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_userid_t_int32_t(userId));
+    int32_t zoneIdAidl = VALUE_OR_RETURN_STATUS(convertReinterpret<int32_t>(zoneId));
+    return statusTFromBinderStatus(aps->setProductStrategiesZoneIdForUserId(
+            userIdAidl, zoneIdAidl));
+}
+
+status_t AudioSystem::resetProductStrategiesZoneIdForUserId(userid_t userId) {
+    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+    if (aps == 0) return PERMISSION_DENIED;
+    if (!audio_flags::multi_zone_audio()) {
+        return INVALID_OPERATION;
+    }
+    int32_t userIdAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_userid_t_int32_t(userId));
+    return statusTFromBinderStatus(aps->resetProductStrategiesZoneIdForUserId(userIdAidl));
 }
 
 audio_attributes_t AudioSystem::streamTypeToAttributes(audio_stream_type_t stream) {
