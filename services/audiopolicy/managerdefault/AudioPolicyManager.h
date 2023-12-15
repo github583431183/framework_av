@@ -369,6 +369,14 @@ public:
         {
             return mEngine->listAudioProductStrategies(strategies);
         }
+        virtual status_t setUserIdStrategiesAffinity(userid_t userId, int zoneId)
+        {
+            return mEngine->setUserIdStrategiesAffinity(userId, zoneId);
+        }
+        virtual status_t removeUserIdStrategiesAffinity(userid_t userId)
+        {
+            return mEngine->removeUserIdStrategiesAffinity(userId);
+        }
 
         virtual status_t getProductStrategyFromAudioAttributes(
                 const audio_attributes_t &aa, product_strategy_t &productStrategy,
