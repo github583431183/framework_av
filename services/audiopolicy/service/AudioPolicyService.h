@@ -247,6 +247,8 @@ public:
             const media::audio::common::AudioAttributes& aa,
             bool fallbackOnDefault,
             int32_t* _aidl_return) override;
+    binder::Status setProductStrategiesZoneIdForUserId(int32_t userId, int32_t zoneId) override;
+    binder::Status resetProductStrategiesZoneIdForUserId(int32_t userId) override;
     binder::Status listAudioVolumeGroups(
             std::vector<media::AudioVolumeGroup>* _aidl_return) override;
     binder::Status getVolumeGroupFromAudioAttributes(

@@ -35,8 +35,11 @@ cc_library_shared {
         "libpfw_utility",
     ],
     shared_libs: [
+        "android.media.audiopolicy-aconfig-cc",
         "libaudiopolicycomponents",
         "libaudiopolicyengineconfigurable",
+        "libbase",
+        "libcutils",
         "liblog",
         "libmedia_helper",
         "libparameter",
