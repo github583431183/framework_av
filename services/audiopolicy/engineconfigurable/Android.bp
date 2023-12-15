@@ -45,7 +45,6 @@ cc_library_shared {
         "libaudiofoundation",
         "libaudiopolicy",
         "libaudiopolicycomponents",
-        "libbase",
         "libcutils",
         "liblog",
         "libmedia_helper",
@@ -55,5 +54,9 @@ cc_library_shared {
     ],
     defaults: [
         "aconfig_lib_cc_static_link.defaults",
+    ],
+    whole_static_libs: [
+        "android.media.audiopolicy-aconfig-cc",
+        "server_configurable_flags",
     ],
 }

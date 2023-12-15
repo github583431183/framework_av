@@ -58,6 +58,10 @@ public:
     product_strategy_t getProductStrategyForAttributes(
             const audio_attributes_t &attr, bool fallbackOnDefault = true) const override;
 
+    product_strategy_t getProductStrategyForAttributes(
+            const audio_attributes_t &attr, uid_t uid,
+            bool fallbackOnDefault = true) const override;
+
     audio_stream_type_t getStreamTypeForAttributes(const audio_attributes_t &attr) const override;
 
     audio_attributes_t getAttributesForStreamType(audio_stream_type_t stream) const override;
@@ -69,6 +73,10 @@ public:
     StrategyVector getOrderedProductStrategies() const override;
 
     status_t listAudioProductStrategies(AudioProductStrategyVector &strategies) const override;
+
+    status_t setProductStrategiesZoneIdForUserId(userid_t userId, int zoneId) override;
+
+    status_t resetProductStrategiesZoneIdForUserId(userid_t userId) override;
 
     VolumeCurves *getVolumeCurvesForAttributes(const audio_attributes_t &attr) const override;
 
@@ -183,6 +191,7 @@ protected:
         const DeviceVector& availableOutputDevices, product_strategy_t strategy) const;
     DeviceVector getDisabledDevicesForProductStrategy(
         const DeviceVector& availableOutputDevices, product_strategy_t strategy) const;
+    int getZoneIdForUserId(uid_t uid) const;
 
 private:
     engineConfig::ParsingResult processParsingResult(engineConfig::ParsingResult&& rawResult);
@@ -214,6 +223,8 @@ private:
 
     /** current forced use configuration. */
     audio_policy_forced_cfg_t mForceUse[AUDIO_POLICY_FORCE_USE_CNT] = {};
+
+    std::map<userid_t, int> mUserIdZoneCriteria;
 
 protected:
     /**
