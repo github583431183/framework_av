@@ -136,11 +136,14 @@ public:
     virtual product_strategy_t getProductStrategyForAttributes(
             const audio_attributes_t &attr, bool fallbackOnDefault = true) const = 0;
 
+    virtual product_strategy_t getProductStrategyForAttributes(
+            const audio_attributes_t &attr, uid_t uid, bool fallbackOnDefault = true) const = 0;
+
     /**
      * @brief getOutputDevicesForAttributes retrieves the devices to be used for given
      * audio attributes.
-     * @param attributes of the output requesting Device(s) selection
-     * @param preferedDevice valid reference if a prefered device is requested, nullptr otherwise.
+     * @param attributes of the client requesting Device(s) selection
+     * @param preferredDevice valid reference if a preferred device is requested, nullptr otherwise.
      * @param fromCache if true, the device is returned from internal cache,
      *                  otherwise it is determined by current state (device connected,phone state,
      *                  force use, a2dp output...)
@@ -159,7 +162,35 @@ public:
      */
     virtual DeviceVector getOutputDevicesForAttributes(
             const audio_attributes_t &attributes,
-            const sp<DeviceDescriptor> &preferedDevice = nullptr,
+            const sp<DeviceDescriptor> &preferredDevice = nullptr,
+            bool fromCache = false) const = 0;
+
+    /**
+     * @brief getOutputDevicesForAttributes retrieves the devices to be used for given
+     * audio attributes.
+     * @param attributes of the client requesting Device(s) selection
+     * @param uid if the client requesting an output
+     * @param preferredDevice valid reference if a preferred device is requested, nullptr otherwise.
+     * @param fromCache if true, the device is returned from internal cache,
+     *                  otherwise it is determined by current state (device connected,phone state,
+     *                  force use, a2dp output...)
+     * @return vector of selected device descriptors.
+     *         Appropriate device for streams handled by the specified audio attributes according
+     *         to current phone state, forced states, connected devices...
+     *         if fromCache is true, the device is returned from internal cache,
+     *         otherwise it is determined by current state (device connected,phone state, force use,
+     *         a2dp output...)
+     * This allows to:
+     *      1 speed up process when the state is stable (when starting or stopping an output)
+     *      2 access to either current device selection (fromCache == true) or
+     *      "future" device selection (fromCache == false) when called from a context
+     *      where conditions are changing (setDeviceConnectionState(), setPhoneState()...) AND
+     *      before manager updates its outputs.
+     */
+    virtual DeviceVector getOutputDevicesForAttributes(
+            const audio_attributes_t &attributes,
+            uid_t uid,
+            const sp<DeviceDescriptor> &preferredDevice = nullptr,
             bool fromCache = false) const = 0;
 
     /**
@@ -261,6 +292,10 @@ public:
      * @return OK if the list has been retrieved, error code otherwise
      */
     virtual status_t listAudioProductStrategies(AudioProductStrategyVector &strategies) const = 0;
+
+    virtual status_t setUserIdStrategiesAffinity(userid_t userId, int zoneId) = 0;
+
+    virtual status_t removeUserIdStrategiesAffinity(userid_t userId) = 0;
 
     /**
      * @brief getVolumeCurvesForAttributes retrieves the Volume Curves interface for the

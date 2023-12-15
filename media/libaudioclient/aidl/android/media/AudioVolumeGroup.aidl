@@ -25,6 +25,7 @@ import android.media.audio.common.AudioStreamType;
 parcelable AudioVolumeGroup {
     /** Interpreted as volume_group_t. */
     int groupId;
+    int zoneId;
     @utf8InCpp String name;
     AudioAttributes[] audioAttributes;
     AudioStreamType[] streams;

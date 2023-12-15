@@ -91,6 +91,13 @@ product_strategy_t EngineBase::getProductStrategyForAttributes(
     return mProductStrategies.getProductStrategyForAttributes(attr, fallbackOnDefault);
 }
 
+product_strategy_t EngineBase::getProductStrategyForAttributes(
+        const audio_attributes_t &attr, uid_t uid, bool fallbackOnDefault) const
+{
+    return mProductStrategies.getProductStrategyForAttributes(attr, getZoneIdForUid(uid),
+                                                              fallbackOnDefault);
+}
+
 audio_stream_type_t EngineBase::getStreamTypeForAttributes(const audio_attributes_t &attr) const
 {
     return mProductStrategies.getStreamTypeForAttributes(attr);
@@ -280,6 +287,7 @@ engineConfig::ParsingResult EngineBase::processParsingResult(
                 volumeGroup->addSupportedStream(group.stream);
             }
             addSupportedAttributesToGroup(group, volumeGroup, strategy);
+            volumeGroup->setZoneId(strategyConfig.zoneId);
         }
         product_strategy_t strategyId = strategy->getId();
         mProductStrategies[strategyId] = strategy;
@@ -340,6 +348,31 @@ status_t EngineBase::listAudioProductStrategies(AudioProductStrategyVector &stra
          productStrategy->getId(), productStrategy->getZoneId()});
     }
     return NO_ERROR;
+}
+
+status_t EngineBase::setUserIdStrategiesAffinity(userid_t userId, int zoneId)
+{
+    mUserIdZoneCriteria.push_back({userId, zoneId});
+    return NO_ERROR;
+}
+
+status_t EngineBase::removeUserIdStrategiesAffinity(userid_t userId)
+{
+    mUserIdZoneCriteria.erase(std::remove_if(mUserIdZoneCriteria.begin(), mUserIdZoneCriteria.end(),
+                   [&userId](UserIdZoneCriterion criterion) { return criterion.first == userId; }));
+    return NO_ERROR;
+}
+
+int EngineBase::getZoneIdForUserId(userid_t userId) const
+{
+    if (userId > 0 && !mUserIdZoneCriteria.empty()) {
+        const auto &iter = std::find_if(mUserIdZoneCriteria.begin(), mUserIdZoneCriteria.end(),
+                [&userId](UserIdZoneCriterion criterion) { return criterion.first == userId; });
+        if (iter != mUserIdZoneCriteria.end()) {
+            return iter->second;
+        }
+    }
+    return AudioProductStrategy::DEFAULT_ZONE_ID;
 }
 
 VolumeCurves *EngineBase::getVolumeCurvesForAttributes(const audio_attributes_t &attr) const
@@ -413,7 +446,7 @@ volume_group_t EngineBase::getVolumeGroupForStreamType(
 status_t EngineBase::listAudioVolumeGroups(AudioVolumeGroupVector &groups) const
 {
     for (const auto &iter : mVolumeGroups) {
-        groups.push_back({iter.second->getName(), iter.second->getId(),
+        groups.push_back({iter.second->getName(), iter.second->getId(), iter.second->getZoneId(),
                           iter.second->getSupportedAttributes(), iter.second->getStreamTypes()});
     }
     return NO_ERROR;
@@ -816,6 +849,12 @@ void EngineBase::dump(String8 *dst) const
     dumpProductStrategyDevicesRoleMap(mProductStrategyDeviceRoleMap, dst, 2);
     dumpCapturePresetDevicesRoleMap(dst, 2);
     mVolumeGroups.dump(dst, 2);
+    dst->appendFormat("\n%*smUidZoneCriteria:", 2, "");
+    for (const auto &criterion : mUserIdZoneCriteria) {
+        dst->appendFormat("\n%*sUid (%d) ZoneId(%d)", 2 + 2, "",
+                          criterion.first, criterion.second);
+    }
+    dst->appendFormat("\n");
 }
 
 } // namespace audio_policy

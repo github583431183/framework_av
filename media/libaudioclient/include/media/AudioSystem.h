@@ -527,6 +527,9 @@ public:
     static bool     isUltrasoundSupported();
 
     static status_t listAudioProductStrategies(AudioProductStrategyVector &strategies);
+    static status_t setUserIdStrategiesAffinity(userid_t userId, int zoneId);
+    static status_t removeUserIdStrategiesAffinity(userid_t userId);
+
     static status_t getProductStrategyFromAudioAttributes(
             const audio_attributes_t &aa, product_strategy_t &productStrategy,
             bool fallbackOnDefault = true);

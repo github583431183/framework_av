@@ -2157,6 +2157,32 @@ Status AudioPolicyService::listAudioProductStrategies(
     return Status::ok();
 }
 
+Status AudioPolicyService::setUserIdStrategiesAffinity(int32_t userIdAidl, int32_t zoneIdAidl) {
+    userid_t userId = VALUE_OR_RETURN_BINDER_STATUS(aidl2legacy_int32_t_userid_t(userIdAidl));
+    int zoneId = VALUE_OR_RETURN_BINDER_STATUS(convertIntegral<int>(zoneIdAidl));
+    if(!modifyAudioRoutingAllowed()) {
+        return binderStatusFromStatusT(PERMISSION_DENIED);
+    }
+    if (mAudioPolicyManager == NULL) {
+        return binderStatusFromStatusT(NO_INIT);
+    }
+    AutoCallerClear acc;
+    return binderStatusFromStatusT(mAudioPolicyManager->setUserIdStrategiesAffinity(
+            userId, zoneId));
+}
+
+Status AudioPolicyService::removeUserIdStrategiesAffinity(int32_t userIdAidl) {
+    userid_t userId = VALUE_OR_RETURN_BINDER_STATUS(aidl2legacy_int32_t_userid_t(userIdAidl));
+    if(!modifyAudioRoutingAllowed()) {
+        return binderStatusFromStatusT(PERMISSION_DENIED);
+    }
+    if (mAudioPolicyManager == NULL) {
+        return binderStatusFromStatusT(NO_INIT);
+    }
+    AutoCallerClear acc;
+    return binderStatusFromStatusT(mAudioPolicyManager->removeUserIdStrategiesAffinity(userId));
+}
+
 Status AudioPolicyService::getProductStrategyFromAudioAttributes(
         const media::audio::common::AudioAttributes& aaAidl,
         bool fallbackOnDefault, int32_t* _aidl_return) {

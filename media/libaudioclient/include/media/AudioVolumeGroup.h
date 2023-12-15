@@ -32,12 +32,15 @@ public:
     AudioVolumeGroup() {}
     AudioVolumeGroup(const std::string &name,
                      volume_group_t group,
+                     int zoneId,
                      const AttributesVector &attributes,
                      const StreamTypeVector &streams) :
-        mName(name), mGroupId(group), mAudioAttributes(attributes), mStreams(streams) {}
+        mName(name), mGroupId(group), mZoneId(zoneId), mAudioAttributes(attributes),
+        mStreams(streams) {}
 
     const std::string &getName() const { return mName; }
     volume_group_t getId() const { return mGroupId; }
+    int getZoneId() const { return mZoneId; }
     AttributesVector getAudioAttributes() const { return mAudioAttributes; }
     StreamTypeVector getStreamTypes() const { return mStreams; }
 
@@ -47,6 +50,7 @@ public:
 private:
     std::string mName;
     volume_group_t mGroupId = VOLUME_GROUP_NONE;
+    int mZoneId;
     AttributesVector mAudioAttributes;
     StreamTypeVector mStreams;
 };
