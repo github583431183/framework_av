@@ -34,7 +34,8 @@ public:
                      volume_group_t group,
                      const AttributesVector &attributes,
                      const StreamTypeVector &streams) :
-        mName(name), mGroupId(group), mAudioAttributes(attributes), mStreams(streams) {}
+        mName(name), mGroupId(group), mAudioAttributes(attributes),
+        mStreams(streams) {}
 
     const std::string &getName() const { return mName; }
     volume_group_t getId() const { return mGroupId; }

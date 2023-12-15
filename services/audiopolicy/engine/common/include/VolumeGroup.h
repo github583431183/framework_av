@@ -17,6 +17,7 @@
 #pragma once
 
 #include <VolumeCurve.h>
+#include <media/AudioProductStrategy.h>
 #include <system/audio.h>
 #include <utils/RefBase.h>
 #include <HandleGenerator.h>
@@ -31,6 +32,7 @@ class VolumeGroup : public virtual RefBase, private HandleGenerator<uint32_t>
 {
 public:
     VolumeGroup(const std::string &name, int indexMin, int indexMax);
+
     std::string getName() const { return mName; }
     volume_group_t getId() const { return mId; }
 
