@@ -91,6 +91,13 @@ product_strategy_t EngineBase::getProductStrategyForAttributes(
     return mProductStrategies.getProductStrategyForAttributes(attr, fallbackOnDefault);
 }
 
+product_strategy_t EngineBase::getProductStrategyForAttributes(
+        const audio_attributes_t &attr, uid_t uid, bool fallbackOnDefault) const
+{
+    return mProductStrategies.getProductStrategyForAttributes(attr, getZoneIdForUid(uid),
+                                                              fallbackOnDefault);
+}
+
 audio_stream_type_t EngineBase::getStreamTypeForAttributes(const audio_attributes_t &attr) const
 {
     return mProductStrategies.getStreamTypeForAttributes(attr);
@@ -340,6 +347,28 @@ status_t EngineBase::listAudioProductStrategies(AudioProductStrategyVector &stra
          productStrategy->getId(), productStrategy->getZoneId()});
     }
     return NO_ERROR;
+}
+
+status_t EngineBase::setUserIdStrategiesAffinity(userid_t userId, int zoneId)
+{
+    mUserIdZoneCriteria.emplace(userId, zoneId);
+    return NO_ERROR;
+}
+
+status_t EngineBase::removeUserIdStrategiesAffinity(userid_t userId)
+{
+    mUserIdZoneCriteria.erase(userId);
+    return NO_ERROR;
+}
+
+int EngineBase::getZoneIdForUserId(userid_t userId) const
+{
+    if (userId > 0 && !mUserIdZoneCriteria.empty()) {
+        if (const auto &it = mUserIdZoneCriteria.find(userId); it != mUserIdZoneCriteria.end()) {
+            return it->second;
+        }
+    }
+    return AudioProductStrategy::DEFAULT_ZONE_ID;
 }
 
 VolumeCurves *EngineBase::getVolumeCurvesForAttributes(const audio_attributes_t &attr) const
@@ -816,6 +845,12 @@ void EngineBase::dump(String8 *dst) const
     dumpProductStrategyDevicesRoleMap(mProductStrategyDeviceRoleMap, dst, 2);
     dumpCapturePresetDevicesRoleMap(dst, 2);
     mVolumeGroups.dump(dst, 2);
+    dst->appendFormat("\n%*smUserIdZoneCriteria:", 2, "");
+    for (const auto &criterion : mUserIdZoneCriteria) {
+        dst->appendFormat("\n%*sUser Id (%d) ZoneId(%d)", 2 + 2, "",
+                          criterion.first, criterion.second);
+    }
+    dst->appendFormat("\n");
 }
 
 } // namespace audio_policy

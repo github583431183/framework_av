@@ -417,7 +417,7 @@ DeviceVector Engine::getDevicesForProductStrategy(product_strategy_t ps) const
     return selectedDevices;
 }
 
-DeviceVector Engine::getOutputDevicesForAttributes(const audio_attributes_t &attributes,
+DeviceVector Engine::getOutputDevicesForAttributes(const audio_attributes_t &attributes, uid_t uid,
                                                    const sp<DeviceDescriptor> &preferredDevice,
                                                    bool fromCache) const
 {
@@ -426,7 +426,7 @@ DeviceVector Engine::getOutputDevicesForAttributes(const audio_attributes_t &att
         ALOGV("%s explicit Routing on device %s", __func__, preferredDevice->toString().c_str());
         return DeviceVector(preferredDevice);
     }
-    product_strategy_t strategy = getProductStrategyForAttributes(attributes);
+    product_strategy_t strategy = getProductStrategyForAttributes(attributes, uid);
     const DeviceVector availableOutputDevices = getApmObserver()->getAvailableOutputDevices();
     const SwAudioOutputCollection &outputs = getApmObserver()->getOutputs();
     //
