@@ -243,6 +243,21 @@ TrackClientVector AudioOutputDescriptor::clientsList(bool activeOnly, product_st
     return clients;
 }
 
+sp<TrackClientDescriptor> AudioOutputDescriptor::getHighestPriorityClientForVolumeSource(
+        VolumeSource vs, bool activeOnly) const
+{
+    sp<TrackClientDescriptor> clientForVolume = nullptr;
+    for (const auto &client : getClientIterable()) {
+        if ((!activeOnly || client->active()) && (vs == client->volumeSource())) {
+            // strategies are ordered, the lowest id the highest priority
+            if (clientForVolume == nullptr || clientForVolume->strategy() > client->strategy()) {
+                clientForVolume = client;
+            }
+        }
+    }
+    return clientForVolume;
+}
+
 size_t AudioOutputDescriptor::sameExclusivePreferredDevicesCount() const
 {
     audio_port_handle_t deviceId = AUDIO_PORT_HANDLE_NONE;
