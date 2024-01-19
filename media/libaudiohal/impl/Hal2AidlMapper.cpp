@@ -339,11 +339,16 @@ status_t Hal2AidlMapper::findOrCreateMixPortConfig(
         const AudioConfig& config, const std::optional<AudioIoFlags>& flags, int32_t ioHandle,
         AudioSource source, const std::set<int32_t>& destinationPortIds,
         AudioPortConfig* portConfig, bool* created) {
-    // These flags get removed one by one in this order when retrying port finding.
-    static const std::vector<AudioInputFlags> kOptionalInputFlags{
-        AudioInputFlags::FAST, AudioInputFlags::RAW, AudioInputFlags::VOIP_TX };
     if (auto portConfigIt = findPortConfig(config, flags, ioHandle);
             portConfigIt == mPortConfigs.end() && flags.has_value()) {
+        // These input flags get removed one by one in this order when retrying port finding.
+        static std::vector<AudioInputFlags> kOptionalInputFlags {
+            AudioInputFlags::FAST, AudioInputFlags::RAW, AudioInputFlags::VOIP_TX };
+        // For remote submix input, retry with direct input flag removed as the remote submix
+        // input is not expected to manipulate the contents of the audio stream.
+        if (mRemoteSubmixIn.has_value()) {
+            kOptionalInputFlags.push_back(AudioInputFlags::DIRECT);
+        }
         auto optionalInputFlagsIt = kOptionalInputFlags.begin();
         AudioIoFlags matchFlags = flags.value();
         auto portsIt = findPort(config, matchFlags, destinationPortIds);
@@ -362,6 +367,32 @@ status_t Hal2AidlMapper::findOrCreateMixPortConfig(
                     flags.value().toString().c_str(), mInstance.c_str(),
                     matchFlags.toString().c_str());
         }
+        // For remote submix output, retry with these output flags removed one by one:
+        // 1. DIRECT: remote submix outputs are expected not to manipulate the contents of the
+        //            audio stream.
+        // 2. IEC958_NONAUDIO: remote submix outputs are not connected to ALSA and do not require
+        //                     non audio signalling.
+        static const std::vector<AudioOutputFlags> kOptionalRemoteSubmixOutputFlags{
+            AudioOutputFlags::DIRECT, AudioOutputFlags::IEC958_NONAUDIO };
+        auto optionalRemoteSubmixOutputFlagsIt = kOptionalRemoteSubmixOutputFlags.begin();
+        matchFlags = flags.value();
+        while (portsIt == mPorts.end() && matchFlags.getTag() == AudioIoFlags::Tag::output
+                && mRemoteSubmixOut.has_value()
+                && optionalRemoteSubmixOutputFlagsIt != kOptionalRemoteSubmixOutputFlags.end()) {
+            if (!isBitPositionFlagSet(matchFlags.get<AudioIoFlags::Tag::output>(),
+                                      *optionalRemoteSubmixOutputFlagsIt)) {
+                ++optionalRemoteSubmixOutputFlagsIt;
+                continue;
+            }
+            matchFlags.set<AudioIoFlags::Tag::output>(matchFlags.get<AudioIoFlags::Tag::output>() &
+                    ~makeBitPositionFlagMask(*optionalRemoteSubmixOutputFlagsIt++));
+            portsIt = findPort(config, matchFlags, destinationPortIds);
+            ALOGI("%s: mix port for config %s, flags %s was not found in the module %s, "
+                    "retried with flags %s", __func__, config.toString().c_str(),
+                    flags.value().toString().c_str(), mInstance.c_str(),
+                    matchFlags.toString().c_str());
+        }
+
         if (portsIt == mPorts.end()) {
             ALOGE("%s: mix port for config %s, flags %s is not found in the module %s",
                     __func__, config.toString().c_str(), matchFlags.toString().c_str(),
@@ -745,7 +776,8 @@ status_t Hal2AidlMapper::prepareToOpenStream(
     status_t status = prepareToOpenStreamHelper(ioHandle, devicePortConfig.portId,
             devicePortConfig.id, flags, source, initialConfig, cleanups, config,
             mixPortConfig, patch);
-    if (status != OK) {
+    if (status != OK
+        && !mRemoteSubmixOut.has_value() /* remote submix doesn't audio stream convert */) {
         // If using the client-provided config did not work out for establishing a mix port config
         // or patching, try with the device port config. Note that in general device port config and
         // mix port config are not required to be the same, however they must match if the HAL
