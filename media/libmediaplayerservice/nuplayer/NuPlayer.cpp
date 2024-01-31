@@ -2065,6 +2065,14 @@ void NuPlayer::updateVideoSize(
         ALOGW("Unknown video size, reporting 0x0!");
         notifyListener(MEDIA_SET_VIDEO_SIZE, 0, 0);
         return;
+    } else {
+        int32_t videoWidth = -1, videoHeight = -1;
+        if (!inputFormat->findInt32("width", &videoWidth) ||
+            !inputFormat->findInt32("height", &videoHeight)) {
+            ALOGW("Either video width or video height missing, reporting 0x0!");
+            notifyListener(MEDIA_SET_VIDEO_SIZE, 0, 0);
+            return;
+        }
     }
     int32_t err = OK;
     inputFormat->findInt32("err", &err);
@@ -2079,9 +2087,12 @@ void NuPlayer::updateVideoSize(
 
     int32_t displayWidth, displayHeight;
     if (outputFormat != NULL) {
-        int32_t width, height;
-        CHECK(outputFormat->findInt32("width", &width));
-        CHECK(outputFormat->findInt32("height", &height));
+        int32_t width = 0, height = 0;
+        if (!outputFormat->findInt32("width", &width)
+            || !outputFormat->findInt32("height", &height)) {
+            ALOGW("Either video width or video height missing, reporting 0x0!");
+            notifyListener(MEDIA_SET_VIDEO_SIZE, 0, 0);
+        }
 
         int32_t cropLeft, cropTop, cropRight, cropBottom;
         CHECK(outputFormat->findRect(
@@ -2098,9 +2109,12 @@ void NuPlayer::updateVideoSize(
              displayHeight,
              cropLeft, cropTop);
     } else {
-        CHECK(inputFormat->findInt32("width", &displayWidth));
-        CHECK(inputFormat->findInt32("height", &displayHeight));
-
+        if (!inputFormat->findInt32("width", &displayWidth)
+            || !inputFormat->findInt32("height", &displayHeight)) {
+            ALOGW("Either video width or video height missing, reporting 0x0!");
+            notifyListener(MEDIA_SET_VIDEO_SIZE, 0, 0);
+            return;
+        }
         ALOGV("Video input format %d x %d", displayWidth, displayHeight);
     }
 
