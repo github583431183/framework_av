@@ -176,9 +176,12 @@ public:
     // This is used by audioserver main() to avoid binder AIDL translation.
     static status_t setLocalAudioFlinger(const sp<IAudioFlinger>& af);
 
+    // function to disable creation of thread pool (Used for testing).
+    // This should be called before get_audio_flinger() or get_audio_policy_service().
+    static void disableThreadPool();
+
     // helper function to obtain AudioFlinger service handle
     static const sp<IAudioFlinger> get_audio_flinger();
-    static const sp<IAudioFlinger> get_audio_flinger_for_fuzzer();
 
     static float linearToLog(int volume);
     static int logToLinear(float volume);
@@ -877,7 +880,6 @@ private:
     static audio_io_handle_t getOutput(audio_stream_type_t stream);
     static const sp<AudioFlingerClient> getAudioFlingerClient();
     static sp<AudioIoDescriptor> getIoDescriptor(audio_io_handle_t ioHandle);
-    static const sp<IAudioFlinger> getAudioFlingerImpl(bool canStartThreadPool);
 
     // Invokes all registered error callbacks with the given error code.
     static void reportError(status_t err);
@@ -904,6 +906,7 @@ private:
     static audio_channel_mask_t gPrevInChannelMask;
 
     static sp<media::IAudioPolicyService> gAudioPolicyService;
+    static std::atomic<bool> gCanStartThreadPool;
 };
 
 };  // namespace android
