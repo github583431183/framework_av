@@ -61,28 +61,23 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
         }
     }
 
+    // Disable creating thread pool for fuzzer instance of audio flinger and audio policy services
+    AudioSystem::disableThreadPool();
+
     const auto audioFlinger = sp<AudioFlinger>::make();
     const auto afAdapter = sp<AudioFlingerServerAdapter>::make(audioFlinger);
-
     CHECK_EQ(NO_ERROR,
              gFakeServiceManager->addService(
                      String16(IAudioFlinger::DEFAULT_SERVICE_NAME), IInterface::asBinder(afAdapter),
                      false /* allowIsolated */, IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT));
 
-    AudioSystem::get_audio_flinger_for_fuzzer();
     const auto audioPolicyService = sp<AudioPolicyService>::make();
-
     CHECK_EQ(NO_ERROR,
              gFakeServiceManager->addService(String16("media.audio_policy"), audioPolicyService,
                                              false /* allowIsolated */,
                                              IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT));
 
-    sp<IBinder> audioFlingerServiceBinder =
-            gFakeServiceManager->getService(String16(IAudioFlinger::DEFAULT_SERVICE_NAME));
-    sp<media::IAudioFlingerService> audioFlingerService =
-            interface_cast<media::IAudioFlingerService>(audioFlingerServiceBinder);
-
-    fuzzService(media::IAudioFlingerService::asBinder(audioFlingerService), std::move(fdp));
+    fuzzService(media::IAudioFlingerService::asBinder(afAdapter), std::move(fdp));
 
     return 0;
 }
