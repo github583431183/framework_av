@@ -117,6 +117,7 @@ cc_library_shared {
     ],
 
     static_libs: [
+        "android.media.codec-aconfig-cc",
         "libgrallocusage",
         "libnativehelper_lazy",
     ],
@@ -148,6 +149,7 @@ cc_library_shared {
         "libui",
         "libmediandk_utils",
         "android.hardware.drm-V1-ndk",
+        "server_configurable_flags",
     ],
 
     export_header_lib_headers: ["jni_headers"],

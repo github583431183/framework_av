@@ -22,6 +22,7 @@
 #include "NdkImagePriv.h"
 #include "NdkImageReaderPriv.h"
 
+#include <android_media_codec.h>
 #include <android_media_Utils.h>
 #include <private/android/AHardwareBufferHelpers.h>
 #include <ui/PublicFormat.h>
@@ -32,9 +33,9 @@ using namespace android;
 #define ALIGN(x, mask) ( ((x) + (mask) - 1) & ~((mask) - 1) )
 
 AImage::AImage(AImageReader* reader, int32_t format, uint64_t usage, BufferItem* buffer,
-        int64_t timestamp, int32_t width, int32_t height, int32_t numPlanes) :
+        int64_t timestamp, int32_t width, int32_t height, int32_t numPlanes, AImageCropRect crop) :
         mReader(reader), mFormat(format), mUsage(usage), mBuffer(buffer), mLockedBuffer(nullptr),
-        mTimestamp(timestamp), mWidth(width), mHeight(height), mNumPlanes(numPlanes) {
+        mTimestamp(timestamp), mWidth(width), mHeight(height), mNumPlanes(numPlanes), mCrop(crop) {
     PublicFormat publicFormat = static_cast<PublicFormat>(format);
     mHalDataSpace = mapPublicFormatToHalDataspace(publicFormat);
     LOG_FATAL_IF(reader == nullptr, "AImageReader shouldn't be null while creating AImage");
@@ -114,6 +115,24 @@ AImage::getHeight(int32_t* height) const {
         return AMEDIA_ERROR_INVALID_OBJECT;
     }
     *height = mHeight;
+    return AMEDIA_OK;
+}
+
+media_status_t
+AImage::getCropRect(AImageCropRect *rect) const {
+    if (rect == nullptr) {
+        return AMEDIA_ERROR_INVALID_PARAMETER;
+    }
+    if (isClosed()) {
+        rect->left = -1;
+        rect->top = -1;
+        rect->right = -1;
+        rect->bottom = -1;
+
+        ALOGE("%s: image %p has been closed!", __FUNCTION__, this);
+        return AMEDIA_ERROR_INVALID_OBJECT;
+    }
+    *rect = mCrop;
     return AMEDIA_OK;
 }
 
@@ -728,6 +747,11 @@ media_status_t AImage_getCropRect(const AImage* image, /*out*/AImageCropRect* re
                 __FUNCTION__, image, rect);
         return AMEDIA_ERROR_INVALID_PARAMETER;
     }
+
+    if (android::media::codec::provider_->imagereader_crop()) {
+        return image->getCropRect(rect);
+    }
+
     // For now AImage only supports camera outputs where cropRect is always full window
     int32_t width = -1;
     media_status_t ret = image->getWidth(&width);

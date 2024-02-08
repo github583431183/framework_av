@@ -53,7 +53,8 @@ enum AIMAGE_PRIVATE_FORMATS {
 // TODO: this only supports ImageReader
 struct AImage {
     AImage(AImageReader* reader, int32_t format, uint64_t usage, BufferItem* buffer,
-           int64_t timestamp, int32_t width, int32_t height, int32_t numPlanes);
+           int64_t timestamp, int32_t width, int32_t height, int32_t numPlanes,
+           AImageCropRect crop);
 
     // free all resources while keeping object alive. Caller must obtain reader lock
     void close() { close(-1); }
@@ -74,6 +75,7 @@ struct AImage {
     media_status_t getFormat(/*out*/int32_t* format) const;
     media_status_t getNumPlanes(/*out*/int32_t* numPlanes) const;
     media_status_t getTimestamp(/*out*/int64_t* timestamp) const;
+    media_status_t getCropRect(/*out*/AImageCropRect* rect) const;
 
     media_status_t lockImage();
     media_status_t unlockImageIfLocked(/*out*/int* fenceFd);
@@ -105,6 +107,7 @@ struct AImage {
     android_dataspace          mHalDataSpace = HAL_DATASPACE_UNKNOWN;
     bool                       mIsClosed = false;
     mutable Mutex              mLock;
+    const AImageCropRect       mCrop;
 };
 
 #endif // _NDK_IMAGE_PRIV_H

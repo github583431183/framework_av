@@ -22,6 +22,7 @@
 #include "NdkImagePriv.h"
 #include "NdkImageReaderPriv.h"
 
+#include <android_media_codec.h>
 #include <cutils/atomic.h>
 #include <utils/Log.h>
 #include <android_media_Utils.h>
@@ -454,8 +455,12 @@ AImageReader::acquireImageLocked(/*out*/AImage** image, /*out*/int* acquireFence
         // is zero, will revisit this once this assumption turns out problematic.
         Point lt = buffer->mCrop.leftTop();
         if (lt.x != 0 || lt.y != 0) {
-            ALOGE("Crop left top corner [%d, %d] not at origin", lt.x, lt.y);
-            return AMEDIA_ERROR_UNKNOWN;
+            if (android::media::codec::provider_->imagereader_crop()) {
+                ALOGD("Crop left top corner [%d, %d] not at origin", lt.x, lt.y);
+            } else {
+                ALOGE("Crop left top corner [%d, %d] not at origin", lt.x, lt.y);
+                return AMEDIA_ERROR_UNKNOWN;
+            }
         }
 
         // Check if the producer buffer configurations match what ImageReader configured.
@@ -490,12 +495,15 @@ AImageReader::acquireImageLocked(/*out*/AImage** image, /*out*/int* acquireFence
         }
     }
 
+    ARect cropRect = buffer->mCrop;
+    AImageCropRect crop = {.left = cropRect.left, .top = cropRect.top, .right = cropRect.right, .bottom = cropRect.bottom };
+
     if (mHalFormat == HAL_PIXEL_FORMAT_BLOB) {
         *image = new AImage(this, mFormat, mUsage, buffer, buffer->mTimestamp,
-                readerWidth, readerHeight, mNumPlanes);
+                readerWidth, readerHeight, mNumPlanes, crop);
     } else {
         *image = new AImage(this, mFormat, mUsage, buffer, buffer->mTimestamp,
-                bufferWidth, bufferHeight, mNumPlanes);
+                bufferWidth, bufferHeight, mNumPlanes, crop);
     }
     mAcquiredImages.push_back(*image);
 
