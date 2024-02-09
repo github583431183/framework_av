@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d443eec_9b7fed31",
+        "filename": "media/codec2/core/include/C2ParamDef.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-09T22:24:13Z",
+      "side": 1,
+      "message": "you could add DEFINE_EQUALITY_OPERATORS(_Type, T) above\n\n```suggestion\n/// Define equality (and inequality) operators for params.\n#if __cplusplus \u003c 202002\n\n#define DEFINE_EQUALITY_OPERATORS(_Type, T) \\\n    inline bool operator\u003d\u003d(const _Type \u0026o) const { \\\n      return this-\u003eT::operator\u003d\u003d(o); \\\n    } \\\n    inline bool operator!\u003d(const _Type \u0026o) const { \\\n      return !operator\u003d\u003d(o); \\\n    }\n\n#else\n\n#define DEFINE_EQUALITY_OPERATORS(_Type, T) \\\n    inline bool operator\u003d\u003d(const _Type \u0026o) const { \\\n      return this-\u003eT::operator\u003d\u003d(o); \\\n    }\n\n#endif\n\n/// Define From() cast operators for params.\n```",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 2
+      },
+      "revId": "31f4ed11b09cff0eb73eff772f9a521eb591e1a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2f4d98_abb03d0c",
+        "filename": "media/codec2/core/include/C2ParamDef.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-09T22:24:13Z",
+      "side": 1,
+      "message": "ideally these would be encapsulated in a DEFINE_EQUALITY_OPERATORS(input, T) since these appear multiple times below.",
+      "range": {
+        "startLine": 498,
+        "startChar": 13,
+        "endLine": 498,
+        "endChar": 21
+      },
+      "revId": "31f4ed11b09cff0eb73eff772f9a521eb591e1a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
