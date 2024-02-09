@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9643f42_8a493972",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-09T23:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05671cc0_a4ebee8b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "31f4ed11b09cff0eb73eff772f9a521eb591e1a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d443eec_9b7fed31",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d7f22e_11def4a8",
+        "filename": "media/codec2/core/include/C2ParamDef.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-09T23:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d443eec_9b7fed31",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 2
+      },
+      "revId": "31f4ed11b09cff0eb73eff772f9a521eb591e1a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2f4d98_abb03d0c",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-09T22:24:13Z",
       "side": 1,
       "message": "ideally these would be encapsulated in a DEFINE_EQUALITY_OPERATORS(input, T) since these appear multiple times below.",
+      "range": {
+        "startLine": 498,
+        "startChar": 13,
+        "endLine": 498,
+        "endChar": 21
+      },
+      "revId": "31f4ed11b09cff0eb73eff772f9a521eb591e1a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a67a253_cc1c666d",
+        "filename": "media/codec2/core/include/C2ParamDef.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2024-02-09T23:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2f4d98_abb03d0c",
       "range": {
         "startLine": 498,
         "startChar": 13,
