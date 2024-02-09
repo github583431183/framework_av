@@ -639,6 +639,10 @@ status_t Codec2InfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
             }
             if (trait.owner == "software") {
                 attrs |= MediaCodecInfo::kFlagIsSoftwareOnly;
+                if (codec.quirkSet.find("attribute::trusted-content-only")
+                        != codec.quirkSet.end()) {
+                    attrs |= MediaCodecInfo::kFlagForTrustedContentOnly;
+                }
             } else {
                 attrs |= MediaCodecInfo::kFlagIsVendor;
                 if (trait.owner == "vendor-software") {

@@ -59,6 +59,7 @@ struct MediaCodecInfo : public RefBase {
         kFlagIsVendor = 1 << 1,
         kFlagIsSoftwareOnly = 1 << 2,
         kFlagIsHardwareAccelerated = 1 << 3,
+        kFlagForTrustedContentOnly = 1 << 4,
     };
 
     struct Capabilities : public RefBase {
