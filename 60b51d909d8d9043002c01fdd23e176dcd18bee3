@@ -34,6 +34,24 @@
       "parentUuid": "ee3b7db0_bb385cc1",
       "revId": "60b51d909d8d9043002c01fdd23e176dcd18bee3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7d1f50_deefb39f",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-09T17:40:13Z",
+      "side": 1,
+      "message": "The actual removal of UnwrapNativeCodec2Ahwb* happens in the other CL. Please either merge this CL into the other, or please remove the methods in this CL.",
+      "parentUuid": "bb4038be_83758be9",
+      "revId": "60b51d909d8d9043002c01fdd23e176dcd18bee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
