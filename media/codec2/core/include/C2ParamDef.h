@@ -404,12 +404,19 @@ public:
     /// Specialization for an input port parameter.
     struct input : public T, public S,
             public _C2StructCheck<S, ParamIndex, T::PARAM_KIND | T::Index::DIR_INPUT> {
-        using T::operator!=;
         _C2_CORE_INDEX_OVERRIDE(ParamIndex)
         /// Wrapper around base structure's constructor.
         template<typename ...Args>
         inline input(const Args(&... args)) : T(sizeof(_Type), input::PARAM_TYPE), S(args...) { }
 
+        bool operator==(const input &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const input &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_CAST_OPERATORS(input)
 
     };
@@ -417,12 +424,19 @@ public:
     /// Specialization for an output port parameter.
     struct output : public T, public S,
             public _C2StructCheck<S, ParamIndex, T::PARAM_KIND | T::Index::DIR_OUTPUT> {
-        using T::operator!=;
         _C2_CORE_INDEX_OVERRIDE(ParamIndex)
         /// Wrapper around base structure's constructor.
         template<typename ...Args>
         inline output(const Args(&... args)) : T(sizeof(_Type), output::PARAM_TYPE), S(args...) { }
 
+        bool operator==(const output &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const output &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_CAST_OPERATORS(output)
     };
 };
@@ -472,7 +486,6 @@ public:
     /// Specialization for an input port parameter.
     struct input : public T,
             public _C2FlexStructCheck<S, ParamIndex, T::PARAM_KIND | T::Index::DIR_INPUT> {
-        using T::operator!=;
     private:
         /// Wrapper around base structure's constructor while also specifying port/direction.
         template<typename ...Args>
@@ -482,6 +495,14 @@ public:
     public:
         S m; ///< wrapped flexible structure
 
+        bool operator==(const input &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const input &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_FLEXIBLE_METHODS(input, S)
         DEFINE_CAST_OPERATORS(input)
     };
@@ -489,7 +510,6 @@ public:
     /// Specialization for an output port parameter.
     struct output : public T,
             public _C2FlexStructCheck<S, ParamIndex, T::PARAM_KIND | T::Index::DIR_OUTPUT> {
-        using T::operator!=;
     private:
         /// Wrapper around base structure's constructor while also specifying port/direction.
         template<typename ...Args>
@@ -499,6 +519,14 @@ public:
     public:
         S m; ///< wrapped flexible structure
 
+        bool operator==(const output &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const output &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_FLEXIBLE_METHODS(output, S)
         DEFINE_CAST_OPERATORS(output)
     };
@@ -553,7 +581,6 @@ public:
     struct input : public T, public S,
             public _C2StructCheck<S, ParamIndex,
                     T::PARAM_KIND | T::Index::IS_STREAM_FLAG | T::Type::DIR_INPUT> {
-        using T::operator!=;
         _C2_CORE_INDEX_OVERRIDE(ParamIndex)
 
         /// Default constructor. Stream-ID is undefined.
@@ -565,6 +592,14 @@ public:
         /// Set stream-id. \retval true if the stream-id was successfully set.
         inline bool setStream(unsigned stream) { return C2Param::setStream(stream); }
 
+        bool operator==(const input &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const input &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_CAST_OPERATORS(input)
     };
 
@@ -572,7 +607,6 @@ public:
     struct output : public T, public S,
             public _C2StructCheck<S, ParamIndex,
                     T::PARAM_KIND | T::Index::IS_STREAM_FLAG | T::Type::DIR_OUTPUT> {
-        using T::operator!=;
         _C2_CORE_INDEX_OVERRIDE(ParamIndex)
 
         /// Default constructor. Stream-ID is undefined.
@@ -584,6 +618,14 @@ public:
         /// Set stream-id. \retval true if the stream-id was successfully set.
         inline bool setStream(unsigned stream) { return C2Param::setStream(stream); }
 
+        bool operator==(const output &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const output &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_CAST_OPERATORS(output)
     };
 };
@@ -640,7 +682,6 @@ public:
     struct input : public T,
             public _C2FlexStructCheck<S, ParamIndex,
                     T::PARAM_KIND | T::Index::IS_STREAM_FLAG | T::Type::DIR_INPUT> {
-        using T::operator!=;
     private:
         /// Default constructor. Stream-ID is undefined.
         inline input(size_t flexCount) : T(_Type::CalcSize(flexCount), input::PARAM_TYPE) { }
@@ -655,6 +696,14 @@ public:
         /// Set stream-id. \retval true if the stream-id was successfully set.
         inline bool setStream(unsigned stream) { return C2Param::setStream(stream); }
 
+        bool operator==(const input &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const input &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_FLEXIBLE_METHODS(input, S)
         DEFINE_CAST_OPERATORS(input)
     };
@@ -663,7 +712,6 @@ public:
     struct output : public T,
             public _C2FlexStructCheck<S, ParamIndex,
                     T::PARAM_KIND | T::Index::IS_STREAM_FLAG | T::Type::DIR_OUTPUT> {
-        using T::operator!=;
     private:
         /// Default constructor. Stream-ID is undefined.
         inline output(size_t flexCount) : T(_Type::CalcSize(flexCount), output::PARAM_TYPE) { }
@@ -678,6 +726,14 @@ public:
         /// Set stream-id. \retval true if the stream-id was successfully set.
         inline bool setStream(unsigned stream) { return C2Param::setStream(stream); }
 
+        bool operator==(const output &o) const {
+          return this->T::operator==(o);
+        }
+#if __cplusplus < 202002
+        bool operator!=(const output &o) const {
+          return !operator==(o);
+        }
+#endif
         DEFINE_FLEXIBLE_METHODS(output, S)
         DEFINE_CAST_OPERATORS(output)
     };
