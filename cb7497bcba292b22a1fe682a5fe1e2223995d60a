@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb28fc0b_6d300cda",
+        "filename": "media/ndk/NdkImageReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-10T00:41:34Z",
+      "side": 1,
+      "message": "will fix",
+      "revId": "cb7497bcba292b22a1fe682a5fe1e2223995d60a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
