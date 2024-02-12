@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "872587f3_cc6ba1ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2024-02-12T19:17:59Z",
+      "side": 1,
+      "message": "Could this be re-opened since it still fixes https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/camera/ndk/include/camera/NdkCameraManager.h;l\u003d183?q\u003dNdkCameraManager.h\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain  for vendor clients ? \n\nThanks",
+      "revId": "01f8443846e4ede44922418ea91867369ee27052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
