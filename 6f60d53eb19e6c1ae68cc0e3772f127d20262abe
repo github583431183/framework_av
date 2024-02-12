@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3852213_ace40490",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T22:31:56Z",
+      "side": 1,
+      "message": "Do we expect a separate XML entry here? A simpler approach would be to generate two entries once we allow in-process C++ codecs by detecting if they support the stable C codec API. Having two entries increase the maintenance burden by having to keep two copies of the same capabilities in sync.",
+      "range": {
+        "startLine": 642,
+        "startChar": 20,
+        "endLine": 642,
+        "endChar": 25
+      },
+      "revId": "6f60d53eb19e6c1ae68cc0e3772f127d20262abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
