@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a10df5_0d3240b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-02-12T18:47:29Z",
+      "side": 1,
+      "message": "manifest needs to be reviewed from wonsik@ or lajos@",
+      "revId": "2bdc1e9d6eeccdaf233ed2564aa0b02dd1bf3088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
