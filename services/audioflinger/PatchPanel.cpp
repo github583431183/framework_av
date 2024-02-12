@@ -17,7 +17,7 @@
 
 
 #define LOG_TAG "AudioFlinger::PatchPanel"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include "PatchPanel.h"
 #include "PatchCommandThread.h"

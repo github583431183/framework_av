@@ -16,7 +16,7 @@
  */
 
 #define LOG_TAG "AudioHwDevice"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <system/audio.h>
 #include <utils/Log.h>

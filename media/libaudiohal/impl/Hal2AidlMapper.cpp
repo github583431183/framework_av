@@ -125,9 +125,11 @@ status_t Hal2AidlMapper::createOrUpdatePatch(
         const std::vector<AudioPortConfig>& sources,
         const std::vector<AudioPortConfig>& sinks,
         int32_t* patchId, Cleanups* cleanups) {
+    ALOGD("dwhea Hal2AidlMapper::createOrUpdatePatch() patchId:%d", *patchId);
     auto existingPatchIt = *patchId != 0 ? mPatches.find(*patchId): mPatches.end();
     AudioPatch patch;
     if (existingPatchIt != mPatches.end()) {
+        ALOGD("dwhea Hal2AidlMapper::createOrUpdatePatch() existing patch %d", *patchId);
         patch = existingPatchIt->second;
         patch.sourcePortConfigIds.clear();
         patch.sinkPortConfigIds.clear();
@@ -197,11 +199,13 @@ status_t Hal2AidlMapper::createOrUpdatePatch(
     RETURN_STATUS_IF_ERROR(fillPortConfigs(
                     mixPortConfigs, devicePortIds, mixPortConfigIds, nullptr));
     if (existingPatchIt != mPatches.end()) {
+        ALOGD("dwhea createOrUpdatePatch() setAudioPatch");
         RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
                         mModule->setAudioPatch(patch, &patch)));
         existingPatchIt->second = patch;
     } else {
         bool created = false;
+        ALOGD("dwhea createOrUpdatePatch() findOrCreatePatch");
         RETURN_STATUS_IF_ERROR(findOrCreatePatch(patch, &patch, &created));
         // No cleanup of the patch is needed, it is managed by the framework.
         *patchId = patch.id;
@@ -218,6 +222,7 @@ status_t Hal2AidlMapper::createOrUpdatePatch(
 
 status_t Hal2AidlMapper::createOrUpdatePortConfig(
         const AudioPortConfig& requestedPortConfig, AudioPortConfig* result, bool* created) {
+    ALOGD("dwhea createOrUpdatePortConfig");
     bool applied = false;
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mModule->setAudioPortConfig(
                             requestedPortConfig, result, &applied)));
@@ -240,6 +245,7 @@ status_t Hal2AidlMapper::createOrUpdatePortConfig(
 
 status_t Hal2AidlMapper::createOrUpdatePortConfigRetry(
         const AudioPortConfig& requestedPortConfig, AudioPortConfig* result, bool* created) {
+    ALOGD("dwhea createOrUpdatePortConfigRetry");
     AudioPortConfig suggestedOrAppliedPortConfig;
     RETURN_STATUS_IF_ERROR(createOrUpdatePortConfig(requestedPortConfig,
                     &suggestedOrAppliedPortConfig, created));
@@ -285,8 +291,10 @@ status_t Hal2AidlMapper::findOrCreatePatch(
 status_t Hal2AidlMapper::findOrCreatePatch(
         const std::set<int32_t>& sourcePortConfigIds, const std::set<int32_t>& sinkPortConfigIds,
         AudioPatch* patch, bool* created) {
+    ALOGD("dwhea findOrCreatePatch 2");
     auto patchIt = findPatch(sourcePortConfigIds, sinkPortConfigIds);
     if (patchIt == mPatches.end()) {
+        ALOGD("dwhea findOrCreatePatch() patch not found");
         AudioPatch requestedPatch, appliedPatch;
         requestedPatch.sourcePortConfigIds.insert(requestedPatch.sourcePortConfigIds.end(),
                 sourcePortConfigIds.begin(), sourcePortConfigIds.end());
@@ -297,8 +305,10 @@ status_t Hal2AidlMapper::findOrCreatePatch(
         patchIt = mPatches.insert(mPatches.end(), std::make_pair(appliedPatch.id, appliedPatch));
         *created = true;
     } else {
+        ALOGD("dwhea findOrCreatePatch() patch found");
         *created = false;
     }
+    ALOGD("dwhea findOrCreatePatch() created:%d", *created);
     *patch = patchIt->second;
     return OK;
 }
@@ -306,6 +316,7 @@ status_t Hal2AidlMapper::findOrCreatePatch(
 status_t Hal2AidlMapper::findOrCreateDevicePortConfig(
         const AudioDevice& device, const AudioConfig* config, AudioPortConfig* portConfig,
         bool* created) {
+    ALOGD("dwhea findOrCreateDevicePortConfig");
     if (auto portConfigIt = findPortConfig(device); portConfigIt == mPortConfigs.end()) {
         auto portsIt = findPort(device);
         if (portsIt == mPorts.end()) {
@@ -339,9 +350,11 @@ status_t Hal2AidlMapper::findOrCreateMixPortConfig(
         const AudioConfig& config, const std::optional<AudioIoFlags>& flags, int32_t ioHandle,
         AudioSource source, const std::set<int32_t>& destinationPortIds,
         AudioPortConfig* portConfig, bool* created) {
+    ALOGD("dwhea findOrCreateMixPortConfig");
     // These flags get removed one by one in this order when retrying port finding.
     static const std::vector<AudioInputFlags> kOptionalInputFlags{
-        AudioInputFlags::FAST, AudioInputFlags::RAW, AudioInputFlags::VOIP_TX };
+        AudioInputFlags::FAST, AudioInputFlags::RAW, AudioInputFlags::VOIP_TX,
+        AudioInputFlags::DIRECT };
     if (auto portConfigIt = findPortConfig(config, flags, ioHandle);
             portConfigIt == mPortConfigs.end() && flags.has_value()) {
         auto optionalInputFlagsIt = kOptionalInputFlags.begin();
@@ -431,10 +444,12 @@ status_t Hal2AidlMapper::findOrCreatePortConfig(
                 p.format.has_value()) {
             AudioConfig config;
             setConfigFromPortConfig(&config, requestedPortConfig);
+            ALOGD("dwhea findOrCreatePortConfig() config has value");
             return findOrCreateDevicePortConfig(
                     requestedPortConfig.ext.get<Tag::device>().device, &config,
                     portConfig, created);
         } else {
+            ALOGD("dwhea findOrCreatePortConfig() config has no value");
             return findOrCreateDevicePortConfig(
                     requestedPortConfig.ext.get<Tag::device>().device, nullptr /*config*/,
                     portConfig, created);
@@ -457,6 +472,13 @@ status_t Hal2AidlMapper::findPortConfig(const AudioDevice& device, AudioPortConf
 
 Hal2AidlMapper::Patches::iterator Hal2AidlMapper::findPatch(
         const std::set<int32_t>& sourcePortConfigIds, const std::set<int32_t>& sinkPortConfigIds) {
+    
+    for (const auto& sourcePortConfigId : sourcePortConfigIds) {
+        ALOGD("dwhea sourcePortConfigId:%d", sourcePortConfigId);
+    }
+    for (const auto& sinkPortConfigId : sinkPortConfigIds) {
+        ALOGD("dwhea sinkPortConfigId:%d", sinkPortConfigId);
+    }
     return std::find_if(mPatches.begin(), mPatches.end(),
             [&](const auto& pair) {
                 const auto& p = pair.second;
@@ -830,6 +852,7 @@ status_t Hal2AidlMapper::prepareToOpenStreamHelper(
 status_t Hal2AidlMapper::setPortConfig(
         const AudioPortConfig& requestedPortConfig, const std::set<int32_t>& destinationPortIds,
         AudioPortConfig* portConfig, Cleanups* cleanups) {
+    ALOGD("dwhea setPortConfig()");
     bool created = false;
     RETURN_STATUS_IF_ERROR(findOrCreatePortConfig(
                     requestedPortConfig, destinationPortIds, portConfig, &created));

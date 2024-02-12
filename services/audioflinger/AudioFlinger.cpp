@@ -16,7 +16,7 @@
 */
 
 #define LOG_TAG "AudioFlinger"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 // Define AUDIO_ARRAYS_STATIC_CHECK to check all audio arrays are correct
 #define AUDIO_ARRAYS_STATIC_CHECK 1
@@ -2860,7 +2860,7 @@ sp<IAfThreadBase> AudioFlinger::openOutput_l(audio_module_handle_t module,
             const sp<IAfMmapPlaybackThread> thread = IAfMmapPlaybackThread::create(
                     this, *output, outHwDev, outputStream, mSystemReady);
             mMmapThreads.add(*output, thread);
-            ALOGV("openOutput_l() created mmap playback thread: ID %d thread %p",
+            ALOGD("openOutput_l() created mmap playback thread: ID %d thread %p",
                   *output, thread.get());
             return thread;
         } else {
@@ -2868,29 +2868,29 @@ sp<IAfThreadBase> AudioFlinger::openOutput_l(audio_module_handle_t module,
             if (flags & AUDIO_OUTPUT_FLAG_BIT_PERFECT) {
                 thread = IAfPlaybackThread::createBitPerfectThread(
                         this, outputStream, *output, mSystemReady);
-                ALOGV("%s() created bit-perfect output: ID %d thread %p",
+                ALOGD("%s() created bit-perfect output: ID %d thread %p",
                       __func__, *output, thread.get());
             } else if (flags & AUDIO_OUTPUT_FLAG_SPATIALIZER) {
                 thread = IAfPlaybackThread::createSpatializerThread(this, outputStream, *output,
                                                     mSystemReady, mixerConfig);
-                ALOGV("openOutput_l() created spatializer output: ID %d thread %p",
+                ALOGD("openOutput_l() created spatializer output: ID %d thread %p",
                       *output, thread.get());
             } else if (flags & AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) {
                 thread = IAfPlaybackThread::createOffloadThread(this, outputStream, *output,
                         mSystemReady, halConfig->offload_info);
-                ALOGV("openOutput_l() created offload output: ID %d thread %p",
+                ALOGD("openOutput_l() created offload output: ID %d thread %p",
                       *output, thread.get());
             } else if ((flags & AUDIO_OUTPUT_FLAG_DIRECT)
                     || !IAfThreadBase::isValidPcmSinkFormat(halConfig->format)
                     || !IAfThreadBase::isValidPcmSinkChannelMask(halConfig->channel_mask)) {
                 thread = IAfPlaybackThread::createDirectOutputThread(this, outputStream, *output,
                         mSystemReady, halConfig->offload_info);
-                ALOGV("openOutput_l() created direct output: ID %d thread %p",
+                ALOGD("openOutput_l() created direct output: ID %d thread %p",
                       *output, thread.get());
             } else {
                 thread = IAfPlaybackThread::createMixerThread(
                         this, outputStream, *output, mSystemReady);
-                ALOGV("openOutput_l() created mixer output: ID %d thread %p",
+                ALOGD("openOutput_l() created mixer output: ID %d thread %p",
                       *output, thread.get());
             }
             mPlaybackThreads.add(*output, thread);
@@ -3213,7 +3213,7 @@ sp<IAfThreadBase> AudioFlinger::openInput_l(audio_module_handle_t module,
             const sp<IAfMmapCaptureThread> thread =
                     IAfMmapCaptureThread::create(this, *input, inHwDev, inputStream, mSystemReady);
             mMmapThreads.add(*input, thread);
-            ALOGV("openInput_l() created mmap capture thread: ID %d thread %p", *input,
+            ALOGD("openInput_l() created mmap capture thread: ID %d thread %p", *input,
                     thread.get());
             return thread;
         } else {
@@ -3223,7 +3223,7 @@ sp<IAfThreadBase> AudioFlinger::openInput_l(audio_module_handle_t module,
             const sp<IAfRecordThread> thread =
                     IAfRecordThread::create(this, inputStream, *input, mSystemReady);
             mRecordThreads.add(*input, thread);
-            ALOGV("openInput_l() created record thread: ID %d thread %p", *input, thread.get());
+            ALOGD("openInput_l() created record thread: ID %d thread %p", *input, thread.get());
             return thread;
         }
     }

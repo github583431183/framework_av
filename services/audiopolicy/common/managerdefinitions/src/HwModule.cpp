@@ -15,7 +15,7 @@
  */
 
 #define LOG_TAG "APM::HwModule"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <android-base/stringprintf.h>
 #include <policy.h>

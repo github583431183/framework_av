@@ -15,7 +15,7 @@
  */
 
 #define LOG_TAG "APM::IOProfile"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <system/audio.h>
 #include "IOProfile.h"

@@ -15,7 +15,7 @@
  */
 
 #define LOG_TAG "APM::Devices"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <set>
 

@@ -2712,8 +2712,10 @@ status_t AudioPolicyManager::getInputForAttr(const audio_attributes_t *attr,
     *input = AUDIO_IO_HANDLE_NONE;
     *inputType = API_INPUT_INVALID;
 
+    ALOGD("dwhea getInputForAttr tags:%s", attributes.tags);
     if (attributes.source == AUDIO_SOURCE_REMOTE_SUBMIX &&
             extractAddressFromAudioAttributes(attributes).has_value()) {
+        ALOGD("dwhea getInputForAttr got address from attributes");
         status = mPolicyMixes.getInputMixForAttr(attributes, &policyMix);
         if (status != NO_ERROR) {
             ALOGW("%s could not find input mix for attr %s",
@@ -3006,13 +3008,17 @@ status_t AudioPolicyManager::startInput(audio_port_handle_t portId)
         // used by a policy mix of type MIX_TYPE_RECORDERS
         // For remote submix (a virtual device), we open only one input per capture request.
         if (audio_is_remote_submix_device(inputDesc->getDeviceType())) {
+            ALOGD("startInput is remote submix");
             String8 address = String8("");
             if (policyMix == nullptr) {
+                ALOGD("startInput null policyMix, should it be?");
                 address = String8("0");
             } else if (policyMix->mMixType == MIX_TYPE_PLAYERS) {
+                ALOGD("startInput mix type is player, should it be?");
                 address = policyMix->mDeviceAddress;
             }
             if (address != "") {
+                ALOGD("startInput non empty address:%s", address.c_str());
                 setDeviceConnectionStateInt(AUDIO_DEVICE_OUT_REMOTE_SUBMIX,
                         AUDIO_POLICY_DEVICE_STATE_AVAILABLE,
                         address, "remote-submix", AUDIO_FORMAT_DEFAULT);

@@ -15,7 +15,7 @@
  */
 
 #define LOG_TAG "DeviceDescriptorBase"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <android-base/stringprintf.h>
 #include <audio_utils/string.h>
@@ -58,6 +58,7 @@ void DeviceDescriptorBase::toAudioPortConfig(struct audio_port_config *dstConfig
                                              const struct audio_port_config *srcConfig) const
 {
     dstConfig->config_mask = AUDIO_PORT_CONFIG_GAIN;
+    ALOGD("dwhea DeviceDescriptorBase::toAudioPortConfig mSamplingRate:%d", mSamplingRate);
     if (mSamplingRate != 0) {
         dstConfig->config_mask |= AUDIO_PORT_CONFIG_SAMPLE_RATE;
     }
@@ -73,6 +74,7 @@ void DeviceDescriptorBase::toAudioPortConfig(struct audio_port_config *dstConfig
     }
 
     AudioPortConfig::toAudioPortConfig(dstConfig, srcConfig);
+    //ALOGD("dwhea DeviceDescriptorBase::toAudioPortConfig dstConfig->sample_rate:%d srcConfig->sample_rate:%d", dstConfig->sample_rate, srcConfig->sample_rate);
 
     dstConfig->role = audio_is_output_device(mDeviceTypeAddr.mType) ?
                         AUDIO_PORT_ROLE_SINK : AUDIO_PORT_ROLE_SOURCE;

@@ -94,6 +94,7 @@ TEST(AudioTrackTest, DefaultRoutingTest) {
     sp<AudioCapture> capture = sp<AudioCapture>::make(
             AUDIO_SOURCE_REMOTE_SUBMIX, 48000, AUDIO_FORMAT_PCM_16_BIT, AUDIO_CHANNEL_IN_STEREO);
     ASSERT_NE(nullptr, capture);
+    ALOGI("dwhea capture create");
     EXPECT_EQ(OK, capture->create()) << "record creation failed";
     sp<OnAudioDeviceUpdateNotifier> cbCapture = sp<OnAudioDeviceUpdateNotifier>::make();
     EXPECT_EQ(OK, capture->getAudioRecordHandle()->addAudioDeviceCallback(cbCapture));
@@ -105,19 +106,23 @@ TEST(AudioTrackTest, DefaultRoutingTest) {
     ASSERT_NE(nullptr, playback);
     ASSERT_EQ(OK, playback->loadResource("/data/local/tmp/bbb_2ch_24kHz_s16le.raw"))
             << "Unable to open Resource";
+    ALOGI("dwhea playback create");
     EXPECT_EQ(OK, playback->create()) << "track creation failed";
     sp<OnAudioDeviceUpdateNotifier> cbPlayback = sp<OnAudioDeviceUpdateNotifier>::make();
     EXPECT_EQ(OK, playback->getAudioTrackHandle()->addAudioDeviceCallback(cbPlayback));
 
     // capture should be routed to submix in port
+    ALOGI("dwhea capture start");
     EXPECT_EQ(OK, capture->start()) << "start recording failed";
     EXPECT_EQ(OK, cbCapture->waitForAudioDeviceCb());
     EXPECT_EQ(port.id, capture->getAudioRecordHandle()->getRoutedDeviceId())
             << "Capture NOT routed on expected port";
 
     // capture start should create submix out port
+    ALOGI("dwhea try to find sink port");
     status_t status = getPortByAttributes(AUDIO_PORT_ROLE_SINK, AUDIO_PORT_TYPE_DEVICE,
                                           AUDIO_DEVICE_OUT_REMOTE_SUBMIX, "0", port);
+    ALOGI("dwhea try to find sink port: status:%d", status);
     EXPECT_EQ(OK, status) << "Could not find port";
 
     // playback should be routed to submix out as long as capture is active
