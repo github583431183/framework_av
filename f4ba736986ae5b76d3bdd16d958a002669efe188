@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e90bc0_3e916bc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-12T19:43:48Z",
+      "side": 1,
+      "message": "PS9 changes the approach: see also depends-on patch https://android-review.googlesource.com/c/platform/hardware/interfaces/+/2959146\n\nIn this approach:\n* remote submix AIDL HAL doesn\u0027t advertise new DIRECT/IEC958_NONAUDIO mix ports. It is now consistent with the remote submix HIDL HAL approach which simply adds 192kHz support.\n* retries for opening remote submix AIDL HAL without DIRECT/IEC958_NONAUDIO flags is added to Hal2AidlMapper adapter.\n\nThis results in a overall simpler topic.\n\nUnfortunately, with these changes, the following tests are still failing\n* audiorouting_tests\n* CtsVirtualDevicesTestCases --test-filter\u003d\".*VirtualAudioTest.*\"\n\nHowever, as the introduction of remote submix AIDL direct ports was further complicating the implementation and debug, I think this is overall a better approach and it should hopefully be easier to reason about and fix.",
+      "revId": "f4ba736986ae5b76d3bdd16d958a002669efe188",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
