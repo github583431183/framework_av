@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0853dd_72f3f3fa",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-13T16:39:46Z",
+      "side": 1,
+      "message": "Can we be more detailed here on the parameters?\n\ne.g.\n\n```suggestion\n\n    /**\n     * Queue a secure input buffer with multiple access units into the buffer channel.\n     *\n     * @param buffer The buffer to queue. The access unit delimiters and crypto\n     *               subsample information is included in the buffer metadata.\n     * @param secure Whether the buffer is secure.\n     * @param errorDetailMsg The error message to be set in case of error.\n     * @return OK if successful;\n     *         -ENOENT of the buffer is not known\n     *         -ENOSYS if mCrypto is not set so that decryption is not\n     *         possible;\n     *         other errors if decryption failed.\n     */\n    virtual status_t queueSecureInputBuffers(\n```",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 404,
+        "endChar": 7
+      },
+      "revId": "172a9aedd2cf866468e4ae8e4ef2b09bed626b1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5f357e_f110dcc9",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-13T16:39:46Z",
+      "side": 1,
+      "message": "same here:\n\ne.g.\n\n```suggestion\n    /**\n     * Attach an encrypted HidlMemory buffer containing multiple access units to an index\n     *\n     * @param memory The memory to attach.\n     * @param offset index???\n     * @param buffer The MediaCodecBuffer to attach the memory to. The access\n     *               unit delimiters and crypto subsample information is included\n     *               in the buffer metadata.\n     * @param secure Whether the buffer is secure.\n     * @param errorDetailMsg The error message to be set if an error occurs.\n     * @return    OK if successful;\n     *            -ENOENT if index is not recognized\n     *            -ENOSYS if attaching buffer is not possible or not supported\n     */\n```",
+      "range": {
+        "startLine": 462,
+        "startChar": 3,
+        "endLine": 468,
+        "endChar": 7
+      },
+      "revId": "172a9aedd2cf866468e4ae8e4ef2b09bed626b1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
