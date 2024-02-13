@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf96102_493aa64a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-13T00:53:04Z",
+      "side": 1,
+      "message": "Being consistent with HIDL is certainly a good property.",
+      "parentUuid": "66e90bc0_3e916bc8",
+      "revId": "f4ba736986ae5b76d3bdd16d958a002669efe188",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "159aac00_f9ac2642",
