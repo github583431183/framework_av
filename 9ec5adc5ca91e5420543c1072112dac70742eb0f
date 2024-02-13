@@ -22,6 +22,30 @@
       },
       "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe16afb_7a6ba9eb",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-13T23:42:18Z",
+      "side": 1,
+      "message": "As discussed with Dichen, this is fine for now.\nMarking this resolved.",
+      "parentUuid": "6dbf2f80_3d6ec810",
+      "range": {
+        "startLine": 1184,
+        "startChar": 12,
+        "endLine": 1186,
+        "endChar": 51
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
