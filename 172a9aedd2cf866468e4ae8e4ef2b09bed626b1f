@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47860bd_89aaed8e",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-02-13T17:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb0853dd_72f3f3fa",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 404,
+        "endChar": 7
+      },
+      "revId": "172a9aedd2cf866468e4ae8e4ef2b09bed626b1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc5f357e_f110dcc9",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-13T16:39:46Z",
       "side": 1,
       "message": "same here:\n\ne.g.\n\n```suggestion\n    /**\n     * Attach an encrypted HidlMemory buffer containing multiple access units to an index\n     *\n     * @param memory The memory to attach.\n     * @param offset index???\n     * @param buffer The MediaCodecBuffer to attach the memory to. The access\n     *               unit delimiters and crypto subsample information is included\n     *               in the buffer metadata.\n     * @param secure Whether the buffer is secure.\n     * @param errorDetailMsg The error message to be set if an error occurs.\n     * @return    OK if successful;\n     *            -ENOENT if index is not recognized\n     *            -ENOSYS if attaching buffer is not possible or not supported\n     */\n```",
+      "range": {
+        "startLine": 462,
+        "startChar": 3,
+        "endLine": 468,
+        "endChar": 7
+      },
+      "revId": "172a9aedd2cf866468e4ae8e4ef2b09bed626b1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94012de_4a50fa7a",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-02-13T17:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc5f357e_f110dcc9",
       "range": {
         "startLine": 462,
         "startChar": 3,
