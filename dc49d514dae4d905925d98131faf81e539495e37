@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8069b9c2_0aa74f39",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 1888,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-13T15:24:31Z",
+      "side": 1,
+      "message": "we don\u0027t need any checks on the values parsed?\nit might be good to ignore the erroneous values here.",
+      "revId": "dc49d514dae4d905925d98131faf81e539495e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
