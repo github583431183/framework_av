@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbf2f80_3d6ec810",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T23:22:50Z",
+      "side": 1,
+      "message": "Nit: at this stage we can make sure only one zero rects ROI config passed down to encoder, in case that user uses string `setParameter(\"roi-rect-config\", ...)` and maybe multiple times at initialized stage. But this CL already look good to me.",
+      "range": {
+        "startLine": 1184,
+        "startChar": 12,
+        "endLine": 1186,
+        "endChar": 51
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
