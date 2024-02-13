@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea73a1e6_9a0e561e",
+        "filename": "media/aconfig/codec_fwk.aconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T23:12:08Z",
+      "side": 1,
+      "message": "how risky is this? we might want to put PURPOSE_BUGFIX if this is a low-risk fix.\n\n```suggestion\n  bug: \"323551054\"\n  metadata {\n    purpose: PURPOSE_BUGFIX\n  }\n```",
+      "revId": "cb7497bcba292b22a1fe682a5fe1e2223995d60a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb28fc0b_6d300cda",
         "filename": "media/ndk/NdkImageReader.cpp",
         "patchSetId": 1
