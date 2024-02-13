@@ -16,6 +16,24 @@
       "message": "we don\u0027t need any checks on the values parsed?\nit might be good to ignore the erroneous values here.",
       "revId": "dc49d514dae4d905925d98131faf81e539495e37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab206b0_cfc2de5a",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 1888,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-13T17:03:07Z",
+      "side": 1,
+      "message": "harish, currently i am not doing any error management with respect to the information received. I am passing the information as-is to component and plugin can make desired adjustments.",
+      "parentUuid": "8069b9c2_0aa74f39",
+      "revId": "dc49d514dae4d905925d98131faf81e539495e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
