@@ -22,6 +22,30 @@
       },
       "revId": "6f60d53eb19e6c1ae68cc0e3772f127d20262abe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74b0d09_6770d170",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-13T18:49:04Z",
+      "side": 1,
+      "message": "I am okay if this is just the initial trivial implementation to be able to verify the rest of the CLs.",
+      "parentUuid": "e3852213_ace40490",
+      "range": {
+        "startLine": 642,
+        "startChar": 20,
+        "endLine": 642,
+        "endChar": 25
+      },
+      "revId": "6f60d53eb19e6c1ae68cc0e3772f127d20262abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
