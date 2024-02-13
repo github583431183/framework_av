@@ -81,11 +81,12 @@ class EffectConversionHelperAidl {
         return pt ? std::to_string(*pt) : "nullptr";
     }
 
-    using AudioChannelLayout = aidl::android::media::audio::common::AudioChannelLayout;
     const aidl::android::media::audio::common::AudioConfig kDefaultAudioConfig = {
             .base = {.sampleRate = 44100,
-                     .channelMask = AudioChannelLayout::make<AudioChannelLayout::layoutMask>(
-                             AudioChannelLayout::LAYOUT_STEREO),
+                     .channelMask = aidl::android::media::audio::common::AudioChannelLayout::make<
+                             aidl::android::media::audio::common::AudioChannelLayout::layoutMask>(
+                             aidl::android::media::audio::common::AudioChannelLayout::
+                                     LAYOUT_STEREO),
                      .format = kDefaultFormatDescription},
             .frameCount = kDefaultframeCount};
     // command handler map

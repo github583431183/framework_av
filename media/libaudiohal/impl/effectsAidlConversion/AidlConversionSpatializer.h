@@ -28,10 +28,22 @@ class AidlConversionSpatializer : public EffectConversionHelperAidl {
             std::shared_ptr<::aidl::android::hardware::audio::effect::IEffect> effect,
             int32_t sessionId, int32_t ioId,
             const ::aidl::android::hardware::audio::effect::Descriptor& desc, bool isProxyEffect)
-        : EffectConversionHelperAidl(effect, sessionId, ioId, desc, isProxyEffect) {}
+        : EffectConversionHelperAidl(effect, sessionId, ioId, desc, isProxyEffect),
+          mIsSpatializerAidlParamSupported([&]() {
+              using ::aidl::android::hardware::audio::effect::Spatializer;
+              using ::aidl::android::hardware::audio::effect::Range;
+              ::aidl::android::hardware::audio::effect::Parameter aidlParam;
+              auto id =
+                      MAKE_SPECIFIC_PARAMETER_ID(Spatializer, spatializerTag, Spatializer::vendor);
+              // No range defined in descriptor capability means no Spatializer AIDL implementation
+              // BAD_VALUE return from getParameter indicates the parameter is not supported by HAL
+              return desc.capability.range.getTag() == Range::spatializer &&
+                     effect->getParameter(id, &aidlParam).getStatus() != android::BAD_VALUE;
+          }()) {}
     ~AidlConversionSpatializer() {}
 
   private:
+    const bool mIsSpatializerAidlParamSupported;
     status_t setParameter(utils::EffectParamReader& param) override;
     status_t getParameter(utils::EffectParamWriter& param) override;
 };
