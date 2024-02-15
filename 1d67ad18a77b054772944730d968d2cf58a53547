@@ -283,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d39f6b_37ae3307",
+        "filename": "media/libaudiohal/tests/AudioHalTestTemplate.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T21:23:32Z",
+      "side": 1,
+      "message": "Ah, OK, I wasn\u0027t considering `RootTargetPreparer` as anything special, but in fact it is.",
+      "parentUuid": "81032ff6_23ff302b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "722c3cc9_cb10b26f",
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "I think sizeof is evaluated at compile time, but I agree have a constexpr make the code more readable. thanks",
       "parentUuid": "b894e01f_efcebb45",
+      "range": {
+        "startLine": 382,
+        "startChar": 33,
+        "endLine": 382,
+        "endChar": 49
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5939802_3f7a1a0c",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T21:23:32Z",
+      "side": 1,
+      "message": "The main intent of using a named constant is to make it clear that the size used for the initialization and the check later is the same thing on purpose.",
+      "parentUuid": "c7b69614_31aa7eef",
       "range": {
         "startLine": 382,
         "startChar": 33,
