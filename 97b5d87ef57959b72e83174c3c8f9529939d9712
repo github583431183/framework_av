@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495b0a3d_8867ceb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-15T23:32:02Z",
+      "side": 1,
+      "message": "These tests pass when run individually.\n\nThe biggest problem I now see with these patches is that the testEac3JocLoopback fails with\n```\njava.lang.AssertionError: Unable to write to AudioTrack\n        at org.junit.Assert.fail(Assert.java:89)\n        at android.media.audio.cts.LoopbackPassthroughTest.loopback(LoopbackPassthroughTest.java:213)\n        at android.media.audio.cts.LoopbackPassthroughTest.testEac3JocLoopback(LoopbackPassthroughTest.java:139\n```\non first run after audiorouting_tests:AudioTrackTest#DefaultRoutingTest is run. After that failure, testEac3JocLoopback passes.\n\nNOTE: if the full audiorouting_tests is run with AudioRoutingTest#ConcurrentDynamicRoutingTest as the last test before testEac3JocLoopback, then the testEac3JocLoopback passes.",
+      "parentUuid": "0c3f0512_d52d9aa0",
+      "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c15e0a3b_fed127e8",
@@ -76,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69ec3b7_21071262",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-15T23:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c15e0a3b_fed127e8",
+      "range": {
+        "startLine": 345,
+        "startChar": 8,
+        "endLine": 345,
+        "endChar": 14
+      },
+      "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f58a3ff5_dc513af1",
@@ -89,6 +131,30 @@
       "writtenOn": "2024-02-15T22:00:29Z",
       "side": 1,
       "message": "Please align with the approach for input flags above. That is, start with an empty non-static vector and add flags necessary for the remote submix case.",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 35
+      },
+      "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b491b3_9c96e306",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-15T23:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f58a3ff5_dc513af1",
       "range": {
         "startLine": 375,
         "startChar": 0,
