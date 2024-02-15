@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf03295_304fd3aa",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-15T23:38:19Z",
+      "side": 1,
+      "message": "was there a reason to change this from C2Rect to our own rect? negative width/height does not make sense. Also negative left/top is not meaningful for ROI.",
+      "range": {
+        "startLine": 1428,
+        "startChar": 4,
+        "endLine": 1431,
+        "endChar": 16
+      },
+      "revId": "6a269bbdf355e78adb060987a95b9a893f809f50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
