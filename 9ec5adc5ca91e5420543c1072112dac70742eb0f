@@ -46,6 +46,29 @@
       },
       "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f1af135_117dc6c0",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-15T19:39:32Z",
+      "side": 1,
+      "message": "Should this be `PARAMETER_KEY_QP_OFFSET_RECTS`?",
+      "range": {
+        "startLine": 596,
+        "startChar": 21,
+        "endLine": 596,
+        "endChar": 48
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
