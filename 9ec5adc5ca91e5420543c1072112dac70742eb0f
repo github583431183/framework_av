@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38e2e612_8767e661",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-15T23:39:03Z",
+      "side": 1,
+      "message": "all of these code changes need to be flagged.",
+      "range": {
+        "startLine": 1184,
+        "startChar": 8,
+        "endLine": 1184,
+        "endChar": 10
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dbf2f80_3d6ec810",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 20
@@ -66,6 +89,75 @@
         "startChar": 21,
         "endLine": 596,
         "endChar": 48
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb84769_f0b2ea48",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1884,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-15T23:39:03Z",
+      "side": 1,
+      "message": "this allocation will get leaked",
+      "range": {
+        "startLine": 1884,
+        "startChar": 31,
+        "endLine": 1884,
+        "endChar": 61
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b5d800a_3e02dcd1",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-15T23:39:03Z",
+      "side": 1,
+      "message": "this may overflow...\n\nalso these are uint in the C2 spec, but we are passing in ints...",
+      "range": {
+        "startLine": 1889,
+        "startChar": 49,
+        "endLine": 1889,
+        "endChar": 61
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc60749d_c33b1274",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-15T23:39:03Z",
+      "side": 1,
+      "message": "nit: this should be simply (c2QpOffsetRects, 0u)",
+      "range": {
+        "startLine": 1895,
+        "startChar": 66,
+        "endLine": 1896,
+        "endChar": 76
       },
       "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
