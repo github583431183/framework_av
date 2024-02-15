@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6875f062_f3a82ed6",
+        "filename": "media/libaudioclient/tests/test_execution_tracer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-15T21:30:53Z",
+      "side": 1,
+      "message": "nit: not sure if you want to parse the result type and use different logging level for fatal failures?\n\nbtw the suggestion below is auto generated which looks good!\n```suggestion\n    if (result.failed()) {\n        LOG(ERROR) \u003c\u003c result;\n    } else {\n        LOG(INFO) \u003c\u003c result;\n    }\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "cc75bfdb238d660c20fa2bbb0101d509baa4d2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
