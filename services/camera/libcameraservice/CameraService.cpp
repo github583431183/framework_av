@@ -1532,7 +1532,6 @@ Status CameraService::validateClientPermissionsLocked(const std::string& cameraI
     // android.permission.SYSTEM_CAMERA for system only camera devices).
     attributionSource.pid = clientPid;
     attributionSource.uid = clientUid;
-    attributionSource.packageName = clientName;
     bool checkPermissionForCamera = permissionChecker.checkPermissionForPreflight(
             toString16(sCameraPermission), attributionSource, String16(), AppOpsManager::OP_NONE)
             != permission::PermissionChecker::PERMISSION_HARD_DENIED;
