@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237429ac_578df6ae",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "Just noted that there is some inconsistency here. These const fields should be grouped with `kDefaultAudioConfig` below.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0887c8e0_ff9bc9fb",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionSpatializer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "We need to check that this is `\u003c6` prior to using it here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 39,
+        "endLine": 91,
+        "endChar": 64
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87a1807_03764bc9",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionSpatializer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "`status` looks like a local variable in the `if` statements below. Why is it defined here?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ea5b0e_9775f04f",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionSpatializer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "Can there actually be input streams with spatializer?",
+      "range": {
+        "startLine": 228,
+        "startChar": 44,
+        "endLine": 228,
+        "endChar": 58
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cc36ef_30efe64e",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionSpatializer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "Making remote calls in the constructor is not the best idea. Perhaps, we can make `mIsSpatializerAidlParamSupported` an `std::optional\u003cbool\u003e` instead and query it on demand?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64236c4_27969cc1",
+        "filename": "media/libaudiohal/tests/AudioHalTestTemplate.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "This looks like a pretty generic file which does not have any special actions (compare it to VTS test configurations where we have to disable the native audioserver). Did you try running your test without this config?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "722c3cc9_cb10b26f",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "nit: `shared_ptr` initializes itself to a `nullptr`.",
+      "range": {
+        "startLine": 176,
+        "startChar": 52,
+        "endLine": 176,
+        "endChar": 62
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4188ec_710051f1",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "nit: vector also initializes itself to an empty vector.\n\nIn C++ explicit initialization to default values is only needed for primitive types or plain structures with primitive types. For instances of classes, a default constructor is called, which usually does the job of a proper initialization.",
+      "range": {
+        "startLine": 209,
+        "startChar": 35,
+        "endLine": 209,
+        "endChar": 37
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b894e01f_efcebb45",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T00:56:07Z",
+      "side": 1,
+      "message": "Perhaps, make a constexpr for this constant and use it here and on the line `392`.",
+      "range": {
+        "startLine": 382,
+        "startChar": 33,
+        "endLine": 382,
+        "endChar": 49
+      },
+      "revId": "1d67ad18a77b054772944730d968d2cf58a53547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
