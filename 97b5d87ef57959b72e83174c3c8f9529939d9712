@@ -16,6 +16,41 @@
       "message": "audiorouting_tests are fixed with PS12.\n\nCtsVirtualDevicesTestCases --test-filter\u003d\".*VirtualAudioTest.*\" are now not stalling on test 8 either. They run to completion, but 2 tests consistently fail as below. I\u0027ll look into it.\n\n```\n[16/19] android.virtualdevice.cts.VirtualAudioTest#audioCapture_readByteArrayBlocking_shouldCaptureAppPlaybackData: FAILED (1.029s)\n\nSTACKTRACE:\nexpected: 8\nbut was : 0\n        at android.virtualdevice.cts.VirtualAudioTest.runAudioCaptureTest(VirtualAudioTest.java:387)\n        at android.virtualdevice.cts.VirtualAudioTest.audioCapture_readByteArrayBlocking_shouldCaptureAppPlaybackData(VirtualAudioTest.java:296)\n\n[17/19] android.virtualdevice.cts.VirtualAudioTest#audioCapture_readByteArray_shouldCaptureAppPlaybackData: FAILED (1.056s)\n\nSTACKTRACE:\nexpected: 8\nbut was : 0\n        at android.virtualdevice.cts.VirtualAudioTest.runAudioCaptureTest(VirtualAudioTest.java:387)\n        at android.virtualdevice.cts.VirtualAudioTest.audioCapture_readByteArray_shouldCaptureAppPlaybackData(VirtualAudioTest.java:291)\n\n```",
       "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8792534f_22c63a8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T21:34:30Z",
+      "side": 1,
+      "message": "Thank you, Dean! Let me take a closer look at your latest versions.",
+      "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c3f0512_d52d9aa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T21:34:30Z",
+      "side": 1,
+      "message": "\u003e are now not stalling on test 8 either. They run to completion, but 2 tests consistently fail as below.\n\nI\u0027m observing this w/o your patches as well. Started looking into it but hasn\u0027t came to any conclusion yet. For me, these tests work if you run them individually, and fail when running as part of the suite. If the same behavior holds with your patches, we are good 😊",
+      "parentUuid": "730ef907_40c09b58",
+      "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
