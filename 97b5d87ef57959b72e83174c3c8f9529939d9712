@@ -51,6 +51,52 @@
       "parentUuid": "730ef907_40c09b58",
       "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15e0a3b_fed127e8",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T22:00:29Z",
+      "side": 1,
+      "message": "I think, `static` needs to be removed.",
+      "range": {
+        "startLine": 345,
+        "startChar": 8,
+        "endLine": 345,
+        "endChar": 14
+      },
+      "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58a3ff5_dc513af1",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-15T22:00:29Z",
+      "side": 1,
+      "message": "Please align with the approach for input flags above. That is, start with an empty non-static vector and add flags necessary for the remote submix case.",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 35
+      },
+      "revId": "97b5d87ef57959b72e83174c3c8f9529939d9712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
