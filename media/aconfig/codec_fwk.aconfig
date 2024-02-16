@@ -46,3 +46,10 @@ flag {
   description: "Feature flag for region of interest support"
   bug: "299191092"
 }
+
+flag {
+  name: "region_of_interest_impl"
+  namespace: "codec_fwk"
+  description: "Implementation flag for region of interest support"
+  bug: "325549730"
+}
