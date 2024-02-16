@@ -435,6 +435,8 @@ public:
         bool                            mUidIsTrusted;
         bool                            mOverrideToPortrait;
 
+        Mutex                           mInitializeLock;
+
         mutable Mutex                   mAudioRestrictionLock;
         int32_t                         mAudioRestriction;
 

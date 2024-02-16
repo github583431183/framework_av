@@ -4022,8 +4022,10 @@ status_t CameraService::BasicClient::finishCameraOps() {
 }
 
 void CameraService::BasicClient::opChanged(int32_t op, const String16&) {
+    Mutex::Autolock _l(mInitializeLock);
     ATRACE_CALL();
-    if (mAppOpsManager == nullptr) {
+
+    if (mAppOpsManager == nullptr || !mOpsActive) {
         return;
     }
     // TODO : add offline camera session case

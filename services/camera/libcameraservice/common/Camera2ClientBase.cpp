@@ -100,10 +100,19 @@ template <typename TClientBase>
 template <typename TProviderPtr>
 status_t Camera2ClientBase<TClientBase>::initializeImpl(TProviderPtr providerPtr,
         const std::string& monitorTags) {
+    Mutex::Autolock _l(TClientBase::mInitializeLock);
     ATRACE_CALL();
+
     ALOGV("%s: Initializing client for camera %s", __FUNCTION__,
           TClientBase::mCameraIdStr.c_str());
     status_t res;
+
+    // Verify ops permissions
+    res = TClientBase::startCameraOps();
+    if (res != OK) {
+        TClientBase::finishCameraOps();
+        return res;
+    }
 
     IPCTransport providerTransport = IPCTransport::INVALID;
     res = providerPtr->getCameraIdIPCTransport(TClientBase::mCameraIdStr,
@@ -139,12 +148,6 @@ status_t Camera2ClientBase<TClientBase>::initializeImpl(TProviderPtr providerPtr
     if (res != OK) {
         ALOGE("%s: Camera %s: unable to initialize device: %s (%d)",
                 __FUNCTION__, TClientBase::mCameraIdStr.c_str(), strerror(-res), res);
-        return res;
-    }
-
-    // Verify ops permissions
-    res = TClientBase::startCameraOps();
-    if (res != OK) {
         TClientBase::finishCameraOps();
         return res;
     }
