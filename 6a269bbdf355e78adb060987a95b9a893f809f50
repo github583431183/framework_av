@@ -22,6 +22,30 @@
       },
       "revId": "6a269bbdf355e78adb060987a95b9a893f809f50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2685b218_c1610b22",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-16T06:20:08Z",
+      "side": 1,
+      "message": "Lajos, I have made this change to pass the configured data to the plugin as-is with out any error correction. I am expecting the plugin implementation to make the desired choice (whether to ignore the erroneous values or clamp and use). Keeping them signed allows sending whatever computation results that were obtained during configuration.",
+      "parentUuid": "eaf03295_304fd3aa",
+      "range": {
+        "startLine": 1428,
+        "startChar": 4,
+        "endLine": 1431,
+        "endChar": 16
+      },
+      "revId": "6a269bbdf355e78adb060987a95b9a893f809f50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
