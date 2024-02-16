@@ -23,8 +23,8 @@
 
 #include <error/expected_utils.h>
 #include <media/AidlConversionCppNdk.h>
-#include <media/AidlConversionNdk.h>
 #include <media/AidlConversionEffect.h>
+#include <media/AidlConversionNdk.h>
 #include <media/AudioContainers.h>
 #include <system/audio_effects/effect_visualizer.h>
 
@@ -36,19 +36,22 @@
 namespace android {
 namespace effect {
 
-using ::aidl::android::aidl_utils::statusTFromBinderStatus;
-using ::aidl::android::hardware::audio::effect::CommandId;
-using ::aidl::android::hardware::audio::effect::Descriptor;
-using ::aidl::android::hardware::audio::effect::Flags;
-using ::aidl::android::hardware::audio::effect::IEffect;
-using ::aidl::android::hardware::audio::effect::Parameter;
-using ::aidl::android::hardware::audio::effect::State;
-using ::aidl::android::media::audio::common::AudioDeviceDescription;
-using ::aidl::android::media::audio::common::AudioMode;
-using ::aidl::android::media::audio::common::AudioSource;
-using ::android::hardware::EventFlag;
+using aidl::android::aidl_utils::statusTFromBinderStatus;
+using aidl::android::hardware::audio::common::PlaybackTrackMetadata;
+using aidl::android::hardware::audio::common::SourceMetadata;
+using aidl::android::hardware::audio::effect::CommandId;
+using aidl::android::hardware::audio::effect::Descriptor;
+using aidl::android::hardware::audio::effect::Flags;
+using aidl::android::hardware::audio::effect::IEffect;
+using aidl::android::hardware::audio::effect::Parameter;
+using aidl::android::hardware::audio::effect::State;
+using aidl::android::media::audio::common::AudioChannelLayout;
+using aidl::android::media::audio::common::AudioDeviceDescription;
+using aidl::android::media::audio::common::AudioMode;
+using aidl::android::media::audio::common::AudioSource;
 using android::effect::utils::EffectParamReader;
 using android::effect::utils::EffectParamWriter;
+using android::hardware::EventFlag;
 
 using ::android::status_t;
 
@@ -515,6 +518,31 @@ status_t EffectConversionHelperAidl::reopen() {
     // status MQ won't be changed after open
     updateDataMqs(openReturn);
     return OK;
+}
+
+status_t EffectConversionHelperAidl::updateSourceMetadata(EffectParamReader& param) const {
+    if (!needSourceMetadataUpdate()) {
+        ALOGI("%s skipped because effect HAL does not require source metadata update", __func__);
+        return OK;
+    }
+
+    SourceMetadata aidlMetadata;
+    const auto chNum = param.getValueSize() / sizeof(audio_channel_mask_t);
+    for (uint32_t i = 0; i < chNum; i++) {
+        audio_channel_mask_t mask;
+        if (OK != param.readFromValue(&mask)) {
+            ALOGE("%s %d failed to read value %s", __func__, __LINE__, param.toString().c_str());
+            return BAD_VALUE;
+        }
+        aidlMetadata.tracks.emplace_back(PlaybackTrackMetadata{
+                .channelMask = VALUE_OR_RETURN_STATUS(
+                        ::aidl::android::legacy2aidl_audio_channel_mask_t_AudioChannelLayout(
+                                mask, false /* isInput */)),
+        });
+    }
+
+    Parameter aidlParam = Parameter::make<Parameter::sourceMetadata>(aidlMetadata);
+    return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
 }
 
 }  // namespace effect

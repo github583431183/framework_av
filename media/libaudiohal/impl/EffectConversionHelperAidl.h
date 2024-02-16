@@ -49,6 +49,16 @@ class EffectConversionHelperAidl {
     ::aidl::android::hardware::audio::effect::Descriptor getDescriptor() const;
     status_t reopen();
 
+    /**
+     * Indicates if effect HAL need sink/source metadata update from framework, if the effect HAL is
+     * older version which does not support metadata update in parameter, the indication flag bit
+     * will also be false, this guarantees backward compatibility.
+     * It's an no-op to update an effect with MetadataIndication flag set to false.
+     */
+    bool needSinkMetadataUpdate() const { return mDesc.common.flags.sinkMetadataIndication; }
+    bool needSourceMetadataUpdate() const { return mDesc.common.flags.sourceMetadataIndication; }
+    status_t updateSourceMetadata(utils::EffectParamReader& param) const;
+
   protected:
     const int32_t mSessionId;
     const int32_t mIoId;
