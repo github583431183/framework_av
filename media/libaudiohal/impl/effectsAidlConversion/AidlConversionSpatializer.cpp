@@ -148,6 +148,9 @@ status_t AidlConversionSpatializer::setParameter(EffectParamReader& param) {
                 ALOGI("%s %d: %s", __func__, __LINE__, aidlParam.toString().c_str());
                 return statusTFromBinderStatus(mEffect->setParameter(aidlParam));
             }
+            case SPATIALIZER_PARAM_INPUT_CHANNEL_MASK: {
+                return updateSourceMetadata(param);
+            }
             default: {
                 ALOGE("%s %d invalid command %u", __func__, __LINE__, command);
                 return BAD_VALUE;
