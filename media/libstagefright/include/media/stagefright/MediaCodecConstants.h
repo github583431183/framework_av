@@ -694,6 +694,10 @@ inline static const char *asString_ColorFormat(int32_t i, const char *def = "??"
     }
 }
 
+inline constexpr int32_t SECURITY_MODEL_MEMORY_SAFE = 1;
+inline constexpr int32_t SECURITY_MODEL_SANDBOXED = 0;
+inline constexpr int32_t SECURITY_MODEL_TRUSTED_CONTENT_ONLY = 2;
+
 inline constexpr char FEATURE_AdaptivePlayback[]       = "adaptive-playback";
 inline constexpr char FEATURE_EncodingStatistics[]     = "encoding-statistics";
 inline constexpr char FEATURE_IntraRefresh[] = "intra-refresh";
@@ -748,6 +752,10 @@ inline constexpr int32_t COLOR_TRANSFER_HLG = 7;
 inline constexpr int32_t COLOR_TRANSFER_LINEAR = 1;
 inline constexpr int32_t COLOR_TRANSFER_SDR_VIDEO = 3;
 inline constexpr int32_t COLOR_TRANSFER_ST2084 = 6;
+
+inline constexpr int32_t FLAG_SECURITY_MODEL_MEMORY_SAFE = 0x2;
+inline constexpr int32_t FLAG_SECURITY_MODEL_SANDBOXED = 0x1;
+inline constexpr int32_t FLAG_SECURITY_MODEL_TRUSTED_CONTENT_ONLY = 0x4;
 
 inline constexpr int32_t PICTURE_TYPE_I = 1;
 inline constexpr int32_t PICTURE_TYPE_P = 2;
@@ -831,6 +839,7 @@ inline constexpr char KEY_QUALITY[] = "quality";
 inline constexpr char KEY_REPEAT_PREVIOUS_FRAME_AFTER[] = "repeat-previous-frame-after";
 inline constexpr char KEY_ROTATION[] = "rotation-degrees";
 inline constexpr char KEY_SAMPLE_RATE[] = "sample-rate";
+inline constexpr char KEY_SECURITY_MODEL[] = "security-model";
 inline constexpr char KEY_SLICE_HEIGHT[] = "slice-height";
 inline constexpr char KEY_STRIDE[] = "stride";
 inline constexpr char KEY_TEMPORAL_LAYERING[] = "ts-schema";

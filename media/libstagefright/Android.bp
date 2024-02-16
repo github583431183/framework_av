@@ -316,6 +316,7 @@ cc_library {
         "packagemanager_aidl-cpp",
         "server_configurable_flags",
         "aconfig_mediacodec_flags_c_lib",
+        "android.media.codec-aconfig-cc",
     ],
 
     static_libs: [

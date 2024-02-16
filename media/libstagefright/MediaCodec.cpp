@@ -30,6 +30,8 @@
 
 #include "include/SoftwareRenderer.h"
 
+#include <android_media_codec.h>
+
 #include <android/api-level.h>
 #include <android/binder_manager.h>
 #include <android/content/pm/IPackageManagerNative.h>
@@ -4844,6 +4846,32 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             // from this point forward, in this configure/use/release lifecycle, we want to
             // upload our data
             mMetricsToUpload = true;
+
+            if (::android::media::codec::provider_->in_process_sw_audio_codec()) {
+                int32_t securityModelFlags = 0;
+                bool securityModelNotSet = false;
+                if (!format->findInt32(KEY_SECURITY_MODEL, &securityModelFlags)) {
+                    securityModelFlags = FLAG_SECURITY_MODEL_SANDBOXED;
+                    securityModelNotSet = true;
+                }
+                // TODO b/325520135 --- read security model from mCodecInfo
+                int securityModel = SECURITY_MODEL_SANDBOXED;
+                if ((securityModelFlags & (1 << securityModel)) != 0) {
+                    if (securityModelNotSet) {
+                        mErrorLog.log(LOG_TAG,
+                                      "FYI: Security model not set; "
+                                      "defaulted to FLAG_SECURITY_MODE_SANDBOXED");
+                    }
+                    mErrorLog.log(LOG_TAG, base::StringPrintf(
+                            "Security model flags do not match the security model of the codec. "
+                            "flags = %x security model = %d security model as flag = %x",
+                            securityModelFlags,
+                            securityModel,
+                            (1 << securityModel)));
+                    PostReplyWithError(replyID, BAD_VALUE);
+                    break;
+                }
+            }
 
             int32_t push;
             if (msg->findInt32("push-blank-buffers-on-shutdown", &push) && push != 0) {
