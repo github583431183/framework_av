@@ -318,6 +318,11 @@ static std::vector<EffectParamTestTuple> testPairs = {
                                         HeadTracking::ConnectionMode::DIRECT_TO_SENSOR_SW,
                                         HeadTracking::ConnectionMode::DIRECT_TO_SENSOR_TUNNEL},
                                 sizeof(std::array<uint8_t, 3>), GET_ONLY),
+                        createEffectParamCombination(
+                                SPATIALIZER_PARAM_INPUT_CHANNEL_MASK,
+                                std::array<audio_channel_mask_t, 2>{AUDIO_CHANNEL_OUT_STEREO,
+                                                                    AUDIO_CHANNEL_OUT_5POINT1},
+                                sizeof(std::array<audio_channel_mask_t, 2>), SET_ONLY),
                 }),
         std::make_tuple(
                 &EXTEND_EFFECT_TYPE_UUID, false /* isInput */,
