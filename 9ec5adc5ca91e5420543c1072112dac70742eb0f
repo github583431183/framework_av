@@ -94,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3350c4_1dba1239",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-16T06:52:24Z",
+      "side": 1,
+      "message": "no dichen, this is supposed to be C2_PARAMKEY_QP_OFFSET_RECTS, map from PARAMETER_KEY_QP_OFFSET_RECTS to C2_PARAMKEY_QP_OFFSET_RECTS is happening below.",
+      "parentUuid": "4f1af135_117dc6c0",
+      "range": {
+        "startLine": 596,
+        "startChar": 21,
+        "endLine": 596,
+        "endChar": 48
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eb84769_f0b2ea48",
@@ -107,6 +131,30 @@
       "writtenOn": "2024-02-15T23:39:03Z",
       "side": 1,
       "message": "this allocation will get leaked",
+      "range": {
+        "startLine": 1884,
+        "startChar": 31,
+        "endLine": 1884,
+        "endChar": 61
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab39fdb_d2550a62",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1884,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-16T06:52:24Z",
+      "side": 1,
+      "message": "Thank you very much lajos, I have addressed this.",
+      "parentUuid": "1eb84769_f0b2ea48",
       "range": {
         "startLine": 1884,
         "startChar": 31,
@@ -142,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2619e48_cbfcb88b",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-16T06:52:24Z",
+      "side": 1,
+      "message": "Lajos, in C2Config.h, I have declared these as ints to send signed data, Here I am not doing any error correction like clamping the data to frame dimensions. I am sending the data as-is and expecting the component to handle the same.",
+      "parentUuid": "4b5d800a_3e02dcd1",
+      "range": {
+        "startLine": 1889,
+        "startChar": 49,
+        "endLine": 1889,
+        "endChar": 61
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc60749d_c33b1274",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 20
@@ -153,6 +225,30 @@
       "writtenOn": "2024-02-15T23:39:03Z",
       "side": 1,
       "message": "nit: this should be simply (c2QpOffsetRects, 0u)",
+      "range": {
+        "startLine": 1895,
+        "startChar": 66,
+        "endLine": 1896,
+        "endChar": 76
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faae59a0_6550c151",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-16T06:52:24Z",
+      "side": 1,
+      "message": "Lajos, c2QpOffsetRects is needed to copy the contents.",
+      "parentUuid": "fc60749d_c33b1274",
       "range": {
         "startLine": 1895,
         "startChar": 66,
