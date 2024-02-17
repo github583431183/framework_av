@@ -25,7 +25,7 @@ cc_library_shared {
     ],
 
     include_dirs: [
-        "frameworks/av/services/audioflinger"
+        "frameworks/av/services/audioflinger",
     ],
 
     shared_libs: [
