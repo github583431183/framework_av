@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d11f1f_989ae16d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-17T01:58:38Z",
+      "side": 1,
+      "message": "Looks like there is a dependency on flags:\n```\nerror: frameworks/av/services/audiopolicy/service/Android.bp:10:1: \"libaudiopolicyservice\" depends on undefined module \"com.android.media.audio-aconfig-cc\"\n```\n\nWill come back to this later.",
+      "revId": "1fb319d9cef44a8a9917eb531dae69b8b264ebcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
