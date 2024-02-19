@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5165cd_bcdac204",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2024-02-19T08:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ccf47bf_f429c495",
+      "range": {
+        "startLine": 1712,
+        "startChar": 67,
+        "endLine": 1712,
+        "endChar": 69
+      },
+      "revId": "79ca73ef12ed467cee45f254cd37fdf3700abc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "464c2ead_c62e1fc4",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f02ee8e5_d9f28e19",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2024-02-19T08:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464c2ead_c62e1fc4",
+      "range": {
+        "startLine": 1715,
+        "startChar": 44,
+        "endLine": 1715,
+        "endChar": 47
+      },
+      "revId": "79ca73ef12ed467cee45f254cd37fdf3700abc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bd2de51_449ef71c",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-02-16T21:31:00Z",
       "side": 1,
       "message": "nit: wondering if INVALID_OPERATION (ISE) is more correct, since this isn\u0027t an argument error (IAE).  It doesn\u0027t matter at the Java layer as success is a bool.",
+      "range": {
+        "startLine": 1716,
+        "startChar": 29,
+        "endLine": 1716,
+        "endChar": 38
+      },
+      "revId": "79ca73ef12ed467cee45f254cd37fdf3700abc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed06df8_47957012",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 1659435
+      },
+      "writtenOn": "2024-02-19T08:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd2de51_449ef71c",
       "range": {
         "startLine": 1716,
         "startChar": 29,
