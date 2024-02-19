@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb095ad_9a702214",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-02-19T16:36:36Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 1726,
+        "startChar": 21,
+        "endLine": 1726,
+        "endChar": 22
+      },
+      "revId": "84e620a49e512a6c946669c253d56da28799f598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
