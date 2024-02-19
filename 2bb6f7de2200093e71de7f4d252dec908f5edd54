@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd3a4e91_f6337a02",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-02-19T09:22:51Z",
+      "side": 1,
+      "message": "the else is misplaced.\nHere this is if (isPlaying_l()) {} else {}",
+      "range": {
+        "startLine": 1726,
+        "startChar": 19,
+        "endLine": 1726,
+        "endChar": 28
+      },
+      "revId": "2bb6f7de2200093e71de7f4d252dec908f5edd54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
