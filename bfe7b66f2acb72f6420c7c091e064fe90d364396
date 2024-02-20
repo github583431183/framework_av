@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ff9ff8_afe7b88a",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2024-02-20T21:30:04Z",
+      "side": 0,
+      "message": "Does the removal of the line have any impact on the regular camera app?",
+      "range": {
+        "startLine": 1535,
+        "startChar": 4,
+        "endLine": 1535,
+        "endChar": 47
+      },
+      "revId": "bfe7b66f2acb72f6420c7c091e064fe90d364396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
