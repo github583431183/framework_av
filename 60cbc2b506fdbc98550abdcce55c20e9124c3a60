@@ -16,6 +16,24 @@
       "message": "This is similar to how it was handled in ACodec (https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libstagefright/ACodec.cpp;l\u003d1963)",
       "revId": "60cbc2b506fdbc98550abdcce55c20e9124c3a60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9252b33e_a5577f60",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1837035
+      },
+      "writtenOn": "2024-02-20T10:21:14Z",
+      "side": 0,
+      "message": "Hi Lajos,\nWe know ACodec has similar behavior. Before in OMX, we don\u0027t have muteless playback requirement during switching MediaCodec on the same Surface for secure playback case. Currently, in some applications, it is required to implement this kind of flow. So, we modify the flow of PUSH_BLANK_BUFFERS_ON_STOP to let it be able to let users to decide the behavior but not use the default behavior in framework. Yes, in comparison with ACodec, this is a new flow. But we need this change to allow users to decide PUSH_BLANK_BUFFERS_ON_STOP rule by themself.",
+      "parentUuid": "fac9894d_b4c2e6a7",
+      "revId": "60cbc2b506fdbc98550abdcce55c20e9124c3a60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
