@@ -347,6 +347,7 @@ bool AudioPolicyMixCollection::mixMatch(const AudioMix* mix, size_t mixIndex,
     uid_t uid, audio_session_t session) {
 
     if (mix->mMixType == MIX_TYPE_PLAYERS) {
+        auto hasFlag = [](auto flags, auto flag) { return (flags & flag) == flag; };
         // Loopback render mixes are created from a public API and thus restricted
         // to non sensible audio that have not opted out.
         if (is_mix_loopback_render(mix->mRouteFlags)) {
@@ -356,7 +357,6 @@ bool AudioPolicyMixCollection::mixMatch(const AudioMix* mix, size_t mixIndex,
                   attributes.usage == AUDIO_USAGE_VOICE_COMMUNICATION)) {
                 return false;
             }
-            auto hasFlag = [](auto flags, auto flag) { return (flags & flag) == flag; };
             if (hasFlag(attributes.flags, AUDIO_FLAG_NO_SYSTEM_CAPTURE)) {
                 return false;
             }
@@ -373,11 +373,20 @@ bool AudioPolicyMixCollection::mixMatch(const AudioMix* mix, size_t mixIndex,
 
         // Permit match only if requested format and mix format are PCM and can be format
         // adapted by the mixer, or are the same (compressed) format.
-        if (!is_mix_loopback(mix->mRouteFlags) &&
-            !((audio_is_linear_pcm(config.format) && audio_is_linear_pcm(mix->mFormat.format)) ||
-              (config.format == mix->mFormat.format)) &&
-              config.format != AUDIO_CONFIG_BASE_INITIALIZER.format) {
-            return false;
+        if (!is_mix_loopback(mix->mRouteFlags)) {
+            if (hasFlag(attributes.flags, AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) ||
+                hasFlag(attributes.flags, AUDIO_OUTPUT_FLAG_HW_AV_SYNC)) {
+                if (!(config.format == mix->mFormat.format) &&
+                        config.format != AUDIO_CONFIG_BASE_INITIALIZER.format) {
+                    return false;
+                }
+            } else {
+                if (!(audio_is_linear_pcm(config.format) &&
+                      audio_is_linear_pcm(mix->mFormat.format)) &&
+                        config.format != AUDIO_CONFIG_BASE_INITIALIZER.format) {
+                    return false;
+                }
+            }
         }
 
         // if there is an address match, prioritize that match
