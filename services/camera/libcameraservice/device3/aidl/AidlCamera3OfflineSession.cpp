@@ -69,7 +69,7 @@ status_t AidlCamera3OfflineSession::initialize(wp<NotificationListener> listener
         std::unique_ptr<AidlResultMetadataQueue>& resQueue = mResultMetadataQueue;
         ::aidl::android::hardware::common::fmq::MQDescriptor<
             int8_t, ::aidl::android::hardware::common::fmq::SynchronizedReadWrite> desc;
-        ::ndk::ScopedAStatus resultQueueRet = mSession->getCaptureResultMetadataQueue(&desc);
+        ndk::ScopedAStatus resultQueueRet = mSession->getCaptureResultMetadataQueue(&desc);
         if (!resultQueueRet.isOk()) {
             ALOGE("Transaction error when getting result metadata queue from camera session: %s",
                     resultQueueRet.getMessage());
@@ -90,24 +90,24 @@ status_t AidlCamera3OfflineSession::initialize(wp<NotificationListener> listener
     return OK;
 }
 
-::ndk::ScopedAStatus AidlCamera3OfflineSession::AidlCameraDeviceCallbacks::processCaptureResult(
+ndk::ScopedAStatus AidlCamera3OfflineSession::AidlCameraDeviceCallbacks::processCaptureResult(
         const std::vector<camera::device::CaptureResult>& results) {
     sp<AidlCamera3OfflineSession> p = mParent.promote();
     if (p == nullptr) {
         ALOGE("%s Parent AidlCameraDevice not alive, can't process callbacks", __FUNCTION__);
-        return ::ndk::ScopedAStatus::ok();
+        return ndk::ScopedAStatus::ok();
     }
     return p->processCaptureResult(results);
 }
 
-::ndk::ScopedAStatus AidlCamera3OfflineSession::processCaptureResult(
+ndk::ScopedAStatus AidlCamera3OfflineSession::processCaptureResult(
         const std::vector<camera::device::CaptureResult>& results) {
     sp<NotificationListener> listener;
     {
         std::lock_guard<std::mutex> lock(mLock);
         if (mStatus != STATUS_ACTIVE) {
             ALOGE("%s called in wrong state %d", __FUNCTION__, mStatus);
-            return ::ndk::ScopedAStatus::ok();
+            return ndk::ScopedAStatus::ok();
         }
         listener = mListener.promote();
     }
@@ -134,7 +134,7 @@ status_t AidlCamera3OfflineSession::initialize(wp<NotificationListener> listener
     for (const auto& result : results) {
         processOneCaptureResultLocked(states, result, result.physicalCameraMetadata);
     }
-    return ::ndk::ScopedAStatus::ok();
+    return ndk::ScopedAStatus::ok();
 }
 
 ::ndk::ScopedAStatus AidlCamera3OfflineSession::AidlCameraDeviceCallbacks::notify(
