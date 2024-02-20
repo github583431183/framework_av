@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1af124f_f10fd6ce",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-20T19:10:19Z",
+      "side": 1,
+      "message": "Should this be moved to a CL which introduces `updateSinkMetadata` method?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 93
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac82557f_c159623b",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-20T19:10:19Z",
+      "side": 1,
+      "message": "For consistency, please use the same format of the comment as above.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 74
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080b3274_40a003d2",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-20T19:10:19Z",
+      "side": 1,
+      "message": "sourceMetadataIndication",
+      "range": {
+        "startLine": 64,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9b28d7_3b8a0f7f",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-20T19:10:19Z",
+      "side": 1,
+      "message": "I would suggest adding a comment that \"input\" in this context means the input to the spatializer, not the legacy channel mask direction.",
+      "range": {
+        "startLine": 321,
+        "startChar": 52,
+        "endLine": 321,
+        "endChar": 53
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
