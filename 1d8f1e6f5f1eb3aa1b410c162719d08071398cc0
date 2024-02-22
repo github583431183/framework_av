@@ -16,6 +16,24 @@
       "message": "https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/2968207 that updated the VTS test has now landed.\ni think this revert is no longer needed.",
       "revId": "1d8f1e6f5f1eb3aa1b410c162719d08071398cc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab2b0af_a863f0da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-22T07:26:43Z",
+      "side": 1,
+      "message": "With the above CL merged, the tests are now passing.\nThus this revert can be abandoned now.",
+      "parentUuid": "3df69530_7e733f23",
+      "revId": "1d8f1e6f5f1eb3aa1b410c162719d08071398cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
