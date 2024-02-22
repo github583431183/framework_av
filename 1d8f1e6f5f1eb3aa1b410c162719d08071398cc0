@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df69530_7e733f23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-22T02:31:31Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/2968207 that updated the VTS test has now landed.\ni think this revert is no longer needed.",
+      "revId": "1d8f1e6f5f1eb3aa1b410c162719d08071398cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
