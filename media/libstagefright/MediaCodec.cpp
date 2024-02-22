@@ -2220,6 +2220,17 @@ status_t MediaCodec::init(const AString &name) {
         // Notify the ResourceManager that, this codec has been created
         // (initialized) successfully.
         mResourceManagerProxy->notifyClientCreated();
+    } else if (isResourceError(err)) {
+        // TODO: girishshetty:
+        // The RM already logs metrics for this as failed reclaim.
+        // MediaCodec logs fatal codec failures through metrics for following states:
+        //   - CONFIGURING
+        //   - STARTING/STARTED
+        //   - FLUSHING/FLUSHED
+        // But not for INITIALIZING state, which means this resource error
+        // isn't logged through metrics.
+        // Should we log this codec failure because of insufficient resources
+        // as part of the codec record too?
     }
     return err;
 }
