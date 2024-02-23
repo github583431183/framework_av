@@ -355,8 +355,6 @@ C2R C2SoftVpxEnc::IntfImpl::PictureQuantizationSetter(bool mayBlock,
                                                      C2P<C2StreamPictureQuantizationTuning::output>
                                                      &me) {
     (void)mayBlock;
-    // these are the ones we're going to set, so want them to default
-    // to the DEFAULT values for the codec
     int32_t iMin = VPX_QP_DEFAULT_MIN, pMin = VPX_QP_DEFAULT_MIN;
     int32_t iMax = VPX_QP_DEFAULT_MAX, pMax = VPX_QP_DEFAULT_MAX;
     for (size_t i = 0; i < me.v.flexCount(); ++i) {
@@ -379,8 +377,8 @@ C2R C2SoftVpxEnc::IntfImpl::PictureQuantizationSetter(bool mayBlock,
           iMin, iMax, pMin, pMax);
 
     // vpx library takes same range for I/P picture type
-    int32_t maxFrameQP = std::min({iMax, pMax});
-    int32_t minFrameQP = std::max({iMin, pMin});
+    int32_t maxFrameQP = std::min(iMax, pMax);
+    int32_t minFrameQP = std::max(iMin, pMin);
     if (minFrameQP > maxFrameQP) {
         minFrameQP = maxFrameQP;
     }
