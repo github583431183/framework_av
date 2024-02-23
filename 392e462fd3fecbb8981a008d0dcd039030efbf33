@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c4bc7dd_b7198c52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-02-23T22:08:10Z",
+      "side": 1,
+      "message": "Checking for `__ANDROID_API_V__` here is causing problems in `next` for HAL API Freeze: https://android-build.corp.google.com/test_investigate/?invocationId\u003dI79200010248731431\u0026testResultId\u003dTR17529188460185848\u0026redirect\u003dhttp%3A%2F%2Ffusion2%2F31d5fc9a-d5d6-4bdd-b3f2-1833b3ec8399\u0026tab\u003dresults\n\nIf the service is declared in the manifest fragment, then it must be served. Once we freeze the interface, it will then be declared on `next` and so must be served.\n\nThe codec2 flagging can still choose what service the clients use, but we should serve the \"software\" instance no matter what now that it is frozen.",
+      "revId": "392e462fd3fecbb8981a008d0dcd039030efbf33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
