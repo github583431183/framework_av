@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea033a2a_06b521b2",
+        "filename": "media/codec2/hal/hidl/1.0/utils/ComponentStore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-02-23T23:58:25Z",
+      "side": 1,
+      "message": "Have some doubt using this ComponentStore.",
+      "range": {
+        "startLine": 221,
+        "startChar": 29,
+        "endLine": 221,
+        "endChar": 93
+      },
+      "revId": "5b7535b678210d72134ee9c74d9d4e4503f587f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
