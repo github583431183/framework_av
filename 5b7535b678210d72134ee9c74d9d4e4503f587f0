@@ -22,6 +22,30 @@
       },
       "revId": "5b7535b678210d72134ee9c74d9d4e4503f587f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90e8736_94ace12e",
+        "filename": "media/codec2/hal/hidl/1.0/utils/ComponentStore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-02-24T01:46:59Z",
+      "side": 1,
+      "message": "Using ComponentStore reflector",
+      "parentUuid": "ea033a2a_06b521b2",
+      "range": {
+        "startLine": 221,
+        "startChar": 29,
+        "endLine": 221,
+        "endChar": 93
+      },
+      "revId": "5b7535b678210d72134ee9c74d9d4e4503f587f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
