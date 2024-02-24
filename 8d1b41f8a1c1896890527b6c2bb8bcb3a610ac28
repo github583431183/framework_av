@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca596350_52d432a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-02-24T03:53:57Z",
+      "side": 1,
+      "message": "This fixes a regression introduced by aosp/2833452.",
+      "revId": "8d1b41f8a1c1896890527b6c2bb8bcb3a610ac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
