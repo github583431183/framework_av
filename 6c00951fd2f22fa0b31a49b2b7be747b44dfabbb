@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e54ab86_5cef77e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-02-24T03:54:31Z",
+      "side": 1,
+      "message": "Note: this causes a capture timestamp regression.  The fix is in aosp/2975756.",
+      "revId": "6c00951fd2f22fa0b31a49b2b7be747b44dfabbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
