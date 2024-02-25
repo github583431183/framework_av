@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a191c2_4356c8eb",
+        "filename": "services/camera/libcameraservice/device3/Camera3DeviceInjectionMethods.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1122898
+      },
+      "writtenOn": "2024-02-25T04:36:41Z",
+      "side": 1,
+      "message": "we can not use `mBackupHalInterface` here, because, in Ln130, it has already been set to `nullptr` since `keepBack` is set `false`",
+      "range": {
+        "startLine": 137,
+        "startChar": 50,
+        "endLine": 137,
+        "endChar": 68
+      },
+      "revId": "479a7514f2a5a07fd602bdc3dccacd09fe42bb39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
