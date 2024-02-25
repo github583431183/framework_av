@@ -133,6 +133,14 @@ status_t Camera3Device::Camera3DeviceInjectionMethods::stopInjection() {
         injectionDisconnectImpl();
         return res;
     }
+
+    res = parent->mRequestThread->setHalInterface(parent->mInterface);
+    if (res != OK) {
+        ALOGE("%s: Failed to set new HalInterface in RequestThread!", __FUNCTION__);
+        injectionDisconnectImpl();
+        return res;
+    }
+
     injectionDisconnectImpl();
 
     if (wasActive) {
