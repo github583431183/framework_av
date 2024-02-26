@@ -86,8 +86,6 @@ mediaserver_cc_binary {
         "-Wall",
     ],
 
-    vintf_fragments: ["manifest_media_c2_software.xml"],
-
     soong_config_variables: {
         TARGET_DYNAMIC_64_32_MEDIASERVER: {
             compile_multilib: "both",

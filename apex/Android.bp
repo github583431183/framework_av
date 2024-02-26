@@ -181,6 +181,7 @@ apex_defaults {
     prebuilts: [
         "com.android.media.swcodec-mediaswcodec.rc",
         "com.android.media.swcodec-mediaswcodec.32rc",
+        "com.android.media.swcodec-mediaswcodec.xml",
         "com.android.media.swcodec-ld.config.txt",
         "mediaswcodec.policy",
         "code_coverage.policy",
@@ -228,6 +229,13 @@ prebuilt_etc {
     name: "com.android.media.swcodec-mediaswcodec.rc",
     src: "mediaswcodec.rc",
     filename: "mediaswcodec.rc",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "com.android.media.swcodec-mediaswcodec.xml",
+    src: "mediaswcodec.xml",
+    sub_dir: "vintf",
     installable: false,
 }
 
