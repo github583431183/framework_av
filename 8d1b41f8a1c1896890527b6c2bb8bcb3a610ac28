@@ -16,6 +16,23 @@
       "message": "This fixes a regression introduced by aosp/2833452.",
       "revId": "8d1b41f8a1c1896890527b6c2bb8bcb3a610ac28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21524a93_1d606014",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-02-26T19:15:51Z",
+      "side": 1,
+      "message": "Similar code for out direction is in AudioStreamOut.cpp: is there a problem there as well?",
+      "revId": "8d1b41f8a1c1896890527b6c2bb8bcb3a610ac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
