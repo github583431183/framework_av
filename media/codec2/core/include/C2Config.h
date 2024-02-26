@@ -159,6 +159,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     /* protected content */
     kParamIndexSecureMode,
     kParamIndexEncryptedBuffer, // info-buffer, used with SM_READ_PROTECTED_WITH_ENCRYPTED
+    kParamIndexQpOffsetMapBuffer, // info-buffer, used to signal qp-offset map for a frame
 
     /* multiple access unit support */
     kParamIndexLargeFrame,
