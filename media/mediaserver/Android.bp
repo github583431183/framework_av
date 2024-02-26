@@ -1,4 +1,3 @@
-
 package {
     default_applicable_licenses: ["frameworks_av_media_mediaserver_license"],
 }
@@ -69,6 +68,13 @@ mediaserver_cc_binary {
         "libutils",
     ],
 
+    vintf_fragments: ["mediaswcodec.legacy.xml"],
+    product_variables: {
+        releaseDefaultModuleBuildFromSource: {
+            exclude_vintf_fragments: ["mediaswcodec.legacy.xml"],
+        },
+    },
+
     static_libs: [
         "libregistermsext",
     ],
@@ -85,8 +91,6 @@ mediaserver_cc_binary {
         "-Werror",
         "-Wall",
     ],
-
-    vintf_fragments: ["manifest_media_c2_software.xml"],
 
     soong_config_variables: {
         TARGET_DYNAMIC_64_32_MEDIASERVER: {
