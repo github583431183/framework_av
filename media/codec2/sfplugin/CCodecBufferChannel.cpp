@@ -372,6 +372,47 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         work->input.flags = (C2FrameData::flags_t)flags;
         // TODO: fill info's
 
+        // look out for kParamIndexQpOffsetMap and kParamIndexQpOffsetRects
+        std::unique_ptr<C2Param> qpMapC2Param = nullptr, qpRectC2Param = nullptr;
+        for (auto it = mParamsToBeSet.begin(); it != mParamsToBeSet.end();) {
+            if ((*it)->coreIndex() == C2StreamQpOffsetMap::CORE_INDEX) {
+                qpMapC2Param = std::move(*it);
+                it = mParamsToBeSet.erase(it);
+            } else if ((*it)->coreIndex() == C2StreamQpOffsetRects::CORE_INDEX) {
+                qpRectC2Param = std::move(*it);
+                it = mParamsToBeSet.erase(it);
+            } else {
+                it++;
+            }
+        }
+        // We do not expect both "coding.qp-offset-map" and "coding.qp-offset-rects"
+        // to be passed at once. If done, prioritize "coding.qp-offset-map"
+        if (qpMapC2Param != nullptr) {
+            std::shared_ptr<C2BlockPool> pool;
+            c2_status_t err = GetCodec2BlockPool(C2BlockPool::BASIC_LINEAR, nullptr, &pool);
+            if (err != C2_OK) {
+                return NO_MEMORY;
+            }
+            C2StreamQpOffsetMap::output* qpMapParam =
+                    static_cast<C2StreamQpOffsetMap::output*>(qpMapC2Param.get());
+            size_t mapSize = qpMapParam->flexCount();
+            std::shared_ptr<C2LinearBlock> block;
+            err = pool->fetchLinearBlock(mapSize,
+                    C2MemoryUsage{C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE}, &block);
+            if (err != C2_OK || block->map().get().error()) {
+                ALOGE("fetchLinearBlock for coding.qp-offset-map failed");
+                return NO_MEMORY;
+            }
+            C2WriteView wView = block->map().get();
+            uint8_t* outData = wView.data();
+            memcpy(outData, qpMapParam->m.value, mapSize);
+            work->input.infoBuffers.emplace_back(C2InfoBuffer::CreateLinearBuffer(
+                    kParamIndexQpOffsetMapBuffer,
+                    block->share(0, mapSize, C2Fence())));
+            qpMapC2Param.reset();
+        } else if (qpRectC2Param != nullptr) {
+        }
+
         work->input.configUpdate = std::move(mParamsToBeSet);
         if (tunnelFirstFrame) {
             C2StreamTunnelHoldRender::input tunnelHoldRender{
