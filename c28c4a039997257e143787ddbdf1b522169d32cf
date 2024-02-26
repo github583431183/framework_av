@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9d2540_0d9a21e5",
+        "filename": "services/mediaresourcemanager/ResourceManagerMetrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-26T21:13:22Z",
+      "side": 1,
+      "message": "nit: maintains (no that and e)",
+      "range": {
+        "startLine": 124,
+        "startChar": 14,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "c28c4a039997257e143787ddbdf1b522169d32cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
