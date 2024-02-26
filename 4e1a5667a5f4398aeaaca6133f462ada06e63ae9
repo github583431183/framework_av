@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214b4285_050b3247",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4858,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-26T23:38:42Z",
+      "side": 1,
+      "message": "if the app says that their content has TRUSTED_CONTENT (by specifying FLAG_SECURITY_MODEL_TRUSTED_ONLY), in the current state, they will not be able to configure a regular codec. (as the codec just has one security model).\n\nThis seems opposite of what I would expect, e.g. regular codec can play any content, where as there may be codecs that can only play trusted-only content, or content that the app dev marked as suitable to play using a memory-safe codec.\n\nThat said, that logic is not testable until we have a trusted-only model codec, so perhaps this is just temporary.",
+      "range": {
+        "startLine": 4858,
+        "startChar": 20,
+        "endLine": 4858,
+        "endChar": 33
+      },
+      "revId": "4e1a5667a5f4398aeaaca6133f462ada06e63ae9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
