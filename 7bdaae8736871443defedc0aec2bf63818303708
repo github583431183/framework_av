@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e57117_28b33b89",
+        "filename": "media/libaudioclient/aidl/fuzzer/libaudiomockhal/FactoryMock.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-02-26T15:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f179ed54_f196d5e4",
+      "range": {
+        "startLine": 34,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "7bdaae8736871443defedc0aec2bf63818303708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19d718c6_31813e57",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-21T00:42:49Z",
       "side": 1,
       "message": "Same note about the danger of returning `OK` but leaving the pointer intact.",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "7bdaae8736871443defedc0aec2bf63818303708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b70db14_8ab6ef94",
+        "filename": "media/libaudioclient/aidl/fuzzer/libaudiomockhal/ModuleMock.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-02-26T15:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19d718c6_31813e57",
       "range": {
         "startLine": 44,
         "startChar": 11,
