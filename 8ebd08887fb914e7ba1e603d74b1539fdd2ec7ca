@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d081cd38_dcceceb1",
+        "filename": "media/libaudioclient/aidl/fuzzer/libaudiomockhal/ModuleMock.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-26T17:57:15Z",
+      "side": 1,
+      "message": "Can we inline the stream mock creation here as we do for other interfaces above? Same for `openOutputStream`.",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "8ebd08887fb914e7ba1e603d74b1539fdd2ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e4ca7a_9ed55542",
+        "filename": "media/libaudioclient/aidl/fuzzer/libaudiomockhal/StreamInMock.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-26T17:57:15Z",
+      "side": 1,
+      "message": "This method will be called multiple times. We should cache the instance of `StreamCommon`. Same for `StreamOutMock`.",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 65
+      },
+      "revId": "8ebd08887fb914e7ba1e603d74b1539fdd2ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1ad9df_f551f3de",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3OfflineSession.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-02-26T17:57:15Z",
+      "side": 1,
+      "message": "This file shouldn\u0027t get changed.",
+      "revId": "8ebd08887fb914e7ba1e603d74b1539fdd2ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
