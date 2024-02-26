@@ -22,6 +22,30 @@
       },
       "revId": "4e1a5667a5f4398aeaaca6133f462ada06e63ae9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8ffdc2_9c96cfbc",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4858,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-26T23:59:15Z",
+      "side": 1,
+      "message": "we could change this to supportedModels \u003d MODEL_SANDBOXED | MEMSAFE | TRUSTED_ONLY since we only have cross process codecs, that one could expect to be used with trusted content.",
+      "parentUuid": "214b4285_050b3247",
+      "range": {
+        "startLine": 4858,
+        "startChar": 20,
+        "endLine": 4858,
+        "endChar": 33
+      },
+      "revId": "4e1a5667a5f4398aeaaca6133f462ada06e63ae9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
