@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94be2d0b_d7d220d1",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-26T18:27:30Z",
+      "side": 1,
+      "message": "Removed code about SinkMetadata because no one using it now",
+      "parentUuid": "f1af124f_f10fd6ce",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 93
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac82557f_c159623b",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-20T19:10:19Z",
       "side": 1,
       "message": "For consistency, please use the same format of the comment as above.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 74
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "709e8559_81411dbf",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-26T18:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac82557f_c159623b",
       "range": {
         "startLine": 59,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1efd2611_ef9da8fd",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-26T18:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "080b3274_40a003d2",
+      "range": {
+        "startLine": 64,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc9b28d7_3b8a0f7f",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-02-20T19:10:19Z",
       "side": 1,
       "message": "I would suggest adding a comment that \"input\" in this context means the input to the spatializer, not the legacy channel mask direction.",
+      "range": {
+        "startLine": 321,
+        "startChar": 52,
+        "endLine": 321,
+        "endChar": 53
+      },
+      "revId": "533ab503489b4638cb70e21c2f9d3f958ebbb2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d3cab4_e0d18bff",
+        "filename": "media/libaudiohal/tests/EffectsFactoryHalInterface_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-02-26T18:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9b28d7_3b8a0f7f",
       "range": {
         "startLine": 321,
         "startChar": 52,
