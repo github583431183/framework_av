@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3a1810_88390e91",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-26T20:38:04Z",
+      "side": 1,
+      "message": "optional: we could use poitner for the out param and also make `getDecoderSampleRateAndChannelCount()` return true when success.\n\n```suggestion\n        if (mInterface-\u003egetDecoderSampleRateAndChannelCount(\u0026sampleRate, \u0026channelCount)) {\n```",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 49
+      },
+      "revId": "d4b2bceed41ffcea686c2ca57e6a1f0476bc64ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
