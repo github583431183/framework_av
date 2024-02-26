@@ -372,6 +372,13 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         work->input.flags = (C2FrameData::flags_t)flags;
         // TODO: fill info's
 
+        if (mInfoBuffers.size()) {
+            for (auto infoBuffer : mInfoBuffers) {
+                work->input.infoBuffers.emplace_back(*infoBuffer);
+            }
+            mInfoBuffers.clear();
+        }
+
         work->input.configUpdate = std::move(mParamsToBeSet);
         if (tunnelFirstFrame) {
             C2StreamTunnelHoldRender::input tunnelHoldRender{
@@ -2763,6 +2770,10 @@ void CCodecBufferChannel::resetBuffersPixelFormat(bool isEncoder) {
         }
         output->buffers->resetPixelFormatIfApplicable();
     }
+}
+
+void CCodecBufferChannel::queueInfoBuffer(const std::shared_ptr<C2InfoBuffer> &buffer) {
+    mInfoBuffers.push_back(buffer);
 }
 
 status_t toStatusT(c2_status_t c2s, c2_operation_t c2op) {
