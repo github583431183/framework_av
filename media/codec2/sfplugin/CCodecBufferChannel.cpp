@@ -28,6 +28,8 @@
 #include <thread>
 #include <chrono>
 
+#include <android_media_codec.h>
+
 #include <C2AllocatorGralloc.h>
 #include <C2PlatformSupport.h>
 #include <C2BlockInternal.h>
@@ -370,7 +372,17 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         }
     } else {
         work->input.flags = (C2FrameData::flags_t)flags;
+
         // TODO: fill info's
+        if (android::media::codec::provider_->region_of_interest()
+            && android::media::codec::provider_->region_of_interest_support()) {
+            if (mInfoBuffers.size()) {
+                for (auto infoBuffer : mInfoBuffers) {
+                    work->input.infoBuffers.emplace_back(*infoBuffer);
+                }
+                mInfoBuffers.clear();
+            }
+        }
 
         work->input.configUpdate = std::move(mParamsToBeSet);
         if (tunnelFirstFrame) {
@@ -2763,6 +2775,10 @@ void CCodecBufferChannel::resetBuffersPixelFormat(bool isEncoder) {
         }
         output->buffers->resetPixelFormatIfApplicable();
     }
+}
+
+void CCodecBufferChannel::queueInfoBuffer(const std::shared_ptr<C2InfoBuffer> &buffer) {
+    mInfoBuffers.push_back(buffer);
 }
 
 status_t toStatusT(c2_status_t c2s, c2_operation_t c2op) {
