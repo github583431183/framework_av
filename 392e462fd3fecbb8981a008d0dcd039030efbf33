@@ -33,6 +33,24 @@
       "message": "unrelated build errors in presubmits. rerunning",
       "revId": "392e462fd3fecbb8981a008d0dcd039030efbf33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e0a2e4_8c0b12a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-26T18:00:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3c4bc7dd_b7198c52",
+      "revId": "392e462fd3fecbb8981a008d0dcd039030efbf33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
