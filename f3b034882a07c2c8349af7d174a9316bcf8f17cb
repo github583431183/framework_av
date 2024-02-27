@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14f2a03_78f3858b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-27T22:24:27Z",
+      "side": 1,
+      "message": "swcodec is only one of the services that offer this interface\nfrom hidl (and eventually aidl).\n\nis this also to be replicated into those services?\n\nI\u0027d want to see this build/tested on a pixel and mokey, as two realdevices that do have the hardware interfaces. cuttlefish has only software codecs, so doesn\u0027t touch on that multi-service configuration.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
