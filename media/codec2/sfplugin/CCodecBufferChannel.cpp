@@ -980,8 +980,7 @@ status_t CCodecBufferChannel::queueSecureInputBuffers(
     }
     // size of cryptoInfo and accessUnitInfo should be the same?
     ssize_t result = -1;
-    ssize_t codecDataOffset = 0;
-    size_t inBufferOffset = 0;
+    size_t srcOffset = 0;
     size_t outBufferSize = 0;
     uint32_t cryptoInfoIdx = 0;
     {
@@ -994,6 +993,7 @@ status_t CCodecBufferChannel::queueSecureInputBuffers(
         encryptedBuffer->getMappedBlock(&mappedBlock);
         hardware::drm::V1_0::SharedBuffer source;
         encryptedBuffer->fillSourceBuffer(&source);
+        srcOffset = source.offset;
         for (int i = 0 ; i < bufferInfos->value.size(); i++) {
             if (bufferInfos->value[i].mSize > 0) {
                 std::unique_ptr<CodecCryptoInfo> info =
@@ -1004,18 +1004,20 @@ status_t CCodecBufferChannel::queueSecureInputBuffers(
                     // no data so we only populate the bufferInfo
                     result = 0;
                 } else {
+                    source.offset = srcOffset;
+                    source.size = bufferInfos->value[i].mSize;
                     result = mCrypto->decrypt(
                             (uint8_t*)info->mKey,
                             (uint8_t*)info->mIv,
                             info->mMode,
                             info->mPattern,
                             source,
-                            inBufferOffset,
+                            buffer->offset(),
                             info->mSubSamples,
                             info->mNumSubSamples,
                             destination,
                             errorDetailMsg);
-                    inBufferOffset += bufferInfos->value[i].mSize;
+                    srcOffset += bufferInfos->value[i].mSize;
                     if (result < 0) {
                         ALOGI("[%s] decrypt failed: result=%zd", mName, result);
                         return result;
@@ -1028,7 +1030,7 @@ status_t CCodecBufferChannel::queueSecureInputBuffers(
                 }
             }
         }
-        buffer->setRange(codecDataOffset, outBufferSize - codecDataOffset);
+        buffer->setRange(0, outBufferSize);
     }
     return queueInputBufferInternal(buffer, block, bufferSize);
 }
