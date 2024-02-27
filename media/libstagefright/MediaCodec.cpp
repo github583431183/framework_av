@@ -4159,7 +4159,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                     const char *owner = mCodecInfo ? mCodecInfo->getOwnerName() : "";
                     if (mComponentName.startsWith("OMX.google.")
-                            && strncmp(owner, "default", 8) == 0) {
+                            && strncmp(owner, "default", 7) == 0) {
                         mFlags |= kFlagUsesSoftwareRenderer;
                     } else {
                         mFlags &= ~kFlagUsesSoftwareRenderer;
@@ -6970,7 +6970,7 @@ status_t MediaCodec::CanFetchLinearBlock(
             return NAME_NOT_FOUND;
         }
         const char *owner = it->second->getOwnerName();
-        if (owner == nullptr || strncmp(owner, "default", 8) == 0) {
+        if (owner == nullptr || strncmp(owner, "default", 7) == 0) {
             *isCompatible = false;
             return OK;
         } else if (strncmp(owner, "codec2::", 8) != 0) {
@@ -7001,7 +7001,7 @@ status_t MediaCodec::CanFetchGraphicBlock(
             return NAME_NOT_FOUND;
         }
         const char *owner = it->second->getOwnerName();
-        if (owner == nullptr || strncmp(owner, "default", 8) == 0) {
+        if (owner == nullptr || strncmp(owner, "default", 7) == 0) {
             *isCompatible = false;
             return OK;
         } else if (strncmp(owner, "codec2.", 7) != 0) {
