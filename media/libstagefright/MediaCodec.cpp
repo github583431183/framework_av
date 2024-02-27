@@ -96,6 +96,7 @@ using aidl::android::media::ClientInfoParcel;
 using server_configurable_flags::GetServerConfigurableFlag;
 using FreezeEvent = VideoRenderQualityTracker::FreezeEvent;
 using JudderEvent = VideoRenderQualityTracker::JudderEvent;
+using std::operator""sv;
 
 // key for media statistics
 static const char *kCodecKeyName = "codec";
@@ -2049,7 +2050,7 @@ static CodecBase *CreateCCodec() {
 //static
 sp<CodecBase> MediaCodec::GetCodecBase(const AString &name, const char *owner) {
     if (owner) {
-        if (strcmp(owner, "default") == 0) {
+        if (std::string_view(owner).compare("default"sv) == 0) {
             return new ACodec;
         } else if (strncmp(owner, "codec2", 6) == 0) {
             return CreateCCodec();
@@ -4159,7 +4160,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
                     const char *owner = mCodecInfo ? mCodecInfo->getOwnerName() : "";
                     if (mComponentName.startsWith("OMX.google.")
-                            && strncmp(owner, "default", 8) == 0) {
+                            && std::string_view(owner).compare("default"sv) == 0) {
                         mFlags |= kFlagUsesSoftwareRenderer;
                     } else {
                         mFlags &= ~kFlagUsesSoftwareRenderer;
@@ -6970,7 +6971,7 @@ status_t MediaCodec::CanFetchLinearBlock(
             return NAME_NOT_FOUND;
         }
         const char *owner = it->second->getOwnerName();
-        if (owner == nullptr || strncmp(owner, "default", 8) == 0) {
+        if (owner == nullptr || std::string_view(owner).compare("default"sv) == 0) {
             *isCompatible = false;
             return OK;
         } else if (strncmp(owner, "codec2::", 8) != 0) {
@@ -7001,7 +7002,7 @@ status_t MediaCodec::CanFetchGraphicBlock(
             return NAME_NOT_FOUND;
         }
         const char *owner = it->second->getOwnerName();
-        if (owner == nullptr || strncmp(owner, "default", 8) == 0) {
+        if (owner == nullptr || std::string_view(owner).compare("default"sv) == 0) {
             *isCompatible = false;
             return OK;
         } else if (strncmp(owner, "codec2.", 7) != 0) {
