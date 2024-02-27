@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d23f6479_74c63b5a",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4162,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-27T22:12:34Z",
+      "side": 1,
+      "message": "wonsik, should we change it from strncmp(\"default\",8) to strcmp(\"default\") to avoid this sort of confusuin? or is there a particular reason that you chose strncmp() earlier?",
+      "parentUuid": "7321ec21_8c3bc82d",
+      "range": {
+        "startLine": 4162,
+        "startChar": 31,
+        "endLine": 4162,
+        "endChar": 62
+      },
+      "revId": "d1c94536321c58f66706388410e54f60e23df9cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "560751a3_7a5b06d9",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 2
