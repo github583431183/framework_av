@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e1c7cf_02a859c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-27T19:46:43Z",
+      "side": 1,
+      "message": "please separate changes in core/ from sfplugin/ into separate CLs. (core/ should be submitted first)",
+      "revId": "5f81f399daf69e0b25db38e66d7113bee20f1fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261076c5_ac59df79",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-27T19:46:43Z",
+      "side": 1,
+      "message": "please do not add indices in the middle of the definitions (this will change the indices for large frame and access unit infos.)",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 32
+      },
+      "revId": "5f81f399daf69e0b25db38e66d7113bee20f1fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
