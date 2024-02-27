@@ -46,6 +46,30 @@
       },
       "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4a7d98_67207056",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-27T22:34:04Z",
+      "side": 1,
+      "message": "\u003e swcodec is only one of the services that offer this interface\n\u003e from hidl (and eventually aidl).\n\nyes and the other (hardware) services are defined in the device-specific vintf fragments. swcodec service is being shipped in APEX so logically it makes sense to have the vintf fragments for the service (`/software`) in it.",
+      "parentUuid": "e44eeacd_181542d2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
