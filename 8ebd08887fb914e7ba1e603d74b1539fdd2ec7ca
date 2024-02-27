@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "effab26b_92d78672",
+        "filename": "media/libaudioclient/aidl/fuzzer/libaudiomockhal/ModuleMock.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-02-27T09:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d081cd38_dcceceb1",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "8ebd08887fb914e7ba1e603d74b1539fdd2ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5e4ca7a_9ed55542",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3eb7428_9203eff4",
+        "filename": "media/libaudioclient/aidl/fuzzer/libaudiomockhal/StreamInMock.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-02-27T09:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e4ca7a_9ed55542",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 65
+      },
+      "revId": "8ebd08887fb914e7ba1e603d74b1539fdd2ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de1ad9df_f551f3de",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-02-26T17:57:15Z",
       "side": 1,
       "message": "This file shouldn\u0027t get changed.",
+      "revId": "8ebd08887fb914e7ba1e603d74b1539fdd2ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b60811_0f37ff27",
+        "filename": "services/camera/libcameraservice/device3/aidl/AidlCamera3OfflineSession.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-02-27T09:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de1ad9df_f551f3de",
       "revId": "8ebd08887fb914e7ba1e603d74b1539fdd2ec7ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
