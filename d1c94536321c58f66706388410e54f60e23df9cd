@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbdb4f2e_d9e66093",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4162,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-27T22:50:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t strcmp(owner,\"default\") be guaranteed to stop by the time it gets to\nthe shorter of the two strings?  so an unterminated owner would stop after the 8 bytes of default+null?\n\ni\u0027m ok leaving it as-is, which is functionally correct and bounds safe.\ni think i\u0027d leave it alone before changing to string_view().",
+      "parentUuid": "eff18d10_405d8196",
+      "range": {
+        "startLine": 4162,
+        "startChar": 31,
+        "endLine": 4162,
+        "endChar": 62
+      },
+      "revId": "d1c94536321c58f66706388410e54f60e23df9cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "560751a3_7a5b06d9",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 2
