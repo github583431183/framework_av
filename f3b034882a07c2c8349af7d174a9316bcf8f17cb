@@ -22,6 +22,30 @@
       },
       "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44eeacd_181542d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-27T22:25:25Z",
+      "side": 1,
+      "message": "(and if my understanding of how these interfaces and declarations  are supposed to work is wrong, I\u0027m willing to learn).",
+      "parentUuid": "d14f2a03_78f3858b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
