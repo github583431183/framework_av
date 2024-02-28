@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551ccc2b_4ef901be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-28T21:29:02Z",
+      "side": 1,
+      "message": "was this tested solely on current system builds?\n\nI ask because these files live in mainline.\nThis CL is paired with changes in system/core/debuggerd, which will not go to the older system builds (R/S/T). I don\u0027t remember whether that a failure there means \"nonfunctional jail\" or \"service refuses to start\".\n\nthe good news is that the code that chooses which policy file to load is also in the mainline module, so we have the ability to\ndo something morally equivalent to:\n\nSetUpMiniJail( isBeforeV() ? \"preV.policy\" : mediaswcodec.policy\");",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "7589632ff0cf0b63facda04931820ef6e764f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee96254_53f8df73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-02-28T21:29:02Z",
+      "side": 1,
+      "message": "it feels like this is ready for the \"whatever.policy.def\" to generated whatever.policy.{arm/arm64/x86/etc} that is used in syste,/core/code_coverage\nand debuggerd\n\nI\u0027m not saying that this CL needs to do that; but it feels like that\u0027s the next step in code hygiene for this set of files.",
+      "revId": "7589632ff0cf0b63facda04931820ef6e764f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
