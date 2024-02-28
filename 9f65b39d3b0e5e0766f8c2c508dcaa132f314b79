@@ -46,6 +46,30 @@
       },
       "revId": "9f65b39d3b0e5e0766f8c2c508dcaa132f314b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a49d624_814f74c5",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1929890
+      },
+      "writtenOn": "2024-02-28T19:53:03Z",
+      "side": 1,
+      "message": "Hi Lajos/Dichen, looks like the binder limitation is a longer term concern and bufferinfo path is not clear at framework level; given the timeframe running out, does it make sense to proceed with the binder path / absorb some tech debt and fix this later? We promised this feature to Meta, trying to close on it.",
+      "parentUuid": "0430fc32_f27e8963",
+      "range": {
+        "startLine": 1417,
+        "startChar": 30,
+        "endLine": 1417,
+        "endChar": 41
+      },
+      "revId": "9f65b39d3b0e5e0766f8c2c508dcaa132f314b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
