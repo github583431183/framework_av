@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "142b98f4_0d8216af",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-28T23:32:52Z",
+      "side": 1,
+      "message": "I see. Thank you!",
+      "parentUuid": "ceff27c6_299888b0",
+      "range": {
+        "startLine": 1184,
+        "startChar": 8,
+        "endLine": 1184,
+        "endChar": 10
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dbf2f80_3d6ec810",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 20
