@@ -70,6 +70,30 @@
       },
       "revId": "9f65b39d3b0e5e0766f8c2c508dcaa132f314b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc870fa4_39af7700",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-28T21:21:07Z",
+      "side": 1,
+      "message": "aosp/2977691 uses C2InfoBuffer to send the Qp map.",
+      "parentUuid": "4a49d624_814f74c5",
+      "range": {
+        "startLine": 1417,
+        "startChar": 30,
+        "endLine": 1417,
+        "endChar": 41
+      },
+      "revId": "9f65b39d3b0e5e0766f8c2c508dcaa132f314b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
