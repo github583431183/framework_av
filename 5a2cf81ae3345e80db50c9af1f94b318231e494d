@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f2b933_99a1ba18",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2024-02-28T21:46:41Z",
+      "side": 1,
+      "message": "I am bit concerned when introducing a new lock. I am guessing it is not the case right now but there might be possibility or some different code path that could trigger \u0027opChanged\u0027 during the call to \u0027startCameraOps\u0027. The callback  will try to acquire  \u0027mInitializeLock\u0027 and result in a deadlock.\nI was thinking of some alternative that can avoid the Hal initialization causing the torch callbacks, avoid the uninitialized \u0027mDevice\u0027 race condition and skip adding an extra lock.\nI believe it may be possible in case:\n1) We move the call to \u0027startCameraOps\u0027 after successfully initializing \u0027mDevice\u0027 but before the \u0027initialize()\u0027 call. \n2) Slightly refactor \u0027setCameraMute\u0027 in Camera3Device to store the mute parameter in case the request thread is not valid.\n3) Apply mute as part of \u0027initializeCommonLocked\u0027 after the request thread is available.\n\nKK, what do you think?",
+      "range": {
+        "startLine": 103,
+        "startChar": 36,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "5a2cf81ae3345e80db50c9af1f94b318231e494d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
