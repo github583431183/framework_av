@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a2fdef_2e59b190",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3219,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-28T05:09:55Z",
+      "side": 1,
+      "message": "I think at this point you can write the qp map in `mPortBuffers[kPortIndexInput][index]` and don\u0027t need passing the info through message. Could you please check if this is possible?",
+      "range": {
+        "startLine": 3219,
+        "startChar": 8,
+        "endLine": 3219,
+        "endChar": 66
+      },
+      "revId": "1157dccc5ba78ed3f422e74b2c38a7e0b587d868",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
