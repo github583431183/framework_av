@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e383e5a_6fdc0bbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2024-02-28T07:21:10Z",
+      "side": 1,
+      "message": "ProjectZero wrote about this in https://googleprojectzero.blogspot.com/2016/09/return-to-libstagefright-exploiting.html\n\n\"no longer has the ‘execmem’ privilege, ruling out the mprotect route to shellcode\"\n\nI think the proposed change is fine because what we care about is enforced by selinux, not seccomp.",
+      "parentUuid": "ba6bcf53_83d45063",
+      "range": {
+        "startLine": 18,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7793ee5_0c9a53a0",
