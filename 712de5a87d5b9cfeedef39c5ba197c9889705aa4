@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6bcf53_83d45063",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "I don\u0027t think we can remove PROT_EXEC because some codecs appear to be using this.",
+      "parentUuid": "f0c2cc2d_3230c013",
+      "range": {
+        "startLine": 18,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7793ee5_0c9a53a0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-22T20:50:35Z",
       "side": 1,
       "message": "i played with this sort of stuff a while back. the minijail parser is happy with these, where it goes bad is when it pushes those conflicts into the kernel, the kernel starts objecting [and minijail passes that rejection back upstream].\n\nAt one point, I played a bit with the minijail parser to see if I could get it to cache all the rules and reconcile the rules by combining them. something like:  \nmprotect (the swcodec restriction) || (the crashdump restruction)\n\nbut I didn\u0027t get very far at that before some other shiny object caught my attention.",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7faf5af5_e4b5032c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "I am using a different model of creating two different versions of the policies for crash_dump so that the swcodec policy overrides the mmap/mprotect.",
+      "parentUuid": "f7793ee5_0c9a53a0",
       "range": {
         "startLine": 22,
         "startChar": 21,
@@ -152,6 +200,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4fb814_64eccd09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "The new versions no longer inherit and use the restrictions for swcodec.",
+      "parentUuid": "0d22d9a9_a0bcf9e1",
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b70ec30_4505a7b3",
@@ -165,6 +231,30 @@
       "writtenOn": "2023-05-22T20:50:35Z",
       "side": 1,
       "message": "I think i\u0027d prefer to match the restrictions of the crashdump code here\nrather than saying \u0027everything\u0027.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22d1aeb_8bf62e42",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "It turns out we do need this, which is why I put this on the back burner so long ago. So leaving this as is and created a new version of the crash dump policy that doesn\u0027t have mmap/mprotect rules.",
+      "parentUuid": "5b70ec30_4505a7b3",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -198,6 +288,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8154a380_34815c8a",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "f08611a2_6320096c",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61a74bb9_012fab9e",
@@ -211,6 +325,30 @@
       "writtenOn": "2023-05-22T20:50:35Z",
       "side": 1,
       "message": "prefer to have this match crashdump rather than make this wide open.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64dc8287_3a298f96",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "See other comment.",
+      "parentUuid": "61a74bb9_012fab9e",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -244,6 +382,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ef7ce5_0cfef92a",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-arm64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90f0e3aa_513ecfbd",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da7d7410_93e07e7e",
@@ -257,6 +419,30 @@
       "writtenOn": "2023-05-22T20:50:35Z",
       "side": 1,
       "message": "both here and line 56 seems .... repetitive",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "712de5a87d5b9cfeedef39c5ba197c9889705aa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3ecf69_654a930b",
+        "filename": "services/mediacodec/seccomp_policy/mediaswcodec-riscv64.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T04:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7d7410_93e07e7e",
       "range": {
         "startLine": 59,
         "startChar": 0,
