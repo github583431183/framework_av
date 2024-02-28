@@ -164,6 +164,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexLargeFrame,
     kParamIndexAccessUnitInfos, // struct
 
+    /* Region of Interest Encoding parameters */
+    kParamIndexQpOffsetMapBuffer, // info-buffer, used to signal qp-offset map for a frame
+
     // deprecated
     kParamIndexDelayRequest = kParamIndexDelay | C2Param::CoreIndex::IS_REQUEST_FLAG,
 
