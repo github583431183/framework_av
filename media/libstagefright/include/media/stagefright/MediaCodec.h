@@ -756,6 +756,9 @@ private:
 
     CodecErrorLog mErrorLog;
 
+    // Holds Qp Map signalled using setParameters
+    sp<ABuffer> mQpOffsetMap = nullptr;
+    bool mQpOffsetMapPresent = false;
     DISALLOW_EVIL_CONSTRUCTORS(MediaCodec);
 };
 

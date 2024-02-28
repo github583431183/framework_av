@@ -3215,6 +3215,10 @@ status_t MediaCodec::queueInputBuffer(
     msg->setInt64("timeUs", presentationTimeUs);
     msg->setInt32("flags", flags);
     msg->setPointer("errorDetailMsg", errorDetailMsg);
+    if (mQpOffsetMapPresent) {
+        msg->setBuffer(PARAMETER_KEY_QP_OFFSET_MAP, mQpOffsetMap);
+        mQpOffsetMapPresent = false;
+    }
     sp<AMessage> response;
     return PostAndAwaitResponse(msg, &response);
 }
@@ -6163,6 +6167,10 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     auto setInputBufferParams = [this, &msg, &buffer]
         (int64_t timeUs, uint32_t flags = 0) -> status_t {
         status_t err = OK;
+        sp<ABuffer> qpOffsetMap;
+        if (msg->findBuffer(PARAMETER_KEY_QP_OFFSET_MAP, &qpOffsetMap)) {
+            buffer->meta()->setBuffer(PARAMETER_KEY_QP_OFFSET_MAP, qpOffsetMap);
+        }
         sp<RefBase> obj;
         if (msg->findObject("accessUnitInfo", &obj)) {
             buffer->meta()->setObject("accessUnitInfo", obj);
@@ -6813,6 +6821,12 @@ void MediaCodec::postActivityNotificationIfPossible() {
 
 status_t MediaCodec::setParameters(const sp<AMessage> &params) {
     sp<AMessage> msg = new AMessage(kWhatSetParameters, this);
+
+    if (params->findBuffer(PARAMETER_KEY_QP_OFFSET_MAP, &mQpOffsetMap)) {
+        mQpOffsetMapPresent = true;
+        params->removeEntryByName(PARAMETER_KEY_QP_OFFSET_MAP);
+    }
+
     msg->setMessage("params", params);
 
     sp<AMessage> response;

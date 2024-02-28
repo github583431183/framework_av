@@ -372,6 +372,29 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         work->input.flags = (C2FrameData::flags_t)flags;
         // TODO: fill info's
 
+        sp<ABuffer> qpOffsetMap;
+        if (buffer->meta()->findBuffer(PARAMETER_KEY_QP_OFFSET_MAP, &qpOffsetMap)) {
+            std::shared_ptr<C2BlockPool> pool;
+            c2_status_t err = GetCodec2BlockPool(C2BlockPool::BASIC_LINEAR, nullptr, &pool);
+            if (err != C2_OK) {
+                return NO_MEMORY;
+            }
+            size_t mapSize = qpOffsetMap->size();
+            std::shared_ptr<C2LinearBlock> block;
+            err = pool->fetchLinearBlock(mapSize,
+                    C2MemoryUsage{C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE}, &block);
+            if (err != C2_OK || block->map().get().error()) {
+                ALOGE("fetchLinearBlock for coding.qp-offset-map failed");
+                return NO_MEMORY;
+            }
+            C2WriteView wView = block->map().get();
+            uint8_t* outData = wView.data();
+            memcpy(outData, qpOffsetMap->data(), mapSize);
+            work->input.infoBuffers.emplace_back(C2InfoBuffer::CreateLinearBuffer(
+                    kParamIndexQpOffsetMapBuffer,
+                    block->share(0, mapSize, C2Fence())));
+            qpOffsetMap.clear();
+        }
         work->input.configUpdate = std::move(mParamsToBeSet);
         if (tunnelFirstFrame) {
             C2StreamTunnelHoldRender::input tunnelHoldRender{
