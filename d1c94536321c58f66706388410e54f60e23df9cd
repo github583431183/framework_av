@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d345ccf_6c4ea0c5",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-02-28T08:19:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "540fc86d_b87b38ab",
+      "range": {
+        "startLine": 2052,
+        "startChar": 8,
+        "endLine": 2052,
+        "endChar": 42
+      },
+      "revId": "d1c94536321c58f66706388410e54f60e23df9cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a115b8d5_6fdd8922",
@@ -160,6 +184,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "996d9eeb_e96e4e11",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4162,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-02-28T08:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbdb4f2e_d9e66093",
+      "range": {
+        "startLine": 4162,
+        "startChar": 31,
+        "endLine": 4162,
+        "endChar": 62
+      },
+      "revId": "d1c94536321c58f66706388410e54f60e23df9cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "560751a3_7a5b06d9",
@@ -173,6 +221,30 @@
       "writtenOn": "2024-02-27T14:08:49Z",
       "side": 1,
       "message": "this one has the appearance of the intent being to look for a prefix,\nespecially since the matched string ends with the \"::\".",
+      "range": {
+        "startLine": 6976,
+        "startChar": 18,
+        "endLine": 6976,
+        "endChar": 45
+      },
+      "revId": "d1c94536321c58f66706388410e54f60e23df9cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "402d3d72_45ba293a",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6976,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-02-28T08:19:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "560751a3_7a5b06d9",
       "range": {
         "startLine": 6976,
         "startChar": 18,
