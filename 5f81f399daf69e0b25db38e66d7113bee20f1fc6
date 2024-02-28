@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b34e8f4_f15dc4bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-28T21:17:33Z",
+      "side": 1,
+      "message": "C2Config.h change is moved to aosp/2864097",
+      "parentUuid": "64e1c7cf_02a859c9",
+      "revId": "5f81f399daf69e0b25db38e66d7113bee20f1fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "261076c5_ac59df79",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-02-27T19:46:43Z",
       "side": 1,
       "message": "please do not add indices in the middle of the definitions (this will change the indices for large frame and access unit infos.)",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 32
+      },
+      "revId": "5f81f399daf69e0b25db38e66d7113bee20f1fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7dc495b_b1387fa0",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-28T21:17:33Z",
+      "side": 1,
+      "message": "This is moved down and also the change is moved to aosp/2864097 along with rest of the changes in C2Config.h.",
+      "parentUuid": "261076c5_ac59df79",
       "range": {
         "startLine": 162,
         "startChar": 4,
