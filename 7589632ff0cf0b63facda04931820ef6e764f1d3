@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4640d93c_05f94542",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T22:13:09Z",
+      "side": 1,
+      "message": "Honestly, this would be better done as a single file generating all of the different versions of the policy files so a lot of this wouldn\u0027t be needed.\n\nHowever, it is pretty painful to add any new policy files, so I would say leaving it like this is the least bad and we probably won\u0027t need to change this for years.",
+      "parentUuid": "fc1dc4ab_377ee9a5",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "7589632ff0cf0b63facda04931820ef6e764f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "551ccc2b_4ef901be",
