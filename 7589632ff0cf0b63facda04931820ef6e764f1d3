@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b9a64759_b6a6164c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-02-28T22:10:25Z",
+      "side": 1,
+      "message": "I did test on current systems, but as you mention, the files are all put in the apex. I don\u0027t think that should ever be a problem since other policy files already do this inclusion.\n\ndebuggerd only ever adds system calls, never removes. So as long as we continue to do that, I thinks this should be fine even going into the future.\n\nIf we do think this is going to be a problem, we would need to add some kind of versioned policy file, probably based on Android API level. I don\u0027t think that\u0027s necessary yet.",
+      "parentUuid": "551ccc2b_4ef901be",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "7589632ff0cf0b63facda04931820ef6e764f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ee96254_53f8df73",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
