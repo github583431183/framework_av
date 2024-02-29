@@ -634,6 +634,12 @@ public:
             }
         }
         if (mProducerId == 0) {
+            if (mEnd) {
+                if (fence) {
+                    *fence = C2Fence();
+                }
+                return C2_BLOCKING;
+            }
             std::shared_ptr<C2GraphicAllocation> alloc;
             c2_status_t err = mAllocator->newGraphicAllocation(
                     width, height, format, usage, &alloc);
@@ -714,6 +720,9 @@ public:
                 mProducerId = producerId;
                 mGeneration = bqInformation ? generation : 0;
             } else {
+                if (mProducer && mProducerId != 0) {
+                    mEnd = true;
+                }
                 mProducer = nullptr;
                 mProducerId = 0;
                 mGeneration = 0;
@@ -851,6 +860,7 @@ private:
     // when they are no longer used.
     std::shared_ptr<int> mIgbpValidityToken;
     std::atomic<bool> mInvalidated{false};
+    bool mEnd{false};
 };
 
 C2BufferQueueBlockPoolData::C2BufferQueueBlockPoolData(
