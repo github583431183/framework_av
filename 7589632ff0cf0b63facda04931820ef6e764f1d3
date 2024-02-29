@@ -145,6 +145,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6c4dcb26_feaf3e45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2024-02-29T09:23:03Z",
+      "side": 1,
+      "message": "\u003e debuggerd only ever adds system calls, never removes. So as long as we continue to do that, I thinks this should be fine even going into the future.\n\nI might be misunderstanding, but isn\u0027t the concern here that mediaswcodec might unknowingly be relying on permissions from debuggerd? And thus changing debuggerd\u0027s policies might cause breakage in mediaswcodec? It seems like a valid concern to me. If a permission is granted for one use-case, there\u0027s no way to know if subsequent functionality has been added that now relies on it.",
+      "parentUuid": "e08e7494_cd5776e8",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "7589632ff0cf0b63facda04931820ef6e764f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ee96254_53f8df73",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
