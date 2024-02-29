@@ -51,6 +51,24 @@
       "parentUuid": "21524a93_1d606014",
       "revId": "8d1b41f8a1c1896890527b6c2bb8bcb3a610ac28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b91f7c_f8016489",
+        "filename": "services/audioflinger/datapath/AudioStreamIn.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-02-29T00:11:49Z",
+      "side": 1,
+      "message": "AudioStreamOut change has merged here:\n\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2983151",
+      "parentUuid": "4c246f4d_cb065b8c",
+      "revId": "8d1b41f8a1c1896890527b6c2bb8bcb3a610ac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
