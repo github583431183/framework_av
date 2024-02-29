@@ -70,6 +70,207 @@
       "parentUuid": "638b1864_dbfd294b",
       "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a07870_90e2a643",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "Please can you add a `MediaExtractor` CTS test for this behaviour as discussed?",
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7163931b_0704b91e",
+        "filename": "media/module/extractors/mkv/include/MatroskaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "nit: For consistency with `synthesizeAVCC` above (which aiui creates an `avcC` box as defined in ISO 14496-15 5.3.4.1.2), I think this should be `synthesizeVPCC` as (I\u0027m guessing?) it synthesizes a `vpcC` box as defined here: https://www.webmproject.org/vp9/mp4/\n\n(actually, having read the impl, i\u0027m not sure that\u0027s quite correct - please let me know)",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 26
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d2f480_88362339",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "please can you add a comment with a spec reference describing what `data` contains?\n\nI think it might be section 6.2 of https://storage.googleapis.com/downloads.webmproject.org/docs/vp9/vp9-bitstream-specification-v0.7-20170222-draft.pdf",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 85
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff856ef1_8327c39c",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "nit: i don\u0027t think you need to declare this before it\u0027s first assigned below?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca10db2_7db2498c",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "nit: please refer to this as `frame_marker` in the comment to match the wording in the spec",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 72
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7728857a_c79d8f41",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "in the spec these are called `profile_low_bit` and `profile_high_bit`. I think it makes sense to match those names-ish, something like:\n\n```\nint32_t profileLow \u003d bits.getBits(1);\nint32_t profileHigh \u003d bits.getBits(1);\nprofile \u003d profileHigh * 2 + profileLow;\n```",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4988576_6e1e349d",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "is there a reason to have this logic the opposite way round to the spec? I think it makes it a bit less obvious that the `else` block on L164 has the same effect as intended in the spec when `colorSpace \u003d\u003d SRGB`.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 39
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6c561d_cd5f1adb",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "can you add a comment with a spec reference here too?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 49
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e344c1_e5e697a1",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-02-29T17:11:27Z",
+      "side": 1,
+      "message": "nit: what about checking `chromeSubsampling !\u003d -1` here instead? Then you can also use that to assign `csdSize` down here to exactly either `6` or `9`, which makes it a bit more obviously correct vs having some arithmetic on this value spread over the preceding ~100 lines.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 22
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
