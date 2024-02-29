@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62efe02_0b43c258",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7505,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2024-02-29T18:25:07Z",
+      "side": 1,
+      "message": "Q: Does that mean whenever SCO is active, we will ignore any a2dp activation? If yes, how can we guarantee that the BT stack is also having SCO as active one?",
+      "range": {
+        "startLine": 7499,
+        "startChar": 4,
+        "endLine": 7505,
+        "endChar": 5
+      },
+      "revId": "fa3bb58632f1ac4bdfe869f2680d9beb877e8a1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d299f195_92a0ae6c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7524,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2024-02-29T18:25:07Z",
+      "side": 1,
+      "message": "nit, nullptr",
+      "revId": "fa3bb58632f1ac4bdfe869f2680d9beb877e8a1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
