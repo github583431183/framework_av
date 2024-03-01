@@ -52,6 +52,24 @@
       "parentUuid": "5f672cc9_a2a8a68f",
       "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af94816a_20e333b4",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-01T07:45:34Z",
+      "side": 1,
+      "message": "Two more things:\n\n1. About error handling. If user incorrectly set both rects and qp map configurations, or set more than one qp map / rects configurations for one frame, we shall just keep the first one and print some message there. (Or at least leave some notes here.)\n2. Stickiness should also be handled here.\n\nI\u0027m OK we just leave a TODO note here and fix it later, and keep this comment open.",
+      "parentUuid": "5bcba5ae_6b891e29",
+      "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
