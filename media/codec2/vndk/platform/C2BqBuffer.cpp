@@ -638,6 +638,7 @@ public:
             c2_status_t err = mAllocator->newGraphicAllocation(
                     width, height, format, usage, &alloc);
             if (err != C2_OK) {
+                ALOGD("graphic buffer direc alloc failed %d", (int)err);
                 return err;
             }
             std::shared_ptr<C2BufferQueueBlockPoolData> poolData =
@@ -645,6 +646,7 @@ public:
                             0, (uint64_t)0, ~0, nullptr, nullptr, nullptr);
             *block = _C2BlockFactory::CreateGraphicBlock(alloc, poolData);
             ALOGV("allocated a buffer successfully");
+            ALOGD("graphic buffer direc alloced");
 
             return C2_OK;
         }

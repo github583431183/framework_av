@@ -692,40 +692,53 @@ void SimpleC2Component::WorkHandler::onMessageReceived(const sp<AMessage> &msg) 
     switch (msg->what()) {
         case kWhatProcess: {
             if (mRunning) {
+                ALOGD("process begin");
                 if (thiz->processQueue()) {
+                    ALOGD("piggyback process queue");
                     (new AMessage(kWhatProcess, this))->post();
                 }
+                ALOGD("process end");
             } else {
                 ALOGV("Ignore process message as we're not running");
             }
             break;
         }
         case kWhatInit: {
+            ALOGD("init begin");
             int32_t err = thiz->onInit();
+            ALOGD("init end");
             Reply(msg, &err);
             [[fallthrough]];
         }
         case kWhatStart: {
+            ALOGD("start");
             mRunning = true;
             break;
         }
         case kWhatStop: {
+            ALOGD("stop begin");
             int32_t err = thiz->onStop();
             thiz->mOutputBlockPool.reset();
+            mRunning = false;
+            ALOGD("stop end");
             Reply(msg, &err);
             break;
         }
         case kWhatReset: {
+            ALOGD("reset begin");
             thiz->onReset();
             thiz->mOutputBlockPool.reset();
             mRunning = false;
+            ALOGD("reset end");
             Reply(msg);
             break;
         }
         case kWhatRelease: {
+            ALOGD("release begin");
             thiz->onRelease();
             thiz->mOutputBlockPool.reset();
             mRunning = false;
+            ALOGD("release end");
             Reply(msg);
             break;
         }
@@ -945,6 +958,7 @@ c2_status_t SimpleC2Component::stop() {
         queue->clear();
         queue->pending().clear();
     }
+    ALOGD("queue cleared on stop() request");
     sp<AMessage> reply;
     (new AMessage(WorkHandler::kWhatStop, mHandler))->postAndAwaitResponse(&reply);
     int32_t err;
