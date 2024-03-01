@@ -16,6 +16,24 @@
       "message": "Android expects the codecs to advertise the max supported level per each profile, not all possible permutations.",
       "revId": "f99bfbbe97c99375017a4762c1b24a2177107657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2681f063_8d8598ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3280678
+      },
+      "writtenOn": "2024-03-01T06:29:54Z",
+      "side": 1,
+      "message": "Thanks, we have confirmed with Vendor and will be able to handle on the codec side. Abandoning the gerrit",
+      "parentUuid": "5e7a4489_21d324c3",
+      "revId": "f99bfbbe97c99375017a4762c1b24a2177107657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
