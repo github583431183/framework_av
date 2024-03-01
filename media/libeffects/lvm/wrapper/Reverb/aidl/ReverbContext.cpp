@@ -363,7 +363,6 @@ IEffect::Status ReverbContext::process(float* in, float* out, int samples) {
     RETURN_VALUE_IF(0 == getInputFrameSize(), status, "zeroFrameSize");
 
     LOG(DEBUG) << __func__ << " start processing";
-    std::lock_guard lg(mMutex);
 
     int channels = ::aidl::android::hardware::audio::common::getChannelCount(
             mCommon.input.base.channelMask);
@@ -383,6 +382,8 @@ IEffect::Status ReverbContext::process(float* in, float* out, int samples) {
     if (isPreset() && mNextPreset != mPreset) {
         loadPreset();
     }
+
+    std::lock_guard lg(mMutex);
 
     if (isAuxiliary()) {
         inFrames.assign(in, in + samples);
@@ -407,16 +408,34 @@ IEffect::Status ReverbContext::process(float* in, float* out, int samples) {
             std::fill(outFrames.begin(), outFrames.end(), 0);
             LOG(VERBOSE) << "Zeroing " << channels << " samples per frame at the end of call ";
         }
+        int saveFramecounts = frameCount;
+        int inputBufferIndex = 0;
+        int outputBufferIndex = 0;
+
+        // LVREV library supports max of int16_t frames at a time
+        constexpr int kMaxBlockFrames = std::numeric_limits<int16_t>::max();
+        auto inputFrameSize = getInputFrameSize();
+        auto outputFrameSize = getOutputFrameSize();
 
         /* Process the samples, producing a stereo output */
-        LVREV_ReturnStatus_en lvrevStatus =
-                LVREV_Process(mInstance,        /* Instance handle */
-                              inFrames.data(),  /* Input buffer */
-                              outFrames.data(), /* Output buffer */
-                              frameCount);      /* Number of samples to read */
-        if (lvrevStatus != LVREV_SUCCESS) {
-            LOG(ERROR) << __func__ << lvrevStatus;
-            return {EX_UNSUPPORTED_OPERATION, 0, 0};
+        while (saveFramecounts > 0) {
+            int processFrames = std::min(saveFramecounts, kMaxBlockFrames);
+            LVREV_ReturnStatus_en lvrevStatus =
+                    LVREV_Process(mInstance,                            /* Instance handle */
+                                  inFrames.data() + inputBufferIndex,   /* Input buffer */
+                                  outFrames.data() + outputBufferIndex, /* Output buffer */
+                                  processFrames); /* Number of samples to read */
+            if (lvrevStatus != LVREV_SUCCESS) {
+                LOG(ERROR) << __func__ << lvrevStatus;
+                return {EX_UNSUPPORTED_OPERATION, 0, 0};
+            }
+
+            saveFramecounts -= processFrames;
+            int inputProcessedSize = processFrames * inputFrameSize / sizeof(float);
+            int outputProcessedSize = processFrames * outputFrameSize / sizeof(float);
+
+            inputBufferIndex += inputProcessedSize;
+            outputBufferIndex += outputProcessedSize;
         }
     }
     // Convert to 16 bits
