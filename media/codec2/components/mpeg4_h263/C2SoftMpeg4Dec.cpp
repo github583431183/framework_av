@@ -242,6 +242,7 @@ c2_status_t C2SoftMpeg4Dec::onInit() {
 }
 
 c2_status_t C2SoftMpeg4Dec::onStop() {
+    ALOGD("onStop() being called");
     if (mInitialized) {
         PVCleanUpVideoDecoder(&mVideoDecControls);
         mInitialized = false;
@@ -268,6 +269,7 @@ void C2SoftMpeg4Dec::onReset() {
 }
 
 void C2SoftMpeg4Dec::onRelease() {
+    ALOGD("onRelease() being called");
     (void)onStop();
     if (mOutBlock) {
         mOutBlock.reset();
@@ -327,6 +329,7 @@ void C2SoftMpeg4Dec::finishWork(uint64_t index, const std::unique_ptr<C2Work> &w
     std::shared_ptr<C2Buffer> buffer = createGraphicBuffer(std::move(mOutBlock),
                                                            C2Rect(mWidth, mHeight));
     mOutBlock = nullptr;
+    ALOGD("outBlock cleared for finisking work");
     auto fillWork = [buffer, index](const std::unique_ptr<C2Work> &work) {
         uint32_t flags = 0;
         if ((work->input.flags & C2FrameData::FLAG_END_OF_STREAM) &&
@@ -349,6 +352,9 @@ void C2SoftMpeg4Dec::finishWork(uint64_t index, const std::unique_ptr<C2Work> &w
 
 c2_status_t C2SoftMpeg4Dec::ensureDecoderState(const std::shared_ptr<C2BlockPool> &pool) {
 
+    bool bufferRealloc = false;
+    bool blockClear = false;
+    bool blockAlloc = false;
     mOutputBufferSize = align(mIntf->getMaxWidth(), 16) * align(mIntf->getMaxHeight(), 16) * 3 / 2;
     for (int32_t i = 0; i < kNumOutputBuffers; ++i) {
         if (!mOutputBuffer[i]) {
@@ -356,11 +362,13 @@ c2_status_t C2SoftMpeg4Dec::ensureDecoderState(const std::shared_ptr<C2BlockPool
             if (!mOutputBuffer[i]) {
                 return C2_NO_MEMORY;
             }
+            bufferRealloc = true;
         }
     }
     if (mOutBlock &&
             (mOutBlock->width() != align(mWidth, 16) || mOutBlock->height() != mHeight)) {
         mOutBlock.reset();
+        blockClear = true;
     }
     if (!mOutBlock) {
         uint32_t format = HAL_PIXEL_FORMAT_YV12;
@@ -370,9 +378,12 @@ c2_status_t C2SoftMpeg4Dec::ensureDecoderState(const std::shared_ptr<C2BlockPool
             ALOGE("fetchGraphicBlock for Output failed with status %d", err);
             return err;
         }
+        blockAlloc = true;
         ALOGV("provided (%dx%d) required (%dx%d)",
               mOutBlock->width(), mOutBlock->height(), mWidth, mHeight);
     }
+    ALOGD("output: bufferRealoc %d, blockClear %d, blockAlloc %d",
+          bufferRealloc, blockClear, blockAlloc);
     return C2_OK;
 }
 
@@ -388,6 +399,7 @@ bool C2SoftMpeg4Dec::handleResChange(const std::unique_ptr<C2Work> &work) {
 
     ALOGV("display size (%dx%d), buffer size (%dx%d)",
            disp_width, disp_height, buf_width, buf_height);
+    bool bufferDealloc = false;
 
     bool resChanged = false;
     if (disp_width != mWidth || disp_height != mHeight) {
@@ -398,7 +410,11 @@ bool C2SoftMpeg4Dec::handleResChange(const std::unique_ptr<C2Work> &work) {
             if (mOutputBuffer[i]) {
                 free(mOutputBuffer[i]);
                 mOutputBuffer[i] = nullptr;
+                bufferDealloc = true;
             }
+        }
+        if (bufferDealloc) {
+            ALOGD("resChange: outputBuffer dealloc");
         }
 
         if (!mIsMpeg4) {
