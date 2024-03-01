@@ -94,6 +94,30 @@
       },
       "revId": "9f65b39d3b0e5e0766f8c2c508dcaa132f314b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "398e1e76_bba0d549",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-01T07:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc870fa4_39af7700",
+      "range": {
+        "startLine": 1417,
+        "startChar": 30,
+        "endLine": 1417,
+        "endChar": 41
+      },
+      "revId": "9f65b39d3b0e5e0766f8c2c508dcaa132f314b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
