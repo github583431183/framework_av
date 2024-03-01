@@ -34,6 +34,24 @@
       "parentUuid": "f36171ef_ebc3fbff",
       "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bcba5ae_6b891e29",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-01T07:31:28Z",
+      "side": 1,
+      "message": "Yes LGTM",
+      "parentUuid": "5f672cc9_a2a8a68f",
+      "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
