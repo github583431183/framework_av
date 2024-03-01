@@ -165,6 +165,30 @@
       },
       "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b85a14d_634905f5",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2295,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-01T17:53:00Z",
+      "side": 1,
+      "message": "\"mParamsToBeSet is actually getting cleared at every frame. The std::move(mParamsToBeSet) is moving all the entries to configUpdate.\nwork-\u003einput.configUpdate \u003d std::move(mParamsToBeSet);\nAfter this mParamsToBeSet is empty.\"\n\nYes right. My point is for other parameters via `setParameters()` it has a `getConfigUpdateFromSdkParams` mechanism which can keep the original settings, stores updated settings in `configUpdate` so the configurations in this path is sticky. But for info buffer path the current logic is non-sticky. Although we decided public API layer ROI configuration being non-sticky, my understand that the general rule of Codec2 layer is being sticky, and this CL may be breaking the rule. So I recommend clearly keep a comment and ask owner\u0027s feedback.\n\n\n\n\"On the other hand if encoder is running in surface mode, there wont be calls to queueInputBuffer, So these entries get accumulated over time consuming a lot of unused memory? There should be guards to drop these entries in surface mode?\"\n\nIn surface mode the configurations won\u0027t go to `CCodecBufferChannel`, but `CCodecConfig`, and there is a similar \"update\" mechanism.\n\nBut overall this CL looks good, despite some implementation details. Thank you!",
+      "parentUuid": "08a6db99_fbacbe50",
+      "range": {
+        "startLine": 2295,
+        "startChar": 1,
+        "endLine": 2295,
+        "endChar": 80
+      },
+      "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
