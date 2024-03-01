@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08498678_fbced302",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7505,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-01T10:57:59Z",
+      "side": 1,
+      "message": "With current implementation this is somehow guarantied because the native APM will only select SCO if the java audio service has received confirmation from the BT stack that BT SCO audio is connected\nWith the new SCO audio management, every thing is managed via the audio HAL which is why we need this exclusion in audio policy manager: When APM decides to use SCO, it will just select the SCO device on the HAL stream and the HAL will start the SCO audio stream (as it does currently for A2DP or LE Audio) at the BT audio HAL. But given SCO and A2DP are mutually exclusive, the APM needs to make sure that the A2DP stream is stopped before this in order to avoid the conflict.",
+      "parentUuid": "f62efe02_0b43c258",
+      "range": {
+        "startLine": 7499,
+        "startChar": 4,
+        "endLine": 7505,
+        "endChar": 5
+      },
+      "revId": "fa3bb58632f1ac4bdfe869f2680d9beb877e8a1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d299f195_92a0ae6c",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 1
