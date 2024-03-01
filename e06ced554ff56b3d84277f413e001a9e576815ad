@@ -117,6 +117,30 @@
       },
       "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb9d8bc_6d4c39c4",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2295,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-01T09:25:31Z",
+      "side": 1,
+      "message": "OK I see.\n\nA little thought, the other configurations through `setParameters()` are stored in `mParamsToBeSet` and are sticky, don\u0027t clear itself after each frame, but the info buffer configurations are stored in `mInfoBuffers` and are non-sticky. We must leave notes about it and see if Lajos is OK about it.\n\nOtherwise if we want to support info buffer in a generic way (that is sticky in general, configurations through `setParameters()` for one frame will be kept in the queue) we need to think about updating the configurations (including but not limited to QP map) if they are present in the info buffer queue instead of clear itself after each frame.\n\nI\u0027d suggest for now we just leave a note, keep this ticket open, and ask Lajos to review. Do you agree?\n\nThank you!",
+      "parentUuid": "56cc75a6_b60b23ff",
+      "range": {
+        "startLine": 2295,
+        "startChar": 1,
+        "endLine": 2295,
+        "endChar": 80
+      },
+      "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
