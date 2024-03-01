@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3d4e87_c18a9039",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-01T16:53:58Z",
+      "side": 1,
+      "message": "For the record: aosp/2985373 is the new approach to achieve this.",
+      "revId": "ea3a4dcaf2fe810ceb18a019566e7e9fc45fe207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
