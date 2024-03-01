@@ -540,7 +540,7 @@ private:
             }
         }
         if (slotBuffer) {
-            ALOGV("buffer wraps %llu %d", (unsigned long long)mProducerId, slot);
+            ALOGD("buffer wraps %llu %d", (unsigned long long)mProducerId, slot);
             C2Handle *c2Handle = android::WrapNativeCodec2GrallocHandle(
                     slotBuffer->handle,
                     slotBuffer->width,
@@ -638,6 +638,7 @@ public:
             c2_status_t err = mAllocator->newGraphicAllocation(
                     width, height, format, usage, &alloc);
             if (err != C2_OK) {
+                ALOGD("graphic buffer direc alloc failed %d", (int)err);
                 return err;
             }
             std::shared_ptr<C2BufferQueueBlockPoolData> poolData =
@@ -645,6 +646,7 @@ public:
                             0, (uint64_t)0, ~0, nullptr, nullptr, nullptr);
             *block = _C2BlockFactory::CreateGraphicBlock(alloc, poolData);
             ALOGV("allocated a buffer successfully");
+            ALOGD("graphic buffer direc alloced");
 
             return C2_OK;
         }
@@ -701,6 +703,7 @@ public:
                 c2SyncMem = C2SurfaceSyncMemory::Import(syncHandle);
             }
         }
+        std::vector<int> slotCleared;
         int migrated = 0;
         // poolDatas dtor should not be called during lock is held.
         std::shared_ptr<C2BufferQueueBlockPoolData>
@@ -741,7 +744,9 @@ public:
                 syncVar->setSyncStatusLocked(C2SyncVariables::STATUS_ACTIVE);
                 syncVar->unlock();
             }
+            bool migratable = false;
             if (mProducer && bqInformation) { // migrate buffers
+                migratable = true;
                 for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
                     std::shared_ptr<C2BufferQueueBlockPoolData> data =
                             mPoolDatas[i].lock();
@@ -760,14 +765,31 @@ public:
                 // old buffers should not be cancelled since the associated IGBP
                 // is no longer valid.
                 mIgbpValidityToken = std::make_shared<int>(0);
+                for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                    mLingerBuffers[i] = mBuffers[i];
+                    mLingerPoolDatas[i] = mPoolDatas[i];
+                }
+                ALOGD("stored current buffer not to invalidate");
             }
             if (mInvalidated) {
                 mIgbpValidityToken = std::make_shared<int>(0);
             }
+            ALOGD("about to clean or repack old buffers migrated(%d: %d)",
+                  migratable, migrated);
+            int activeBuffers = 0;
+            int reWritten = 0;
             for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                if (mBuffers[i] != nullptr) {
+                    ++activeBuffers;
+                }
+                if (buffers[i] != nullptr) {
+                    ++reWritten;
+                }
                 mBuffers[i] = buffers[i];
                 mPoolDatas[i] = poolDatas[i];
             }
+            ALOGD("existing buffer slot %d re-written: %d", activeBuffers,
+                  reWritten);
         }
         if (producer && bqInformation) {
             ALOGD("local generation change %u , "
@@ -832,6 +854,9 @@ private:
 
     sp<GraphicBuffer> mBuffers[NUM_BUFFER_SLOTS];
     std::weak_ptr<C2BufferQueueBlockPoolData> mPoolDatas[NUM_BUFFER_SLOTS];
+
+    sp<GraphicBuffer> mLingerBuffers[NUM_BUFFER_SLOTS];
+    std::weak_ptr<C2BufferQueueBlockPoolData> mLingerPoolDatas[NUM_BUFFER_SLOTS];
 
     std::mutex mSyncMemMutex;
     std::shared_ptr<C2SurfaceSyncMemory> mSyncMem;
