@@ -621,8 +621,11 @@ RetCode BundleContext::setVirtualizerStrength(int strength) {
 
 RetCode BundleContext::setForcedDevice(
         const ::aidl::android::media::audio::common::AudioDeviceDescription& device) {
-    RETURN_VALUE_IF(true != isDeviceSupportedVirtualizer({device}), RetCode::ERROR_EFFECT_LIB_ERROR,
-                    " deviceNotSupportVirtualizer");
+    AudioDeviceDescription noneDevice;
+    if (device != noneDevice) {
+        RETURN_VALUE_IF(true != isDeviceSupportedVirtualizer({device}),
+                        RetCode::ERROR_EFFECT_LIB_ERROR, " deviceNotSupportVirtualizer");
+    }
     mForceDevice = device;
     return RetCode::SUCCESS;
 }
