@@ -265,6 +265,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "019a6016_087af86e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-03-04T23:59:52Z",
+      "side": 1,
+      "message": "I thought of a better way to test this. So I created a way to parse the policy files and dump the data into a list. I did this with this change and from the original files. Here are the results:\n\nFor arm:\nprctl: 1 becomes prctl: arg0 \u003d\u003d PR_GET_NO_NEW_PRIVS || arg0 \u003d\u003d 0x53564d41\n\nAdds:\nrecvfrom: 1\nsetsockopt: 1\n\nFor arm64:\nprctl: 1 becomes prctl: arg0 \u003d\u003d PR_GET_NO_NEW_PRIVS || arg0 \u003d\u003d 0x53564d41 || arg0 \u003d\u003d PR_PAC_RESET_KEYS || arg0 \u003d\u003d 56 || arg0 \u003d\u003d 61\n\nAdds:\nrecvfrom: 1\n\nFor x86:\nmmap2: arg2 in 0x1|0x2 becomes mmap2: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE\nmprotect: arg2 in 0x1|0x2 becomes mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE\n\nRemoves:\nmmap:1\n\nFor x86_64:\nmmap: arg2 in 0x1|0x2 becomes mmap: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE\nmprotect: arg2 in 0x1|0x2 becomes mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE\n\nRemoves:\nmmap2: 1\n\nFor riscv64:\nmmap:1 becomes mmap: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE\nmprotect: 1 becomes mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE\nprctl: 1 becomes prctl: arg0 \u003d\u003d PR_GET_NO_NEW_PRIVS || arg0 \u003d\u003d 0x53564d41\n\nAdds:\ngetegid: 1\ngeteuid: 1\ngetgid: 1\ngetgroups: 1\ngetrandom: 1\ngettimeofday: 1\nprocess_vm_readv: 1\nrecvfrom: 1\nrecvmsg: 1\nrt_sigaction: 1\nrt_tgsigqueueinfo: 1\nsetsockopt: 1\nsysinfo: 1\ntgkill: 1\n\n\nI believe the new riscv64 version is actually more accurate than the previous version since the missing syscalls are really used by debuggerd and we might have gotten lucky not to trip over them.\n\nThe only thing I\u0027m not sure about is the added restrictions for prctl and the change in the mmaps for x86/x86_64. For x86/x86_64, I wonder if I should change those to use the normal crash_dump file that would leave the mmap/mprotect calls the same as before.",
+      "parentUuid": "3bff264b_b1355963",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "7589632ff0cf0b63facda04931820ef6e764f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ee96254_53f8df73",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
