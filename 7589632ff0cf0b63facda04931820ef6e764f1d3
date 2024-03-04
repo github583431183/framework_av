@@ -217,6 +217,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "29847458_28b2448e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-04T17:25:39Z",
+      "side": 1,
+      "message": "built swcodec from main + these 2 cls, loaded the apex into an Android R device\nand the result didn\u0027t produce audio (the relevant audio codecs are in swcodec).\n\nI haven\u0027t chased through the logcat yet to root cause it.\nBut the implication is that this set of CLs isn\u0027t quite ready.",
+      "parentUuid": "b41fff01_5418b283",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "7589632ff0cf0b63facda04931820ef6e764f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ee96254_53f8df73",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
