@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a28a45_d7f6bdb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-03-04T18:12:06Z",
+      "side": 1,
+      "message": "When there are long gaps between changes, it can help to point reviewers to previous, similar changes like aosp/1740757.\n\nIf you apply any of my suggestions, please sync the code with media/codec2/components/vpx/C2SoftVpxEnc.cpp.",
+      "revId": "fa6527f95a4680cfb8cc5905344bf9604661060c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eadb8dcd_f5ce911c",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-03-04T18:12:06Z",
+      "side": 1,
+      "message": "I don\u0027t know if this comment is adding any useful information.",
+      "revId": "fa6527f95a4680cfb8cc5905344bf9604661060c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e36aa88b_8747bccb",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-03-04T18:12:06Z",
+      "side": 1,
+      "message": "you can drop the {}s with 2 arguments.",
+      "range": {
+        "startLine": 355,
+        "startChar": 45,
+        "endLine": 355,
+        "endChar": 46
+      },
+      "revId": "fa6527f95a4680cfb8cc5905344bf9604661060c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
