@@ -1924,8 +1924,6 @@ size_t AudioFlinger::getInputBufferSize(uint32_t sampleRate, audio_format_t form
     }
     mHardwareStatus = AUDIO_HW_GET_INPUT_BUFFER_SIZE;
 
-    sp<DeviceHalInterface> dev = mPrimaryHardwareDev.load()->hwDevice();
-
     std::vector<audio_channel_mask_t> channelMasks = {channelMask};
     if (channelMask != AUDIO_CHANNEL_IN_MONO) {
         channelMasks.push_back(AUDIO_CHANNEL_IN_MONO);
@@ -1955,6 +1953,22 @@ size_t AudioFlinger::getInputBufferSize(uint32_t sampleRate, audio_format_t form
 
     mHardwareStatus = AUDIO_HW_IDLE;
 
+    auto getInputBufferSize = [](const sp<DeviceHalInterface>& dev, audio_config_t config,
+                                 size_t* bytes) -> status_t {
+        if (!dev) {
+            return BAD_VALUE;
+        }
+        status_t result = dev->getInputBufferSize(&config, bytes);
+        if (result == BAD_VALUE) {
+            // Retry with the config suggested by the HAL.
+            result = dev->getInputBufferSize(&config, bytes);
+        }
+        if (result != OK || *bytes == 0) {
+            return BAD_VALUE;
+        }
+        return result;
+    };
+
     // Change parameters of the configuration each iteration until we find a
     // configuration that the device will support, or HAL suggests what it supports.
     audio_config_t config = AUDIO_CONFIG_INITIALIZER;
@@ -1966,16 +1980,13 @@ size_t AudioFlinger::getInputBufferSize(uint32_t sampleRate, audio_format_t form
                 config.sample_rate = testSampleRate;
 
                 size_t bytes = 0;
-                audio_config_t loopConfig = config;
-                status_t result = dev->getInputBufferSize(&config, &bytes);
-                if (result == BAD_VALUE) {
-                    // Retry with the config suggested by the HAL.
-                    result = dev->getInputBufferSize(&config, &bytes);
+                for (const AudioHwDevice* dev : mInputBufferSizeOrderedDevs) {
+                    if (getInputBufferSize(dev->hwDevice(), config, &bytes) == OK) {
+                        break;
+                    }
                 }
-                if (result != OK || bytes == 0) {
-                    config = loopConfig;
-                    continue;
-                }
+                if (bytes == 0) continue;
+
                 if (config.sample_rate != sampleRate || config.channel_mask != channelMask ||
                     config.format != format) {
                     uint32_t dstChannelCount = audio_channel_count_from_in_mask(channelMask);
@@ -2589,6 +2600,9 @@ AudioHwDevice* AudioFlinger::loadHwModule_ll(const char *name)
         mPrimaryHardwareDev.load()->hwDevice()->setMode(mMode);
         mHardwareStatus = AUDIO_HW_IDLE;
     }
+    if (strcmp(name, AUDIO_HARDWARE_MODULE_ID_REMOTE_SUBMIX) == 0) {
+        mRemoteSubmixDev = audioDevice;
+    }
 
     if (mDevicesFactoryHal->getHalVersion() > kMaxAAudioPropertyDeviceHalVersion) {
         if (int32_t mixerBursts = dev->getAAudioMixerBurstCount();
@@ -2603,10 +2617,47 @@ AudioHwDevice* AudioFlinger::loadHwModule_ll(const char *name)
     }
 
     mAudioHwDevs.add(handle, audioDevice);
+    if (strcmp(name, AUDIO_HARDWARE_MODULE_ID_STUB) != 0) {
+        mInputBufferSizeOrderedDevs.insert(audioDevice);
+    }
 
     ALOGI("loadHwModule() Loaded %s audio interface, handle %d", name, handle);
 
     return audioDevice;
+}
+
+// Sort AudioHwDevice to be traversed in the getInputBufferSize call in the following order:
+// Primary, Usb, Bluetooth, A2DP, other modules, remote submix.
+/* static */
+bool AudioFlinger::inputBufferSizeDevsCmp(const AudioHwDevice* l, const AudioHwDevice* r) {
+    static constexpr std::array sModulesOrder = {
+        AUDIO_HARDWARE_MODULE_ID_PRIMARY,
+        AUDIO_HARDWARE_MODULE_ID_USB,
+        AUDIO_HARDWARE_MODULE_ID_BLUETOOTH,
+        AUDIO_HARDWARE_MODULE_ID_A2DP,
+    };
+
+    const std::string_view lModuleName = l->moduleName();
+    const std::string_view rModuleName = r->moduleName();
+
+    if (rModuleName == AUDIO_HARDWARE_MODULE_ID_REMOTE_SUBMIX) {
+        return true;
+    }
+
+    size_t lIdx = std::numeric_limits<size_t>::max();
+    size_t rIdx = lIdx;
+    for (size_t i = 0; i < sModulesOrder.size(); i++) {
+        if (lModuleName == sModulesOrder[i]) {
+            lIdx = i;
+        } else if (rModuleName == sModulesOrder[i]) {
+            rIdx = i;
+        }
+    }
+
+    if (lIdx == rIdx) {
+        return lModuleName < rModuleName;
+    }
+    return lIdx < rIdx;
 }
 
 // ----------------------------------------------------------------------------
