@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16601733_975e244a",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-05T19:26:09Z",
+      "side": 1,
+      "message": "Hi Wonsik,\n\nCurrently the info buffer configuration is queued for each frame, and cleared after usage for each frame, so it is non-sticky. Could you please confirm if it is WRONG to clear it here, or OK to clear it here but we\u0027ll need to add clear in flush, stop and reset?\n\nIf it\u0027s the latter, we may need to change the overall logic a little bit to \"update\" the QP map configurations each frame instead of clearing and resetting for each frame.\n\n@hmahendrakar@google.com\n@ram.mohan@ittiam.com",
+      "parentUuid": "606c03d3_c1f6f91d",
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0467aca6_4233069e",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
         "patchSetId": 4
