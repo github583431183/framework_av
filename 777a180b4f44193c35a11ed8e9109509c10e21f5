@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452d977f_3a47aea1",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-03-05T13:36:02Z",
+      "side": 1,
+      "message": "We\u0027re checking `sampleRate_` twice here.  Did we intend to check `channelCount_` for nullptr here for the second check?",
+      "revId": "777a180b4f44193c35a11ed8e9109509c10e21f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
