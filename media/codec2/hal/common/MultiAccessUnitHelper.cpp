@@ -131,7 +131,8 @@ MultiAccessUnitHelper::MultiAccessUnitHelper(
         mInterface(intf) {
     std::shared_ptr<C2AllocatorStore> store = GetCodec2PlatformAllocatorStore();
     if(store->fetchAllocator(C2AllocatorStore::DEFAULT_LINEAR, &mLinearAllocator) == C2_OK) {
-        mLinearPool = std::make_shared<C2PooledBlockPool>(mLinearAllocator, ++mBlockPoolId);
+        mLinearPool = std::make_shared<C2PooledBlockPool>(
+                mLinearAllocator, ++mBlockPoolId, C2PooledBlockPool::BufferPoolVer());
         mInit = true;
     }
 }
