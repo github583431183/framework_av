@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6830d0_144b7cc9",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-05T17:58:56Z",
+      "side": 1,
+      "message": "`const`",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 417,
+        "endChar": 12
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd2f7de_15c0395c",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-05T17:58:56Z",
+      "side": 1,
+      "message": "I recommend using a `for` loop here:\n\n```\nfor (int fc \u003d frameCount; fc \u003e 0;)\n```",
+      "range": {
+        "startLine": 421,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 37
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17072ad_8b642884",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-05T17:58:56Z",
+      "side": 1,
+      "message": "to process?",
+      "range": {
+        "startLine": 427,
+        "startChar": 74,
+        "endLine": 427,
+        "endChar": 78
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61847c0_4d957ef2",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-05T17:58:56Z",
+      "side": 1,
+      "message": "nit: I think these two variables can be inlined",
+      "range": {
+        "startLine": 434,
+        "startChar": 12,
+        "endLine": 434,
+        "endChar": 34
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
