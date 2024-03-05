@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81678781_7274b142",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-03-05T15:21:58Z",
+      "side": 1,
+      "message": "The patch was tested on AOSP 13 r79. I find it difficult to test it on the main branch, because neither the emulator from aosp_x86_64-trunk_staging-userdebug built from it works, nor running tests on the yukawa debugging board.\n\nPlease review the patch, if the idea behind it is ok, I\u0027ll spend more time on tests on the main branch.",
+      "revId": "492904e1c48fe06596e87f7d6a72c3d786c9e8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
