@@ -617,6 +617,7 @@ private:
     // always take mMutex before mHardwareMutex
 
     std::atomic<AudioHwDevice*> mPrimaryHardwareDev = nullptr;
+    std::atomic<AudioHwDevice*> mRemoteSubmixDev = nullptr;
     DefaultKeyedVector<audio_module_handle_t, AudioHwDevice*> mAudioHwDevs
             GUARDED_BY(hardwareMutex()) {nullptr /* defValue */};
 
