@@ -16,6 +16,24 @@
       "message": "We\u0027re checking `sampleRate_` twice here.  Did we intend to check `channelCount_` for nullptr here for the second check?",
       "revId": "777a180b4f44193c35a11ed8e9109509c10e21f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71937ae_0b692fbf",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-03-05T18:49:49Z",
+      "side": 1,
+      "message": "Thanks for catching that,\naddressed in aosp/2989294",
+      "parentUuid": "452d977f_3a47aea1",
+      "revId": "777a180b4f44193c35a11ed8e9109509c10e21f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
