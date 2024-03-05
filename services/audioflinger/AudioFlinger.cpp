@@ -1901,7 +1901,8 @@ size_t AudioFlinger::getInputBufferSize(uint32_t sampleRate, audio_format_t form
     }
     mHardwareStatus = AUDIO_HW_GET_INPUT_BUFFER_SIZE;
 
-    sp<DeviceHalInterface> dev = mPrimaryHardwareDev.load()->hwDevice();
+    sp<DeviceHalInterface> primaryDev = mPrimaryHardwareDev.load()->hwDevice();
+    sp<DeviceHalInterface> remoteSubmixDev = mRemoteSubmixDev.load()->hwDevice();
 
     std::vector<audio_channel_mask_t> channelMasks = {channelMask};
     if (channelMask != AUDIO_CHANNEL_IN_MONO) {
@@ -1932,6 +1933,18 @@ size_t AudioFlinger::getInputBufferSize(uint32_t sampleRate, audio_format_t form
 
     mHardwareStatus = AUDIO_HW_IDLE;
 
+    auto getInputBufferSize = [](sp<DeviceHalInterface> dev, audio_config_t config, size_t *bytes) -> status_t {
+        status_t result = dev->getInputBufferSize(&config, bytes);
+        if (result == BAD_VALUE) {
+            // Retry with the config suggested by the HAL.
+            result = dev->getInputBufferSize(&config, bytes);
+        }
+        if (result != OK || *bytes == 0) {
+            return BAD_VALUE;
+        }
+        return result;
+    };
+
     // Change parameters of the configuration each iteration until we find a
     // configuration that the device will support, or HAL suggests what it supports.
     audio_config_t config = AUDIO_CONFIG_INITIALIZER;
@@ -1943,16 +1956,13 @@ size_t AudioFlinger::getInputBufferSize(uint32_t sampleRate, audio_format_t form
                 config.sample_rate = testSampleRate;
 
                 size_t bytes = 0;
-                audio_config_t loopConfig = config;
-                status_t result = dev->getInputBufferSize(&config, &bytes);
-                if (result == BAD_VALUE) {
-                    // Retry with the config suggested by the HAL.
-                    result = dev->getInputBufferSize(&config, &bytes);
+                if (getInputBufferSize(primaryDev, config, &bytes) != OK) {
+                    // Fallback to the remote submix dev if request to the primary HAL failed.
+                    if (getInputBufferSize(remoteSubmixDev, config, &bytes) != OK) {
+                        continue;
+                    }
                 }
-                if (result != OK || bytes == 0) {
-                    config = loopConfig;
-                    continue;
-                }
+
                 if (config.sample_rate != sampleRate || config.channel_mask != channelMask ||
                     config.format != format) {
                     uint32_t dstChannelCount = audio_channel_count_from_in_mask(channelMask);
@@ -2561,6 +2571,9 @@ AudioHwDevice* AudioFlinger::loadHwModule_ll(const char *name)
         mHardwareStatus = AUDIO_HW_SET_MODE;
         mPrimaryHardwareDev.load()->hwDevice()->setMode(mMode);
         mHardwareStatus = AUDIO_HW_IDLE;
+    }
+    if (strcmp(name, AUDIO_HARDWARE_MODULE_ID_REMOTE_SUBMIX) == 0) {
+        mRemoteSubmixDev = audioDevice;
     }
 
     if (mDevicesFactoryHal->getHalVersion() > kMaxAAudioPropertyDeviceHalVersion) {
