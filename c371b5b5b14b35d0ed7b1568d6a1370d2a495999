@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96528c61_befae4a6",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-03-05T19:07:23Z",
+      "side": 1,
+      "message": "With current implementation, we do no need mutex in ReverbContext now, parameter updating and data processing were synced with `mImplMutex`: https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/default/include/effect-impl/EffectImpl.h;l\u003d97;drc\u003d8d9f2d18f725ea689ba8584268123045f9d21010;bpv\u003d1;bpt\u003d1\n\nWe should cleanup all unnecessary mutexs, this can be separate cl or I can work on this later.",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 29
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbb0ce7_7f52afdb",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-03-05T19:07:23Z",
+      "side": 1,
+      "message": "nit: save is a little unclear to me, is it better to rename this to `remainingFrames`?",
+      "range": {
+        "startLine": 411,
+        "startChar": 12,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd6830d0_144b7cc9",
         "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
         "patchSetId": 1
