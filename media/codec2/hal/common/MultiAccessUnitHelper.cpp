@@ -126,13 +126,17 @@ class C2MultiAccessUnitBuffer : public C2Buffer {
 
 //MultiAccessUnitHelper
 MultiAccessUnitHelper::MultiAccessUnitHelper(
-        const std::shared_ptr<MultiAccessUnitInterface>& intf):
+        const std::shared_ptr<MultiAccessUnitInterface>& intf,
+        const std::shared_ptr<C2Component>& component):
         mInit(false),
         mInterface(intf) {
     std::shared_ptr<C2AllocatorStore> store = GetCodec2PlatformAllocatorStore();
     if(store->fetchAllocator(C2AllocatorStore::DEFAULT_LINEAR, &mLinearAllocator) == C2_OK) {
-        mLinearPool = std::make_shared<C2PooledBlockPool>(mLinearAllocator, ++mBlockPoolId);
-        mInit = true;
+        C2PlatformAllocatorDesc desc;
+        desc.allocatorId = mLinearAllocator->getId();
+        if (C2_OK == CreateCodec2BlockPool(desc, component, &mLinearPool)) {
+            mInit = true;
+        }
     }
 }
 

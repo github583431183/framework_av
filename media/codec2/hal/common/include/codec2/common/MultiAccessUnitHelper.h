@@ -58,7 +58,8 @@ protected:
 struct MultiAccessUnitHelper {
 public:
     MultiAccessUnitHelper(
-            const std::shared_ptr<MultiAccessUnitInterface>& intf);
+            const std::shared_ptr<MultiAccessUnitInterface>& intf,
+            const std::shared_ptr<C2Component>& component);
 
     virtual ~MultiAccessUnitHelper();
 

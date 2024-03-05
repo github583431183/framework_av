@@ -570,7 +570,8 @@ std::shared_ptr<C2Component> Component::findLocalComponent(
 void Component::initListener(const sp<Component>& self) {
     std::shared_ptr<C2Component::Listener> c2listener;
     if (mMultiAccessUnitIntf) {
-        mMultiAccessUnitHelper = std::make_shared<MultiAccessUnitHelper>(mMultiAccessUnitIntf);
+        mMultiAccessUnitHelper = std::make_shared<MultiAccessUnitHelper>(
+                mMultiAccessUnitIntf, mComponent);
     }
     c2listener = mMultiAccessUnitHelper ?
             std::make_shared<MultiAccessUnitListener>(self, mMultiAccessUnitHelper) :

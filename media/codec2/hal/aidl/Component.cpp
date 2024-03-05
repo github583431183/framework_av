@@ -487,7 +487,8 @@ void Component::initListener(const std::shared_ptr<Component>& self) {
     if (__builtin_available(android __ANDROID_API_T__, *)) {
         std::shared_ptr<C2Component::Listener> c2listener;
         if (mMultiAccessUnitIntf) {
-            mMultiAccessUnitHelper = std::make_shared<MultiAccessUnitHelper>(mMultiAccessUnitIntf);
+            mMultiAccessUnitHelper = std::make_shared<MultiAccessUnitHelper>(
+                    mMultiAccessUnitIntf, mComponent);
         }
         c2listener = mMultiAccessUnitHelper ?
                 std::make_shared<MultiAccessUnitListener>(self, mMultiAccessUnitHelper) :
