@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37204f04_77862996",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-05T19:02:24Z",
+      "side": 1,
+      "message": "nit: indent\n\n```suggestion\n            \u0026\u0026 android::media::codec::provider_-\u003eregion_of_interest_support()) {\n```",
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e35c289_fba85261",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-05T19:02:24Z",
+      "side": 1,
+      "message": "nit: indent",
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606c03d3_c1f6f91d",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-05T19:02:24Z",
+      "side": 1,
+      "message": "need to clear this at flush, stop, reset.",
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0467aca6_4233069e",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-05T19:02:24Z",
+      "side": 1,
+      "message": "I think `setInfoBuffer` aligns better with the API",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 24
+      },
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
