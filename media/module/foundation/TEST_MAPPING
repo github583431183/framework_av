@@ -1,11 +1,8 @@
 {
-  "postsubmit": [
-    { "name": "AVCUtilsUnitTest" },
-    { "name": "OpusHeaderTest" }
-  ],
-
   "presubmit": [
-    { "name": "sf_foundation_test" },
-    { "name": "MetaDataBaseUnitTest"}
+    { "name": "AVCUtilsUnitTest" },
+    { "name": "MetaDataBaseUnitTest"},
+    { "name": "OpusHeaderTest" },
+    { "name": "sf_foundation_test" }
   ]
 }

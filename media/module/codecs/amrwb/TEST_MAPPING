@@ -1,5 +1,5 @@
 {
-  "postsubmit": [
+  "presubmit": [
     { "name": "AmrwbDecoderTest"},
     { "name": "AmrwbEncoderTest"}
   ]
