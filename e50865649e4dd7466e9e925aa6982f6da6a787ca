@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142f904f_eb4afc3c",
+        "filename": "drm/libmediadrmrkp/src/DrmRkpAdapter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1902075
+      },
+      "writtenOn": "2024-03-06T21:07:55Z",
+      "side": 1,
+      "message": "Should we consider lazy service in this case?",
+      "range": {
+        "startLine": 38,
+        "startChar": 42,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "e50865649e4dd7466e9e925aa6982f6da6a787ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
