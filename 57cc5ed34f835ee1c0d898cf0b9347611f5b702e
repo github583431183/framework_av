@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f047c526_9bdc01f6",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-06T01:09:04Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "37204f04_77862996",
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e35c289_fba85261",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-03-05T19:02:24Z",
       "side": 1,
       "message": "nit: indent",
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65aacb63_3eb7fdc0",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-06T01:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e35c289_fba85261",
       "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -72,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5543237a_a7b1628b",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-06T01:09:04Z",
+      "side": 1,
+      "message": "Wonsik,\nThanks for flagging this.\n\nAdded in stop(), release() and flush().\nreset() calls stop(), so that is also covered.\n\n@dichenzhang@google.com, this only clears pointers, so clearing here is fine.\n\nI am not sure if info buffers are considered non-sticky as such as per C2 API.\nCodecs can take this map and continue using the same map till another call where qp offset map or qp offset rectangles are queued.\n\nWould it be better to discuss sticky vs non-sticky separately?",
+      "parentUuid": "16601733_975e244a",
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0467aca6_4233069e",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
         "patchSetId": 4
@@ -83,6 +137,30 @@
       "writtenOn": "2024-03-05T19:02:24Z",
       "side": 1,
       "message": "I think `setInfoBuffer` aligns better with the API",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 24
+      },
+      "revId": "57cc5ed34f835ee1c0d898cf0b9347611f5b702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc3a61fe_d94b1138",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-06T01:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0467aca6_4233069e",
       "range": {
         "startLine": 236,
         "startChar": 9,

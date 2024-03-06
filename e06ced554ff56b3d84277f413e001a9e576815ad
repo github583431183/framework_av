@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9bf1bd_dbfbd2e1",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-06T01:09:04Z",
+      "side": 1,
+      "message": "Dichen, I have filed b/327795670 and b/327795663 to track the above two.\nThere are few questions on how the errors need to be handled.\nOnce that is aligned, will upload a separate CL.",
+      "parentUuid": "af94816a_20e333b4",
+      "revId": "e06ced554ff56b3d84277f413e001a9e576815ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3fa6a56_d0ff7a40",
