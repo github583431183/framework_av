@@ -34,6 +34,24 @@
       "parentUuid": "81678781_7274b142",
       "revId": "492904e1c48fe06596e87f7d6a72c3d786c9e8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72d00c1_e92e46aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-03-06T07:17:56Z",
+      "side": 1,
+      "message": "Thanks a lot for the review. Please check the new patchset, I have added fallback to the remote submix device. By the way, where is the requirement for the remote submix to exist? Is there some CTS test?",
+      "parentUuid": "150868b3_3e48fe96",
+      "revId": "492904e1c48fe06596e87f7d6a72c3d786c9e8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
