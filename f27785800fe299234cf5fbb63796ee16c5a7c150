@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "760b8730_b694b809",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-06T01:11:20Z",
+      "side": 1,
+      "message": "@dichenzhang@google.com the bigger issue with this approach is, this doesn\u0027t work for surface mode of encoding.\n\nNeed to see how to pass info buffers in surface mode.",
+      "revId": "f27785800fe299234cf5fbb63796ee16c5a7c150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
