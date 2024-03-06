@@ -52,6 +52,24 @@
       "parentUuid": "150868b3_3e48fe96",
       "revId": "492904e1c48fe06596e87f7d6a72c3d786c9e8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a029975_87f558ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-06T19:37:23Z",
+      "side": 1,
+      "message": "It is required by the CDD (and that means there is a CTS test verifying that requirement): https://source.android.com/docs/compatibility/14/android-14-cdd#543_capture_for_rerouting_of_playback. Thanks for asking! It seems that this device is only mandatory \"if device implementations declare both android.hardware.audio.output and android.hardware.microphone\". Thus, please add a check in `getInputBufferSize` that `dev !\u003d nullptr`. I suppose, if the device does not have means for audio input, it is OK for `getInputBufferSize` to return an error.",
+      "parentUuid": "d72d00c1_e92e46aa",
+      "revId": "492904e1c48fe06596e87f7d6a72c3d786c9e8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

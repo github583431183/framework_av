@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da9782f_41b193ab",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-06T19:37:23Z",
+      "side": 1,
+      "message": "nit: in this file, the `*` is attached to the type name",
+      "range": {
+        "startLine": 1936,
+        "startChar": 84,
+        "endLine": 1936,
+        "endChar": 92
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c428c1b_e892b7ad",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-06T19:37:23Z",
+      "side": 1,
+      "message": "Please use `const sp\u003c...\u003e\u0026` to avoid making a copy.",
+      "range": {
+        "startLine": 1936,
+        "startChar": 33,
+        "endLine": 1936,
+        "endChar": 55
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b576bd0_c961afad",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-06T19:37:23Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.",
+      "range": {
+        "startLine": 1936,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 112
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e78fab_8e27ec29",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-06T19:37:23Z",
+      "side": 1,
+      "message": "nit: I would suggest using a single `if`: \n\n```\nif (getInputBufferSize(primaryDev, config, \u0026bytes) !\u003d OK \u0026\u0026\n    getInputBufferSize(remoteSubmixDev, config, \u0026bytes) !\u003d OK)\n```",
+      "range": {
+        "startLine": 1959,
+        "startChar": 0,
+        "endLine": 1961,
+        "endChar": 84
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
