@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4ee86e_7dd766e1",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-03-06T12:38:28Z",
+      "side": 1,
+      "message": "We\u0027ll create a separate CL.",
+      "parentUuid": "96528c61_befae4a6",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 29
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cbb0ce7_7f52afdb",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-05T19:07:23Z",
       "side": 1,
       "message": "nit: save is a little unclear to me, is it better to rename this to `remainingFrames`?",
+      "range": {
+        "startLine": 411,
+        "startChar": 12,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "615d33bf_11449e24",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-03-06T12:38:28Z",
+      "side": 1,
+      "message": "Using for loop to maintain the remaining frame counts.",
+      "parentUuid": "2cbb0ce7_7f52afdb",
       "range": {
         "startLine": 411,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ead4ab_15454898",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-03-06T12:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd6830d0_144b7cc9",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 417,
+        "endChar": 12
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddd2f7de_15c0395c",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-05T17:58:56Z",
       "side": 1,
       "message": "I recommend using a `for` loop here:\n\n```\nfor (int fc \u003d frameCount; fc \u003e 0;)\n```",
+      "range": {
+        "startLine": 421,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 37
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5dddde2_82d78a94",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-03-06T12:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddd2f7de_15c0395c",
       "range": {
         "startLine": 421,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "718a053a_b75d8f2a",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-03-06T12:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17072ad_8b642884",
+      "range": {
+        "startLine": 427,
+        "startChar": 74,
+        "endLine": 427,
+        "endChar": 78
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e61847c0_4d957ef2",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-03-05T17:58:56Z",
       "side": 1,
       "message": "nit: I think these two variables can be inlined",
+      "range": {
+        "startLine": 434,
+        "startChar": 12,
+        "endLine": 434,
+        "endChar": 34
+      },
+      "revId": "c371b5b5b14b35d0ed7b1568d6a1370d2a495999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef78d0e_f9b84f47",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-03-06T12:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61847c0_4d957ef2",
       "range": {
         "startLine": 434,
         "startChar": 12,
