@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a298410_1da16789",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-06T18:49:19Z",
+      "side": 1,
+      "message": "This looks a bit confusing. I understand that this is how the old code was written, but I would like to see a clarification here. Why does a vector of frames is being sized using the sample count? Does it mean that in this case the input is mono, thus a frame consists of just one sample?",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 33
+      },
+      "revId": "ecc97c626af7caed0c625c5249b73aab67e4f43e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
