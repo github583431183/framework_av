@@ -22,6 +22,30 @@
       },
       "revId": "5a2cf81ae3345e80db50c9af1f94b318231e494d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba897d8_55d385dd",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2024-03-06T14:08:00Z",
+      "side": 1,
+      "message": "\u003e there might be possibility or some different code path that could trigger \u0027opChanged\u0027 during the call to \u0027startCameraOps\u0027\n\nThanks for pointing this. Considering what was mentioned earlier, I think that the alternative approach without an extra lock is better.",
+      "parentUuid": "10f2b933_99a1ba18",
+      "range": {
+        "startLine": 103,
+        "startChar": 36,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "5a2cf81ae3345e80db50c9af1f94b318231e494d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
