@@ -22,6 +22,30 @@
       },
       "revId": "e50865649e4dd7466e9e925aa6982f6da6a787ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2cdfc96_3912dba6",
+        "filename": "drm/libmediadrmrkp/src/DrmRkpAdapter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2024-03-07T08:36:32Z",
+      "side": 1,
+      "message": "+1, seems like wait is probably necessary\n\nAlso, as discussed offline, it seems broken for a platform to declare a HAL that you can never connect to. I feel like this shouldn\u0027t pass xTS.",
+      "parentUuid": "142f904f_eb4afc3c",
+      "range": {
+        "startLine": 38,
+        "startChar": 42,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "e50865649e4dd7466e9e925aa6982f6da6a787ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
