@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ada0d0d_33f642bf",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-07T20:50:58Z",
+      "side": 1,
+      "message": "I think at the start `fc \u003d kMaxBlockFrames * N + M`. We process in full blocks `N` times, and the final `fc \u003d M \u003c kMaxBlockFrames`, so we need to use `fc`.",
+      "parentUuid": "0b43b7f4_4da86d8e",
+      "range": {
+        "startLine": 423,
+        "startChar": 11,
+        "endLine": 423,
+        "endChar": 62
+      },
+      "revId": "d3d2cbab0156a111549b837e6b448652ed4c658a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e188d70c_55b81c7e",
         "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
         "patchSetId": 4
