@@ -46,6 +46,30 @@
       },
       "revId": "5a2cf81ae3345e80db50c9af1f94b318231e494d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f41be3f_1bd38f21",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2024-03-07T01:24:46Z",
+      "side": 1,
+      "message": "Thanks KK, I just pushed a new patch set with the proposed sequence.",
+      "parentUuid": "3ba897d8_55d385dd",
+      "range": {
+        "startLine": 103,
+        "startChar": 36,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "5a2cf81ae3345e80db50c9af1f94b318231e494d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
