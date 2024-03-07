@@ -22,6 +22,30 @@
       },
       "revId": "ecc97c626af7caed0c625c5249b73aab67e4f43e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17797b66_7f38d433",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-03-07T14:25:09Z",
+      "side": 1,
+      "message": "It is input buffer of size ```samples```. Renamed it for clarity.",
+      "parentUuid": "2a298410_1da16789",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 33
+      },
+      "revId": "ecc97c626af7caed0c625c5249b73aab67e4f43e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
