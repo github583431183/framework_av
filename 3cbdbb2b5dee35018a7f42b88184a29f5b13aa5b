@@ -50,6 +50,23 @@
       "message": "The issue leads to lost request. The patch give a chance to keep the request.",
       "revId": "3cbdbb2b5dee35018a7f42b88184a29f5b13aa5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb38d147_0dbdc056",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130869
+      },
+      "writtenOn": "2024-03-07T05:31:38Z",
+      "side": 1,
+      "message": "Hi, google friends, what the status for the patch? Thanks!",
+      "revId": "3cbdbb2b5dee35018a7f42b88184a29f5b13aa5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
