@@ -16,6 +16,24 @@
       "message": "Creating blockpool and passing here seems better, instead of passing mComponent.\n\nAlso do you destroy blockpool when the lifecycle is over?\n(I just wanna make it sure)",
       "revId": "66e052f77d4385bea7f670a4d5b92e6cb79d3983",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcd5c449_e53a3986",
+        "filename": "media/codec2/hal/aidl/Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-03-08T04:27:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "991bbe89_10b8df60",
+      "revId": "66e052f77d4385bea7f670a4d5b92e6cb79d3983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
