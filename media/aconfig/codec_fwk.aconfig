@@ -6,6 +6,13 @@ package: "android.media.codec"
 container: "system"
 
 flag {
+  name: "native_capabilites"
+  namespace: "codec_fwk"
+  description: "Feature flag for native codec capabilities"
+  bug: "306023029"
+}
+
+flag {
   name: "aidl_hal_input_surface"
   namespace: "codec_fwk"
   description: "Feature flags for enabling AIDL HAL InputSurface handling"
