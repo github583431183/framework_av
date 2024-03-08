@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9296df5_472c48ab",
+        "filename": "media/libaudiohal/impl/EffectConversionHelperAidl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-08T10:58:59Z",
+      "side": 1,
+      "message": "maybe prefix with handle instead of need to be consistent with other capability queries.\nand move declaration to line 153?",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "687968fa1470bb0dccd282fc2178065e391516e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
