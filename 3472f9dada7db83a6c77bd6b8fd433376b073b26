@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2346c0c0_9829663c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-03-09T01:38:42Z",
+      "side": 1,
+      "message": "Clean cherry-pick from internal main ag/25760701.",
+      "revId": "3472f9dada7db83a6c77bd6b8fd433376b073b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
