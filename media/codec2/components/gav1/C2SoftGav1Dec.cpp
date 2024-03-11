@@ -439,13 +439,6 @@ c2_status_t C2SoftGav1Dec::onInit() {
 }
 
 c2_status_t C2SoftGav1Dec::onStop() {
-  mSignalledError = false;
-  mSignalledOutputEos = false;
-  return C2_OK;
-}
-
-void C2SoftGav1Dec::onReset() {
-  (void)onStop();
   c2_status_t err = onFlush_sm();
   if (err != C2_OK) {
     ALOGW("Failed to flush the av1 decoder. Trying to hard reset.");
@@ -454,6 +447,13 @@ void C2SoftGav1Dec::onReset() {
       ALOGE("Hard reset failed.");
     }
   }
+  mSignalledError = false;
+  mSignalledOutputEos = false;
+  return C2_OK;
+}
+
+void C2SoftGav1Dec::onReset() {
+  (void)onStop();
 }
 
 void C2SoftGav1Dec::onRelease() { destroyDecoder(); }
@@ -467,12 +467,14 @@ c2_status_t C2SoftGav1Dec::onFlush_sm() {
 
   // Dequeue frame (if any) that was enqueued previously.
   const libgav1::DecoderBuffer *buffer;
-  status = mCodecCtx->DequeueFrame(&buffer);
-  if (status != kLibgav1StatusOk && status != kLibgav1StatusNothingToDequeue) {
-    ALOGE("Failed to dequeue frame after flushing the av1 decoder. status: %d",
-          status);
-    return C2_CORRUPTED;
-  }
+  do {
+      status = mCodecCtx->DequeueFrame(&buffer);
+      if (status != kLibgav1StatusOk && status != kLibgav1StatusNothingToDequeue) {
+        ALOGE("Failed to dequeue frame after flushing the av1 decoder. status: %d",
+              status);
+        return C2_CORRUPTED;
+      }
+  } while (buffer != nullptr);
 
   mSignalledError = false;
   mSignalledOutputEos = false;
