@@ -70,6 +70,24 @@
       "parentUuid": "d72d00c1_e92e46aa",
       "revId": "492904e1c48fe06596e87f7d6a72c3d786c9e8c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65a3849_5ab0712d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-03-11T08:12:24Z",
+      "side": 1,
+      "message": "Thanks, got it. Add checks for the remote submix device existence.",
+      "parentUuid": "9a029975_87f558ca",
+      "revId": "492904e1c48fe06596e87f7d6a72c3d786c9e8c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

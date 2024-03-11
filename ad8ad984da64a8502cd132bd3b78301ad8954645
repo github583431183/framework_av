@@ -70,6 +70,78 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87abdedb_1b01aff9",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-03-11T08:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da9782f_41b193ab",
+      "range": {
+        "startLine": 1936,
+        "startChar": 84,
+        "endLine": 1936,
+        "endChar": 92
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d6596c_5d98fece",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-03-11T08:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c428c1b_e892b7ad",
+      "range": {
+        "startLine": 1936,
+        "startChar": 33,
+        "endLine": 1936,
+        "endChar": 55
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9cc6d8_6af809b9",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-03-11T08:12:24Z",
+      "side": 1,
+      "message": "Fixed.\nIt seems quite strange that code style checks are not done by the repohooks when running repo upload: it prints green PASSED message, so I thought that at least the code style meets the project requirements. :)",
+      "parentUuid": "1b576bd0_c961afad",
+      "range": {
+        "startLine": 1936,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 112
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0e78fab_8e27ec29",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-06T19:37:23Z",
       "side": 1,
       "message": "nit: I would suggest using a single `if`: \n\n```\nif (getInputBufferSize(primaryDev, config, \u0026bytes) !\u003d OK \u0026\u0026\n    getInputBufferSize(remoteSubmixDev, config, \u0026bytes) !\u003d OK)\n```",
+      "range": {
+        "startLine": 1959,
+        "startChar": 0,
+        "endLine": 1961,
+        "endChar": 84
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02de1882_5c1e603a",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-03-11T08:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e78fab_8e27ec29",
       "range": {
         "startLine": 1959,
         "startChar": 0,
