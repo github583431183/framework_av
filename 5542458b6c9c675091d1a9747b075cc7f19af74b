@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2ed368_0518644d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-03-11T18:21:52Z",
+      "side": 1,
+      "message": "C2...\n\nI think it might be best to split this into 2 changes to allow them to be reverted independently if needed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "5542458b6c9c675091d1a9747b075cc7f19af74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22fdc96_7179a00c",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-03-11T18:21:52Z",
+      "side": 1,
+      "message": "`sysconf` returns a `long`",
+      "range": {
+        "startLine": 549,
+        "startChar": 19,
+        "endLine": 549,
+        "endChar": 26
+      },
+      "revId": "5542458b6c9c675091d1a9747b075cc7f19af74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c467f9_ad51aa7a",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-03-11T18:21:52Z",
+      "side": 1,
+      "message": "indent should be 4 spaces to match most of the file.",
+      "revId": "5542458b6c9c675091d1a9747b075cc7f19af74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
