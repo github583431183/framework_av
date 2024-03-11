@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca482c3_b2788dac",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-11T23:44:12Z",
+      "side": 1,
+      "message": "\"Check Contents\" is a Gerrit plugin, it works on the server. Locally, clang-format can be applied to the diff, however this happens only when the project uses clang-format, which is typically only set up for new projects. The code in audioflinger was created long time ago, and clang format is not set up for it.",
+      "parentUuid": "fd9cc6d8_6af809b9",
+      "range": {
+        "startLine": 1936,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 112
+      },
+      "revId": "ad8ad984da64a8502cd132bd3b78301ad8954645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0e78fab_8e27ec29",
