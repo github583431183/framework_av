@@ -22,6 +22,30 @@
       },
       "revId": "bfe7b66f2acb72f6420c7c091e064fe90d364396",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d947658_0fde1627",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2024-03-12T12:08:47Z",
+      "side": 0,
+      "message": "I don\u0027t think this affects the normal camera application. In fact, no package name is provided for permission check in other places in camera service.",
+      "parentUuid": "42ff9ff8_afe7b88a",
+      "range": {
+        "startLine": 1535,
+        "startChar": 4,
+        "endLine": 1535,
+        "endChar": 47
+      },
+      "revId": "bfe7b66f2acb72f6420c7c091e064fe90d364396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
