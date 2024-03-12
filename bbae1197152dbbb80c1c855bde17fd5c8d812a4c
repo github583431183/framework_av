@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b391715f_9daf3083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2024-03-12T08:53:00Z",
+      "side": 1,
+      "message": "The technical detail of this issue is in https://issuetracker.google.com/issues/329121650.\n\nI described the steps to reproduce this issue. Basically, AndroidX Media and AOSP have different handling on track duration. I think AndroidX Media\u0027s behavior is correct.",
+      "revId": "bbae1197152dbbb80c1c855bde17fd5c8d812a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
