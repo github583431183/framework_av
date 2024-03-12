@@ -130,6 +130,7 @@ cc_library_shared {
     relative_install_path: "soundfx",
     visibility: [
         "//hardware/interfaces/audio/aidl/default:__subpackages__",
+        "//visibility:any_system_partition",
     ],
 }
 
@@ -161,5 +162,6 @@ cc_library_shared {
     relative_install_path: "soundfx",
     visibility: [
         "//hardware/interfaces/audio/aidl/default:__subpackages__",
+        "//visibility:any_system_partition",
     ],
 }
