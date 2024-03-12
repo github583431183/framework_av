@@ -1615,39 +1615,6 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
 
             mLastTrack->timescale = ntohl(timescale);
 
-            // 14496-12 says all ones means indeterminate, but some files seem to use
-            // 0 instead. We treat both the same.
-            int64_t duration = 0;
-            if (version == 1) {
-                if (mDataSource->readAt(
-                            timescale_offset + 4, &duration, sizeof(duration))
-                        < (ssize_t)sizeof(duration)) {
-                    return ERROR_IO;
-                }
-                if (duration != -1) {
-                    duration = ntoh64(duration);
-                }
-            } else {
-                uint32_t duration32;
-                if (mDataSource->readAt(
-                            timescale_offset + 4, &duration32, sizeof(duration32))
-                        < (ssize_t)sizeof(duration32)) {
-                    return ERROR_IO;
-                }
-                if (duration32 != 0xffffffff) {
-                    duration = ntohl(duration32);
-                }
-            }
-            if (duration != 0 && mLastTrack->timescale != 0) {
-                long double durationUs = ((long double)duration * 1000000) / mLastTrack->timescale;
-                if (durationUs < 0 || durationUs > INT64_MAX) {
-                    ALOGE("cannot represent %lld * 1000000 / %lld in 64 bits",
-                          (long long) duration, (long long) mLastTrack->timescale);
-                    return ERROR_MALFORMED;
-                }
-                AMediaFormat_setInt64(mLastTrack->meta, AMEDIAFORMAT_KEY_DURATION, durationUs);
-            }
-
             uint8_t lang[2];
             off64_t lang_offset;
             if (version == 1) {
@@ -3891,6 +3858,37 @@ status_t MPEG4Extractor::parseTrackHeader(
     uint8_t version;
     if (mDataSource->readAt(data_offset, &version, 1) < 1) {
         return ERROR_IO;
+    }
+
+    int64_t duration = 0;
+    if (version == 1) {
+        if (mDataSource->readAt(
+                    data_offset + 28, &duration, sizeof(duration))
+                < (ssize_t)sizeof(duration)) {
+            return ERROR_IO;
+        }
+        if (duration != -1) {
+            duration = ntoh64(duration);
+        }
+    } else if (version == 0) {
+        uint32_t duration32;
+        if (mDataSource->readAt(
+                    data_offset + 20, &duration32, sizeof(duration32))
+                < (ssize_t)sizeof(duration32)) {
+            return ERROR_IO;
+        }
+        if (duration32 != 0xffffffff) {
+            duration = ntohl(duration32);
+        }
+    }
+    if (duration != 0 && mHeaderTimescale != 0) {
+        long double durationUs = ((long double)duration * 1000000) / mHeaderTimescale;
+        if (durationUs < 0 || durationUs > INT64_MAX) {
+            ALOGE("cannot represent %lld * 1000000 / %lld in 64 bits",
+                  (long long) duration, (long long) mHeaderTimescale);
+            return ERROR_MALFORMED;
+        }
+        AMediaFormat_setInt64(mLastTrack->meta, AMEDIAFORMAT_KEY_DURATION, durationUs);
     }
 
     size_t dynSize = (version == 1) ? 36 : 24;
