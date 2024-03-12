@@ -540,6 +540,26 @@ BailOut:
     return codec_return;
 }
 
+static int getCpuCoreCount(int width, int height) {
+    // TODO: set this emphirically.
+    if (width * height >= 426 * 240) {
+#if defined(_SC_NPROCESSORS_ONLN)
+        long cpuCoreCount = sysconf(_SC_NPROCESSORS_ONLN);
+#else
+        long cpuCoreCount = sysconf(_SC_NPROC_ONLN);
+#endif
+        CHECK(cpuCoreCount >= 1);
+        if (cpuCoreCount >= 4) {
+            return 3;
+        } else if (cpuCoreCount == 3 || cpuCoreCount == 2) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+    return 1;
+}
+
 status_t C2SoftAomEnc::initEncoder() {
     aom_codec_err_t codec_return;
     status_t result = UNKNOWN_ERROR;
@@ -596,7 +616,7 @@ status_t C2SoftAomEnc::initEncoder() {
     mCodecConfiguration->g_input_bit_depth = mIs10Bit ? 10 : 8;
 
 
-    mCodecConfiguration->g_threads = 0;
+    mCodecConfiguration->g_threads = getCpuCoreCount(mSize->width, mSize->height);
     mCodecConfiguration->g_error_resilient = 0;
 
     // timebase unit is microsecond
