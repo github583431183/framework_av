@@ -96,5 +96,6 @@ cc_library_shared {
 
     visibility: [
         "//hardware/interfaces/audio/aidl/default:__subpackages__",
+	"//visibility:any_partition",
     ],
 }

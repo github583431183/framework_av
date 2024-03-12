@@ -66,6 +66,7 @@ cc_library {
         "//frameworks/base/core/jni",
         "//frameworks/base/media/jni",
 	"//packages/modules/Media/apex/framework",
+	"//visibility:any_partition",
     ],
 }
 
