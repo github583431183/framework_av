@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b9ff95_44c447fe",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-03-12T23:03:21Z",
+      "side": 1,
+      "message": "empirically?\n\nIf there is going to be follow up work to test the performance, this TODO and the change should be associated with a bug.\n\nFor reference Chrome does this:\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:media/base/video_encoder.cc;l\u003d41;drc\u003d465365641ad68b8feb46a3d23111f221cd2ebc7c",
+      "range": {
+        "startLine": 544,
+        "startChar": 22,
+        "endLine": 544,
+        "endChar": 34
+      },
+      "revId": "df08576947e35853071475477771fef63ecedb2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
