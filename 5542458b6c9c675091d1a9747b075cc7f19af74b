@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f2038e_d557b366",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-03-12T21:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2ed368_0518644d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "5542458b6c9c675091d1a9747b075cc7f19af74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d22fdc96_7179a00c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "422e71bf_a02e636b",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-03-12T21:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d22fdc96_7179a00c",
+      "range": {
+        "startLine": 549,
+        "startChar": 19,
+        "endLine": 549,
+        "endChar": 26
+      },
+      "revId": "5542458b6c9c675091d1a9747b075cc7f19af74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13c467f9_ad51aa7a",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-03-11T18:21:52Z",
       "side": 1,
       "message": "indent should be 4 spaces to match most of the file.",
+      "revId": "5542458b6c9c675091d1a9747b075cc7f19af74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff306b5_b63f4f18",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-03-12T21:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c467f9_ad51aa7a",
       "revId": "5542458b6c9c675091d1a9747b075cc7f19af74b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
