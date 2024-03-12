@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6acb7a18_f7ec4fe0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-03-12T21:29:20Z",
+      "side": 1,
+      "message": "James, While looking at the code, it did not look correct to me, So i made this change. I have to run a flush test check if this is happening. This is why i left the bug field empty as of now.",
+      "parentUuid": "ee05545f_c82ee933",
+      "revId": "a2521906f35e51936712992326fe35cd03b42912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fbe1523_7716a324",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-11T18:23:13Z",
       "side": 1,
       "message": "atest",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "a2521906f35e51936712992326fe35cd03b42912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d185d6c5_a87e7f65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-03-12T21:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fbe1523_7716a324",
       "range": {
         "startLine": 10,
         "startChar": 6,
