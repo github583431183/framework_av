@@ -715,7 +715,7 @@ private:
                     return false;
         }
 
-        audio_io_handle_t io() const override { return AUDIO_IO_HANDLE_NONE; }
+        audio_io_handle_t io() const override { return -2; }
         bool isOutput() const override;
         bool isOffload() const override { return false; }
         bool isOffloadOrDirect() const override { return false; }
