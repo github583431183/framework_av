@@ -1040,12 +1040,11 @@ void EffectModule::addEffectToHal_l()
 {
     if ((mDescriptor.flags & EFFECT_FLAG_TYPE_MASK) == EFFECT_FLAG_TYPE_PRE_PROC ||
          (mDescriptor.flags & EFFECT_FLAG_TYPE_MASK) == EFFECT_FLAG_TYPE_POST_PROC) {
-        if (mCurrentHalStream == getCallback()->io()) {
+        if (!getCallback()->dispatchAddRemoveToHal(/* isAdded= */ true)) {
             return;
         }
 
         (void)getCallback()->addEffectToHal(mEffectInterface);
-        mCurrentHalStream = getCallback()->io();
     }
 }
 
@@ -1141,11 +1140,10 @@ status_t EffectModule::removeEffectFromHal_l()
 {
     if ((mDescriptor.flags & EFFECT_FLAG_TYPE_MASK) == EFFECT_FLAG_TYPE_PRE_PROC ||
              (mDescriptor.flags & EFFECT_FLAG_TYPE_MASK) == EFFECT_FLAG_TYPE_POST_PROC) {
-        if (mCurrentHalStream != getCallback()->io()) {
-            return (mCurrentHalStream == AUDIO_IO_HANDLE_NONE) ? NO_ERROR : INVALID_OPERATION;
+        if (!getCallback()->dispatchAddRemoveToHal(/* isAdded= */ false)) {
+            return (getCallback()->io() == AUDIO_IO_HANDLE_NONE) ? NO_ERROR : INVALID_OPERATION;
         }
         getCallback()->removeEffectFromHal(mEffectInterface);
-        mCurrentHalStream = AUDIO_IO_HANDLE_NONE;
     }
     return NO_ERROR;
 }
@@ -3021,6 +3019,9 @@ status_t EffectChain::EffectCallback::addEffectToHal(
         return result;
     }
     result = st->addEffect(effect);
+    if (result == OK) {
+        mCurrentHalStream = t->id();
+    }
     ALOGE_IF(result != OK, "Error when adding effect: %d", result);
     return result;
 }
@@ -3037,8 +3038,13 @@ status_t EffectChain::EffectCallback::removeEffectFromHal(
         return result;
     }
     result = st->removeEffect(effect);
+    mCurrentHalStream = AUDIO_IO_HANDLE_NONE;
     ALOGE_IF(result != OK, "Error when removing effect: %d", result);
     return result;
+}
+
+bool EffectChain::EffectCallback::dispatchAddRemoveToHal(bool isAdded) const {
+    return isAdded ? io() != mCurrentHalStream : io() == mCurrentHalStream;
 }
 
 audio_io_handle_t EffectChain::EffectCallback::io() const {
