@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eadef9f_6e1c12ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-13T16:39:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0a57719d_e347e6ad",
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7163931b_0704b91e",
@@ -126,6 +144,30 @@
       "side": 1,
       "message": "I\u0027m not sure this is VPCC, this is the codec private data. The name is still consistent with `synthesizeMPEG2` and `synthesizeMPEG4`.",
       "parentUuid": "7163931b_0704b91e",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 26
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8331c6a_acbebf49",
+        "filename": "media/module/extractors/mkv/include/MatroskaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-13T16:39:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b314985d_4360cdd1",
       "range": {
         "startLine": 98,
         "startChar": 13,
@@ -220,6 +262,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "ff856ef1_8327c39c",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c688ddc0_144fedd4",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-13T16:39:45Z",
+      "side": 1,
+      "message": "I suggest we move the declarations of `bitDepth` and `chromaSubsampling` lower down and closer to where they\u0027re first assigned too",
+      "parentUuid": "9bea96cc_5e797248",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -455,6 +521,30 @@
       "side": 1,
       "message": "I have moved the `csdSize` calculation closer. I feel it might be better to make the additional write dependent on the size than the `chromaSubsampling` variable value.",
       "parentUuid": "65e344c1_e5e697a1",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 22
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d9860dc_d93fe9a4",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-13T16:39:45Z",
+      "side": 1,
+      "message": "Thanks, i think the current version is clear",
+      "parentUuid": "1d239287_e18b8372",
       "range": {
         "startLine": 181,
         "startChar": 0,

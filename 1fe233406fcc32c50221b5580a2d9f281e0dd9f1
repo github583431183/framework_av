@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc61a6e6_1ae45c0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-13T16:39:45Z",
+      "side": 1,
+      "message": "LG - but would like to review it with the CTS test too.",
+      "revId": "1fe233406fcc32c50221b5580a2d9f281e0dd9f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
