@@ -40,7 +40,6 @@
 #include <audio_utils/format.h>
 #include <audio_utils/mono_blend.h>
 #include <cutils/bitops.h>
-#include <media/AudioMixer.h>
 #include "FastMixer.h"
 #include <afutils/TypedLogger.h>
 
@@ -102,7 +101,6 @@ void FastMixer::onIdle()
 
 void FastMixer::onExit()
 {
-    delete mMixer;
     free(mMixerBuffer);
     free(mSinkBuffer);
 }
@@ -136,10 +134,10 @@ void FastMixer::updateMixerTrack(int index, Reason reason) {
 
     switch (reason) {
     case REASON_REMOVE:
-        mMixer->destroy(index);
+        mMixer->destroyTrack(index);
         break;
     case REASON_ADD: {
-        const status_t status = mMixer->create(
+        const status_t status = mMixer->createTrack(
                 index, fastTrack->mChannelMask, fastTrack->mFormat, AUDIO_SESSION_OUTPUT_MIX);
         LOG_ALWAYS_FATAL_IF(status != NO_ERROR,
                 "%s: cannot create fast track index"
@@ -162,26 +160,16 @@ void FastMixer::updateMixerTrack(int index, Reason reason) {
         // set volume to avoid ramp whenever the track is updated (or created).
         // Note: this does not distinguish from starting fresh or
         // resuming from a paused state.
-        mMixer->setParameter(index, AudioMixer::VOLUME, AudioMixer::VOLUME0, &vlf);
-        mMixer->setParameter(index, AudioMixer::VOLUME, AudioMixer::VOLUME1, &vrf);
+        mMixer->setVolume(index, vlf, vrf, /*aux=*/0.0f, /*ramp=*/false);
 
-        mMixer->setParameter(index, AudioMixer::RESAMPLE, AudioMixer::REMOVE, nullptr);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::MAIN_BUFFER,
-                (void *)mMixerBuffer);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::MIXER_FORMAT,
-                (void *)(uintptr_t)mMixerBufferFormat);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::FORMAT,
-                (void *)(uintptr_t)fastTrack->mFormat);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::CHANNEL_MASK,
-                (void *)(uintptr_t)fastTrack->mChannelMask);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::MIXER_CHANNEL_MASK,
-                (void *)(uintptr_t)mSinkChannelMask);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::HAPTIC_ENABLED,
-                (void *)(uintptr_t)fastTrack->mHapticPlaybackEnabled);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::HAPTIC_INTENSITY,
-                (void *)(uintptr_t)fastTrack->mHapticIntensity);
-        mMixer->setParameter(index, AudioMixer::TRACK, AudioMixer::HAPTIC_MAX_AMPLITUDE,
-                (void *)(&(fastTrack->mHapticMaxAmplitude)));
+        mMixer->removeResampler(index);
+        mMixer->setMainBuffer(index, mMixerBuffer);
+        mMixer->setMixerFormat(index, mMixerBufferFormat);
+        mMixer->setFormat(index, fastTrack->mFormat);
+        mMixer->setChannelMask(index, fastTrack->mChannelMask);
+        mMixer->setMixerChannelMask(index, mSinkChannelMask);
+        mMixer->setHaptics(index, fastTrack->mHapticPlaybackEnabled, fastTrack->mHapticIntensity,
+                           fastTrack->mHapticMaxAmplitude);
 
         mMixer->enable(index);
         break;
@@ -235,7 +223,6 @@ void FastMixer::onStateChange()
 
     if ((!Format_isEqual(mFormat, previousFormat)) || (frameCount != previous->mFrameCount)) {
         // FIXME to avoid priority inversion, don't delete here
-        delete mMixer;
         mMixer = nullptr;
         free(mMixerBuffer);
         mMixerBuffer = nullptr;
@@ -245,7 +232,7 @@ void FastMixer::onStateChange()
             // FIXME new may block for unbounded time at internal mutex of the heap
             //       implementation; it would be better to have normal mixer allocate for us
             //       to avoid blocking here and to prevent possible priority inversion
-            mMixer = new AudioMixer(frameCount, mSampleRate);
+            mMixer = IAfMixer::create(frameCount, mSampleRate);
             // FIXME See the other FIXME at FastMixer::setNBLogWriter()
             NBLog::thread_params_t params;
             params.frameCount = frameCount;
@@ -388,8 +375,7 @@ void FastMixer::onWork()
                 float vlf = float_from_gain(gain_minifloat_unpack_left(vlr));
                 float vrf = float_from_gain(gain_minifloat_unpack_right(vlr));
 
-                mMixer->setParameter(name, AudioMixer::RAMP_VOLUME, AudioMixer::VOLUME0, &vlf);
-                mMixer->setParameter(name, AudioMixer::RAMP_VOLUME, AudioMixer::VOLUME1, &vrf);
+                mMixer->setVolume(name, vlf, vrf, /*aux=*/0.0f, /*ramp=*/true);
             }
             // FIXME The current implementation of framesReady() for fast tracks
             // takes a tryLock, which can block
