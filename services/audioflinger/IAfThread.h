@@ -28,6 +28,7 @@
 #include <fastpath/FastMixerDumpState.h>
 #include <media/DeviceDescriptorBase.h>
 #include <media/MmapStreamInterface.h>
+#include <media/audiohal/EffectsFactoryHalInterface.h>
 #include <media/audiohal/StreamHalInterface.h>
 #include <media/nblog/NBLog.h>
 #include <timing/SyncEvent.h>

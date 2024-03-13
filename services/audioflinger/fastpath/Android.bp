@@ -53,6 +53,7 @@ cc_library_shared {
     ],
 
     shared_libs: [
+        "libaudioflinger_mixer",
         "libaudioflinger_utils", // NBAIO_Tee
         "libaudioprocessing",
         "libaudioutils",

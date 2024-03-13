@@ -33,6 +33,7 @@
 #include <fastpath/FastMixer.h>
 #include <mediautils/Synchronization.h>
 #include <mediautils/ThreadSnapshot.h>
+#include <mixer/IAfMixer.h>
 #include <timing/MonotonicFrameCounter.h>
 #include <utils/Log.h>
 
@@ -1591,7 +1592,7 @@ protected:
             final REQUIRES(mutex());
     status_t releaseAudioPatch_l(const audio_patch_handle_t handle) final REQUIRES(mutex());
 
-                AudioMixer* mAudioMixer;    // normal mixer
+    sp<IAfMixer> mAudioMixer;  // normal mixer
 
             // Support low latency mode by default as unless explicitly indicated by the audio HAL
             // we assume the audio path is compatible with the head tracking latency requirements
