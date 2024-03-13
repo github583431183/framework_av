@@ -150,6 +150,7 @@ cc_defaults {
         "libactivitymanager_aidl",
         "libaudioflinger_datapath",
         "libaudioflinger_fastpath",
+        "libaudioflinger_mixer",
         "libaudioflinger_timing",
         "libaudioflinger_utils",
         "libaudiofoundation",
