@@ -5007,7 +5007,7 @@ MixerThread::MixerThread(const sp<IAfThreadCallback>& afThreadCallback, AudioStr
             "mFrameCount=%zu, mNormalFrameCount=%zu",
             mSampleRate, mChannelMask, mChannelCount, mFormat, mFrameSize, mFrameCount,
             mNormalFrameCount);
-    mAudioMixer = new AudioMixer(mNormalFrameCount, mSampleRate);
+    mAudioMixer = IAfMixer::create(mNormalFrameCount, mSampleRate);
 
     if (type == DUPLICATING) {
         // The Duplicating thread uses the AudioMixer and delivers data to OutputTracks
@@ -5208,7 +5208,7 @@ MixerThread::~MixerThread()
 #endif
     }
     mAfThreadCallback->unregisterWriter(mFastMixerNBLogWriter);
-    delete mAudioMixer;
+    mAudioMixer = nullptr;
 }
 
 void MixerThread::onFirstRef() {
@@ -5443,7 +5443,7 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
     (void)mTracks.processDeletedTrackIds([this](int trackId) {
         // for each trackId, destroy it in the AudioMixer
         if (mAudioMixer->exists(trackId)) {
-            mAudioMixer->destroy(trackId);
+            mAudioMixer->destroyTrack(trackId);
         }
     });
     mTracks.clearDeletedTrackIds();
@@ -5750,7 +5750,7 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
         // if an active track doesn't exist in the AudioMixer, create it.
         // use the trackId as the AudioMixer name.
         if (!mAudioMixer->exists(trackId)) {
-            status_t status = mAudioMixer->create(
+            status_t status = mAudioMixer->createTrack(
                     trackId,
                     track->channelMask(),
                     track->format(),
@@ -5821,8 +5821,7 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
                 }
             }
 
-
-            int param = AudioMixer::VOLUME;
+            bool rampVolume = false;
             if (track->fillingStatus() == IAfTrack::FS_FILLED) {
                 // no ramp for the first volume setting
                 track->fillingStatus() = IAfTrack::FS_ACTIVE;
@@ -5830,16 +5829,16 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
                     track->setState(IAfTrackBase::ACTIVE);
                     // If a new track is paused immediately after start, do not ramp on resume.
                     if (cblk->mServer != 0) {
-                        param = AudioMixer::RAMP_VOLUME;
+                        rampVolume = true;
                     }
                 }
-                mAudioMixer->setParameter(trackId, AudioMixer::RESAMPLE, AudioMixer::RESET, NULL);
+                mAudioMixer->resetResampler(trackId);
                 mLeftVolFloat = -1.0;
             // FIXME should not make a decision based on mServer
             } else if (cblk->mServer != 0) {
                 // If the track is stopped before the first frame was mixed,
                 // do not apply ramp
-                param = AudioMixer::RAMP_VOLUME;
+                rampVolume = true;
             }
 
             // compute volume for this track
@@ -5908,7 +5907,7 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
             // Delegate volume control to effect in track effect chain if needed
             if (chain != 0 && chain->setVolume_l(&vl, &vr)) {
                 // Do not ramp volume if volume is controlled by effect
-                param = AudioMixer::VOLUME;
+                rampVolume = false;
                 // Update remaining floating point volume levels
                 vlf = (float)vl / (1 << 24);
                 vrf = (float)vr / (1 << 24);
@@ -5917,7 +5916,7 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
                 // force no volume ramp when volume controller was just disabled or removed
                 // from effect chain to avoid volume spike
                 if (track->hasVolumeController()) {
-                    param = AudioMixer::VOLUME;
+                    rampVolume = false;
                 }
                 track->setHasVolumeController(false);
             }
@@ -5926,30 +5925,18 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
             mAudioMixer->setBufferProvider(trackId, track->asExtendedAudioBufferProvider());
             mAudioMixer->enable(trackId);
 
-            mAudioMixer->setParameter(trackId, param, AudioMixer::VOLUME0, &vlf);
-            mAudioMixer->setParameter(trackId, param, AudioMixer::VOLUME1, &vrf);
-            mAudioMixer->setParameter(trackId, param, AudioMixer::AUXLEVEL, &vaf);
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::TRACK,
-                AudioMixer::FORMAT, (void *)track->format());
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::TRACK,
-                AudioMixer::CHANNEL_MASK, (void *)(uintptr_t)track->channelMask());
+            mAudioMixer->setVolume(trackId, vlf, vrf, vaf, rampVolume);
+            mAudioMixer->setFormat(trackId, track->format());
+            mAudioMixer->setChannelMask(trackId, track->channelMask());
 
             if (mType == SPATIALIZER && !track->isSpatialized()) {
-                mAudioMixer->setParameter(
-                    trackId,
-                    AudioMixer::TRACK,
-                    AudioMixer::MIXER_CHANNEL_MASK,
-                    (void *)(uintptr_t)(mChannelMask | mHapticChannelMask));
+                mAudioMixer->setMixerChannelMask(
+                        trackId,
+                        static_cast<audio_channel_mask_t>(mChannelMask | mHapticChannelMask));
             } else {
-                mAudioMixer->setParameter(
-                    trackId,
-                    AudioMixer::TRACK,
-                    AudioMixer::MIXER_CHANNEL_MASK,
-                    (void *)(uintptr_t)(mMixerChannelMask | mHapticChannelMask));
+                mAudioMixer->setMixerChannelMask(
+                        trackId,
+                        static_cast<audio_channel_mask_t>(mMixerChannelMask | mHapticChannelMask));
             }
 
             // limit track sample rate to 2 x output sample rate, which changes at re-configuration
@@ -5960,18 +5947,8 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
             } else if (reqSampleRate > maxSampleRate) {
                 reqSampleRate = maxSampleRate;
             }
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::RESAMPLE,
-                AudioMixer::SAMPLE_RATE,
-                (void *)(uintptr_t)reqSampleRate);
-
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::TIMESTRETCH,
-                AudioMixer::PLAYBACK_RATE,
-                // cast away constness for this generic API.
-                const_cast<void *>(reinterpret_cast<const void *>(&playbackRate)));
+            mAudioMixer->setResampler(trackId, reqSampleRate);
+            mAudioMixer->setPlaybackRate(trackId, playbackRate);
 
             /*
              * Select the appropriate output buffer for the track.
@@ -5989,53 +5966,21 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
                     && (track->mainBuffer() == mSinkBuffer
                             || track->mainBuffer() == mMixerBuffer)) {
                 if (mType == SPATIALIZER && !track->isSpatialized()) {
-                    mAudioMixer->setParameter(
-                            trackId,
-                            AudioMixer::TRACK,
-                            AudioMixer::MIXER_FORMAT, (void *)mEffectBufferFormat);
-                    mAudioMixer->setParameter(
-                            trackId,
-                            AudioMixer::TRACK,
-                            AudioMixer::MAIN_BUFFER, (void *)mPostSpatializerBuffer);
+                    mAudioMixer->setMixerFormat(trackId, mEffectBufferFormat);
+                    mAudioMixer->setMainBuffer(trackId, mPostSpatializerBuffer);
                 } else {
-                    mAudioMixer->setParameter(
-                            trackId,
-                            AudioMixer::TRACK,
-                            AudioMixer::MIXER_FORMAT, (void *)mMixerBufferFormat);
-                    mAudioMixer->setParameter(
-                            trackId,
-                            AudioMixer::TRACK,
-                            AudioMixer::MAIN_BUFFER, (void *)mMixerBuffer);
+                    mAudioMixer->setMixerFormat(trackId, mMixerBufferFormat);
+                    mAudioMixer->setMainBuffer(trackId, mMixerBuffer);
                     // TODO: override track->mainBuffer()?
                     mMixerBufferValid = true;
                 }
             } else {
-                mAudioMixer->setParameter(
-                        trackId,
-                        AudioMixer::TRACK,
-                        AudioMixer::MIXER_FORMAT, (void *)AUDIO_FORMAT_PCM_FLOAT);
-                mAudioMixer->setParameter(
-                        trackId,
-                        AudioMixer::TRACK,
-                        AudioMixer::MAIN_BUFFER, (void *)track->mainBuffer());
+                mAudioMixer->setMixerFormat(trackId, AUDIO_FORMAT_PCM_FLOAT);
+                mAudioMixer->setMainBuffer(trackId, track->mainBuffer());
             }
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::TRACK,
-                AudioMixer::AUX_BUFFER, (void *)track->auxBuffer());
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::TRACK,
-                AudioMixer::HAPTIC_ENABLED, (void *)(uintptr_t)track->getHapticPlaybackEnabled());
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::TRACK,
-                AudioMixer::HAPTIC_INTENSITY, (void *)(uintptr_t)track->getHapticIntensity());
-            const float hapticMaxAmplitude = track->getHapticMaxAmplitude();
-            mAudioMixer->setParameter(
-                trackId,
-                AudioMixer::TRACK,
-                AudioMixer::HAPTIC_MAX_AMPLITUDE, (void *)&hapticMaxAmplitude);
+            mAudioMixer->setAuxBuffer(trackId, track->auxBuffer());
+            mAudioMixer->setHaptics(trackId, track->getHapticPlaybackEnabled(),
+                                    track->getHapticIntensity(), track->getHapticMaxAmplitude());
 
             // reset retry count
             track->retryCount() = kMaxTrackRetries;
@@ -6352,11 +6297,10 @@ bool MixerThread::checkForNewParameter_l(const String8& keyValuePair,
         }
         if (status == NO_ERROR && reconfig) {
             readOutputParameters_l();
-            delete mAudioMixer;
-            mAudioMixer = new AudioMixer(mNormalFrameCount, mSampleRate);
+            mAudioMixer = IAfMixer::create(mNormalFrameCount, mSampleRate);
             for (const auto &track : mTracks) {
                 const int trackId = track->id();
-                const status_t createStatus = mAudioMixer->create(
+                const status_t createStatus = mAudioMixer->createTrack(
                         trackId,
                         track->channelMask(),
                         track->format(),
@@ -11273,11 +11217,7 @@ PlaybackThread::mixer_state BitPerfectThread::prepareTracks_l(
     float volumeRight = 1.0f;
     if (mActiveTracks.size() == 1 && mActiveTracks[0]->isBitPerfect()) {
         const int trackId = mActiveTracks[0]->id();
-        mAudioMixer->setParameter(
-                    trackId, AudioMixer::TRACK, AudioMixer::TEE_BUFFER, (void *)mSinkBuffer);
-        mAudioMixer->setParameter(
-                    trackId, AudioMixer::TRACK, AudioMixer::TEE_BUFFER_FRAME_COUNT,
-                    (void *)(uintptr_t)mNormalFrameCount);
+        mAudioMixer->setTeeBuffer(trackId, mSinkBuffer, mNormalFrameCount);
         mActiveTracks[0]->getFinalVolume(&volumeLeft, &volumeRight);
         mIsBitPerfect = true;
     } else {
@@ -11286,8 +11226,7 @@ PlaybackThread::mixer_state BitPerfectThread::prepareTracks_l(
         // active.
         for (const auto& track : mActiveTracks) {
             const int trackId = track->id();
-            mAudioMixer->setParameter(
-                        trackId, AudioMixer::TRACK, AudioMixer::TEE_BUFFER, nullptr);
+            mAudioMixer->setTeeBuffer(trackId, nullptr, 0);
         }
     }
     if (mVolumeLeft != volumeLeft || mVolumeRight != volumeRight) {

@@ -1,0 +1,53 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_base_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_av_services_audioflinger_license"],
+}
+
+// TODO(b/275642749) Reenable these warnings
+audioflinger_mixer_tidy_errors = audioflinger_base_tidy_errors
+
+// Eventually use common tidy defaults
+cc_defaults {
+    name: "audioflinger_mixer_flags_defaults",
+    // https://clang.llvm.org/docs/UsersManual.html#command-line-options
+    // https://clang.llvm.org/docs/DiagnosticsReference.html
+    cflags: audioflinger_base_cflags,
+    // https://clang.llvm.org/extra/clang-tidy/
+    tidy: true,
+    tidy_checks: audioflinger_mixer_tidy_errors,
+    tidy_checks_as_errors: audioflinger_mixer_tidy_errors,
+    tidy_flags: [
+      "-format-style=file",
+    ],
+}
+
+cc_library {
+    name: "libaudioflinger_mixer",
+
+    defaults: [
+        "audioflinger_mixer_flags_defaults",
+    ],
+
+    srcs: [
+        "Mixer.cpp",
+    ],
+
+    shared_libs: [
+        "libaudioclient",
+        "libaudioprocessing",
+        "libaudioutils",
+        "liblog",
+        "libutils",
+        "libvibrator",
+    ],
+
+    static_libs: [],
+
+    header_libs: [],
+
+    include_dirs: [],
+}

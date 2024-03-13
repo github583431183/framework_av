@@ -23,10 +23,9 @@
 #include "FastMixerState.h"
 #include "FastMixerDumpState.h"
 #include <afutils/NBAIO_Tee.h>
+#include <mixer/IAfMixer.h>
 
 namespace android {
-
-class AudioMixer;
 
 using FastMixerStateQueue = StateQueue<FastMixerState>;
 
@@ -73,7 +72,7 @@ private:
                                 // last observed mFastTracks[i].mGeneration
     NBAIO_Sink*     mOutputSink = nullptr;
     int             mOutputSinkGen = 0;
-    AudioMixer*     mMixer = nullptr;
+    sp<IAfMixer>    mMixer;
 
     // mSinkBuffer audio format is stored in format.mFormat.
     void*           mSinkBuffer = nullptr; // used for mixer output format translation
