@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ade182_217a468c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-14T00:33:12Z",
+      "side": 1,
+      "message": "Comments addressed.  Thanks for the review!",
+      "parentUuid": "d6343838_336b6dcb",
+      "revId": "6321d5bce7c3caeb8c54ed6996a67a584c079e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04b51c48_a8d17ce3",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-03-13T20:35:19Z",
       "side": 1,
       "message": "no need to set to nullptr, RAII frees it.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "6321d5bce7c3caeb8c54ed6996a67a584c079e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f4d01e_f71a5894",
+        "filename": "services/audioflinger/fastpath/FastMixer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-14T00:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b51c48_a8d17ce3",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4e6c3b_2071f6c8",
+        "filename": "services/audioflinger/fastpath/FastMixer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-14T00:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "615982d5_901ab9e3",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 130
+      },
+      "revId": "6321d5bce7c3caeb8c54ed6996a67a584c079e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "240ed5d6_6e36061d",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-03-13T20:35:19Z",
       "side": 1,
       "message": "nit: \u003d nullptr not needed.",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "6321d5bce7c3caeb8c54ed6996a67a584c079e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c24d3c7_89301a02",
+        "filename": "services/audioflinger/fastpath/FastMixer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-14T00:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240ed5d6_6e36061d",
       "range": {
         "startLine": 75,
         "startChar": 26,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda122d5_aebcce53",
+        "filename": "services/audioflinger/mixer/IAfMixer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-14T00:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3952fc4_261059c8",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "6321d5bce7c3caeb8c54ed6996a67a584c079e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fef85ee_ac567317",
@@ -133,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2dcfe8_0df41959",
+        "filename": "services/audioflinger/mixer/IAfMixer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-14T00:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fef85ee_ac567317",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "6321d5bce7c3caeb8c54ed6996a67a584c079e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb6b8747_03092cb1",
@@ -146,6 +284,30 @@
       "writtenOn": "2024-03-13T20:42:17Z",
       "side": 1,
       "message": "TEE_BUFFER_FRAME_COUNT",
+      "range": {
+        "startLine": 120,
+        "startChar": 74,
+        "endLine": 120,
+        "endChar": 84
+      },
+      "revId": "6321d5bce7c3caeb8c54ed6996a67a584c079e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4b807c_b1e390a2",
+        "filename": "services/audioflinger/mixer/Mixer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-14T00:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb6b8747_03092cb1",
       "range": {
         "startLine": 120,
         "startChar": 74,
