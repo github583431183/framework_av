@@ -208,7 +208,8 @@ status_t MediaMuxer::writeSampleData(const sp<ABuffer> &buffer, size_t trackInde
         ALOGE("WriteSampleData() get an NULL buffer.");
         return -EINVAL;
     }
-    if (!mWriter->isSampleMetadataValid(trackIndex, timeUs)) {
+    if ((buffer->size() > 0) &&
+        (!mWriter->isSampleMetadataValid(trackIndex, timeUs))) {
         return -EINVAL;
     }
     {
