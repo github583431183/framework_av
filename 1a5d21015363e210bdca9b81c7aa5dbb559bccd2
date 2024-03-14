@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67626715_c6236d35",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-14T13:13:56Z",
+      "side": 1,
+      "message": "the description says \"EOS can be either 0 or previous\". this lets the EOS frame be anything.\n\ni think a better expression is something like:\n\nif (!isSampleMetadataValid()) {\n    if (!eos) return -EINVAL;\n    if (timestamp !\u003d 0 \u0026\u0026 timestamp !\u003d last timestamp) return -EINVAL;\n}\n\nI also think this code doesn\u0027t handle the case where\nthe buffer contains both data AND an eos indication.\nSo I think the fix is more involved than what is presented here -- in either\nthe proposed patch or in my rephrasing.",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "1a5d21015363e210bdca9b81c7aa5dbb559bccd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
