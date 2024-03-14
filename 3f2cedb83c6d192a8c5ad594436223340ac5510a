@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba931e12_6b8dca36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-03-14T03:40:16Z",
+      "side": 1,
+      "message": "Thanks, I am waiting on a request to have a few CLs CPed from internal main to AOSP to prevent automerger issues.",
+      "revId": "3f2cedb83c6d192a8c5ad594436223340ac5510a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
