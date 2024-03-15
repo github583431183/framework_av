@@ -36,21 +36,28 @@ cc_fuzz {
         "oboeservice_fuzzer.cpp",
     ],
     shared_libs: [
+        "aaudio-aidl-cpp",
+        "com.android.media.aaudio-aconfig-cc",
+        "framework-permission-aidl-cpp",
         "libaaudio_internal",
         "libaudioclient",
+        "libaudioclient_aidl_conversion",
         "libaudioflinger",
         "libaudioutils",
-        "libmedia_helper",
-        "libmediametrics",
-        "libmediautils",
         "libbase",
         "libbinder",
         "libcutils",
         "liblog",
+        "libmedia_helper",
+        "libmediametrics",
+        "libmediautils",
         "libutils",
+<<<<<<< HEAD
         "aaudio-aidl-cpp",
         "framework-permission-aidl-cpp",
         "libaudioclient_aidl_conversion",
+=======
+>>>>>>> a159e4b96b (frameworks/av: Fix audio Android.bp files)
     ],
     static_libs: [
         "libaaudioservice",

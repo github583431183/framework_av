@@ -20,17 +20,24 @@ cc_library_shared {
     name: "libeffects",
     vendor: true,
     srcs: [
+<<<<<<< HEAD
          "EffectsFactory.c",
          "EffectsConfigLoader.c",
          "EffectsFactoryState.c",
          "EffectsXmlConfigLoader.cpp",
+=======
+        "EffectsConfigLoader.c",
+        "EffectsFactory.c",
+        "EffectsFactoryState.c",
+        "EffectsXmlConfigLoader.cpp",
+>>>>>>> a159e4b96b (frameworks/av: Fix audio Android.bp files)
     ],
 
     shared_libs: [
         "libcutils",
-        "liblog",
         "libdl",
         "libeffectsconfig",
+        "liblog",
     ],
     cflags: ["-fvisibility=hidden"],
 
@@ -53,13 +60,13 @@ cc_binary {
 
     cflags: [
         "-Wall",
-        "-Wextra",
         "-Werror",
+        "-Wextra",
     ],
 
     shared_libs: [
-        "libeffectsconfig",
         "libeffects",
+        "libeffectsconfig",
     ],
     local_include_dirs:[".", "include"],
 }
