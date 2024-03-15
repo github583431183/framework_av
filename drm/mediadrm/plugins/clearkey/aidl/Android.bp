@@ -183,6 +183,10 @@ apex {
         "android.hardware.drm-service.clearkey.apex.rc",
         "android.hardware.drm-service.clearkey.xml"
     ],
+    overrides: [
+        "android.hardware.drm-service.clearkey",
+        "android.hardware.drm-service-lazy.clearkey"
+    ], 
 }
 
 prebuilt_etc {
