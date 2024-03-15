@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f9009c_2a82266f",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-15T14:21:56Z",
+      "side": 1,
+      "message": "missing word here and below?",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "0feb1457c1bd43d7e923430547acacce73c6d2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19824348_2b3b4c66",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-15T14:21:56Z",
+      "side": 1,
+      "message": "don\u0027t we have the same problem for other criteria whne a default value is passed like USAGE_UNKNOWN or CONTENT_TYPE_UNKNOWN?",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "0feb1457c1bd43d7e923430547acacce73c6d2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
