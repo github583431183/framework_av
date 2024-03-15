@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e299c769_6eee2a73",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-03-15T14:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69f9009c_2a82266f",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "0feb1457c1bd43d7e923430547acacce73c6d2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19824348_2b3b4c66",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-15T14:21:56Z",
       "side": 1,
       "message": "don\u0027t we have the same problem for other criteria whne a default value is passed like USAGE_UNKNOWN or CONTENT_TYPE_UNKNOWN?",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "0feb1457c1bd43d7e923430547acacce73c6d2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9274f8_999f3bed",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-03-15T14:31:05Z",
+      "side": 1,
+      "message": "We need to be able to enter matching for unknown. At least for the usage since CarAudioService, when running in Dynamic mixes mode, has to assign all usages, including USAGE_UNKNOWN.",
+      "parentUuid": "19824348_2b3b4c66",
       "range": {
         "startLine": 62,
         "startChar": 23,
