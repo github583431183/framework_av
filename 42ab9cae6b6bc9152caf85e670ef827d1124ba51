@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcaf90a8_e294a23e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-15T04:04:52Z",
+      "side": 1,
+      "message": "Thanks Minhyeok,\n\nThis is to prevent the build error when both the clearkey binary and the apex are added to PRODUCT_PACKAGES. When both are added the apex will be installed. Otherwise, the one in the PRODUCT_PACKAGES will be installed.",
+      "revId": "42ab9cae6b6bc9152caf85e670ef827d1124ba51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
