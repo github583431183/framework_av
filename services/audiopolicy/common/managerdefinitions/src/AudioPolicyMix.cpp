@@ -52,9 +52,23 @@ bool isCriterionMatched(const AudioMixMatchCriterion& criterion,
         case RULE_MATCH_ATTRIBUTE_CAPTURE_PRESET:
             return criterion.mValue.mSource == attr.source;
         case RULE_MATCH_UID:
-            return criterion.mValue.mUid == uid;
+            {
+                if (uid == 0) {
+                    // There is a matching rule but no uid is provided by the caller
+                    //     -Exclusion criterion shall answer true in order not to validate
+                    //     -Matching shall answer false
+                    return criterion.isExcludeCriterion();
+                }
+                return criterion.mValue.mUid == uid;
+            }
         case RULE_MATCH_USERID:
             {
+                if (uid == 0) {
+                    // There is a matching rule but no uid is provided by the caller
+                    //     -Exclusion criterion shall answer true in order not to validate
+                    //     -Matching shall answer false
+                    return criterion.isExcludeCriterion();
+                }
                 userid_t userId = multiuser_get_user_id(uid);
                 return criterion.mValue.mUserId == userId;
             }
