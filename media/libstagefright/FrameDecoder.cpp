@@ -585,6 +585,10 @@ sp<AMessage> VideoFrameDecoder::onGetFormatAndSeekOptions(
         }
     }
 
+    // Set the importance for thumbnail.
+    constexpr int THUMBNAIL_IMPORTANCE = 1; // 0 is the highest importance
+    videoFormat->setInt32(KEY_IMPORTANCE, THUMBNAIL_IMPORTANCE);
+
     int32_t frameRate;
     if (trackMeta()->findInt32(kKeyFrameRate, &frameRate) && frameRate > 0) {
         mDefaultSampleDurationUs = 1000000LL / frameRate;
