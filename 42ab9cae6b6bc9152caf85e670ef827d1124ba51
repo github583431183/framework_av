@@ -33,6 +33,24 @@
       "message": "lazy service is a different binary; still safe to override?",
       "revId": "42ab9cae6b6bc9152caf85e670ef827d1124ba51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6c1b15_b84338aa",
+        "filename": "drm/mediadrm/plugins/clearkey/aidl/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-03-18T04:38:28Z",
+      "side": 1,
+      "message": "You\u0027re right. So, we might need a new apex for the lazy hal so that a device which is supposed to have a lazy hal can install it. I\u0027ll prepare a new cl.",
+      "parentUuid": "f4a1f489_8c5ba18e",
+      "revId": "42ab9cae6b6bc9152caf85e670ef827d1124ba51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
