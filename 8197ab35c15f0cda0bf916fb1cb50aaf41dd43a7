@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5293ef77_de95ac14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-03-18T11:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58a07870_90e2a643",
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7163931b_0704b91e",
@@ -286,6 +304,30 @@
       "side": 1,
       "message": "I suggest we move the declarations of `bitDepth` and `chromaSubsampling` lower down and closer to where they\u0027re first assigned too",
       "parentUuid": "9bea96cc_5e797248",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "8197ab35c15f0cda0bf916fb1cb50aaf41dd43a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2c2dab_65edd5af",
+        "filename": "media/module/metadatautils/MetaDataUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1975040
+      },
+      "writtenOn": "2024-03-18T11:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c688ddc0_144fedd4",
       "range": {
         "startLine": 90,
         "startChar": 0,
