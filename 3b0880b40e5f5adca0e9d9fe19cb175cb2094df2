@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37656063_d1a8a3b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1994882
+      },
+      "writtenOn": "2024-03-18T23:48:41Z",
+      "side": 1,
+      "message": "Fixed an issue where some functions were not pure virtual.",
+      "revId": "3b0880b40e5f5adca0e9d9fe19cb175cb2094df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
