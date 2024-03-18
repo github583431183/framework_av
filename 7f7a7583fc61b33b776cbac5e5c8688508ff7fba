@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62274a24_1e6b71a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-18T16:59:33Z",
+      "side": 1,
+      "message": "Merge conflict is because of a formatting change done in an Android.bp in internal branches.\n\nOnce https://android-review.git.corp.google.com/c/platform/frameworks/av/+/3006233 is merged, this will be rebased.",
+      "revId": "7f7a7583fc61b33b776cbac5e5c8688508ff7fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
