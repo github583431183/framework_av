@@ -98,3 +98,12 @@ cc_test {
     defaults: ["libaudioprocessing_test_defaults"],
     srcs: ["mixerops_tests.cpp"],
 }
+
+//
+// bufferproviders unit test
+//
+cc_test {
+    name: "bufferproviders_tests",
+    defaults: ["libaudioprocessing_test_defaults"],
+    srcs: ["bufferproviders_tests.cpp"],
+}

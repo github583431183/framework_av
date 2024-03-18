@@ -22,6 +22,7 @@
 
 #include <audio_utils/ChannelMix.h>
 #include <media/AudioBufferProvider.h>
+#include <media/AudioResampler.h>
 #include <media/AudioResamplerPublic.h>
 #include <system/audio.h>
 #include <system/audio_effect.h>
@@ -58,12 +59,18 @@ protected:
     AudioBufferProvider *mTrackBufferProvider;
 };
 
+// OptionalBufferProvider derives from PassthruBufferProvider.
+// Returns no frames when a buffer provider is not set.
+class OptionalBufferProvider : public PassthruBufferProvider {
+  public:
+    status_t getNextBuffer(AudioBufferProvider::Buffer* buffer) final;
+    void releaseBuffer(AudioBufferProvider::Buffer* buffer) final;
+};
+
 // Base AudioBufferProvider class used for DownMixerBufferProvider, RemixBufferProvider,
 // and ReformatBufferProvider.
 // It handles a private buffer for use in converting format or channel masks from the
 // input data to a form acceptable by the mixer.
-// TODO: Make a ResamplerBufferProvider when integers are entirely removed from the
-// processing pipeline.
 class CopyBufferProvider : public PassthruBufferProvider {
 public:
     // Use a private buffer of bufferFrameCount frames (each frame is outputFrameSize bytes).
@@ -303,6 +310,59 @@ protected:
     uint8_t* mTeeBuffer;
     const int mTeeBufferFrameCount;
     int mFrameCopied;
+};
+
+// ResampleBufferProvider derives from PassthruBufferProvider for resampling
+//
+// Only AUDIO_FORMAT_PCM_FLOAT is supported.
+class ResampleBufferProvider : public PassthruBufferProvider {
+  public:
+    ResampleBufferProvider(uint32_t channels, audio_format_t format, uint32_t inSampleRate,
+                           uint32_t outSampleRate, size_t frameCount,
+                           AudioResampler::src_quality quality = AudioResampler::DEFAULT_QUALITY);
+
+    status_t getNextBuffer(AudioBufferProvider::Buffer* buffer) final;
+    void releaseBuffer(AudioBufferProvider::Buffer* buffer) final;
+    void reset() final;
+    void setSampleRate(uint32_t sampleRate);
+    size_t getUnreleasedFrames() const { return mResampler->getUnreleasedFrames(); }
+
+  private:
+    const uint32_t mChannels;
+    const audio_format_t mFormat;
+    const size_t mFrameCount;
+    std::unique_ptr<int32_t, decltype(&free)> mBuffer{nullptr, nullptr};
+    size_t mBufferSize = 0;
+    size_t mAvailable = 0;
+    size_t mConsumed = 0;
+    std::unique_ptr<AudioResampler> mResampler;
+};
+
+// VolumeBufferProvider derives from PassthruBufferProvider for applying gain.
+// By default, the input buffer is copied and volume is applied. If specified,
+// volume can be applied in-place.
+//
+// Only AUDIO_FORMAT_PCM_FLOAT is supported.
+class VolumeBufferProvider : public PassthruBufferProvider {
+  public:
+    VolumeBufferProvider(uint32_t channels, audio_format_t format, size_t frameCount,
+                         bool inPlace = false);
+
+    status_t getNextBuffer(AudioBufferProvider::Buffer* buffer) final;
+    void releaseBuffer(AudioBufferProvider::Buffer* buffer) final;
+    void setVolume(float volume, bool ramp, size_t frames);
+
+  private:
+    static float sanitizeVolume(float volume);
+
+    const uint32_t mChannels;
+    const size_t mFrameCount;
+    float mVolume = 0;
+    float mTargetVolume = 0;
+    float mVolumeInc = 0;
+    size_t mRampFramesRemaining = 0;
+    std::unique_ptr<int32_t, decltype(&free)> mBuffer{nullptr, nullptr};
+    size_t mBufferSize = 0;
 };
 
 // ----------------------------------------------------------------------------
