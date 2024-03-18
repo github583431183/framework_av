@@ -38,6 +38,21 @@
 namespace android {
 
 // ----------------------------------------------------------------------------
+status_t OptionalBufferProvider::getNextBuffer(AudioBufferProvider::Buffer* buffer) {
+    if (mTrackBufferProvider) {
+        return mTrackBufferProvider->getNextBuffer(buffer);
+    }
+    buffer->frameCount = 0;
+    buffer->raw = nullptr;
+    return OK;
+}
+
+void OptionalBufferProvider::releaseBuffer(AudioBufferProvider::Buffer* buffer) {
+    if (mTrackBufferProvider) {
+        return mTrackBufferProvider->releaseBuffer(buffer);
+    }
+}
+
 CopyBufferProvider::CopyBufferProvider(size_t inputFrameSize,
         size_t outputFrameSize, size_t bufferFrameCount) :
         mInputFrameSize(inputFrameSize),
@@ -760,6 +775,172 @@ void TeeBufferProvider::copyFrames(void *dst, const void *src, size_t frames) {
 
 void TeeBufferProvider::clearFramesCopied() {
     mFrameCopied = 0;
+}
+
+ResampleBufferProvider::ResampleBufferProvider(uint32_t channels, audio_format_t format,
+                                               uint32_t inSampleRate, uint32_t outSampleRate,
+                                               size_t frameCount,
+                                               AudioResampler::src_quality quality)
+    : mChannels(channels), mFormat(format), mFrameCount(frameCount) {
+    // TODO: Support other formats
+    ALOG_ASSERT(mFormat == AUDIO_FORMAT_PCM_FLOAT);
+
+    // Resampler outputs in interleaved-float. There is an implicit up-channeling
+    // to stereo if the input is mono.
+    mBufferSize = mChannels * audio_bytes_per_sample(mFormat) * mFrameCount;
+    if (mChannels == 1) {
+        mBufferSize *= 2;
+    }
+    void* tmp = nullptr;
+    (void)posix_memalign(&tmp, 32, mBufferSize);
+    mBuffer = std::unique_ptr<int32_t, decltype(&free)>(reinterpret_cast<int32_t*>(tmp), &free);
+    ALOG_ASSERT(mBuffer);
+
+    mResampler.reset(AudioResampler::create(format, channels, outSampleRate, quality));
+    ALOG_ASSERT(mResampler);
+
+    mResampler->setSampleRate(inSampleRate);
+    mResampler->setVolume(AudioResampler::UNITY_GAIN_FLOAT, AudioResampler::UNITY_GAIN_FLOAT);
+}
+
+status_t ResampleBufferProvider::getNextBuffer(AudioBufferProvider::Buffer* buffer) {
+    if (mAvailable > 0) {
+        buffer->frameCount = std::min(mAvailable, buffer->frameCount);
+        buffer->raw = mBuffer.get() + mConsumed * mChannels;
+        return OK;
+    }
+
+    // Resample
+    memset(mBuffer.get(), 0, mBufferSize);
+    mAvailable = mResampler->resample(mBuffer.get(), std::min(buffer->frameCount, mFrameCount),
+                                      mTrackBufferProvider);
+    if (mChannels == 1) {
+        // There is an implicit up-channeling to stereo if the input is mono. Downmix back to mono.
+        // We don't need to average the samples since both samples will be the same
+        int32_t* src = mBuffer.get();
+        int32_t* dst = mBuffer.get();
+        for (auto i = 0; i < mAvailable; ++i) {
+            *dst++ = *src;
+            src += 2;
+        }
+    }
+    buffer->raw = mBuffer.get();
+    buffer->frameCount = mAvailable;
+    return OK;
+}
+
+void ResampleBufferProvider::releaseBuffer(AudioBufferProvider::Buffer* buffer) {
+    ALOG_ASSERT(buffer->frameCount <= mAvailable);
+    mConsumed += buffer->frameCount;
+    mAvailable -= buffer->frameCount;
+    buffer->frameCount = 0;
+    buffer->raw = nullptr;
+}
+
+void ResampleBufferProvider::reset() {
+    mResampler->reset();
+    mAvailable = 0;
+    mConsumed = 0;
+}
+
+void ResampleBufferProvider::setSampleRate(uint32_t sampleRate) {
+    mResampler->setSampleRate(sampleRate);
+}
+
+VolumeBufferProvider::VolumeBufferProvider(uint32_t channels, audio_format_t format,
+                                           size_t frameCount, bool inPlace)
+    : mChannels(channels), mFrameCount(frameCount) {
+    // TODO: Support other formats
+    ALOG_ASSERT(format == AUDIO_FORMAT_PCM_FLOAT);
+
+    if (!inPlace) {
+        mBufferSize = mChannels * audio_bytes_per_sample(format) * frameCount;
+        void* tmp = nullptr;
+        (void)posix_memalign(&tmp, 32, mBufferSize);
+        mBuffer = std::unique_ptr<int32_t, decltype(&free)>(reinterpret_cast<int32_t*>(tmp), &free);
+        ALOG_ASSERT(mBuffer);
+    }
+}
+
+status_t VolumeBufferProvider::getNextBuffer(AudioBufferProvider::Buffer* buffer) {
+    if (mBuffer) {
+        buffer->frameCount = std::min(buffer->frameCount, mFrameCount);
+    }
+
+    status_t status = mTrackBufferProvider->getNextBuffer(buffer);
+    if (status != OK || buffer->frameCount == 0) {
+        return status;
+    }
+
+    float* src = reinterpret_cast<float*>(buffer->raw);
+    float* dst = reinterpret_cast<float*>(mBuffer ? mBuffer.get() : buffer->raw);
+
+    size_t frames = buffer->frameCount;
+    if (mRampFramesRemaining > 0) {
+        auto framesToRamp = std::min(frames, mRampFramesRemaining);
+        for (auto i = 0u; i < framesToRamp; ++i) {
+            for (auto j = 0u; j < mChannels; ++j) {
+            *dst++ = *src++ * mVolume;
+            }
+            mVolume += mVolumeInc;
+        }
+        frames -= framesToRamp;
+        mRampFramesRemaining -= framesToRamp;
+        if (mRampFramesRemaining == 0) {
+            mVolume = mTargetVolume;
+        }
+    }
+    if (frames > 0) {
+        for (auto i = 0u; i < mChannels * frames; ++i) {
+            *dst++ = *src++ * mVolume;
+        }
+    }
+
+    if (mBuffer) {
+        buffer->raw = mBuffer.get();
+    }
+
+    return OK;
+}
+
+void VolumeBufferProvider::releaseBuffer(AudioBufferProvider::Buffer* buffer) {
+    mTrackBufferProvider->releaseBuffer(buffer);
+}
+
+void VolumeBufferProvider::setVolume(float volume, bool ramp, size_t frames) {
+    volume = sanitizeVolume(volume);
+    if (mTargetVolume == volume) {
+        return;
+    }
+
+    mTargetVolume = volume;
+    if (ramp) {
+        mVolumeInc = (mTargetVolume - mVolume) / frames;
+        mRampFramesRemaining = frames;
+        ramp = isnormal(mVolumeInc);
+    }
+
+    if (!ramp) {
+        mVolume = mTargetVolume;
+        mVolumeInc = 0;
+        mRampFramesRemaining = 0;
+    }
+}
+
+float VolumeBufferProvider::sanitizeVolume(float volume) {
+    if (volume < 0) {
+        return 0;
+    }
+    switch (fpclassify(volume)) {
+        case FP_SUBNORMAL:
+        case FP_NAN:
+        case FP_ZERO:
+            return 0;
+        case FP_INFINITE:
+        case FP_NORMAL:
+        default:
+            return std::min(volume, AudioResampler::UNITY_GAIN_FLOAT);
+    }
 }
 
 // ----------------------------------------------------------------------------
