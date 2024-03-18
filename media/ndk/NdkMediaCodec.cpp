@@ -98,6 +98,11 @@ struct AMediaCodecPersistentSurface : public Surface {
 class CodecHandler: public AHandler {
 private:
     AMediaCodec* mCodec;
+    inline AMediaCodecOnAsyncInputAvailable getOnAsyncInputAvailable() const;
+    inline AMediaCodecOnAsyncOutputAvailable getOnAsyncOutputAvailable() const;
+    inline AMediaCodecOnAsyncFormatChanged getOnAsyncFormatChanged() const;
+    inline AMediaCodecOnAsyncError getOnAsyncError() const;
+
 public:
     explicit CodecHandler(AMediaCodec *codec);
     virtual void onMessageReceived(const sp<AMessage> &msg);
@@ -128,6 +133,26 @@ struct AMediaCodec {
 
 CodecHandler::CodecHandler(AMediaCodec *codec) {
     mCodec = codec;
+}
+
+inline AMediaCodecOnAsyncInputAvailable CodecHandler::getOnAsyncInputAvailable() const {
+    Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
+    return mCodec->mAsyncCallback.onAsyncInputAvailable;
+}
+
+inline AMediaCodecOnAsyncOutputAvailable CodecHandler::getOnAsyncOutputAvailable() const {
+    Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
+    return mCodec->mAsyncCallback.onAsyncOutputAvailable;
+}
+
+inline AMediaCodecOnAsyncFormatChanged CodecHandler::getOnAsyncFormatChanged() const {
+    Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
+    return mCodec->mAsyncCallback.onAsyncFormatChanged;
+}
+
+inline AMediaCodecOnAsyncError CodecHandler::getOnAsyncError() const {
+    Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
+    return mCodec->mAsyncCallback.onAsyncError;
 }
 
 void CodecHandler::onMessageReceived(const sp<AMessage> &msg) {
@@ -183,12 +208,9 @@ void CodecHandler::onMessageReceived(const sp<AMessage> &msg) {
                          break;
                      }
 
-                     Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
-                     if (mCodec->mAsyncCallback.onAsyncInputAvailable != NULL) {
-                         mCodec->mAsyncCallback.onAsyncInputAvailable(
-                                 mCodec,
-                                 mCodec->mAsyncCallbackUserData,
-                                 index);
+                     AMediaCodecOnAsyncInputAvailable callback = getOnAsyncInputAvailable();
+                     if (callback != NULL) {
+                         callback(mCodec, mCodec->mAsyncCallbackUserData, index);
                      }
 
                      break;
@@ -229,13 +251,9 @@ void CodecHandler::onMessageReceived(const sp<AMessage> &msg) {
                          timeUs,
                          (uint32_t)flags};
 
-                     Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
-                     if (mCodec->mAsyncCallback.onAsyncOutputAvailable != NULL) {
-                         mCodec->mAsyncCallback.onAsyncOutputAvailable(
-                                 mCodec,
-                                 mCodec->mAsyncCallbackUserData,
-                                 index,
-                                 &bufferInfo);
+                     AMediaCodecOnAsyncOutputAvailable callback = getOnAsyncOutputAvailable();
+                     if (callback != NULL) {
+                         callback(mCodec, mCodec->mAsyncCallbackUserData, index, &bufferInfo);
                      }
 
                      break;
@@ -257,12 +275,9 @@ void CodecHandler::onMessageReceived(const sp<AMessage> &msg) {
                      }
                      AMediaFormat *aMediaFormat = AMediaFormat_fromMsg(&copy);
 
-                     Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
-                     if (mCodec->mAsyncCallback.onAsyncFormatChanged != NULL) {
-                         mCodec->mAsyncCallback.onAsyncFormatChanged(
-                                 mCodec,
-                                 mCodec->mAsyncCallbackUserData,
-                                 aMediaFormat);
+                     AMediaCodecOnAsyncFormatChanged callback = getOnAsyncFormatChanged();
+                     if (callback != NULL) {
+                         callback(mCodec, mCodec->mAsyncCallbackUserData, aMediaFormat);
                      }
 
                      break;
@@ -285,14 +300,10 @@ void CodecHandler::onMessageReceived(const sp<AMessage> &msg) {
                      ALOGE("Codec reported error(0x%x/%s), actionCode(%d), detail(%s)",
                            err, StrMediaError(err).c_str(), actionCode, detail.c_str());
 
-                     Mutex::Autolock _l(mCodec->mAsyncCallbackLock);
-                     if (mCodec->mAsyncCallback.onAsyncError != NULL) {
-                         mCodec->mAsyncCallback.onAsyncError(
-                                 mCodec,
-                                 mCodec->mAsyncCallbackUserData,
-                                 translate_error(err),
-                                 actionCode,
-                                 detail.c_str());
+                     AMediaCodecOnAsyncError callback = getOnAsyncError();
+                     if (callback != NULL) {
+                         callback(mCodec, mCodec->mAsyncCallbackUserData,
+                                  translate_error(err), actionCode, detail.c_str());
                      }
 
                      break;
@@ -560,33 +571,48 @@ media_status_t AMediaCodec_configure(
     return translate_error(err);
 }
 
+inline void setCallback(AMediaCodec *codec,
+                        AMediaCodecOnAsyncNotifyCallback callback,
+                        void *userdata) {
+    Mutex::Autolock _l(codec->mAsyncCallbackLock);
+    codec->mAsyncCallback = callback;
+    codec->mAsyncCallbackUserData = userdata;
+}
+
+inline void unsetCallback(AMediaCodec *codec) {
+    Mutex::Autolock _l(codec->mAsyncCallbackLock);
+    codec->mAsyncCallback = {};
+    codec->mAsyncCallbackUserData = nullptr;
+}
+
 EXPORT
 media_status_t AMediaCodec_setAsyncNotifyCallback(
         AMediaCodec *mData,
         AMediaCodecOnAsyncNotifyCallback callback,
         void *userdata) {
 
-    {
-        Mutex::Autolock _l(mData->mAsyncCallbackLock);
+    if (callback.onAsyncInputAvailable != NULL ||
+        callback.onAsyncOutputAvailable != NULL ||
+        callback.onAsyncFormatChanged != NULL ||
+        callback.onAsyncError != NULL) {
         if (mData->mAsyncNotify == NULL) {
             mData->mAsyncNotify = new AMessage(kWhatAsyncNotify, mData->mHandler);
         }
         // we set this ahead so that we can be ready
         // to receive callbacks as soon as the next call is a
         // success.
-        mData->mAsyncCallback = callback;
-        mData->mAsyncCallbackUserData = userdata;
+        setCallback(mData, callback, userdata);
+    } else {
+        // Need to unset the callbacks.
+        mData->mAsyncNotify.clear();
+        unsetCallback(mData);
     }
 
     // always call, codec may have been reset/re-configured since last call.
     status_t err = mData->mCodec->setCallback(mData->mAsyncNotify);
     if (err != OK) {
-        {
-            //The setup gone wrong. clean up the pointers.
-            Mutex::Autolock _l(mData->mAsyncCallbackLock);
-            mData->mAsyncCallback = {};
-            mData->mAsyncCallbackUserData = nullptr;
-        }
+        //The setup gone wrong. clean up the pointers.
+        unsetCallback(mData);
         ALOGE("setAsyncNotifyCallback: err(%d), failed to set async callback", err);
         return translate_error(err);
     }
