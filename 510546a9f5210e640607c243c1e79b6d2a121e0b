@@ -16,6 +16,23 @@
       "message": "looks good to me and it resolves the issue as well.",
       "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209d445f_38c215a5",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2024-03-18T23:43:43Z",
+      "side": 1,
+      "message": "I noticed that the existing ordering comes from https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/av/+/19470908. \n\nWill we run into the original problem that CL tried to fix?",
+      "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
