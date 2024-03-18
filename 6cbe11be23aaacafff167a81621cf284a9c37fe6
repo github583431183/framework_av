@@ -33,6 +33,24 @@
       "message": "Hi @jsebechlebsky@google.com\nThanks a lot for reviewing the patch.\nIt seems that this patch can\u0027t be merged without CR+2?\nIf so, could you please add guys you know who can vote +2 as reviewers?\nThanks a lot.",
       "revId": "6cbe11be23aaacafff167a81621cf284a9c37fe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93efe800_0edcb3c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937466
+      },
+      "writtenOn": "2024-03-18T15:36:57Z",
+      "side": 1,
+      "message": "Hi Tony, \nthere seems to be some temporary issue with AOSP gerrit instance preventing us from granting CR+2 at this moment - we\u0027re looking into resolving the issue and will grant you CR+2 as soon as it\u0027s resolved.\n\nThank you for the contribution!\n\nJan",
+      "parentUuid": "6d453fd2_04dd841c",
+      "revId": "6cbe11be23aaacafff167a81621cf284a9c37fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
