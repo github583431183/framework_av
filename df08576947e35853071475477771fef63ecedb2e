@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d129b4ce_f04f3b9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1939986
+      },
+      "writtenOn": "2024-03-18T15:55:50Z",
+      "side": 1,
+      "message": "Let\u0027s put more explanation in the CPU core usage heuristic",
+      "revId": "df08576947e35853071475477771fef63ecedb2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59b9ff95_44c447fe",
