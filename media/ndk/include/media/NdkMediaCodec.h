@@ -468,8 +468,9 @@ void AMediaCodec_releaseName(AMediaCodec*, char* name) __INTRODUCED_IN(28);
 /**
  * Set an asynchronous callback for actionable AMediaCodec events.
  * When asynchronous callback is enabled, it is an error for the client to call
- * AMediaCodec_getInputBuffers(), AMediaCodec_getOutputBuffers(),
+ * AMediaCodec_getInputBuffer(), AMediaCodec_getOutputBuffer(),
  * AMediaCodec_dequeueInputBuffer() or AMediaCodec_dequeueOutputBuffer().
+ * Any calls to these should return with AMEDIA_ERROR_INVALID_OPERATION.
  *
  * AMediaCodec_flush() behaves differently in asynchronous mode.
  * After calling AMediaCodec_flush(), the client must call AMediaCodec_start() to
