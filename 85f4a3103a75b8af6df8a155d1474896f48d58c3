@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a619f26_e001add8",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2292,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-03-19T21:25:12Z",
+      "side": 1,
+      "message": "we will need to use a pooled block pool here to improve efficiency.\n\nSee https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/sfplugin/CCodecBufferChannel.cpp;drc\u003d82174a1377b8589cf5c2a5ed2a218ac819a0f25c;l\u003d1628\n\nYou will need the preferred linear ID.\n\nAlso, implementations may use a 2D gralloc buffer and R8 pixel format. We could add a TODO.",
+      "range": {
+        "startLine": 2291,
+        "startChar": 12,
+        "endLine": 2292,
+        "endChar": 95
+      },
+      "revId": "85f4a3103a75b8af6df8a155d1474896f48d58c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
