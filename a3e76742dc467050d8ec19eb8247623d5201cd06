@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6efa7279_0ce41bc2",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-19T22:35:44Z",
+      "side": 1,
+      "message": "Thank you for the update! This should be a very minor discussion. I personally prefer all zeros, but I\u0027m not sure if this may break any low layer restrictions. @lajos@google.com could you provide any input? Thanks!",
+      "parentUuid": "a57b7dfd_00da0196",
+      "range": {
+        "startLine": 1194,
+        "startChar": 39,
+        "endLine": 1194,
+        "endChar": 52
+      },
+      "revId": "a3e76742dc467050d8ec19eb8247623d5201cd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0323eabb_5efa68ac",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 25
