@@ -16,6 +16,144 @@
       "message": "Please note that the bug found in Hal2AidlMapper is not critical (see the commit description). I don\u0027t think it needs to be cherry-picked to the device branch.",
       "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be663bf1_6917f7d7",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-19T11:15:28Z",
+      "side": 1,
+      "message": "for clarity this definition should go just before the definition of createPort() at line 126",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 99
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f99fa3_19f57a98",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-19T11:15:28Z",
+      "side": 1,
+      "message": "for clarity this definition should go just before the definition of createPort() at line 126 with the definition of createDeviceExt",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 89
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61ca7e2_15a2e976",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-19T11:15:28Z",
+      "side": 1,
+      "message": "should we set *applied to false by default?",
+      "range": {
+        "startLine": 327,
+        "startChar": 18,
+        "endLine": 327,
+        "endChar": 25
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a3c479_e1546421",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-19T11:15:28Z",
+      "side": 1,
+      "message": "Other device",
+      "range": {
+        "startLine": 935,
+        "startChar": 59,
+        "endLine": 935,
+        "endChar": 65
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e06543_2867244e",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-19T11:15:28Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 947,
+        "startChar": 13,
+        "endLine": 947,
+        "endChar": 18
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878485db_53e7b363",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-19T11:15:28Z",
+      "side": 1,
+      "message": "why not do this in ConnectAnotherDevice()?",
+      "range": {
+        "startLine": 1083,
+        "startChar": 0,
+        "endLine": 1084,
+        "endChar": 74
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
