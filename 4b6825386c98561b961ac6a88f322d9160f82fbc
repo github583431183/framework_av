@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f73dae4_a63db452",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-19T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be663bf1_6917f7d7",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 99
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18f99fa3_19f57a98",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-03-19T11:15:28Z",
       "side": 1,
       "message": "for clarity this definition should go just before the definition of createPort() at line 126 with the definition of createDeviceExt",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 89
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd03755_eb1a09e5",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-19T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f99fa3_19f57a98",
       "range": {
         "startLine": 137,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8129edec_a04efb55",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-19T18:06:40Z",
+      "side": 1,
+      "message": "Good catch, fixed.",
+      "parentUuid": "f61ca7e2_15a2e976",
+      "range": {
+        "startLine": 327,
+        "startChar": 18,
+        "endLine": 327,
+        "endChar": 25
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a3c479_e1546421",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-03-19T11:15:28Z",
       "side": 1,
       "message": "Other device",
+      "range": {
+        "startLine": 935,
+        "startChar": 59,
+        "endLine": 935,
+        "endChar": 65
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b7ed1a_e37fcd6c",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-19T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3a3c479_e1546421",
       "range": {
         "startLine": 935,
         "startChar": 59,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7032edcb_310825f9",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-19T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e06543_2867244e",
+      "range": {
+        "startLine": 947,
+        "startChar": 13,
+        "endLine": 947,
+        "endChar": 18
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "878485db_53e7b363",
@@ -146,6 +266,30 @@
       "writtenOn": "2024-03-19T11:15:28Z",
       "side": 1,
       "message": "why not do this in ConnectAnotherDevice()?",
+      "range": {
+        "startLine": 1083,
+        "startChar": 0,
+        "endLine": 1084,
+        "endChar": 74
+      },
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d21d546_257cc8a7",
+        "filename": "media/libaudiohal/tests/CoreAudioHalAidl_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-19T18:06:40Z",
+      "side": 1,
+      "message": "Change of the device port config is initiated from the framework side and happens when a patch is created/updated. The operation of setting device connection state only creates a new device port instance from a \"template.\"",
+      "parentUuid": "878485db_53e7b363",
       "range": {
         "startLine": 1083,
         "startChar": 0,
