@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e67ab3_a07c6423",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-19T03:47:14Z",
+      "side": 1,
+      "message": "Please note that the bug found in Hal2AidlMapper is not critical (see the commit description). I don\u0027t think it needs to be cherry-picked to the device branch.",
+      "revId": "4b6825386c98561b961ac6a88f322d9160f82fbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
