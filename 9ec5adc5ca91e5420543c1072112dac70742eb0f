@@ -334,6 +334,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca9bfad1_f018026b",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-03-19T21:19:39Z",
+      "side": 1,
+      "message": "C2 HAL will need to use unsigned values, so I am afraid that the clamping will need to happen here.",
+      "parentUuid": "f2619e48_cbfcb88b",
+      "range": {
+        "startLine": 1889,
+        "startChar": 49,
+        "endLine": 1889,
+        "endChar": 61
+      },
+      "revId": "9ec5adc5ca91e5420543c1072112dac70742eb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc60749d_c33b1274",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 20
