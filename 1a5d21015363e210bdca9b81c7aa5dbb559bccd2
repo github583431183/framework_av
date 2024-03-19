@@ -46,6 +46,30 @@
       },
       "revId": "1a5d21015363e210bdca9b81c7aa5dbb559bccd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d574e4_08b6d246",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-19T16:20:23Z",
+      "side": 1,
+      "message": "the documentation says:\n\n\"passing an additional empty buffer(bufferInfo.size \u003d 0) with MediaCodec.BUFFER_FLAG_END_OF_STREAM flag and a suitable presentation timestamp set in bufferInfo parameter as the last sample of that track. \"\n\nthe \"AND\" in the middle of that would point at requiring both:\n\n-- empty buffer, with EOS flag set in metadata\n-- legitimate timestamp\n\nwhich points towards the original code being correct, without any of the changes we\u0027ve discussed in this CL.",
+      "parentUuid": "5637c6c5_f6968829",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "1a5d21015363e210bdca9b81c7aa5dbb559bccd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
