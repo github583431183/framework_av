@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da8f6ab_4d289162",
+        "filename": "media/libstagefright/renderfright/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-19T19:38:55Z",
+      "side": 1,
+      "message": "can you please set the visibility to the fuzz target only?",
+      "revId": "f877909ba7f51ab11e88d0127ba44024d8122bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
