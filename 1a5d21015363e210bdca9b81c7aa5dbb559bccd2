@@ -22,6 +22,30 @@
       },
       "revId": "1a5d21015363e210bdca9b81c7aa5dbb559bccd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5637c6c5_f6968829",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2024-03-19T05:08:24Z",
+      "side": 1,
+      "message": "I asked the engineer of the application that uses MediaMuxer to check the policy about writeSampleData(). *note that: this issue is happen since Android V.\nhttps://developer.android.com/reference/android/media/MediaMuxer#writeSampleData(int,%20java.nio.ByteBuffer,%20android.media.MediaCodec.BufferInfo))\n\nbut, I can see a description of presentationTimeUS in BufferInfo and I think the value of timeUs could be ignored if size of buffer is 0.\nhttps://developer.android.com/reference/android/media/MediaCodec.BufferInfo#presentationTimeUs\n\nhow do you think about this?",
+      "parentUuid": "67626715_c6236d35",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "1a5d21015363e210bdca9b81c7aa5dbb559bccd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
