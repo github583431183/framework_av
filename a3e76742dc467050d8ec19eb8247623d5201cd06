@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f7302d3_df3effa3",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-03-19T22:24:07Z",
+      "side": 1,
+      "message": "Hi Lajos and Ram,\nI think we have talked to SoC vendors that the hint will be \"zeros\", so that this should mean `\"0,0-0-0\u003d0\"`. Is this preferred than `\"0,0-16,16\u003d0\"`?",
+      "parentUuid": "2c714b2c_37e7e777",
+      "range": {
+        "startLine": 1194,
+        "startChar": 39,
+        "endLine": 1194,
+        "endChar": 52
+      },
+      "revId": "a3e76742dc467050d8ec19eb8247623d5201cd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0323eabb_5efa68ac",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 25
