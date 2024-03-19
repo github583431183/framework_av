@@ -46,6 +46,30 @@
       },
       "revId": "6a269bbdf355e78adb060987a95b9a893f809f50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d4240b_8db5dfc0",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-03-19T21:12:05Z",
+      "side": 1,
+      "message": "Sorry for the delayed response here.\n\nI liked the previous version reusing the C2Rect as that object is already well defined (and the concept also makes a very good fit for the feature we are enabling at the codec side here). Reusing the C2Rect makes it clean that this struct is a Rect + a value.\n\nEven if we don\u0027t reuse the struct, these fields need to be unsigned. If so, I still recommend adding a constructor with a C2Rect + value, and request that the initial portion be binary compatible with a C2Rect (same field ordering).",
+      "parentUuid": "2685b218_c1610b22",
+      "range": {
+        "startLine": 1428,
+        "startChar": 4,
+        "endLine": 1431,
+        "endChar": 16
+      },
+      "revId": "6a269bbdf355e78adb060987a95b9a893f809f50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
