@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b8d109_984b98c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-03-20T04:47:06Z",
+      "side": 1,
+      "message": "Not a clean cherry-pick from internal main ag/26603676 (see PS#1).  I ended up doing a full redo of the formatting.  It seems some of the Android.bp files were already (partially) fixed in main.",
+      "revId": "e59246e209d350b88496b15ff3f90c6f72f02d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
