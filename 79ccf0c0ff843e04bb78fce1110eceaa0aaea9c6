@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6defe20_56bfda33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-03-20T14:51:08Z",
+      "side": 1,
+      "message": "Alex, thanks for the CL.  We appreciate the work you have put in it.  Unfortunately, I have been asked to put this review and landing on hold indefinitely for now.  If the situation changes, I will let you know.  Thanks!",
+      "revId": "79ccf0c0ff843e04bb78fce1110eceaa0aaea9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
