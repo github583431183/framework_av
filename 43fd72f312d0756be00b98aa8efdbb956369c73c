@@ -70,6 +70,30 @@
       },
       "revId": "43fd72f312d0756be00b98aa8efdbb956369c73c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3d462a_a227bc3c",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-20T17:21:08Z",
+      "side": 1,
+      "message": "what about my question: why do we have a rule RULE_MATCH_UID with a UID 0 in the criteria? because if we have a valid UID, there won\u0027t be a match with UID 0.",
+      "parentUuid": "02ddbb50_16f920b5",
+      "range": {
+        "startLine": 57,
+        "startChar": 52,
+        "endLine": 57,
+        "endChar": 84
+      },
+      "revId": "43fd72f312d0756be00b98aa8efdbb956369c73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
