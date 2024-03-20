@@ -46,6 +46,30 @@
       },
       "revId": "43fd72f312d0756be00b98aa8efdbb956369c73c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ddbb50_16f920b5",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-03-20T17:12:46Z",
+      "side": 1,
+      "message": "When a getDeviceForAttributes is called by AudioService to get the volume device, mixes are taken into account.\nHowever, as no UID is provided, AudioPolicyManager is using UID\u003d0:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audiopolicy/managerdefault/AudioPolicyManager.cpp;l\u003d8513?q\u003dgetDevicesForAttributes\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\u0026start\u003d11\n\nAs a result, if a rule of exclusion is set on current user, this rule is not correctly handled, thus the criteria is matching and we select wrong device for volume.\n\nClean fix will be to have UID....\n\nSecond case: registering a matching rule with UID\u003d0 --\u003e this case does not happen today (CarService only registers matching rule with USAGE\u003dUNKNOWN)",
+      "parentUuid": "6846584c_4c53f37b",
+      "range": {
+        "startLine": 57,
+        "startChar": 52,
+        "endLine": 57,
+        "endChar": 84
+      },
+      "revId": "43fd72f312d0756be00b98aa8efdbb956369c73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
