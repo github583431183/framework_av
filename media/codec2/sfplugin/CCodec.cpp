@@ -1390,6 +1390,14 @@ void CCodec::configure(const sp<AMessage> &msg) {
                     config->mInputFormat->setInt32("android._color-format", componentColorFormat);
                 }
             } else {
+                if ((config->mDomain & Config::IS_VIDEO) &&
+                    mime.equalsIgnoreCase(MEDIA_MIMETYPE_VIDEO_RAW)) {
+                    config->mInputFormat->setInt32(KEY_COLOR_FORMAT, format);
+                    if (msg->findInt32("android._color-format", &componentColorFormat)) {
+                        config->mInputFormat->setInt32("android._color-format",
+                                                       componentColorFormat);
+                    }
+                }
                 config->mOutputFormat->setInt32(KEY_COLOR_FORMAT, format);
             }
         }
