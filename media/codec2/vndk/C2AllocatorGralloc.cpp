@@ -563,7 +563,6 @@ static c2_status_t PopulatePlaneLayout(
         }
 
         case static_cast<uint32_t>(PixelFormat4::RGBA_8888):
-            // TODO: alpha channel
             // fall-through
         case static_cast<uint32_t>(PixelFormat4::RGBX_8888): {
             void *pointer = nullptr;
@@ -577,8 +576,9 @@ static c2_status_t PopulatePlaneLayout(
             addr[C2PlanarLayout::PLANE_R] = (uint8_t *)pointer;
             addr[C2PlanarLayout::PLANE_G] = (uint8_t *)pointer + 1;
             addr[C2PlanarLayout::PLANE_B] = (uint8_t *)pointer + 2;
-            layout->type = C2PlanarLayout::TYPE_RGB;
-            layout->numPlanes = 3;
+            addr[C2PlanarLayout::PLANE_A] = (uint8_t *)pointer + 3;
+            layout->type = C2PlanarLayout::TYPE_RGBA;
+            layout->numPlanes = 4;
             layout->rootPlanes = 1;
             layout->planes[C2PlanarLayout::PLANE_R] = {
                 C2PlaneInfo::CHANNEL_R,         // channel
@@ -618,6 +618,19 @@ static c2_status_t PopulatePlaneLayout(
                 C2PlaneInfo::NATIVE,            // endianness
                 C2PlanarLayout::PLANE_R,        // rootIx
                 2,                              // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_B] = {
+                C2PlaneInfo::CHANNEL_A,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * stride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                8,                              // allocatedDepth
+                8,                              // bitDepth
+                0,                              // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_R,        // rootIx
+                3,                              // offset
             };
             break;
         }
