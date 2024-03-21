@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36366b74_9c38b218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-21T16:50:49Z",
+      "side": 1,
+      "message": "Yes!\nI had the same question about the logging, but your most recent answer convinced me it\u0027s probably fine to leave out since the logging from the service maanger shim is probably enough to understand the problem.",
+      "parentUuid": "971dd8f9_d37361bf",
+      "revId": "d8f2441693ce6c9abf4891a5163be7dcdba455d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "305b6619_84bda432",
