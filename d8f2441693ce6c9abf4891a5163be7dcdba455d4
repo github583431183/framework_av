@@ -22,6 +22,30 @@
       },
       "revId": "d8f2441693ce6c9abf4891a5163be7dcdba455d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3589bc12_0e64f974",
+        "filename": "media/libaudiohal/impl/AidlUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-21T15:54:44Z",
+      "side": 1,
+      "message": "It\u0027s a header file, so using logging is a bit complicated because setting `LOG_TAG` here will interfere with the tag of the .cpp file which include it.\n\nI rely here on the fact that both `ServiceManagerShim::waitForService` and `AIBinder::associateClass` emit extensive logs that include the interface name when something goes wrong, see:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/IServiceManager.cpp;l\u003d432;drc\u003dfd511d352a32198b2d6ca5d0c6e241d55b0726b6\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/ndk/ibinder.cpp;l\u003d140;drc\u003de3de8800fa64073d5523b6024f039bc232c2b9d8\n\nSo the idea is that we don\u0027t need any extra logging here.",
+      "parentUuid": "305b6619_84bda432",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "d8f2441693ce6c9abf4891a5163be7dcdba455d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
