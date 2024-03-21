@@ -470,6 +470,12 @@ inline constexpr int32_t HEVCHighTierLevel61 = 0x800000;
 inline constexpr int32_t HEVCMainTierLevel62 = 0x1000000;
 inline constexpr int32_t HEVCHighTierLevel62 = 0x2000000;
 
+inline constexpr int32_t HEVCHighTierLevels =
+        HEVCHighTierLevel1 | HEVCHighTierLevel2 | HEVCHighTierLevel21 | HEVCHighTierLevel3 |
+        HEVCHighTierLevel31 | HEVCHighTierLevel4 | HEVCHighTierLevel41 | HEVCHighTierLevel5 |
+        HEVCHighTierLevel51 | HEVCHighTierLevel52 | HEVCHighTierLevel6 | HEVCHighTierLevel61 |
+        HEVCHighTierLevel62;
+
 inline static const char *asString_HEVCTierLevel(int32_t i, const char *def = "??") {
     switch (i) {
         case HEVCMainTierLevel1:    return "Main 1";
@@ -701,12 +707,17 @@ inline static const char *asString_ColorFormat(int32_t i, const char *def = "??"
 }
 
 inline constexpr char FEATURE_AdaptivePlayback[]       = "adaptive-playback";
+inline constexpr char FEATURE_DynamicTimestamp[] = "dynamic-timestamp";
 inline constexpr char FEATURE_EncodingStatistics[]     = "encoding-statistics";
+inline constexpr char FEATURE_FrameParsing[] = "frame-parsing";
+inline constexpr char FEATURE_HdrEditing[] = "hdr-editing";
 inline constexpr char FEATURE_IntraRefresh[] = "intra-refresh";
+inline constexpr char FEATURE_LowLatency[] = "low-latency";
 inline constexpr char FEATURE_MultipleFrames[] = "multiple-frames";
 inline constexpr char FEATURE_PartialFrame[] = "partial-frame";
 inline constexpr char FEATURE_QpBounds[] = "qp-bounds";
 inline constexpr char FEATURE_SecurePlayback[]         = "secure-playback";
+inline constexpr char FEATURE_SpecialCodec[] = "special-codec";
 inline constexpr char FEATURE_TunneledPlayback[]       = "tunneled-playback";
 
 // from MediaFormat.java
