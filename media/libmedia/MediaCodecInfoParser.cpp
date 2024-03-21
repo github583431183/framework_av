@@ -35,6 +35,27 @@ static const Range<int> BITRATE_RANGE = Range<int>(0, 500000000);
 static const Range<int> FRAME_RATE_RANGE = Range<int>(0, 960);
 static const Range<Rational> POSITIVE_RATIONALS =
             Range<Rational>(Rational(1, INT_MAX), Rational(INT_MAX, 1));
+static const int DEFAULT_MAX_SUPPORTED_INSTANCES = 32;
+static const int MAX_SUPPORTED_INSTANCES_LIMIT = 256;
+
+// must not contain KEY_PROFILE
+static const std::set<std::pair<std::string, AMessage::Type>> AUDIO_LEVEL_CRITICAL_FORMAT_KEYS = {
+    // We don't set level-specific limits for audio codecs today. Key candidates would
+    // be sample rate, bit rate or channel count.
+    // MediaFormat.KEY_SAMPLE_RATE,
+    // MediaFormat.KEY_CHANNEL_COUNT,
+    // MediaFormat.KEY_BIT_RATE,
+    { KEY_MIME, AMessage::kTypeString }
+};
+
+// must not contain KEY_PROFILE
+static const std::set<std::pair<std::string, AMessage::Type>> VIDEO_LEVEL_CRITICAL_FORMAT_KEYS = {
+    { KEY_WIDTH, AMessage::kTypeInt32 },
+    { KEY_HEIGHT, AMessage::kTypeInt32 },
+    { KEY_FRAME_RATE, AMessage::kTypeInt32 },
+    { KEY_BIT_RATE, AMessage::kTypeInt32 },
+    { KEY_MIME, AMessage::kTypeString }
+};
 
 // found stuff that is not supported by framework (=> this should not happen)
 static const int ERROR_UNRECOGNIZED   = (1 << 0);
@@ -145,6 +166,30 @@ static const MediaCodecInfoParser::VideoCapabilities::PerformancePoint UHD_200
 /** 2160p 240fps */
 static const MediaCodecInfoParser::VideoCapabilities::PerformancePoint UHD_240
         = MediaCodecInfoParser::VideoCapabilities::PerformancePoint(3840, 2160, 240);
+
+// CodecCapabilities Features
+static const std::vector<MediaCodecInfoParser::Feature> DecoderFeatures = {
+    MediaCodecInfoParser::Feature(FEATURE_AdaptivePlayback, (1 << 0), true),
+    MediaCodecInfoParser::Feature(FEATURE_SecurePlayback,   (1 << 1), false),
+    MediaCodecInfoParser::Feature(FEATURE_TunneledPlayback, (1 << 2), false),
+    MediaCodecInfoParser::Feature(FEATURE_PartialFrame,     (1 << 3), false),
+    MediaCodecInfoParser::Feature(FEATURE_FrameParsing,     (1 << 4), false),
+    MediaCodecInfoParser::Feature(FEATURE_MultipleFrames,   (1 << 5), false),
+    MediaCodecInfoParser::Feature(FEATURE_DynamicTimestamp, (1 << 6), false),
+    MediaCodecInfoParser::Feature(FEATURE_LowLatency,       (1 << 7), true),
+    // feature to exclude codec from REGULAR codec list
+    MediaCodecInfoParser::Feature(FEATURE_SpecialCodec,     (1 << 30), false, true),
+};
+static const std::vector<MediaCodecInfoParser::Feature> EncoderFeatures = {
+    MediaCodecInfoParser::Feature(FEATURE_IntraRefresh, (1 << 0), false),
+    MediaCodecInfoParser::Feature(FEATURE_MultipleFrames, (1 << 1), false),
+    MediaCodecInfoParser::Feature(FEATURE_DynamicTimestamp, (1 << 2), false),
+    MediaCodecInfoParser::Feature(FEATURE_QpBounds, (1 << 3), false),
+    MediaCodecInfoParser::Feature(FEATURE_EncodingStatistics, (1 << 4), false),
+    MediaCodecInfoParser::Feature(FEATURE_HdrEditing, (1 << 5), false),
+    // feature to exclude codec from REGULAR codec list
+    MediaCodecInfoParser::Feature(FEATURE_SpecialCodec,     (1 << 30), false, true),
+};
 
 // static
 Range<int> MediaCodecInfoParser::GetSizeRange() {
@@ -1502,7 +1547,7 @@ void MediaCodecInfoParser::VideoCapabilities::applyLevelLimits() {
     if (!lockParent) {
         return;
     }
-    std::vector<MediaCodecInfo::ProfileLevel> profileLevels = lockParent->getProfileLevels();
+    Vector<MediaCodecInfo::ProfileLevel> profileLevels = lockParent->getProfileLevels();
     AString mediaTypeStr = lockParent->getMediaType();
     const char *mediaType = mediaTypeStr.c_str();
 
@@ -2393,6 +2438,225 @@ bool MediaCodecInfoParser::CodecCapabilities::SupportsBitrate(Range<int> bitrate
     return true;
 }
 
+bool MediaCodecInfoParser::CodecCapabilities::isFeatureSupported(const std::string &name) const {
+    return checkFeature(name, mFlagsSupported);
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::isFeatureRequired(const std::string &name) const {
+    return checkFeature(name, mFlagsRequired);
+}
+
+std::vector<std::string> MediaCodecInfoParser::CodecCapabilities::validFeatures() const {
+    std::vector<Feature> features = getValidFeatures();
+    std::vector<std::string> res;
+    for (int i = 0; i < res.size(); i++) {
+        if (!features.at(i).mInternal) {
+            res.push_back(features.at(i).mName);
+        }
+    }
+    return res;
+}
+
+std::vector<MediaCodecInfoParser::Feature>
+        MediaCodecInfoParser::CodecCapabilities::getValidFeatures() const {
+    if (isEncoder()) {
+        return EncoderFeatures;
+    } else {
+        return DecoderFeatures;
+    }
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::checkFeature(std::string name, int flags) const {
+    for (Feature feat: getValidFeatures()) {
+        if (feat.mName == name) {
+            return (flags & feat.mValue) != 0;
+        }
+    }
+    return false;
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::isRegular() const {
+    // regular codecs only require default features
+    for (Feature feat: getValidFeatures()) {
+        if (!feat.mDefault && isFeatureRequired(feat.mName)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::isFormatSupported(const sp<AMessage> &format) const {
+    AString mediaType;
+    // mediaType must match if present
+    if (format->findString(KEY_MIME, &mediaType) && !mMediaType.equalsIgnoreCase(mediaType)) {
+        return false;
+    }
+
+    // check feature support
+    for (Feature feat: getValidFeatures()) {
+        if (feat.mInternal) {
+            continue;
+        }
+
+        int yesNo;
+        std::string key = KEY_FEATURE_;
+        key = key + feat.mName;
+        if (format->findInt32(key.c_str(), &yesNo)) {
+            continue;
+        }
+        if ((yesNo == 1 && !isFeatureSupported(feat.mName)) ||
+                (yesNo == 0 && isFeatureRequired(feat.mName))) {
+            return false;
+        }
+    }
+
+    int profile;
+    if (format->findInt32(KEY_PROFILE, &profile)) {
+        int level = -1;
+        format->findInt32(KEY_LEVEL, &level);
+        if (!supportsProfileLevel(profile, level)) {
+            return false;
+        }
+
+        // If we recognize this profile, check that this format is supported by the
+        // highest level supported by the codec for that profile. (Ignore specified
+        // level beyond the above profile/level check as level is only used as a
+        // guidance. E.g. AVC Level 1 CIF format is supported if codec supports level 1.1
+        // even though max size for Level 1 is QCIF. However, MPEG2 Simple Profile
+        // 1080p format is not supported even if codec supports Main Profile Level High,
+        // as Simple Profile does not support 1080p.
+        int maxLevel = 0;
+        for (MediaCodecInfo::ProfileLevel pl : mProfileLevels) {
+            if (pl.mProfile == profile && pl.mLevel > maxLevel) {
+                // H.263 levels are not completely ordered:
+                // Level45 support only implies Level10 support
+                if (!mMediaType.equalsIgnoreCase(MIMETYPE_VIDEO_H263)
+                        || pl.mLevel != H263Level45
+                        || maxLevel == H263Level10) {
+                    maxLevel = pl.mLevel;
+                }
+            }
+        }
+        std::shared_ptr<CodecCapabilities> levelCaps
+                = CreateFromProfileLevel(mMediaType, profile, maxLevel);
+        // We must remove the profile from this format otherwise levelCaps.isFormatSupported
+        // will get into this same condition and loop forever. Furthermore, since levelCaps
+        // does not contain features and bitrate specific keys, keep only keys relevant for
+        // a level check.
+        sp<AMessage> levelCriticalFormat = new AMessage;
+
+        // critical keys will always contain KEY_MIME, but should also contain others to be
+        // meaningful
+        if ((isVideo() || isAudio()) && levelCaps != nullptr) {
+            const std::set<std::pair<std::string, AMessage::Type>> criticalKeys =
+                isVideo() ? VIDEO_LEVEL_CRITICAL_FORMAT_KEYS : AUDIO_LEVEL_CRITICAL_FORMAT_KEYS;
+            for (std::pair<std::string, AMessage::Type> key : criticalKeys) {
+                if (format->contains(key.first.c_str())) {
+                    // AMessage::ItemData value = format->findItem(key.c_str());
+                    // levelCriticalFormat->setItem(key.c_str(), value);
+                    switch (key.second) {
+                        case AMessage::kTypeInt32: {
+                            int32_t value;
+                            format->findInt32(key.first.c_str(), &value);
+                            levelCriticalFormat->setInt32(key.first.c_str(), value);
+                            break;
+                        }
+                        case AMessage::kTypeString: {
+                            AString value;
+                            format->findString(key.first.c_str(), &value);
+                            levelCriticalFormat->setString(key.first.c_str(), value);
+                            break;
+                        }
+                        default:
+                            ALOGE("Unsupported type");
+                    }
+                }
+            }
+            if (!levelCaps->isFormatSupported(levelCriticalFormat)) {
+                return false;
+            }
+        }
+    }
+    if (mAudioCaps && !mAudioCaps->supportsFormat(format)) {
+        return false;
+    }
+    if (mVideoCaps && !mVideoCaps->supportsFormat(format)) {
+        return false;
+    }
+    if (mEncoderCaps && !mEncoderCaps->supportsFormat(format)) {
+        return false;
+    }
+    return true;
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::supportsProfileLevel(int profile, int level) const {
+    for (MediaCodecInfo::ProfileLevel pl: mProfileLevels) {
+        if (pl.mProfile != profile) {
+            continue;
+        }
+
+        // No specific level requested
+        if (level == -1) {
+            return true;
+        }
+
+        // AAC doesn't use levels
+        if (mMediaType.equalsIgnoreCase(MIMETYPE_AUDIO_AAC)) {
+            return true;
+        }
+
+        // DTS doesn't use levels
+        if (mMediaType.equalsIgnoreCase(MIMETYPE_AUDIO_DTS)
+                || mMediaType.equalsIgnoreCase(MIMETYPE_AUDIO_DTS_HD)
+                || mMediaType.equalsIgnoreCase(MIMETYPE_AUDIO_DTS_UHD)) {
+            return true;
+        }
+
+        // H.263 levels are not completely ordered:
+        // Level45 support only implies Level10 support
+        if (mMediaType.equalsIgnoreCase(MIMETYPE_VIDEO_H263)) {
+            if (pl.mLevel != level && pl.mLevel == H263Level45
+                    && level > H263Level10) {
+                continue;
+            }
+        }
+
+        // MPEG4 levels are not completely ordered:
+        // Level1 support only implies Level0 (and not Level0b) support
+        if (mMediaType.equalsIgnoreCase(MIMETYPE_VIDEO_MPEG4)) {
+            if (pl.mLevel != level && pl.mLevel == MPEG4Level1
+                    && level > MPEG4Level0) {
+                continue;
+            }
+        }
+
+        // HEVC levels incorporate both tiers and levels. Verify tier support.
+        if (mMediaType.equalsIgnoreCase(MIMETYPE_VIDEO_HEVC)) {
+            bool supportsHighTier =
+                (pl.mLevel & HEVCHighTierLevels) != 0;
+            bool checkingHighTier = (level & HEVCHighTierLevels) != 0;
+            // high tier levels are only supported by other high tier levels
+            if (checkingHighTier && !supportsHighTier) {
+                continue;
+            }
+        }
+
+        if (pl.mLevel >= level) {
+            // if we recognize the listed profile/level, we must also recognize the
+            // profile/level arguments.
+            if (CreateFromProfileLevel(mMediaType, profile, pl.mLevel) != nullptr) {
+                return CreateFromProfileLevel(mMediaType, profile, level) != nullptr;
+            }
+            return true;
+        }
+    }
+    return false;
+ }
+
+sp<AMessage> MediaCodecInfoParser::CodecCapabilities::getDefaultFormat() const {
+    return mDefaultFormat;
+}
+
 AString MediaCodecInfoParser::CodecCapabilities::getMediaType() {
     return mMediaType;
 }
@@ -2400,6 +2664,146 @@ AString MediaCodecInfoParser::CodecCapabilities::getMediaType() {
 Vector<MediaCodecInfo::ProfileLevel>
         MediaCodecInfoParser::CodecCapabilities::getProfileLevels() {
     return mProfileLevels;
+}
+
+int MediaCodecInfoParser::CodecCapabilities::getMaxSupportedInstances() const {
+    return mMaxSupportedInstances;
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::isAudio() const {
+    return mAudioCaps != nullptr;
+}
+
+std::shared_ptr<MediaCodecInfoParser::AudioCapabilities>
+        MediaCodecInfoParser::CodecCapabilities::getAudioCapabilities() const {
+    return mAudioCaps;
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::isEncoder() const {
+    return mEncoderCaps != nullptr;
+}
+
+std::shared_ptr<MediaCodecInfoParser::EncoderCapabilities>
+        MediaCodecInfoParser::CodecCapabilities::getEncoderCapabilities() const {
+    return mEncoderCaps;
+}
+
+bool MediaCodecInfoParser::CodecCapabilities::isVideo() const {
+    return mVideoCaps != nullptr;
+}
+
+std::shared_ptr<MediaCodecInfoParser::VideoCapabilities>
+        MediaCodecInfoParser::CodecCapabilities::getVideoCapabilities() const {
+    return mVideoCaps;
+}
+
+MediaCodecInfoParser::CodecCapabilities MediaCodecInfoParser::CodecCapabilities::dup() {
+    CodecCapabilities caps = CodecCapabilities();
+
+    // profileLevels and colorFormats may be modified by client.
+    caps.mProfileLevels = mProfileLevels;
+    caps.mColorFormats = mColorFormats;
+
+    caps.mMediaType = mMediaType;
+    caps.mMaxSupportedInstances = mMaxSupportedInstances;
+    caps.mFlagsRequired = mFlagsRequired;
+    caps.mFlagsSupported = mFlagsSupported;
+    caps.mFlagsVerified = mFlagsVerified;
+    caps.mAudioCaps = mAudioCaps;
+    caps.mVideoCaps = mVideoCaps;
+    caps.mEncoderCaps = mEncoderCaps;
+    caps.mDefaultFormat = mDefaultFormat;
+    caps.mCapabilitiesInfo = mCapabilitiesInfo;
+
+    return caps;
+ }
+
+// static
+std::shared_ptr<MediaCodecInfoParser::CodecCapabilities>
+        MediaCodecInfoParser::CodecCapabilities::CreateFromProfileLevel(
+        AString mediaType, int profile, int level, int32_t maxConcurrentInstances) {
+    MediaCodecInfo::ProfileLevel pl;
+    pl.mProfile = profile;
+    pl.mLevel = level;
+    sp<AMessage> defaultFormat = new AMessage;
+    defaultFormat->setString(KEY_MIME, mediaType);
+
+    Vector<MediaCodecInfo::ProfileLevel> pls;
+    pls.push_back(pl);
+    Vector<uint32_t> colFmts;
+    sp<AMessage> capabilitiesInfo = new AMessage;
+    std::shared_ptr<CodecCapabilities> ret(new CodecCapabilities(pls, colFmts, true /* encoder */,
+            defaultFormat, capabilitiesInfo, maxConcurrentInstances));
+    if (ret->mError != 0) {
+        return nullptr;
+    }
+    return ret;
+}
+
+MediaCodecInfoParser::CodecCapabilities::CodecCapabilities(
+        Vector<MediaCodecInfo::ProfileLevel> profLevs, Vector<uint32_t> colFmts,
+        bool encoder, sp<AMessage> &defaultFormat, sp<AMessage> &capabilitiesInfo,
+        int32_t maxConcurrentInstances) {
+    mColorFormats = colFmts;
+    mFlagsVerified = 0; // TODO: remove as it is unused
+    mDefaultFormat = defaultFormat;
+    mCapabilitiesInfo = capabilitiesInfo;
+    AString mediaTypeAStr;
+    mDefaultFormat->findString(KEY_MIME, &mediaTypeAStr);
+    mMediaType = mediaTypeAStr.c_str();
+
+    /* VP9 introduced profiles around 2016, so some VP9 codecs may not advertise any
+       supported profiles. Determine the level for them using the info they provide. */
+    if (profLevs.size() == 0 && mMediaType == MIMETYPE_VIDEO_VP9) {
+        MediaCodecInfo::ProfileLevel profLev;
+        profLev.mProfile = VP9Profile0;
+        profLev.mLevel = VideoCapabilities::EquivalentVP9Level(capabilitiesInfo);
+        profLevs.push_back(profLev);
+    }
+    mProfileLevels = profLevs;
+
+    if (mMediaType.startsWithIgnoreCase("audio/")) {
+        mAudioCaps = AudioCapabilities::Create(capabilitiesInfo, *this);
+        mAudioCaps->getDefaultFormat(mDefaultFormat);
+    } else if (mMediaType.startsWithIgnoreCase("video/")
+            || mMediaType.equalsIgnoreCase(MIMETYPE_IMAGE_ANDROID_HEIC)) {
+        mVideoCaps = VideoCapabilities::Create(capabilitiesInfo, *this);
+    }
+
+    if (encoder) {
+        mEncoderCaps = EncoderCapabilities::Create(capabilitiesInfo, *this);
+        mEncoderCaps->getDefaultFormat(mDefaultFormat);
+    }
+
+    // const sp<AMessage> global = MediaCodecList::getInstance()->getGlobalSettings();
+
+    // mMaxSupportedInstances = DEFAULT_MAX_SUPPORTED_INSTANCES;
+    // global->findInt32("max-concurrent-instances", &mMaxSupportedInstances);
+
+    mMaxSupportedInstances = maxConcurrentInstances > 0
+            ? maxConcurrentInstances : DEFAULT_MAX_SUPPORTED_INSTANCES;
+
+    int maxInstances = mMaxSupportedInstances;
+    capabilitiesInfo->findInt32("max-concurrent-instances", &maxInstances);
+    mMaxSupportedInstances =
+            Range(1, MAX_SUPPORTED_INSTANCES_LIMIT).clamp(maxInstances);
+
+    for (Feature feat: getValidFeatures()) {
+        std::string key = KEY_FEATURE_;
+        key = key + feat.mName;
+        int yesNo;
+        if (!capabilitiesInfo->findInt32(key.c_str(), &yesNo)) {
+            continue;
+        }
+        if (yesNo > 0) {
+            mFlagsRequired |= feat.mValue;
+        }
+        mFlagsSupported |= feat.mValue;
+        if (!feat.mInternal) {
+            mDefaultFormat->setInt32(key.c_str(), 1);
+        }
+        // TODO restrict features by mFlagsVerified once all codecs reliably verify them
+    }
 }
 
 }  // namespace android
