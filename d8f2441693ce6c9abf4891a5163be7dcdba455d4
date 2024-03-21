@@ -46,6 +46,30 @@
       },
       "revId": "d8f2441693ce6c9abf4891a5163be7dcdba455d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2c712a5_6f7c608a",
+        "filename": "media/libaudiohal/impl/AidlUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-03-21T16:17:01Z",
+      "side": 1,
+      "message": "Ack, make sense, thanks",
+      "parentUuid": "3589bc12_0e64f974",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "d8f2441693ce6c9abf4891a5163be7dcdba455d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
