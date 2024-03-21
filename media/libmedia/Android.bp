@@ -301,6 +301,49 @@ cc_library_shared {
     },
 }
 
+cc_library_shared {
+    name: "libmedia_codeclist_parser",
+
+    srcs: [
+        "MediaCodecInfoParser.cpp",
+        "MediaCodecInfoParserUtils.cpp",
+    ],
+
+    local_include_dirs: [
+        "include",
+    ],
+
+    shared_libs: [
+        "libmedia_codeclist",
+        "libbinder",
+        "liblog",
+        "libstagefright_foundation",
+        "libutils",
+    ],
+
+    include_dirs: [
+        "system/libhidl/transport/token/1.0/utils/include",
+    ],
+
+    export_include_dirs: [
+        "include",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wno-error=deprecated-declarations",
+        "-Wall",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+    },
+}
+
 cc_library {
     name: "libmedia",
 
