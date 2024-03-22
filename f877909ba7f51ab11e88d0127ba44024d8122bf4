@@ -16,6 +16,24 @@
       "message": "can you please set the visibility to the fuzz target only?",
       "revId": "f877909ba7f51ab11e88d0127ba44024d8122bf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2ac5c4_3b33bf6e",
+        "filename": "media/libstagefright/renderfright/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1616561
+      },
+      "writtenOn": "2024-03-22T06:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da8f6ab_4d289162",
+      "revId": "f877909ba7f51ab11e88d0127ba44024d8122bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
