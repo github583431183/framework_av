@@ -16,6 +16,46 @@
       "message": "The technical detail of this issue is in https://issuetracker.google.com/issues/329121650.\n\nI described the steps to reproduce this issue. Basically, AndroidX Media and AOSP have different handling on track duration. I think AndroidX Media\u0027s behavior is correct.",
       "revId": "bbae1197152dbbb80c1c855bde17fd5c8d812a4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72bfaaf6_b443725a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-22T12:33:58Z",
+      "side": 1,
+      "message": "Please can you add a corresponding test to the `MediaExtractorTest` CTS with a sample media file that reproduces the issue (i.e. a test that fails without this change, and passes with it): https://cs.android.com/android/platform/superproject/main/+/main:cts/tests/tests/media/extractor/src/android/media/extractor/cts/MediaExtractorTest.java\n\nYou will need to add the media to the `platform/media/cts` project in a change similar to this one: http://r.android.com/2457385\n\nThe files should end up here: https://android.googlesource.com/platform/media/cts/+/refs/heads/main/cts/tests/tests/media/extractor/CtsMediaExtractorTestCases/\n\nAnd then bump the version used by the tests, similar to this change (you can do this in the same commit you add the test itself): http://r.android.com/c/2457869\n\n@hmahendrakar@google.com should be able to help if you have questions about getting the media submitted.",
+      "revId": "bbae1197152dbbb80c1c855bde17fd5c8d812a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230cc680_f5109317",
+        "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3865,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-22T12:33:58Z",
+      "side": 1,
+      "message": "we already read the whole `tkhd` box into `buffer` below on L3903, and then we parse values like `id` from this byte array on L3912 and L3917.\n\nI think it would be more consistent with the rest of this method to read duration in the same existing `if/else` block below.",
+      "range": {
+        "startLine": 3865,
+        "startChar": 0,
+        "endLine": 3865,
+        "endChar": 32
+      },
+      "revId": "bbae1197152dbbb80c1c855bde17fd5c8d812a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
