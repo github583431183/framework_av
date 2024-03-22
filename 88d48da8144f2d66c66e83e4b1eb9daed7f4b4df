@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906f90f7_2a4c654d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-22T10:50:12Z",
+      "side": 1,
+      "message": "Please send future CLs to android-media-playback+reviews@google.com for review rather than to me directly, as previously discussed: https://groups.google.com/a/google.com/g/haiku-fuzzer-review/c/XapMMxzwBHg/m/8tXxtty6BAAJ",
+      "revId": "88d48da8144f2d66c66e83e4b1eb9daed7f4b4df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
