@@ -34,6 +34,24 @@
       "parentUuid": "24fc2e81_0a1633a5",
       "revId": "c9e425a8bd5eca2a037b8987a4d38a178d33503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b97c2f_ed9edcce",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-22T22:55:13Z",
+      "side": 1,
+      "message": "nit: out params by pointer",
+      "parentUuid": "35cab5ee_865cb57a",
+      "revId": "c9e425a8bd5eca2a037b8987a4d38a178d33503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
