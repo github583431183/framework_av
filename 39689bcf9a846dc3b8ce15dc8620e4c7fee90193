@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b4c47c_1231d0d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-22T23:27:46Z",
+      "side": 1,
+      "message": "since odd dimensions require fwk support... do we need to check the framework ver from the media.swcodec so that the odd dimensions actually work when advertised?",
+      "revId": "39689bcf9a846dc3b8ce15dc8620e4c7fee90193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
