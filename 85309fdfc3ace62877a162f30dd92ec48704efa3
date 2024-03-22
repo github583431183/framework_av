@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0ffa24_abc5c786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-22T23:56:34Z",
+      "side": 1,
+      "message": "without this, module is complete fail when installed on R.",
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
