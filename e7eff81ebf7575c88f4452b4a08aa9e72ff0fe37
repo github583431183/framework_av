@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591b96e7_9ea2ea67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-22T23:39:12Z",
+      "side": 1,
+      "message": "As flagged by Wonsik in https://android-review.git.corp.google.com/c/platform/frameworks/av/+/3009216/comment/83b4c47c_1231d0d8/\n\nThis CL needs to be updated to allow odd dimensions only for Android V onwards.\n\nI will update this CL.",
+      "revId": "e7eff81ebf7575c88f4452b4a08aa9e72ff0fe37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
