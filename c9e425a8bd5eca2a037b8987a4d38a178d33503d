@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24fc2e81_0a1633a5",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-22T20:44:38Z",
+      "side": 1,
+      "message": "since we\u0027re setting callback and the callback data at the same time, maybe it makes sense to retrieve them at the same time?",
+      "revId": "c9e425a8bd5eca2a037b8987a4d38a178d33503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
