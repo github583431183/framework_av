@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11f8ea14_74badc0e",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-23T14:56:53Z",
+      "side": 1,
+      "message": "this seems strange to me -- since the aidl interface wasn\u0027t defined\nuntil Android V -- why would this be conditioned on Android S?\n(",
+      "range": {
+        "startLine": 824,
+        "startChar": 4,
+        "endLine": 824,
+        "endChar": 60
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a74603e_ff8da6fc",
         "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
         "patchSetId": 1
@@ -150,6 +173,30 @@
       "side": 1,
       "message": "i\u0027ve had some subsequent thoughts that this sequence should be more flavored\nwith what android version we\u0027re running: q\u003d\u003d1.0/r\u003d1.1/s\u003d1.2. that\ngives us a definitive guide to what version we might want to instantiate.\n\nperhaps the decision to instantiate should be based on hidlStore !\u003dnull\nsince we calculate that at line 762. the problem then becomes that (as written)  we\u0027d never instantiate both aidl+hidl; which is probably correct, but means we have no ability to do propery-based \"which one should i use\" control, and I thought I\u0027d seen somewhere we enabled that.",
       "parentUuid": "f6bd14d5_e704d08f",
+      "range": {
+        "startLine": 846,
+        "startChar": 8,
+        "endLine": 848,
+        "endChar": 76
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1f92f7_5659c77f",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-23T14:56:53Z",
+      "side": 1,
+      "message": "even more overnight thoughts.\nat this point, we\u0027ve been through the code at L762 that initializes hidlStore/hidlVer.\nso perhaps we simplify this entire block into:\n\nif (hidlStore !\u003d null) {\n    hidleStore-\u003eregisterAsService()\n    // error handling if the registerAsService() failed\n}\n\nso we have exactly 1 place where we\u0027re chaining through which hidl version\nwe\u0027re going to register and all that...",
+      "parentUuid": "d39b2d6a_968cdf54",
       "range": {
         "startLine": 846,
         "startChar": 8,
