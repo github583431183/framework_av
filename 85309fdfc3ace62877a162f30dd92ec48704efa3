@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf24eb4b_3629ac23",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-23T05:02:47Z",
+      "side": 1,
+      "message": "and the compiler optimizes away the extra comparison, so generated code is just as fast.",
+      "parentUuid": "2d1497d4_e312b6ba",
+      "range": {
+        "startLine": 844,
+        "startChar": 4,
+        "endLine": 844,
+        "endChar": 21
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35cc12f5_0b42bafb",
         "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
         "patchSetId": 1
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I think this is fine - if the manifest declares 1.2, we register 1.2 (and 1.1). If the manifest declares 1.1, we register 1.1.\n\nIn AIDL, we have the \u0027updatable-via-apex\u0027 option, so we relax the version requirements, so we avoid this issue. However, also in HIDL, due to inheritance, it\u0027s easier to share the 1.1 and 1.2 implementation.\n\n---\n\nRegardless, given some logic above selects hidlStore based on platform version, and this detects it based on the VINTF version, I think it\u0027s still a bit confusing - if the platform version causes this to hit L771 above, this code might register 1.1 (since L851 won\u0027t get hit) and so we know the manifest says 1.2, but 1.1 gets registered. That\u0027s weird, but if the version is fragile, or the logic was already close to this, and this is tested to fix it, I think it\u0027s probably better to avoid refactoring everything.",
       "parentUuid": "35cc12f5_0b42bafb",
+      "range": {
+        "startLine": 846,
+        "startChar": 8,
+        "endLine": 848,
+        "endChar": 76
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d39b2d6a_968cdf54",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-23T05:02:47Z",
+      "side": 1,
+      "message": "i\u0027ve had some subsequent thoughts that this sequence should be more flavored\nwith what android version we\u0027re running: q\u003d\u003d1.0/r\u003d1.1/s\u003d1.2. that\ngives us a definitive guide to what version we might want to instantiate.\n\nperhaps the decision to instantiate should be based on hidlStore !\u003dnull\nsince we calculate that at line 762. the problem then becomes that (as written)  we\u0027d never instantiate both aidl+hidl; which is probably correct, but means we have no ability to do propery-based \"which one should i use\" control, and I thought I\u0027d seen somewhere we enabled that.",
+      "parentUuid": "f6bd14d5_e704d08f",
       "range": {
         "startLine": 846,
         "startChar": 8,
