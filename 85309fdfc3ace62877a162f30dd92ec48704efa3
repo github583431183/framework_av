@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d1497d4_e312b6ba",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-03-23T00:23:57Z",
+      "side": 1,
+      "message": "fwiw, I\u0027m partial to this approach. All the cases are symmetrical, and although we don\u0027t expect 1.3 to be added, causing merge conflicts, having this structure already would help prevent merge conflicts if there are more versions, so it\u0027s a good general principle.",
+      "parentUuid": "0a74603e_ff8da6fc",
+      "range": {
+        "startLine": 844,
+        "startChar": 4,
+        "endLine": 844,
+        "endChar": 21
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35cc12f5_0b42bafb",
         "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2024-03-23T00:09:40Z",
       "side": 1,
       "message": "where are these declarations coming from?\nThe system image\u0027s mediaserver\u0027s [framework manifest fragment](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/av/media/mediaserver/manifest_media_c2_software_hidl.xml) or the vendor image\u0027s device manifest fragments that they define [like this one](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:hardware/qcom/sm8150/media/conf_files/sm6150/c2_manifest_vendor.xml;l\u003d37?q\u003dComponentStore%20%5C%3Esoftware%20f:xml$%20device%5C%22\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20-f:prebuilts)\n\nThis seems really fragile to be serving a HAL like this from a mainline module.\n\nNormally the system needs to register ALL of it\u0027s versions at the same time to be backward compatible.\n\n@smoreland are there any old conversations about this set up? I don\u0027t understand how it\u0027s supposed to work, or who the clients of this interface are.",
+      "range": {
+        "startLine": 846,
+        "startChar": 8,
+        "endLine": 848,
+        "endChar": 76
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6bd14d5_e704d08f",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-03-23T00:23:57Z",
+      "side": 1,
+      "message": "I think this is fine - if the manifest declares 1.2, we register 1.2 (and 1.1). If the manifest declares 1.1, we register 1.1.\n\nIn AIDL, we have the \u0027updatable-via-apex\u0027 option, so we relax the version requirements, so we avoid this issue. However, also in HIDL, due to inheritance, it\u0027s easier to share the 1.1 and 1.2 implementation.\n\n---\n\nRegardless, given some logic above selects hidlStore based on platform version, and this detects it based on the VINTF version, I think it\u0027s still a bit confusing - if the platform version causes this to hit L771 above, this code might register 1.1 (since L851 won\u0027t get hit) and so we know the manifest says 1.2, but 1.1 gets registered. That\u0027s weird, but if the version is fragile, or the logic was already close to this, and this is tested to fix it, I think it\u0027s probably better to avoid refactoring everything.",
+      "parentUuid": "35cc12f5_0b42bafb",
       "range": {
         "startLine": 846,
         "startChar": 8,
