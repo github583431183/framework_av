@@ -16,6 +16,24 @@
       "message": "since odd dimensions require fwk support... do we need to check the framework ver from the media.swcodec so that the odd dimensions actually work when advertised?",
       "revId": "39689bcf9a846dc3b8ce15dc8620e4c7fee90193",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb3219f_21089140",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-23T00:25:52Z",
+      "side": 1,
+      "message": "Wonsik,\nThanks for catching this.\nI have updated aosp/3008486 to make the plugin changes conditional.\n\nxml change is not conditional, but since MediaCodecInfo.java was limiting it to 2x2 alignment in older versions, that change will not impact older versions.",
+      "parentUuid": "83b4c47c_1231d0d8",
+      "revId": "39689bcf9a846dc3b8ce15dc8620e4c7fee90193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
