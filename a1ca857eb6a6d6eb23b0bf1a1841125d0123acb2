@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48aad8e1_83b0dcaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-25T18:15:37Z",
+      "side": 1,
+      "message": "need to wait for https://android-review.git.corp.google.com/c/platform/frameworks/av/+/3011894\nto presubmit+merge before this one will be successful.",
+      "revId": "a1ca857eb6a6d6eb23b0bf1a1841125d0123acb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
