@@ -16,6 +16,24 @@
       "message": "does this overlap with https://cs.android.com/android/platform/superproject/main/+/main:cts/tests/media/jni/ ?",
       "revId": "9c84c26c6eb60b50861f220508c956ebe93acb24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19af55e4_89b4ff98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-03-25T21:21:38Z",
+      "side": 1,
+      "message": "Thanks Wonsik for sharing this. To be honest, I didn\u0027t know the existence of those test cases (and was wondering why we have only MediaFormat test cases under frameworks/av/media/ndk/test/)\nSome part of this has been covered by the cts/tests/media/jni, but in here I have added 2 different approaches:\n- directly feeding input samples from the extractor (which above cts does) when codec input buffers are available.\n- An external entity feeding input samples to codec.\n\nThey are pretty much the same, except for who decides when to feed the decoder.",
+      "parentUuid": "908c2635_28353667",
+      "revId": "9c84c26c6eb60b50861f220508c956ebe93acb24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
