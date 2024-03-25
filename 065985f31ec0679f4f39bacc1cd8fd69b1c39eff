@@ -22,6 +22,30 @@
       },
       "revId": "065985f31ec0679f4f39bacc1cd8fd69b1c39eff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c999bc87_5b35d5a0",
+        "filename": "media/libaudiohal/impl/AidlUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-25T19:39:51Z",
+      "side": 1,
+      "message": "Correct. Even appearance of the crash call stack in the syslog was creating a confusion, please see this bug: http://b/69379459.",
+      "parentUuid": "0507d777_8384b1fc",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "065985f31ec0679f4f39bacc1cd8fd69b1c39eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
