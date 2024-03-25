@@ -16,6 +16,24 @@
       "message": "Hi, I\u0027m so sorry to bother you.\nCould you please help to review the patch?",
       "revId": "4577203233ebdc33a5f1b7f13c92ea38af13a9ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba9b4cd_0af46861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-03-25T18:34:26Z",
+      "side": 1,
+      "message": "My apologies, this seems to have fallen through the cracks. The change LGTM!",
+      "parentUuid": "7b0acb09_2854b1fc",
+      "revId": "4577203233ebdc33a5f1b7f13c92ea38af13a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
