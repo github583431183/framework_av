@@ -16,6 +16,24 @@
       "message": "```suggestion\n        \"//frameworks/av/media/libstagefright/renderfright/fuzzer:__subpackages__\",\n```",
       "revId": "a9f31e300ed743da2bcadbd3562f2ef6d0d4cb51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59f7771_89efb62d",
+        "filename": "media/libstagefright/renderfright/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1616561
+      },
+      "writtenOn": "2024-03-25T05:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2453a5ba_a372a28b",
+      "revId": "a9f31e300ed743da2bcadbd3562f2ef6d0d4cb51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
