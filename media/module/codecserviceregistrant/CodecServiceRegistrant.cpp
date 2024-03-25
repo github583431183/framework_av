@@ -49,6 +49,8 @@ using ::android::hardware::hidl_string;
 using ::android::hardware::Return;
 using ::android::sp;
 using ::ndk::ScopedAStatus;
+namespace c2_hidl_V1_0 = ::android::hardware::media::c2::V1_0;
+namespace c2_hidl_V1_1 = ::android::hardware::media::c2::V1_1;
 namespace c2_hidl = ::android::hardware::media::c2::V1_2;
 namespace c2_aidl = ::aidl::android::hardware::media::c2;
 
@@ -734,6 +736,29 @@ bool ionPropertiesDefined() {
 
 } // unnamed namespace
 
+static bool isHidlSwcodecDeclared() {
+    using ::android::hidl::manager::V1_2::IServiceManager;
+    IServiceManager::Transport transport =
+            android::hardware::defaultServiceManager1_2()->getTransport(
+                    c2_hidl::IComponentStore::descriptor, "software");
+    if (transport == IServiceManager::Transport::HWBINDER) {
+        return true;
+    }
+    transport =
+            android::hardware::defaultServiceManager1_2()->getTransport(
+                    c2_hidl_V1_1::IComponentStore::descriptor, "software");
+    if (transport == IServiceManager::Transport::HWBINDER) {
+        return true;
+    }
+    transport =
+            android::hardware::defaultServiceManager1_2()->getTransport(
+                    c2_hidl_V1_0::IComponentStore::descriptor, "software");
+    if (transport == IServiceManager::Transport::HWBINDER) {
+        return true;
+    }
+    return false;
+}
+
 extern "C" void RegisterCodecServices() {
     const bool aidlSelected = c2_aidl::utils::IsSelected();
     constexpr int kThreadCount = 64;
@@ -839,11 +864,7 @@ extern "C" void RegisterCodecServices() {
 
     // If the software component store isn't declared in the manifest, we don't
     // need to create the service and register it.
-    using ::android::hidl::manager::V1_2::IServiceManager;
-    IServiceManager::Transport transport =
-            android::hardware::defaultServiceManager1_2()->getTransport(
-                    V1_2::utils::ComponentStore::descriptor, "software");
-    if (transport == IServiceManager::Transport::HWBINDER) {
+    if (isHidlSwcodecDeclared()) {
         if (!hidlStore) {
             hidlStore = ::android::sp<V1_2::utils::ComponentStore>::make(
                     std::make_shared<H2C2ComponentStore>(nullptr));
