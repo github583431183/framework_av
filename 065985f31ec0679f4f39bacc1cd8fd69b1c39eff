@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0507d777_8384b1fc",
+        "filename": "media/libaudiohal/impl/AidlUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-03-25T19:03:10Z",
+      "side": 1,
+      "message": "ah, you don\u0027t want to call LOG_ALWAYS_FATAL() to prevent tombstone generation?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "065985f31ec0679f4f39bacc1cd8fd69b1c39eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
