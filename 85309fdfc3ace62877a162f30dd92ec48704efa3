@@ -222,6 +222,30 @@
       },
       "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce680d9_5ad4ffc3",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T17:16:57Z",
+      "side": 1,
+      "message": "`q\u003d\u003d1.0/r\u003d1.1/s\u003d1.2.` sounds nice. Ultimately we are limited by the version of `mediaserver` and whatever interface is declaring on the device.\n\nIf we base registration on Android API level, we need the declared version that\u0027s already on the device (from `mediaserver` or even a vendor\u0027s device manifest) to match otherwise servicemaanger will not let it be registered. If we can guarantee that, then that sounds good.\n\nIf we base registration on what is currently declared in vintf (current patch) we end up picking the first declared version we find. Either what `mediaserver` declared, or what the vendor device happens to declare (maybe on accident)\n\nFWIW any of this picking and choosing logic prevents us from moving the vintf fragment for this service into this mainline module because the info isn\u0027t available at build time. b/327508501",
+      "parentUuid": "0f1f92f7_5659c77f",
+      "range": {
+        "startLine": 846,
+        "startChar": 8,
+        "endLine": 848,
+        "endChar": 76
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
