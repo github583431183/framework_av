@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7674384_00676740",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-03-25T22:04:11Z",
+      "side": 0,
+      "message": "can we just add \u0026\u0026 !hasFlag(attributes.flags, AUDIO_OUTPUT_FLAG_DIRECT) to the linear pcm check?  Both HW_AV_SYNC and COMPRESS_OFFLOAD should imply DIRECT.",
+      "range": {
+        "startLine": 377,
+        "startChar": 93,
+        "endLine": 377,
+        "endChar": 94
+      },
+      "revId": "177886c9fe9efc27fb9d84eda3f505b377644d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
