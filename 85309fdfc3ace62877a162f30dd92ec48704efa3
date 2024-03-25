@@ -246,6 +246,30 @@
       },
       "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "989594ae_b1f2ef5f",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T22:00:24Z",
+      "side": 1,
+      "message": "I guess aosp/3012193 fixes this bug too?\nI should have recommended that fix here instead of creating a new CL, sorry! b/331224296 made that problem/solution clearer and I didn\u0027t think to look here.",
+      "parentUuid": "5ce680d9_5ad4ffc3",
+      "range": {
+        "startLine": 846,
+        "startChar": 8,
+        "endLine": 848,
+        "endChar": 76
+      },
+      "revId": "85309fdfc3ace62877a162f30dd92ec48704efa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
