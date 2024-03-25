@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76682d56_093ad5b2",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T20:39:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6213c49a_efde3270",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 49
+      },
+      "revId": "62e237984fcb1493311aceacd03e041a842fcfbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3fd0a97_1826b4cc",
@@ -94,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbffa540_bc1e234c",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T20:39:37Z",
+      "side": 1,
+      "message": "This is `android.hidl.manager@1.2::IServiceManager`\u0027s version, which is unrelated to the `IComponentStore`\u0027s version. Android R+ devices will always have V1.2. This is [tracked in the frozen framework manifest file](https://cs.android.com/android/platform/superproject/main/+/main:system/libhidl/vintfdata/frozen/5.xml;drc\u003db1718de4ad4e0bce0c7053a4fc26c30afbcdd3e0;l\u003d64) for Android R (VINTF level 5).",
+      "parentUuid": "d3fd0a97_1826b4cc",
+      "range": {
+        "startLine": 760,
+        "startChar": 52,
+        "endLine": 760,
+        "endChar": 55
+      },
+      "revId": "62e237984fcb1493311aceacd03e041a842fcfbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "827f14f7_f64b377f",
@@ -107,6 +155,30 @@
       "writtenOn": "2024-03-25T20:22:53Z",
       "side": 1,
       "message": "similarly.... 1_2 here and 1_0 on the next line.\n\nIt looks like a mismatch, but you may know better.",
+      "range": {
+        "startLine": 769,
+        "startChar": 50,
+        "endLine": 769,
+        "endChar": 56
+      },
+      "revId": "62e237984fcb1493311aceacd03e041a842fcfbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb194ea_3c6eb96a",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T20:39:37Z",
+      "side": 1,
+      "message": "Other comment explains the mismatch. It also threw me off a few times since the two interfaces share the same V1_2!",
+      "parentUuid": "827f14f7_f64b377f",
       "range": {
         "startLine": 769,
         "startChar": 50,
