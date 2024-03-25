@@ -46,6 +46,75 @@
       },
       "revId": "62e237984fcb1493311aceacd03e041a842fcfbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6213c49a_efde3270",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-25T20:22:53Z",
+      "side": 1,
+      "message": "I like the change to have this return the store instance instead of boolean.",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 49
+      },
+      "revId": "62e237984fcb1493311aceacd03e041a842fcfbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fd0a97_1826b4cc",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-25T20:22:53Z",
+      "side": 1,
+      "message": "should this still be 1_2, given that the next line uses v1_1\n\nfeels like they should be in sync;",
+      "range": {
+        "startLine": 760,
+        "startChar": 52,
+        "endLine": 760,
+        "endChar": 55
+      },
+      "revId": "62e237984fcb1493311aceacd03e041a842fcfbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827f14f7_f64b377f",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-25T20:22:53Z",
+      "side": 1,
+      "message": "similarly.... 1_2 here and 1_0 on the next line.\n\nIt looks like a mismatch, but you may know better.",
+      "range": {
+        "startLine": 769,
+        "startChar": 50,
+        "endLine": 769,
+        "endChar": 56
+      },
+      "revId": "62e237984fcb1493311aceacd03e041a842fcfbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
