@@ -16,6 +16,29 @@
       "message": "manifest needs to be reviewed from wonsik@ or lajos@",
       "revId": "2bdc1e9d6eeccdaf233ed2564aa0b02dd1bf3088",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c83eb3e_283f0466",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T18:16:53Z",
+      "side": 1,
+      "message": "I think the fix we are looking for is checking all of the different versions of the HIDL interface that might be registered, and not just V1_2.\n\nSo we register V1.2 even if V1.1 or V1.0 is declared.",
+      "range": {
+        "startLine": 841,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 73
+      },
+      "revId": "2bdc1e9d6eeccdaf233ed2564aa0b02dd1bf3088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
