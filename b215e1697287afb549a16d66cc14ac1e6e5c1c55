@@ -16,6 +16,29 @@
       "message": "patchset 3 installed \u0026 functioned in module on Android R device -- which was the primary complaint we\u0027re addressing. I don\u0027t see that the later patchsets would be different.",
       "revId": "b215e1697287afb549a16d66cc14ac1e6e5c1c55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00027e56_5c0df691",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-25T23:49:55Z",
+      "side": 1,
+      "message": "```suggestion\n            std::shared_ptr\u003cc2_aidl::IComponentStore\u003e aidlStore;\n            if (aidlSelected) {\n                aidlStore \u003d ::ndk::SharedRefBase::make\u003cc2_aidl::utils::ComponentStore\u003e(store);\n            } else {\n                aidlStore \u003d ::ndk::SharedRefBase::make\u003cc2_aidl::utils::ComponentStore\u003e(\n                            std::make_shared\u003cH2C2ComponentStore\u003e(nullptr));\n            }\n```",
+      "range": {
+        "startLine": 840,
+        "startChar": 12,
+        "endLine": 842,
+        "endChar": 75
+      },
+      "revId": "b215e1697287afb549a16d66cc14ac1e6e5c1c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
