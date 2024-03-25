@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4e5595_ac23faeb",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:22:19Z",
+      "side": 1,
+      "message": "are non-direct PCM",
+      "range": {
+        "startLine": 374,
+        "startChar": 64,
+        "endLine": 374,
+        "endChar": 71
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ffc8ad_2c9e93c9",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:22:19Z",
+      "side": 1,
+      "message": "needs a comment suggesting that direct PCMs cann\u0027t be mixed together",
+      "range": {
+        "startLine": 377,
+        "startChar": 12,
+        "endLine": 378,
+        "endChar": 74
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b97145_02a9d353",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:22:19Z",
+      "side": 1,
+      "message": "change this to just... if config.format !\u003d mix-\u003emFormat.format",
+      "range": {
+        "startLine": 379,
+        "startChar": 20,
+        "endLine": 379,
+        "endChar": 62
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72efd3ba_be5130cb",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:22:19Z",
+      "side": 1,
+      "message": "promote this to the top-level if-statement",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 80
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22920fe_a8325b27",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:22:19Z",
+      "side": 1,
+      "message": "change to if (!(audio_is_linear_pcm(config.format) \u0026\u0026 audio_is_linear_pcm(mix-\u003emFormat.format)) \u0026\u0026 config.format !\u003d mix-\u003emFormat.format)",
+      "range": {
+        "startLine": 384,
+        "startChar": 16,
+        "endLine": 385,
+        "endChar": 66
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
