@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64b9ccfd_e88942a6",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T19:37:01Z",
+      "side": 1,
+      "message": "Nice, I didn\u0027t see this. This makes more sense now, I agree consolidating this logic into one place is much better.\n\nI kept the platformVersion checking here to log errors for a misconfigured device that we don\u0027t expect.\n\nWe check what\u0027s declared on the device, and create an instance at that level and register it.",
+      "parentUuid": "cffbbe2b_57d4426d",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 800,
+        "endChar": 24
+      },
+      "revId": "c5c569efbf2b22f0f4d51303be65780319595c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17438153_e98f7fd5",
         "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-25T18:57:48Z",
       "side": 1,
       "message": "same observation here for aidlStore as i\u0027ve made for hidlStore.\nif we\u0027re going to initialize it here, then perhaps we should get rid of that entire block around line 790..805",
+      "range": {
+        "startLine": 851,
+        "startChar": 9,
+        "endLine": 854,
+        "endChar": 13
+      },
+      "revId": "c5c569efbf2b22f0f4d51303be65780319595c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4acf9f0a_e5105890",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T19:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17438153_e98f7fd5",
       "range": {
         "startLine": 851,
         "startChar": 9,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-03-25T18:57:48Z",
       "side": 1,
       "message": "seems strange to create this here when we\u0027ve also go the chained create calls on line 792.\n\nFeels like we should either initialize hidlStore here or in the block at line 792, but not both.",
+      "range": {
+        "startLine": 868,
+        "startChar": 7,
+        "endLine": 872,
+        "endChar": 9
+      },
+      "revId": "c5c569efbf2b22f0f4d51303be65780319595c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c13d60_be84a8b6",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-25T19:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d432b61e_6b3e191e",
       "range": {
         "startLine": 868,
         "startChar": 7,
