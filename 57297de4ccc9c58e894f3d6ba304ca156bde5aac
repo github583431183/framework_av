@@ -24,6 +24,53 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf51009a_379ddf1a",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d4e5595_ac23faeb",
+      "range": {
+        "startLine": 374,
+        "startChar": 64,
+        "endLine": 374,
+        "endChar": 71
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed9d64c_2f0f9a06",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:30:59Z",
+      "side": 1,
+      "message": "```suggestion\n        // Permit match only if the requested format and mix format are the same, or\n        // the formats are both non-direct PCM.\n```",
+      "range": {
+        "startLine": 374,
+        "startChar": 8,
+        "endLine": 375,
+        "endChar": 69
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98ffc8ad_2c9e93c9",
@@ -70,6 +117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e75bcb_22c89ce6",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50b97145_02a9d353",
+      "range": {
+        "startLine": 379,
+        "startChar": 20,
+        "endLine": 379,
+        "endChar": 62
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72efd3ba_be5130cb",
@@ -83,6 +154,30 @@
       "writtenOn": "2024-03-25T21:22:19Z",
       "side": 1,
       "message": "promote this to the top-level if-statement",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 80
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa075b44_079bc77b",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72efd3ba_be5130cb",
       "range": {
         "startLine": 380,
         "startChar": 0,
@@ -111,6 +206,53 @@
         "startChar": 16,
         "endLine": 385,
         "endChar": 66
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e02753a_9fe8373c",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22920fe_a8325b27",
+      "range": {
+        "startLine": 384,
+        "startChar": 16,
+        "endLine": 385,
+        "endChar": 66
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c90eb8_a2d0f328",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-03-25T21:30:59Z",
+      "side": 1,
+      "message": "re-architect it such that you check if the formats aren\u0027t the same, and if they aren\u0027t the same, then return false if either the HW_AV_SYNC and COMPRESSED_OFFLOAD or both formats aren\u0027t PCM\n```suggestion\n        if (!is_mix_loopback(mix-\u003emRouteFlags) \u0026\u0026\n            config.format !\u003d mix-\u003emFormat.format \u0026\u0026\n            config.format !\u003d AUDIO_CONFIG_BASE_INITIALIZER.format) {\n            if (hasFlag(attributes.flags, AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) ||\n                hasFlag(attributes.flags, AUDIO_OUTPUT_FLAG_HW_AV_SYNC)) {\n                return false;\n            }\n            if (!audio_is_linear_pcm(config.format) ||\n                  !audio_is_linear_pcm(mix-\u003emFormat.format)) {\n                return false;\n            }\n        }\n\n```",
+      "range": {
+        "startLine": 376,
+        "startChar": 12,
+        "endLine": 389,
+        "endChar": 13
       },
       "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
