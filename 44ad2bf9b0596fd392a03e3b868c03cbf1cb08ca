@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb3f6ef_98bee674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1053528
+      },
+      "writtenOn": "2024-03-25T18:07:08Z",
+      "side": 1,
+      "message": "Overriding presubmit since this revert has been tested on ABTD at https://android-build.corp.google.com/abtd/run/L14600030002731332/",
+      "revId": "44ad2bf9b0596fd392a03e3b868c03cbf1cb08ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
