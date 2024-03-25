@@ -22,6 +22,30 @@
       },
       "revId": "222fdf9571d9aa060460b73db08b739b0b300584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181438a2_6c97020b",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-03-25T16:23:36Z",
+      "side": 1,
+      "message": "Yes. The \"default\" is what legacy API uses: 2 channels for output in `setVolume` and 1 channel for input in `setGain`.",
+      "parentUuid": "cb2b48cc_f83618c4",
+      "range": {
+        "startLine": 882,
+        "startChar": 64,
+        "endLine": 882,
+        "endChar": 65
+      },
+      "revId": "222fdf9571d9aa060460b73db08b739b0b300584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
