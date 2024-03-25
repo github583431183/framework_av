@@ -16,6 +16,24 @@
       "message": "How does this CL change the registration of the HIDL service on Android R device?\n\n`__builtin_available(android __ANDROID_API_S__, *)` will be false, just like `platformVersion \u003e\u003d __ANDROID_API_V__` on and Android R device. So before/after this we should see all of the AIDL code skipped.",
       "revId": "1bbdb39a03447c9b4195a949e830468dcd995fa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea394f00_b62db609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-25T18:16:19Z",
+      "side": 1,
+      "message": "i\u0027m reverting 2 changes; this is only the first of them.\nBug describes the set of CLs that I\u0027m reverting.",
+      "parentUuid": "742ffc82_3758cd41",
+      "revId": "1bbdb39a03447c9b4195a949e830468dcd995fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
