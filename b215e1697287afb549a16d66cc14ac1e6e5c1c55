@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b75603_3427672a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-25T20:27:17Z",
+      "side": 1,
+      "message": "patchset 3 installed \u0026 functioned in module on Android R device -- which was the primary complaint we\u0027re addressing. I don\u0027t see that the later patchsets would be different.",
+      "revId": "b215e1697287afb549a16d66cc14ac1e6e5c1c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
