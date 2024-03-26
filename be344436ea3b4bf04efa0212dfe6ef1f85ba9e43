@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8546bd_5c191a86",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-03-26T15:34:54Z",
+      "side": 1,
+      "message": "is there a risk here that we are in callback mode and started, but someone unsets the callback? In that case codec-\u003esetCallBack below will fail, but the callback has already been cleared.",
+      "range": {
+        "startLine": 627,
+        "startChar": 0,
+        "endLine": 627,
+        "endChar": 36
+      },
+      "revId": "be344436ea3b4bf04efa0212dfe6ef1f85ba9e43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
