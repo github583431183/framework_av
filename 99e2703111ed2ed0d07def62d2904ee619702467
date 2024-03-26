@@ -16,6 +16,24 @@
       "message": "maybe we should say this is needed for upgrading devices",
       "revId": "99e2703111ed2ed0d07def62d2904ee619702467",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf1544e0_c9631224",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-26T00:45:09Z",
+      "side": 1,
+      "message": "+1, I also downgraded the log to \"INFO\" and clarified the behavior.",
+      "parentUuid": "3a55971e_56d4c7e6",
+      "revId": "99e2703111ed2ed0d07def62d2904ee619702467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
