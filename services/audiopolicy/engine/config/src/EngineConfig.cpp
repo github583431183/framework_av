@@ -97,6 +97,7 @@ ConversionResult<ProductStrategy> aidl2legacy_AudioHalProductStrategy_ProductStr
     ProductStrategy legacy;
     legacy.name = aidl.name.value_or(VALUE_OR_RETURN(
                     aidl2legacy_AudioHalProductStrategy_ProductStrategyType(aidl.id)));
+    legacy.zoneId = aidl.zoneId;
     legacy.id = aidl.id;
     legacy.attributesGroups = VALUE_OR_RETURN(convertContainer<AttributesGroups>(
                     aidl.attributesGroups,
