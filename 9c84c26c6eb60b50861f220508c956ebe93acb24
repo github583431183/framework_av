@@ -34,6 +34,24 @@
       "parentUuid": "908c2635_28353667",
       "revId": "9c84c26c6eb60b50861f220508c956ebe93acb24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e9cdc4_abbb8aae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-26T17:06:07Z",
+      "side": 1,
+      "message": "Can we merge the new tests to the CTS? NDK behavior change should be tested as a part of CTS.",
+      "parentUuid": "19af55e4_89b4ff98",
+      "revId": "9c84c26c6eb60b50861f220508c956ebe93acb24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
