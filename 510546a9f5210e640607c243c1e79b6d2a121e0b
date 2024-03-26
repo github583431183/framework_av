@@ -33,6 +33,24 @@
       "message": "I noticed that the existing ordering comes from https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/av/+/19470908. \n\nWill we run into the original problem that CL tried to fix?",
       "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd5a8d1_ed8bb54a",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2024-03-26T22:22:29Z",
+      "side": 1,
+      "message": "No, the change we are doing here is trying to avoid both the issue addressed by: https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/av/+/19470908 as well as the torch flash callback issue.",
+      "parentUuid": "209d445f_38c215a5",
+      "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
