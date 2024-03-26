@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f20cc3_2dca5d2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-26T00:58:34Z",
+      "side": 1,
+      "message": "aosp/3012834 and aosp/3012195 fix this issue. They are both +2\u0027d and started presubmits 15 mins ago",
+      "revId": "d15ff06b40da4ac0aca32d23f07410a19e70ada4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
