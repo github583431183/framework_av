@@ -71,6 +71,7 @@ ConversionResult<ProductStrategy> aidl2legacy_AudioHalProductStrategy_ProductStr
         const media::audio::common::AudioHalProductStrategy& aidl) {
     ProductStrategy legacy;
     legacy.name = aidl.name.value_or("strategy_" + std::to_string(aidl.id));
+    legacy.zoneId = aidl.zoneId;
     legacy.id = aidl.id;
     legacy.attributesGroups = VALUE_OR_RETURN(convertContainer<AttributesGroups>(
                     aidl.attributesGroups,
