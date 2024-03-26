@@ -18,13 +18,13 @@
 //#define LOG_NDEBUG 0
 
 #include "ParameterManagerWrapper.h"
+#include <ParameterMgrFullConnector.h>
 #include <ParameterMgrPlatformConnector.h>
 #include <SelectionCriterionTypeInterface.h>
 #include <SelectionCriterionInterface.h>
 #include <media/convert.h>
 #include <algorithm>
 #include <cutils/bitops.h>
-#include <cutils/config_utils.h>
 #include <cutils/misc.h>
 #include <fstream>
 #include <limits>
@@ -100,9 +100,9 @@ ParameterManagerWrapper::ParameterManagerWrapper(bool enableSchemaVerification,
 {
     // Connector
     if (access(mPolicyPfwVendorConfFileName, R_OK) == 0) {
-        mPfwConnector = new CParameterMgrPlatformConnector(mPolicyPfwVendorConfFileName);
+        mPfwConnector = new CParameterMgrFullConnector(mPolicyPfwVendorConfFileName);
     } else {
-        mPfwConnector = new CParameterMgrPlatformConnector(mPolicyPfwDefaultConfFileName);
+        mPfwConnector = new CParameterMgrFullConnector(mPolicyPfwDefaultConfFileName);
     }
 
     // Logger
@@ -380,6 +380,88 @@ DeviceTypeSet ParameterManagerWrapper::convertDeviceCriterionValueToDeviceTypes(
         }
     }
     return deviceTypes;
+}
+
+void ParameterManagerWrapper::createDomain(const std::string &domain)
+{
+    std::string error;
+    bool ret = mPfwConnector->createDomain(domain, error);
+    if (!ret) {
+        ALOGD("%s: failed to create domain %s (error=%s)", __func__, domain.c_str(),
+        error.c_str());
+    }
+}
+
+void ParameterManagerWrapper::addConfigurableElementToDomain(const std::string &domain,
+        const std::string &elementPath)
+{
+    std::string error;
+    bool ret = mPfwConnector->addConfigurableElementToDomain(domain, elementPath, error);
+    ALOGE_IF(!ret, "%s: failed to add parameter %s for domain %s (error=%s)",
+              __func__, elementPath.c_str(), domain.c_str(), error.c_str());
+}
+
+void ParameterManagerWrapper::createConfiguration(const std::string &domain,
+        const std::string &configurationName)
+{
+    std::string error;
+    bool ret = mPfwConnector->createConfiguration(domain, configurationName, error);
+    ALOGE_IF(!ret, "%s: failed to create configuration %s for domain %s (error=%s)",
+              __func__, configurationName.c_str(), domain.c_str(), error.c_str());
+}
+
+void ParameterManagerWrapper::setApplicationRule(
+        const std::string &domain, const std::string &configurationName, const std::string &rule)
+{
+    std::string error;
+    bool ret = mPfwConnector->setApplicationRule(domain, configurationName, rule, error);
+    ALOGE_IF(!ret, "%s: failed to set rule %s for domain %s and configuration %s (error=%s)",
+              __func__, rule.c_str(), domain.c_str(), configurationName.c_str(), error.c_str());
+}
+
+void ParameterManagerWrapper::accessConfigurationValue(const std::string &domain,
+        const std::string &configurationName, const std::string &elementPath,
+        std::string &value)
+{
+    std::string error;
+    bool ret = mPfwConnector->accessConfigurationValue(domain, configurationName, elementPath,
+            value, /*set=*/ true, error);
+    ALOGE_IF(!ret, "%s: failed to set value %s for parameter %s on domain %s and configuration %s "
+          "(error=%s)", __func__, value.c_str(), elementPath.c_str(),  domain.c_str(),
+          configurationName.c_str(), error.c_str());
+}
+
+status_t ParameterManagerWrapper::setConfiguration(
+        const android::capEngineConfig::ParsingResult& capSettings)
+{
+    if (!isStarted()) {
+        return NO_INIT;
+    }
+    std::string error;
+    if (!mPfwConnector->setTuningMode(/* bOn= */ true, error)) {
+        ALOGD("%s: failed to set Tuning Mode error=%s", __FUNCTION__, error.c_str());
+        return DEAD_OBJECT;
+    }
+    for (auto &domain: capSettings.parsedConfig->capConfigurableDomains) {
+        createDomain(domain.name);
+        for (const std::string &configurableElementPath : domain.configurableElementPaths) {
+            addConfigurableElementToDomain(domain.name, configurableElementPath);
+        }
+        for (const auto &configuration : domain.configurations) {
+            createConfiguration(domain.name, configuration.name);
+            setApplicationRule(domain.name, configuration.name, configuration.rule);
+        }
+        for (const auto &setting : domain.settings) {
+            for (const auto &configurableElementValue : setting.configurableElementValues) {
+                std::string value = configurableElementValue.value;
+                accessConfigurationValue(domain.name, setting.configurationName,
+                        configurableElementValue.configurableElement.path, value);
+            }
+
+        }
+    }
+    mPfwConnector->setTuningMode(/* bOn= */ false, error);
+    return OK;
 }
 
 } // namespace audio_policy
