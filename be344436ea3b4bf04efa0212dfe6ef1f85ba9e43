@@ -22,6 +22,30 @@
       },
       "revId": "be344436ea3b4bf04efa0212dfe6ef1f85ba9e43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02ad817_ac3256ba",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-03-26T17:22:19Z",
+      "side": 1,
+      "message": "Since MediaCodec maintains this mAsyncNotify (AMessage) as a shared ptr (android::sp), I think we clearing this here shouldn\u0027t impact anything.\nMediaCodec clears the callback, only when we set it to nullptr explicitly.",
+      "parentUuid": "3f8546bd_5c191a86",
+      "range": {
+        "startLine": 627,
+        "startChar": 0,
+        "endLine": 627,
+        "endChar": 36
+      },
+      "revId": "be344436ea3b4bf04efa0212dfe6ef1f85ba9e43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
