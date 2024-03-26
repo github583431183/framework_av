@@ -69,6 +69,24 @@
       "parentUuid": "209d445f_38c215a5",
       "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f018ef6_09806872",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2024-03-26T22:24:09Z",
+      "side": 1,
+      "message": "oops, posted an incomplete draft - thanks for the explanation, looks good to me.",
+      "parentUuid": "08101672_7b79eb97",
+      "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
