@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39f322c_257b5baa",
+        "filename": "media/codec2/sfplugin/tests/Android.bp",
+        "patchSetId": 27
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-03-26T20:39:11Z",
+      "side": 0,
+      "message": "nit: this line disappeared in PS 27...",
+      "revId": "340c3f680a2f4834658124f9b7cb0bbe14f1ddce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
