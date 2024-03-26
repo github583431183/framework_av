@@ -18,6 +18,8 @@
 #include "PolicyMappingKeys.h"
 #include "PolicySubsystem.h"
 
+#include <string>
+
 using std::string;
 using android::product_strategy_t;
 
@@ -30,19 +32,25 @@ ProductStrategy::ProductStrategy(const string &mappingValue,
                                 mappingValue,
                                 MappingKeyAmend1,
                                 (MappingKeyAmendEnd - MappingKeyAmend1 + 1),
-                                context)
-{
-    std::string name(context.getItem(MappingKeyName));
+                                context) {
+
+    size_t id = context.getItemAsInteger(MappingKeyIdentifier);
+    std::string nameFromStructure(context.getItem(MappingKeyName));
 
     ALOG_ASSERT(instanceConfigurableElement != nullptr, "Invalid Configurable Element");
     mPolicySubsystem = static_cast<const PolicySubsystem *>(
-                instanceConfigurableElement->getBelongingSubsystem());
+            instanceConfigurableElement->getBelongingSubsystem());
     ALOG_ASSERT(mPolicySubsystem != nullptr, "Invalid Policy Subsystem");
 
     mPolicyPluginInterface = mPolicySubsystem->getPolicyPluginInterface();
     ALOG_ASSERT(mPolicyPluginInterface != nullptr, "Invalid Policy Plugin Interface");
 
-    mId = mPolicyPluginInterface->getProductStrategyByName(name);
+    mId = static_cast<product_strategy_t>(id);
+    std::string name = mPolicyPluginInterface->getProductStrategyName(mId);
+    if (name.empty()) {
+        name = nameFromStructure;
+        mId = mPolicyPluginInterface->getProductStrategyByName(name);
+    }
 
     ALOG_ASSERT(mId != PRODUCT_STRATEGY_INVALID, "Product Strategy %s not found", name.c_str());
 
