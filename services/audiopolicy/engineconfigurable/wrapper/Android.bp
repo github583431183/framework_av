@@ -17,6 +17,8 @@ cc_library {
         "-Wextra",
     ],
     header_libs: [
+        "libaudiopolicycommon",
+        "libaudiopolicycapengine_config_headers",
         "libaudiofoundation_headers",
         "libaudiopolicycommon",
         "libbase_headers",
