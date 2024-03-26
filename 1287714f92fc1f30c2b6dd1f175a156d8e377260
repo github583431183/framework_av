@@ -81,6 +81,24 @@
       "parentUuid": "3849b6c0_b66a2dda",
       "revId": "1287714f92fc1f30c2b6dd1f175a156d8e377260",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a7fc15_b792df28",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6677,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-03-26T23:46:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c485e545_57f5ba7a",
+      "revId": "1287714f92fc1f30c2b6dd1f175a156d8e377260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
