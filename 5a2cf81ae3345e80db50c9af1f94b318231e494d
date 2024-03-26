@@ -94,6 +94,30 @@
       },
       "revId": "5a2cf81ae3345e80db50c9af1f94b318231e494d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a910c94_c91ef892",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2024-03-26T22:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0781d119_ee7d2b02",
+      "range": {
+        "startLine": 103,
+        "startChar": 36,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "5a2cf81ae3345e80db50c9af1f94b318231e494d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
