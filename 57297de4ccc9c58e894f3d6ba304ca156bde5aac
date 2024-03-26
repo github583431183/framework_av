@@ -229,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f301915_e7b6c36c",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-26T09:59:33Z",
+      "side": 1,
+      "message": "we probably need to add AUDIO_OUTPUT_FLAG_DIRECT too",
+      "parentUuid": "fa075b44_079bc77b",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 80
+      },
+      "revId": "57297de4ccc9c58e894f3d6ba304ca156bde5aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c22920fe_a8325b27",

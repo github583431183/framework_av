@@ -22,6 +22,30 @@
       },
       "revId": "177886c9fe9efc27fb9d84eda3f505b377644d79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8560fec2_3f279786",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-03-26T09:59:33Z",
+      "side": 0,
+      "message": "I am not sure the DIRECT flag is forced on the audio attributes flags for offload and HW AV SYNC. We may only force the DIRECT flag in output descriptors stored in APM",
+      "parentUuid": "e7674384_00676740",
+      "range": {
+        "startLine": 377,
+        "startChar": 93,
+        "endLine": 377,
+        "endChar": 94
+      },
+      "revId": "177886c9fe9efc27fb9d84eda3f505b377644d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
