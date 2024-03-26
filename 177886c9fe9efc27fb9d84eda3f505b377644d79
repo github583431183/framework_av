@@ -46,6 +46,30 @@
       },
       "revId": "177886c9fe9efc27fb9d84eda3f505b377644d79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5de9cb_cff1379a",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-03-26T17:37:31Z",
+      "side": 0,
+      "message": "Ah good point, perhaps we should \"normalize\" the audio attributes flags upon entry to APM/AF. But that would be a a different issue.  Should we have a helper method in audio.h that encompasses all of the flags here.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/media/audio/include/system/audio-hal-enums.h;drc\u003d5adbe2b9fea0bd3605b0c2d615013d5ca1b69ad8;l\u003d434\n\nSomething like:\n\n    inline constexpr bool isMixedOutputFlag(audio_output_flag_t flags) { \n        return flag \u0026 (AUDIO_OUTPUT_FLAG_DIRECT | AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD |\n                AUDIO_OUTPUT_FLAG_HW_AV_SYNC | AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO | \n                AUDIO_OUTPUT_FLAG_DIRECT_PCM | AUDIO_OUTPUT_FLAG_MMAP_NOIRQ\n                AUDIO_OUTPUT_FLAG_GAPLESS_OFFLOAD | AUDIO_OUTPUT_FLAG_BIT_PERFECT) \u003d\u003d 0;\n    }\n    \nAdmittedly some of the flags probably won\u0027t be present here.",
+      "parentUuid": "8560fec2_3f279786",
+      "range": {
+        "startLine": 377,
+        "startChar": 93,
+        "endLine": 377,
+        "endChar": 94
+      },
+      "revId": "177886c9fe9efc27fb9d84eda3f505b377644d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
