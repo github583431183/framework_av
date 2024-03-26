@@ -309,6 +309,30 @@
       },
       "revId": "a3e76742dc467050d8ec19eb8247623d5201cd06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea04ecc_d12ed8d4",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 1901,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-26T21:57:02Z",
+      "side": 1,
+      "message": "Marking this resolved as PS27 had Code-Review +2.",
+      "parentUuid": "6308cc71_f6e3a333",
+      "range": {
+        "startLine": 1901,
+        "startChar": 53,
+        "endLine": 1901,
+        "endChar": 65
+      },
+      "revId": "a3e76742dc467050d8ec19eb8247623d5201cd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
