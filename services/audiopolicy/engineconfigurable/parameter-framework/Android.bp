@@ -43,11 +43,21 @@ prebuilt_etc {
     src: ":buildcommontypesstructure_gen",
     sub_dir: "parameter-framework/Structure/Policy",
 }
+prebuilt_etc {
+    name: "ProductStrategies.xml",
+    vendor: true,
+    src: ":product_strategies_structure",
+    sub_dir: "parameter-framework/Structure/Policy",
+}
 genrule {
     name: "buildcommontypesstructure_gen",
     defaults: ["buildcommontypesstructurerule"],
 }
 
+filegroup {
+    name: "product_strategies_structure",
+    srcs: ["examples/common/Structure/ProductStrategies.xml"],
+}
 filegroup {
     name: "product_strategies_structure_template",
     srcs: ["examples/common/Structure/ProductStrategies.xml.in"],
@@ -83,4 +93,12 @@ filegroup {
 filegroup {
     name: "ParameterFrameworkConfigurationPolicy.user.xml",
     srcs: ["examples/ParameterFrameworkConfigurationPolicy.user.xml"],
+}
+filegroup {
+    name: "ParameterFrameworkConfigurationPolicyAidl.userdebug.xml",
+    srcs: ["examples/ParameterFrameworkConfigurationPolicyAidl.userdebug.xml"],
+}
+filegroup {
+    name: "ParameterFrameworkConfigurationPolicyAidl.user.xml",
+    srcs: ["examples/ParameterFrameworkConfigurationPolicyAidl.user.xml"],
 }

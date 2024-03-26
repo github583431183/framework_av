@@ -30,10 +30,13 @@
 
 namespace android {
 
-ProductStrategy::ProductStrategy(const std::string &name) :
+ProductStrategy::ProductStrategy(const std::string &name, int id) :
     mName(name),
-    mId(static_cast<product_strategy_t>(HandleGenerator<uint32_t>::getNextHandle()))
+    mId(static_cast<product_strategy_t>(id))
 {
+    product_strategy_t pId = static_cast<product_strategy_t>(id);
+    mId = (pId != PRODUCT_STRATEGY_NONE) ?
+            pId : static_cast<product_strategy_t>(HandleGenerator<uint32_t>::getNextHandle());
 }
 
 void ProductStrategy::addAttributes(const VolumeGroupAttributes &volumeGroupAttributes)
