@@ -29,12 +29,6 @@
         </values>
     </criterion_type>
     <criterion_type name="AndroidModeType" type="exclusive"/>
-    <criterion_type name="BooleanType" type="exclusive">
-        <values>
-            <value literal="False" numerical="0"/>
-            <value literal="True" numerical="1"/>
-        </values>
-    </criterion_type>
     <criterion_type name="ForceUseForCommunicationType" type="exclusive">
         <values>
             <value literal="ForceNone" numerical="0"/>
