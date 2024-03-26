@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebacb59_4b167325",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-26T02:47:42Z",
+      "side": 1,
+      "message": "can you clarify why this is beneficial?\n\nseems to me that we are trading between not registering (and thus a misguided client will fail to find a particular service) \nand a null service (which would fail when we try to use the service).\n\nEither implies a broken / mis-configured system. For me, the value is around which gives us the faster and more obvious failure diagnostics.\nGut is that \"failure to find\" happens before than \"failure to use\" and is a more obvious \"here\u0027s the root cause\".",
+      "range": {
+        "startLine": 864,
+        "startChar": 24,
+        "endLine": 865,
+        "endChar": 32
+      },
+      "revId": "023bd65197870d661a06cd90c33c4c2eaed11d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
