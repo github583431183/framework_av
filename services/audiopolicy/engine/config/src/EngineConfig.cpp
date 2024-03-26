@@ -43,6 +43,7 @@
 namespace android {
 
 using utilities::convertTo;
+using media::audio::common::AudioStreamType;
 
 namespace engineConfig {
 
@@ -66,6 +67,9 @@ ConversionResult<std::string> aidl2legacy_AudioHalProductStrategy_ProductStrateg
                             STRATEGY_ENTRY(ACCESSIBILITY)};
 #undef STRATEGY_ENTRY
 
+    if (id >= media::audio::common::AudioHalProductStrategy::VENDOR_STRATEGY_ID_START) {
+        return std::to_string(id);
+    }
     auto it = productStrategyMap.find(id);
     if (it == productStrategyMap.end()) {
         return base::unexpected(BAD_VALUE);
@@ -76,8 +80,12 @@ ConversionResult<std::string> aidl2legacy_AudioHalProductStrategy_ProductStrateg
 ConversionResult<AttributesGroup> aidl2legacy_AudioHalAttributeGroup_AttributesGroup(
         const media::audio::common::AudioHalAttributesGroup& aidl) {
     AttributesGroup legacy;
-    legacy.stream = VALUE_OR_RETURN(
-            aidl2legacy_AudioStreamType_audio_stream_type_t(aidl.streamType));
+    // StreamType may only be set to AudioStreamType.INVALID when using the
+    // Configurable Audio Policy (CAP) engine. An AudioHalAttributesGroup with
+    // AudioStreamType.INVALID is used when the volume group and attributes are
+    // not associated to any AudioStreamType.
+    legacy.stream = ((aidl.streamType == AudioStreamType::INVALID) ? AUDIO_STREAM_DEFAULT :
+            VALUE_OR_RETURN(aidl2legacy_AudioStreamType_audio_stream_type_t(aidl.streamType)));
     legacy.volumeGroup = aidl.volumeGroupName;
     legacy.attributesVect = VALUE_OR_RETURN(convertContainer<AttributesVector>(
                     aidl.attributes, aidl2legacy_AudioAttributes_audio_attributes_t));
@@ -87,8 +95,9 @@ ConversionResult<AttributesGroup> aidl2legacy_AudioHalAttributeGroup_AttributesG
 ConversionResult<ProductStrategy> aidl2legacy_AudioHalProductStrategy_ProductStrategy(
         const media::audio::common::AudioHalProductStrategy& aidl) {
     ProductStrategy legacy;
-    legacy.name = VALUE_OR_RETURN(
-                    aidl2legacy_AudioHalProductStrategy_ProductStrategyType(aidl.id));
+    legacy.name = aidl.name.value_or(VALUE_OR_RETURN(
+                    aidl2legacy_AudioHalProductStrategy_ProductStrategyType(aidl.id)));
+    legacy.id = aidl.id;
     legacy.attributesGroups = VALUE_OR_RETURN(convertContainer<AttributesGroups>(
                     aidl.attributesGroups,
                     aidl2legacy_AudioHalAttributeGroup_AttributesGroup));
@@ -149,6 +158,48 @@ ConversionResult<VolumeGroup> aidl2legacy_AudioHalVolumeGroup_VolumeGroup(
     return legacy;
 }
 
+ConversionResult<Criterion> aidl2legacy_AudioHalCapCriterion_Criterion(
+        const media::audio::common::AudioHalCapCriterion& aidl) {
+    Criterion legacy;
+    legacy.name = aidl.name;
+    legacy.typeName = aidl.criterionTypeName;
+    legacy.defaultLiteralValue = aidl.defaultLiteralValue;
+    return legacy;
+}
+
+ConversionResult<CriterionType> aidl2legacy_AudioHalCapCriterionType_CriterionType(
+        const media::audio::common::AudioHalCapCriterionType& aidl) {
+    CriterionType legacy;
+    legacy.name = aidl.name;
+    legacy.isInclusive = aidl.isInclusive;
+    int index = 0;
+    for (auto &value : aidl.values) {
+        uint32_t androidMappedValue = 0;
+        if (aidl.androidMappedValue.has_value()) {
+            if (aidl.androidMappedValue.value().size() != aidl.values.size()
+                    || !aidl.androidMappedValue.value()[index].has_value()) {
+                ALOGE("%s: : invalid androidMappedValue for %s", __func__, legacy.name.c_str());
+                return base::unexpected(BAD_VALUE);
+            }
+            auto aidlValue =
+                    legacy2aidl_String16_string(aidl.androidMappedValue.value()[index].value());
+            if (!convertTo(aidlValue.value(), androidMappedValue)) {
+                ALOGE("%s: : Invalid typeset value(%s)", __func__, aidlValue.value().c_str());
+                return base::unexpected(BAD_VALUE);
+            }
+        }
+        if (!aidl.numericalValue.has_value()
+                || aidl.numericalValue.value().size() != aidl.values.size()) {
+            ALOGE("%s: : invalid numerical value for %s", __func__, legacy.name.c_str());
+            return base::unexpected(BAD_VALUE);
+        }
+        legacy.valuePairs.push_back(
+                {aidl.numericalValue.value()[index], androidMappedValue, value});
+        index += 1;
+    }
+    return legacy;
+}
+
 }  // namespace
 
 template<typename E, typename C>
@@ -175,6 +226,7 @@ struct ProductStrategyTraits : public BaseSerializerTraits<ProductStrategy, Prod
 
     struct Attributes {
         static constexpr const char *name = "name";
+        static constexpr const char *id = "id";
     };
     static android::status_t deserialize(_xmlDoc *doc, const _xmlNode *root, Collection &ps);
 };
@@ -533,13 +585,21 @@ status_t ProductStrategyTraits::deserialize(_xmlDoc *doc, const _xmlNode *child,
         ALOGE("ProductStrategyTraits No attribute %s found", Attributes::name);
         return BAD_VALUE;
     }
+    int id = PRODUCT_STRATEGY_NONE;
+    std::string idLiteral = getXmlAttribute(child, Attributes::id);
+    if (!idLiteral.empty()) {
+        if (!convertTo(idLiteral, id)) {
+            return BAD_VALUE;
+        }
+        ALOGV("%s: %s, %s = %d", __FUNCTION__, name.c_str(), Attributes::id, id);
+    }
     ALOGV("%s: %s = %s", __FUNCTION__, Attributes::name, name.c_str());
 
     size_t skipped = 0;
     AttributesGroups attrGroups;
     deserializeCollection<AttributesGroupTraits>(doc, child, attrGroups, skipped);
 
-    strategies.push_back({name, attrGroups});
+    strategies.push_back({name, id, attrGroups});
     return NO_ERROR;
 }
 
@@ -846,6 +906,18 @@ ParsingResult convert(const ::android::media::audio::common::AudioHalEngineConfi
         config->volumeGroups = std::move(conv.value());
     } else {
         return ParsingResult{};
+    }
+    if (aidlConfig.capSpecificConfig.has_value()) {
+        if (auto conv = convertContainer<engineConfig::Criteria>(
+                    aidlConfig.capSpecificConfig.value().criteria,
+                    aidl2legacy_AudioHalCapCriterion_Criterion); conv.ok()) {
+            config->criteria = std::move(conv.value());
+        }
+        if (auto conv = convertContainer<engineConfig::CriterionTypes>(
+                    aidlConfig.capSpecificConfig.value().criterionTypes,
+                    aidl2legacy_AudioHalCapCriterionType_CriterionType); conv.ok()) {
+            config->criterionTypes = std::move(conv.value());
+        }
     }
     return {.parsedConfig=std::move(config), .nbSkippedElement=0};
  }
