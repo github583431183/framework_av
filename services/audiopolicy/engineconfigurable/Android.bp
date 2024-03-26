@@ -38,6 +38,7 @@ cc_library_shared {
         "libaudiopolicyengine_common",
         "libaudiopolicyengine_config",
         "libaudiopolicyengineconfigurable_pfwwrapper",
+        "libaudiopolicycapengine_config"
 
     ],
     shared_libs: [
