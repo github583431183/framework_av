@@ -35,10 +35,10 @@ cc_library_shared {
         "libbase_headers",
     ],
     static_libs: [
+        "libaudiopolicycapengine_config",
         "libaudiopolicyengine_common",
         "libaudiopolicyengine_config",
         "libaudiopolicyengineconfigurable_pfwwrapper",
-
     ],
     shared_libs: [
         "libaudio_aidl_conversion_common_cpp",
