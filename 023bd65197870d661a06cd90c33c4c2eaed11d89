@@ -70,6 +70,30 @@
       },
       "revId": "023bd65197870d661a06cd90c33c4c2eaed11d89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b66da45_04330c04",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-26T13:13:20Z",
+      "side": 1,
+      "message": "went back to catch up on that chat thread.\n\nI understand why we want to register both.\nI question the \"null service if the other is preferred\" behavior.",
+      "parentUuid": "02533112_741094d7",
+      "range": {
+        "startLine": 864,
+        "startChar": 24,
+        "endLine": 865,
+        "endChar": 32
+      },
+      "revId": "023bd65197870d661a06cd90c33c4c2eaed11d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
