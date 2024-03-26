@@ -51,6 +51,24 @@
       "parentUuid": "209d445f_38c215a5",
       "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08101672_7b79eb97",
+        "filename": "services/camera/libcameraservice/common/Camera2ClientBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2024-03-26T22:23:27Z",
+      "side": 1,
+      "message": "This does look like a valid concern, so maybe the callbacks have to check for initialization st",
+      "parentUuid": "209d445f_38c215a5",
+      "revId": "510546a9f5210e640607c243c1e79b6d2a121e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
