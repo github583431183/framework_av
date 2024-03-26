@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e68c96_9a8d3034",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5335,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-03-26T18:43:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "79828413_d9c90806",
+      "range": {
+        "startLine": 5335,
+        "startChar": 0,
+        "endLine": 5335,
+        "endChar": 101
+      },
+      "revId": "1287714f92fc1f30c2b6dd1f175a156d8e377260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3849b6c0_b66a2dda",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-03-22T23:23:50Z",
       "side": 1,
       "message": "maybe we could use a different name now... PlaceholderSurface or DiscardSurface?",
+      "revId": "1287714f92fc1f30c2b6dd1f175a156d8e377260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c485e545_57f5ba7a",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6677,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-03-26T18:43:53Z",
+      "side": 1,
+      "message": "I was also thinking about this, but the name ReleaseSurface worked well, as it just releasees the acquired buffers...",
+      "parentUuid": "3849b6c0_b66a2dda",
       "revId": "1287714f92fc1f30c2b6dd1f175a156d8e377260",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
