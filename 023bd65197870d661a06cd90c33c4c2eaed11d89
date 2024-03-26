@@ -22,6 +22,30 @@
       },
       "revId": "023bd65197870d661a06cd90c33c4c2eaed11d89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02533112_741094d7",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-03-26T03:14:14Z",
+      "side": 1,
+      "message": "#1 this is because this what it was doing before my other change 😄 I didn\u0027t notice and removed it.\n\n@wonsik@google.com and I talked about it a bunch in chat (you are on the thread) and determined it needs to keep doing this.\n\nAndroid `/system` HAL services that Google provides must be backward compatible with `/vendor`. To do that they need to declare, and register, all of the interfaces that upgrading devices might need (we support back to Android R right now).\nswcodec has decided to choose which one to register with the sysprop https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/av/media/codec2/hal/common/HalSelection.cpp;l\u003d56?q\u003dmedia.c2.hal.selection\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main%20-f:prebuilts\n\nBut to be able to choose at runtime, both AIDL and HIDL need to be declared in the manifest file. And if they are declared, VTS/Treble says the must be served. So they are serving a fake one.\n\nThat\u0027s how I understood it at least. I think we should talk about what we can do to change this though.",
+      "parentUuid": "cebacb59_4b167325",
+      "range": {
+        "startLine": 864,
+        "startChar": 24,
+        "endLine": 865,
+        "endChar": 32
+      },
+      "revId": "023bd65197870d661a06cd90c33c4c2eaed11d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
