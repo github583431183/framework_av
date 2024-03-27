@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12dc7eee_f9450048",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderHelpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2024-03-27T17:16:41Z",
+      "side": 1,
+      "message": "why define min and max?",
+      "range": {
+        "startLine": 56,
+        "startChar": 56,
+        "endLine": 56,
+        "endChar": 84
+      },
+      "revId": "77171a1421e98a9091578ba5e12cb9d94660da98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
