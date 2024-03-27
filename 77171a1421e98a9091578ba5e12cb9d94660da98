@@ -22,6 +22,30 @@
       },
       "revId": "77171a1421e98a9091578ba5e12cb9d94660da98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4a48e4_270df17e",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderHelpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-03-27T20:08:10Z",
+      "side": 1,
+      "message": "`height` and `width` are used to calculate `gMaxMediaBufferSize`, which is used as the upper limit of `FuzzedDataProvider::ConsumeBytes()` in `IMediaSourceFuzzImpl::readMultiple()`. These bytes are used to populate the media buffer, and not limiting `height` and `width` could result in all bytes being consumed in one go.",
+      "parentUuid": "12dc7eee_f9450048",
+      "range": {
+        "startLine": 56,
+        "startChar": 56,
+        "endLine": 56,
+        "endChar": 84
+      },
+      "revId": "77171a1421e98a9091578ba5e12cb9d94660da98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
