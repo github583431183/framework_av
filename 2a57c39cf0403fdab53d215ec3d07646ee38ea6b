@@ -34,6 +34,24 @@
       "parentUuid": "227515ba_c180bff7",
       "revId": "2a57c39cf0403fdab53d215ec3d07646ee38ea6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ee2b96_a4ff9031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-03-27T13:56:12Z",
+      "side": 1,
+      "message": "\u003e somewhere in mediaserver instead.\n\nWhat happens if you expand this condition to also report 0x0 video size if either height or width are missing from the format? atm this is how we handle a null format, so it seems reasonable to tweak this logic to avoid a crash.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libmediaplayerservice/nuplayer/NuPlayer.cpp;l\u003d2064;drc\u003d3adcd6ddcc2c052c2b7555b48a6ad8cfacba5c66",
+      "parentUuid": "b6a0a78a_25e6fe8c",
+      "revId": "2a57c39cf0403fdab53d215ec3d07646ee38ea6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
