@@ -629,6 +629,11 @@ c2_status_t GraphicsTracker::_allocate(const std::shared_ptr<BufferCache> &cache
     ::android::status_t status = igbp->dequeueBuffer(
             &slotId, &fence, width, height, format, usage, &outBufferAge, &outTimestamps);
     if (status < ::android::OK) {
+        if (status == ::android::TIMED_OUT ||
+                status == ::android::WOULD_BLOCK) {
+            ALOGW("dequeueBuffer() blocked inside IGBP.");
+            return C2_BLOCKING;
+        }
         ALOGE("dequeueBuffer() error %d", (int)status);
         return C2_CORRUPTED;
     }
