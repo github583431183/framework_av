@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fee6d8b_c52ad029",
+        "filename": "media/module/codecs/amrwb/enc/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-27T20:15:18Z",
+      "side": 1,
+      "message": "interestingly, from the bug it looks like this codegen bug went away, but no-one came back to undo this workaround? \"not a regression\" here, but i thought i should point that out (since i have no idea what \"amrwb\" is or whether it\u0027s still important) :-)",
+      "revId": "17dfef09e75994464989d58cc57e41d6fae1e516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
