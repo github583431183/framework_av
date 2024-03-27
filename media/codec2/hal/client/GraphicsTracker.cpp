@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "GraphicsTracker"
 #include <fcntl.h>
 #include <unistd.h>
@@ -629,6 +629,25 @@ c2_status_t GraphicsTracker::_allocate(const std::shared_ptr<BufferCache> &cache
     ::android::status_t status = igbp->dequeueBuffer(
             &slotId, &fence, width, height, format, usage, &outBufferAge, &outTimestamps);
     if (status < ::android::OK) {
+        if (status == ::android::TIMED_OUT ||
+                status == ::android::WOULD_BLOCK ||
+                status == ::android::INVALID_OPERATION) {
+            int maxDequeue = 0;
+            int maxDequeueReq = -1;
+            int maxDequeueCommit = 0;
+            {
+                std::unique_lock<std::mutex> l(mLock);
+                maxDequeue = mMaxDequeue;
+                if (mMaxDequeueRequested.has_value()) {
+                    maxDequeueReq = mMaxDequeueRequested.value();
+                }
+                maxDequeueCommit = mMaxDequeueCommitted;
+            }
+            ALOGW("dequeueBuffer() blocked inside IGBP: "
+                  " maxDequeue: val(%d), req(%d), com(%d)",
+                  maxDequeue, maxDequeueReq, maxDequeueCommit);
+            return C2_BLOCKING;
+        }
         ALOGE("dequeueBuffer() error %d", (int)status);
         return C2_CORRUPTED;
     }
@@ -696,8 +715,8 @@ c2_status_t GraphicsTracker::allocate(
     res = _allocate(cache, width, height, format, usage, &cached, &slotId, &fence, &buffer);
     commitAllocate(res, cache, cached, slotId, fence, &buffer, &updateDequeue);
     if (res == C2_OK) {
-        ALOGV("allocated a buffer width:%u height:%u pixelformat:%d usage:%llu",
-              width, height, format, (unsigned long long)usage);
+        ALOGV("allocated a buffer width:%u height:%u pixelformat:%d usage:%llu bid:%llu",
+              width, height, format, (unsigned long long)usage, (unsigned long long)buffer->mId);
         *buf = buffer->mBuf;
         *rFence = buffer->mFence;
         // *buf should be valid even if buffer is dtor-ed.
