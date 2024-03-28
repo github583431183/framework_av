@@ -406,27 +406,21 @@ status_t Spatializer::loadEngineConfiguration(sp<EffectHalInterface> effect) {
         return BAD_VALUE;
     }
 
-    //TODO b/273373363: use AIDL enum when available
-    if (com::android::media::audio::dsa_over_bt_le_audio()
-            && mSupportsHeadTracking) {
-        mHeadtrackingConnectionMode = HEADTRACKING_CONNECTION_FRAMEWORK_PROCESSED;
-        std::vector<uint8_t> headtrackingConnectionModes;
+    if (com::android::media::audio::dsa_over_bt_le_audio() && mSupportsHeadTracking) {
+        mHeadtrackingConnectionMode = HeadTracking::ConnectionMode::FRAMEWORK_PROCESSED;
+        std::vector<HeadTracking::ConnectionMode> headtrackingConnectionModes;
         status = getHalParameter<true>(effect, SPATIALIZER_PARAM_SUPPORTED_HEADTRACKING_CONNECTION,
-                &headtrackingConnectionModes);
+                                       &headtrackingConnectionModes);
         if (status == NO_ERROR) {
             for (const auto htConnectionMode : headtrackingConnectionModes) {
-                if (htConnectionMode < HEADTRACKING_CONNECTION_FRAMEWORK_PROCESSED ||
-                        htConnectionMode > HEADTRACKING_CONNECTION_DIRECT_TO_SENSOR_TUNNEL) {
-                    ALOGW("%s: ignoring HT connection mode:%d", __func__, (int)htConnectionMode);
-                    continue;
-                }
-                mSupportedHeadtrackingConnectionModes.insert(
-                        static_cast<headtracking_connection_t> (htConnectionMode));
+                mSupportedHeadtrackingConnectionModes.insert(htConnectionMode);
             }
             ALOGW_IF(mSupportedHeadtrackingConnectionModes.find(
-                    HEADTRACKING_CONNECTION_FRAMEWORK_PROCESSED)
-                        == mSupportedHeadtrackingConnectionModes.end(),
-                    "%s: HEADTRACKING_CONNECTION_FRAMEWORK_PROCESSED not reported", __func__);
+                             HeadTracking::ConnectionMode::FRAMEWORK_PROCESSED) ==
+                             mSupportedHeadtrackingConnectionModes.end(),
+                     "%s: HEADTRACKING_CONNECTION_FRAMEWORK_PROCESSED not reported", __func__);
+        } else {
+            ALOGW("%s: get SUPPORTED_HEADTRACKING_CONNECTION failed: %d", __func__, status);
         }
     }
 
@@ -1059,17 +1053,17 @@ audio_latency_mode_t Spatializer::selectHeadtrackingConnectionMode_l() {
     }
     // mSupportedLatencyModes is ordered according to system preferences loaded in
     // mOrderedLowLatencyModes
-    mHeadtrackingConnectionMode = HEADTRACKING_CONNECTION_FRAMEWORK_PROCESSED;
+    mHeadtrackingConnectionMode = HeadTracking::ConnectionMode::FRAMEWORK_PROCESSED;
     audio_latency_mode_t requestedLatencyMode = mSupportedLatencyModes[0];
     if (requestedLatencyMode == AUDIO_LATENCY_MODE_DYNAMIC_SPATIAL_AUDIO_HARDWARE) {
         if (mSupportedHeadtrackingConnectionModes.find(
-                HEADTRACKING_CONNECTION_DIRECT_TO_SENSOR_TUNNEL)
-                    != mSupportedHeadtrackingConnectionModes.end()) {
-            mHeadtrackingConnectionMode = HEADTRACKING_CONNECTION_DIRECT_TO_SENSOR_TUNNEL;
+                    HeadTracking::ConnectionMode::DIRECT_TO_SENSOR_TUNNEL) !=
+            mSupportedHeadtrackingConnectionModes.end()) {
+            mHeadtrackingConnectionMode = HeadTracking::ConnectionMode::DIRECT_TO_SENSOR_TUNNEL;
         } else if (mSupportedHeadtrackingConnectionModes.find(
-                HEADTRACKING_CONNECTION_DIRECT_TO_SENSOR_SW)
-                    != mSupportedHeadtrackingConnectionModes.end()) {
-            mHeadtrackingConnectionMode = HEADTRACKING_CONNECTION_DIRECT_TO_SENSOR_SW;
+                           HeadTracking::ConnectionMode::DIRECT_TO_SENSOR_SW) !=
+                   mSupportedHeadtrackingConnectionModes.end()) {
+            mHeadtrackingConnectionMode = HeadTracking::ConnectionMode::DIRECT_TO_SENSOR_SW;
         } else {
             // if the engine does not support direct reading of IMU data, do not allow
             // DYNAMIC_SPATIAL_AUDIO_HARDWARE mode and fallback to next mode

@@ -488,9 +488,9 @@ private:
      * If the list is empty, the spatializer does not support any optional connection
      * mode and mode HEADTRACKING_CONNECTION_FRAMEWORK_PROCESSED is assumed.
      */
-    std::unordered_set<headtracking_connection_t> mSupportedHeadtrackingConnectionModes;
+    std::unordered_set<HeadTracking::ConnectionMode> mSupportedHeadtrackingConnectionModes;
     /** Selected HT connection mode when several modes are supported by the spatializer */
-    headtracking_connection_t mHeadtrackingConnectionMode;
+    HeadTracking::ConnectionMode mHeadtrackingConnectionMode;
 
     // Looper thread for mEngine callbacks
     class EngineCallbackHandler;
