@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4937ee1a_c481a25e",
+        "filename": "camera/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1980115
+      },
+      "writtenOn": "2024-03-28T12:40:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "293677e5_f0cba077",
+      "revId": "1c34e46ed115f4adf661ace5d0c539aa38ce5332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b44366f7_347285f1",
