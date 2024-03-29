@@ -33,6 +33,24 @@
       "message": "interestingly, from the bug it looks like this codegen bug went away, but no-one came back to undo this workaround? \"not a regression\" here, but i thought i should point that out (since i have no idea what \"amrwb\" is or whether it\u0027s still important) :-)",
       "revId": "17dfef09e75994464989d58cc57e41d6fae1e516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e1adb5c_7f1b32cb",
+        "filename": "media/module/codecs/amrwb/enc/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-03-29T16:21:10Z",
+      "side": 1,
+      "message": "Elliott,\nThank you for flagging this.\nI have filed b/331935767 to investigate this further.",
+      "parentUuid": "2fee6d8b_c52ad029",
+      "revId": "17dfef09e75994464989d58cc57e41d6fae1e516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
