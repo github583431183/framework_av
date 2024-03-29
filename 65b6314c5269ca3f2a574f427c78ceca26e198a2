@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e419812_0c4cd631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-03-29T18:05:38Z",
+      "side": 1,
+      "message": "clean CP from internal ag/26275309, thanks!",
+      "revId": "65b6314c5269ca3f2a574f427c78ceca26e198a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
