@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94148f9_b6e9f3fe",
+        "filename": "media/libaudiohal/impl/effectsAidlConversion/AidlConversionSpatializer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 3235602
+      },
+      "writtenOn": "2024-03-29T06:42:06Z",
+      "side": 1,
+      "message": "num data type should be uint32_t, as the size of each value in payload is uint32_t.\nwith current fix too we faced issue. \nSo I made above num as uint32_t and it worked. Please make same change.",
+      "revId": "1f04914aab9d6a52b2d81107d36190ecb155449a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
