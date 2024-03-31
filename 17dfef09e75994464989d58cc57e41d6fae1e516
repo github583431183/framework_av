@@ -51,6 +51,29 @@
       "parentUuid": "2fee6d8b_c52ad029",
       "revId": "17dfef09e75994464989d58cc57e41d6fae1e516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d72c0c_4e997037",
+        "filename": "media/module/codecs/amrwb/enc/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-03-31T20:06:44Z",
+      "side": 1,
+      "message": "if we\u0027re removing all of those src/arm/ARMV5E/*.s files, do we need\nthe armv5e includes any longer?\n\ni realize we\u0027re mostly trying to drop use of the \u0027neon\u0027 construct here,\nbut it seems that cleaning up this particular include is something we should\ndo concurrently with dropping all of those armv5e assembly files.",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "17dfef09e75994464989d58cc57e41d6fae1e516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
