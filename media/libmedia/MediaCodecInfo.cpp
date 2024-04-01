@@ -18,6 +18,8 @@
 #define LOG_TAG "MediaCodecInfo"
 #include <utils/Log.h>
 
+#include <android_media_codec.h>
+
 #include <media/IOMX.h>
 
 #include <media/MediaCodecInfo.h>
@@ -36,6 +38,7 @@ constexpr char MediaCodecInfo::Capabilities::FEATURE_INTRA_REFRESH[];
 constexpr char MediaCodecInfo::Capabilities::FEATURE_MULTIPLE_FRAMES[];
 constexpr char MediaCodecInfo::Capabilities::FEATURE_SECURE_PLAYBACK[];
 constexpr char MediaCodecInfo::Capabilities::FEATURE_TUNNELED_PLAYBACK[];
+constexpr char MediaCodecInfo::Capabilities::FEATURE_DETACHED_SURFACE[];
 
 void MediaCodecInfo::Capabilities::getSupportedProfileLevels(
         Vector<ProfileLevel> *profileLevels) const {
