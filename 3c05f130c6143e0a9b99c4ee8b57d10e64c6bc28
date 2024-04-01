@@ -68,6 +68,30 @@
       },
       "revId": "3c05f130c6143e0a9b99c4ee8b57d10e64c6bc28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c44516a_2812b58d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-01T19:43:17Z",
+      "side": 1,
+      "message": "Ray,\n\n\u003e if i understand, we\u0027re going to stop synthesizing CSD info\nbecause the test no longer needs that info.\n\nThis revert of a revert ensures that the extractor will synthesize CSD if the clip doesn\u0027t contain that.",
+      "parentUuid": "00976742_5de604bd",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "3c05f130c6143e0a9b99c4ee8b57d10e64c6bc28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
