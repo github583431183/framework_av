@@ -16,6 +16,24 @@
       "message": "Does the comment affect the test run(or skip)?",
       "revId": "040a43891b6797a5ec0e67c3848eff5bdd593b80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe2e45b_861ff4d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-01T23:27:30Z",
+      "side": 1,
+      "message": "AFAIK it\u0027s just informational",
+      "parentUuid": "b4faa3a9_e0c29c31",
+      "revId": "040a43891b6797a5ec0e67c3848eff5bdd593b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
