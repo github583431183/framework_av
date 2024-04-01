@@ -45,6 +45,29 @@
       },
       "revId": "3c05f130c6143e0a9b99c4ee8b57d10e64c6bc28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00976742_5de604bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-04-01T19:20:39Z",
+      "side": 1,
+      "message": "if i understand, we\u0027re going to stop synthesizing CSD info\nbecause the test no longer needs that info.\n\nis there not value in providing the information that would be in the CSD (which I think includes profile/level information) to apps that do want that?  I would think that providing more complete information like what this was synthesizing would be a generally good thing to have in the platform.",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "3c05f130c6143e0a9b99c4ee8b57d10e64c6bc28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
