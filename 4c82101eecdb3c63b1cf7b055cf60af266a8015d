@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3715a9_4d28dbb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-04-02T16:45:38Z",
+      "side": 1,
+      "message": "+ Eric for review as Mikhail is OOO",
+      "revId": "4c82101eecdb3c63b1cf7b055cf60af266a8015d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51119c3_5be63b87",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-04-02T16:45:38Z",
+      "side": 1,
+      "message": "nit: do we need this log? same for line#599",
+      "range": {
+        "startLine": 591,
+        "startChar": 12,
+        "endLine": 591,
+        "endChar": 61
+      },
+      "revId": "4c82101eecdb3c63b1cf7b055cf60af266a8015d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
