@@ -46,6 +46,30 @@
       },
       "revId": "77171a1421e98a9091578ba5e12cb9d94660da98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae9b895_9c4464d7",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderHelpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-04-02T17:10:51Z",
+      "side": 1,
+      "message": "Marking this as resolved.",
+      "parentUuid": "7f4a48e4_270df17e",
+      "range": {
+        "startLine": 56,
+        "startChar": 56,
+        "endLine": 56,
+        "endChar": 84
+      },
+      "revId": "77171a1421e98a9091578ba5e12cb9d94660da98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
