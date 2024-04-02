@@ -2275,22 +2275,12 @@ void MatroskaExtractor::findThumbnails() {
         }
 
         BlockIterator iter(this, info->mTrackNum, i);
-        int32_t j = 0;
         int64_t thumbnailTimeUs = 0;
         size_t maxBlockSize = 0;
-        while (!iter.eos() && j < 20) {
+        while (!iter.eos()) {
             if (iter.block()->IsKey()) {
-                ++j;
-
-                size_t blockSize = 0;
-                for (int k = 0; k < iter.block()->GetFrameCount(); ++k) {
-                    blockSize += iter.block()->GetFrame(k).len;
-                }
-
-                if (blockSize > maxBlockSize) {
-                    maxBlockSize = blockSize;
-                    thumbnailTimeUs = iter.blockTimeUs();
-                }
+                thumbnailTimeUs = iter.blockTimeUs();
+                break;
             }
             iter.advance();
         }
