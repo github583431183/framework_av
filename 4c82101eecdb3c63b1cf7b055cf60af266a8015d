@@ -39,6 +39,30 @@
       },
       "revId": "4c82101eecdb3c63b1cf7b055cf60af266a8015d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d4762de_567de43b",
+        "filename": "media/libeffects/lvm/wrapper/Aidl/BundleContext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2024-04-02T17:02:17Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "f51119c3_5be63b87",
+      "range": {
+        "startLine": 591,
+        "startChar": 12,
+        "endLine": 591,
+        "endChar": 61
+      },
+      "revId": "4c82101eecdb3c63b1cf7b055cf60af266a8015d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
