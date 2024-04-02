@@ -2279,6 +2279,8 @@ void MatroskaExtractor::findThumbnails() {
         int64_t thumbnailTimeUs = 0;
         size_t maxBlockSize = 0;
         while (!iter.eos() && j < 20) {
+            int64_t blockIterTimeUs = iter.blockTimeUs();
+
             if (iter.block()->IsKey()) {
                 ++j;
 
@@ -2289,9 +2291,11 @@ void MatroskaExtractor::findThumbnails() {
 
                 if (blockSize > maxBlockSize) {
                     maxBlockSize = blockSize;
-                    thumbnailTimeUs = iter.blockTimeUs();
+                    thumbnailTimeUs = blockIterTimeUs;
                 }
             }
+            if (blockIterTimeUs > 20000000)
+                break;
             iter.advance();
         }
         AMediaFormat_setInt64(info->mMeta,
