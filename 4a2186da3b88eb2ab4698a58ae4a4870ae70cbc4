@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72ded365_e6eedee2",
+        "filename": "services/audiopolicy/engineconfigurable/config/include/CapEngineConfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-02T06:28:08Z",
+      "side": 1,
+      "message": "It was in fact the first step before migrating to AIDL API, wanted to validate principle. Will remove this part as not required",
+      "parentUuid": "cd56282d_a7b9f9a4",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 87
+      },
+      "revId": "4a2186da3b88eb2ab4698a58ae4a4870ae70cbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8e72aa0_73a39a63",
         "filename": "services/audiopolicy/engineconfigurable/config/src/CapEngineConfig.cpp",
         "patchSetId": 2
