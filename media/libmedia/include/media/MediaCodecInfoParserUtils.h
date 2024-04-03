@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <optional>
 #include <vector>
 
 #include <media/stagefright/foundation/AUtils.h>
@@ -136,13 +137,12 @@ private:
     T upper_;
 };
 
-
 /**
  * Sorts distinct (non-intersecting) range array in ascending order.
  * From frameworks/base/media/java/android/media/Utils.java
  */
 template<typename T>
-static inline void sortDistinctRanges(std::vector<Range<T>> &ranges) {
+void sortDistinctRanges(std::vector<Range<T>> &ranges) {
     std::sort(ranges.begin(), ranges.end(),
             [](Range<T> r1, Range<T> r2) {
         if (r1.upper() < r2.lower()) {
@@ -164,7 +164,7 @@ static inline void sortDistinctRanges(std::vector<Range<T>> &ranges) {
  * @return the intersection of the two sets, sorted in ascending order
  */
 template<typename T>
-static inline std::vector<Range<T>> intersectSortedDistinctRanges(
+std::vector<Range<T>> intersectSortedDistinctRanges(
         const std::vector<Range<T>> &one, const std::vector<Range<T>> &another) {
     std::vector<Range<T>> result(one.size() + another.size());
     int ix = 0;
@@ -196,22 +196,22 @@ struct VideoSize {
      * @param width The width of the size, in pixels
      * @param height The height of the size, in pixels
      */
-    VideoSize(int width, int height) : mWidth(width), mHeight(height) {}
+    VideoSize(int width, int height);
 
     // default constructor
-    VideoSize() : mWidth(0), mHeight(0) {}
+    VideoSize();
 
     /**
      * Get the width of the size (in pixels).
      * @return width
      */
-    int getWidth() const { return mWidth; }
+    int getWidth() const;
 
     /**
      * Get the height of the size (in pixels).
      * @return height
      */
-    int getHeight() const { return mHeight; }
+    int getHeight() const;
 
     /**
      * Check if this size is equal to another size.
@@ -223,13 +223,9 @@ struct VideoSize {
      *
      * @return true if the objects were equal, false otherwise
      */
-    bool equals(VideoSize other) const {
-        return mWidth == other.mWidth && mHeight == other.mHeight;
-    }
+    bool equals(VideoSize other) const;
 
-    std::string toString() const {
-        return std::to_string(mWidth) + "x" + std::to_string(mHeight);
-    }
+    std::string toString() const;
 
     /**
      * Parses the specified string as a size value.
@@ -256,39 +252,11 @@ struct VideoSize {
      * @param string the string representation of a size value.
      * @return the size value represented by {@code string}.
      */
-    static std::optional<VideoSize> ParseSize(std::string str) {
-        if (str.empty()) {
-            return std::nullopt;
-        }
+    static std::optional<VideoSize> ParseSize(std::string str);
 
-        int sep_ix = str.find_first_of('*');
-        if (sep_ix < 0) {
-            sep_ix = str.find_first_of('x');
-        }
-        if (sep_ix < 0) {
-            return std::nullopt;
-        }
+    int hashCode() const;
 
-        // strtol() returns 0 if unable to parse a number
-        int w = strtol(str.substr(0, sep_ix).c_str(), NULL, 10);
-        int h = strtol(str.substr(sep_ix + 1).c_str(), NULL, 10);
-        if ((w == 0 && (str.substr(0, sep_ix) != "0"))
-                || (h == 0 && (str.substr(sep_ix + 1) != "0"))) {
-            ALOGW("could not parse size %s", str.c_str());
-            return std::nullopt;
-        }
-
-        return std::make_optional(VideoSize(w, h));
-    }
-
-    int hashCode() const {
-        // assuming most sizes are <2^16, doing a rotate will give us perfect hashing
-        return mHeight ^ ((mWidth << (sizeof(int) / 2)) | (mWidth >> (sizeof(int) / 2)));
-    }
-
-    bool empty() const {
-        return mWidth <= 0 || mHeight <= 0;
-    }
+    bool empty() const;
 
 private:
     int mWidth;
@@ -702,182 +670,42 @@ static const Rational ZERO = Rational(0, 1);
  * @param str the string representation of a rational value.
  * @return the rational value wrapped by std::optional represented by str.
  */
-static inline std::optional<Rational> ParseRational(std::string str) {
-    if (str.compare("NaN") == 0) {
-        return std::make_optional(NaN);
-    } else if (str.compare("Infinity") == 0) {
-        return std::make_optional(POSITIVE_INFINITY);
-    } else if (str.compare("-Infinity") == 0) {
-        return std::make_optional(NEGATIVE_INFINITY);
-    }
-
-    int sep_ix = str.find_first_of(':');
-    if (sep_ix < 0) {
-        sep_ix = str.find_first_of('/');
-    }
-    if (sep_ix < 0) {
-        return std::nullopt;
-    }
-
-    int numerator = strtol(str.substr(0, sep_ix).c_str(), NULL, 10);
-    int denominator = strtol(str.substr(sep_ix + 1).c_str(), NULL, 10);
-    if ((numerator == 0 && str.substr(0, sep_ix) != "0")
-            || (denominator == 0 && str.substr(sep_ix + 1) != "0")) {
-        ALOGW("could not parse string: %s to Rational", str.c_str());
-        return std::nullopt;
-    }
-    return std::make_optional(Rational(numerator, denominator));
-}
+std::optional<Rational> ParseRational(std::string str);
 
 /**
  * Returns the equivalent factored range newrange, where for every
  * e : newrange.contains(e) implies that range.contains(e * factor),
  * and !newrange.contains(e) implies that !range.contains(e * factor).
  */
-static inline Range<int> FactorRange(Range<int> range, int factor) {
-    if (factor == 1) {
-        return range;
-    }
-    return Range(divUp(range.lower(), factor), range.upper() / factor);
-}
+Range<int> FactorRange(Range<int> range, int factor);
 
 /**
  * Returns the equivalent factored range newrange, where for every
  * e : newrange.contains(e) implies that range.contains(e * factor),
  * and !newrange.contains(e) implies that !range.contains(e * factor).
  */
-static inline Range<long> FactorRange(Range<long> range, long factor) {
-    if (factor == 1) {
-        return range;
-    }
-    return Range(divUp(range.lower(), factor), range.upper() / factor);
-}
+Range<long> FactorRange(Range<long> range, long factor);
 
-static inline Rational ScaleRatio(Rational ratio, int num, int den) {
-    int common = Rational::GCD(num, den);
-    num /= common;
-    den /= common;
-    return Rational(
-            (int)(ratio.getNumerator() * (double)num),     // saturate to int
-            (int)(ratio.getDenominator() * (double)den));  // saturate to int
-}
+Rational ScaleRatio(Rational ratio, int num, int den);
 
-static inline Range<Rational> ScaleRange(Range<Rational> range, int num, int den) {
-    if (num == den) {
-        return range;
-    }
-    return Range(
-            ScaleRatio(range.lower(), num, den),
-            ScaleRatio(range.upper(), num, den));
-}
+Range<Rational> ScaleRange(Range<Rational> range, int num, int den);
 
-static inline Range<int> IntRangeFor(double v) {
-    return Range((int)v, (int)ceil(v));
-}
+Range<int> IntRangeFor(double v);
 
-static inline Range<long> LongRangeFor(double v) {
-    return Range((long)v, (long)ceil(v));
-}
+Range<long> LongRangeFor(double v);
 
-static inline Range<int> AlignRange(Range<int> range, int align) {
-    return range.intersect(
-            divUp(range.lower(), align) * align,
-            (range.upper() / align) * align);
-}
+Range<int> AlignRange(Range<int> range, int align);
 
 // parse string into int range
-static inline std::optional<Range<int>> ParseIntRange(const std::string &str) {
-    if (str.empty()) {
-        ALOGW("could not parse integer range: %s", str.c_str());
-        return std::nullopt;
-    }
-    int lower, upper;
-    size_t ix = str.find_first_of('-');
-    if (ix >= 0) {
-        lower = strtol(str.substr(0, ix).c_str(), NULL, 10);
-        upper = strtol(str.substr(ix + 1).c_str(), NULL, 10);
-        if ((lower == 0 && str.substr(0, ix) != "0")
-                || (upper == 0 && str.substr(ix + 1) != "0")) {
-            ALOGW("could not parse integer range: %s", str.c_str());
-            return std::nullopt;
-        }
-    } else {
-        int value = strtol(str.c_str(), NULL, 10);
-        if (value == 0 && str != "0") {
-            ALOGW("could not parse integer range: %s", str.c_str());
-            return std::nullopt;
-        }
-        lower = upper = value;
-    }
-    return std::make_optional<Range<int>>(lower, upper);
-}
+std::optional<Range<int>> ParseIntRange(const std::string &str);
 
-static inline std::optional<Range<long>> ParseLongRange(const std::string str) {
-    if (str.empty()) {
-        ALOGW("could not parse long range: %s", str.c_str());
-        return std::nullopt;
-    }
-    long lower, upper;
-    int ix = str.find_first_of('-');
-    if (ix >= 0) {
-        lower = strtol(str.substr(0, ix).c_str(), NULL, 10);
-        upper = strtol(str.substr(ix + 1).c_str(), NULL, 10);
-        // differentiate between unable to parse a number and the parsed number is 0
-        if ((lower == 0 && str.substr(0, ix) != "0") || (upper == 0 && str.substr(ix + 1) != "0")) {
-            ALOGW("could not parse long range: %s", str.c_str());
-            return std::nullopt;
-        }
-    } else {
-        long value = strtol(str.c_str(), NULL, 10);
-        if (value == 0 && str != "0") {
-            ALOGW("could not parse long range: %s", str.c_str());
-            return std::nullopt;
-        }
-        lower = upper = value;
-    }
-    return std::make_optional<Range<long>>(lower, upper);
-}
+std::optional<Range<long>> ParseLongRange(const std::string str);
 
-static inline std::optional<Range<Rational>> ParseRationalRange(const std::string str) {
-    int ix = str.find_first_of('-');
-    if (ix >= 0) {
-        std::optional<Rational> lower = ParseRational(str.substr(0, ix));
-        std::optional<Rational> upper = ParseRational(str.substr(ix + 1));
-        if (!lower || !upper) {
-            return std::nullopt;
-        }
-        return std::make_optional<Range<Rational>>(lower.value(), upper.value());
-    } else {
-        std::optional<Rational> value = ParseRational(str);
-        if (!value) {
-            return std::nullopt;
-        }
-        return std::make_optional<Range<Rational>>(value.value(), value.value());
-    }
-}
+std::optional<Range<Rational>> ParseRationalRange(const std::string str);
 
-static inline std::optional<std::pair<VideoSize, VideoSize>> ParseSizeRange(const std::string str) {
-    int ix = str.find_first_of('-');
-    if (ix >= 0) {
-        std::optional<VideoSize> lowerOpt = VideoSize::ParseSize(str.substr(0, ix));
-        std::optional<VideoSize> upperOpt = VideoSize::ParseSize(str.substr(ix + 1));
-        if (!lowerOpt || !upperOpt) {
-            return std::nullopt;
-        }
-        return std::make_optional(
-                std::pair<VideoSize, VideoSize>(lowerOpt.value(), upperOpt.value()));
-    } else {
-        std::optional<VideoSize> opt = VideoSize::ParseSize(str);
-        if (!opt) {
-            return std::nullopt;
-        }
-        return std::make_optional(std::pair<VideoSize, VideoSize>(opt.value(), opt.value()));
-    }
-}
+std::optional<std::pair<VideoSize, VideoSize>> ParseSizeRange(const std::string str);
 
-static inline long divUpLong(long num, long den) {
-    return (num + den - 1) / den;
-}
+long divUpLong(long num, long den);
 
 }  // namespace android
 
