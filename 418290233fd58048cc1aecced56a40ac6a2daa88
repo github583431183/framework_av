@@ -22,6 +22,30 @@
       },
       "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ef5aa3_8bcb962a",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-04-03T09:42:21Z",
+      "side": 0,
+      "message": "I see what you mean, but as you can see in the log, this method takes a long time(https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/module/extractors/mkv/MatroskaExtractor.cpp;drc\u003d13412bb94816e57e3a2de1018c65192f5b1a7261;l\u003d341), how can we solve the performance problem?",
+      "parentUuid": "e96b4766_c48d55df",
+      "range": {
+        "startLine": 2281,
+        "startChar": 0,
+        "endLine": 2281,
+        "endChar": 39
+      },
+      "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
