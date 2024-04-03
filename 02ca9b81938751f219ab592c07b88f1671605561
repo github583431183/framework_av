@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d58d02_5990d774",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-03T13:05:26Z",
+      "side": 1,
+      "message": "Please update http://r.android.com/2940225 instead of creating a new change, so the comment history is kept in one place for future code archaelogists. You can do this by keeping `Change-Id: Ica635342ea4e68809084b9f7525ed79c61b370c9` in the commit description - that will cause gerrit to update that change instead of this one (or creating a new one) when you upload.\n\nPlease also update the commit description to reflect that this change is no longer specific to mpeg2ts.",
+      "revId": "02ca9b81938751f219ab592c07b88f1671605561",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
