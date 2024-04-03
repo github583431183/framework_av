@@ -305,6 +305,7 @@ cc_library_shared {
 
     srcs: [
         "MediaCodecInfoParser.cpp",
+        "MediaCodecInfoParserUtils.cpp",
     ],
 
     local_include_dirs: [

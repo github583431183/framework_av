@@ -22,6 +22,7 @@
 #include <utils/Log.h>
 
 #include <media/MediaCodecInfoParser.h>
+#include <media/MediaCodecInfoParserUtils.h>
 
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/foundation/AMessage.h>
@@ -1018,11 +1019,11 @@ std::vector<MediaCodecInfoParser::VideoCapabilities::PerformancePoint>
 
         const std::string key = std::string(name);
         // looking for: performance-point-WIDTHxHEIGHT-range
-        if (key.compare(0, prefix.size(), prefix) == 0) {
+        if (key.compare(0, prefix.size(), prefix) != 0) {
             continue;
         }
         std::string subKey = key.substr(prefix.size());
-        if (subKey.compare("none") && ret.size() == 0) {
+        if (subKey.compare("none") == 0 && ret.size() == 0) {
             // This means that component knowingly did not publish performance points.
             // This is different from when the component forgot to publish performance
             // points.
