@@ -2065,6 +2065,14 @@ void NuPlayer::updateVideoSize(
         ALOGW("Unknown video size, reporting 0x0!");
         notifyListener(MEDIA_SET_VIDEO_SIZE, 0, 0);
         return;
+    } else {
+        int32_t videoWidth = -1, videoHeight = -1;
+        if (!inputFormat->findInt32("width", &videoWidth) ||
+            !inputFormat->findInt32("height", &videoHeight)) {
+            ALOGW("Either video width or video height missing, reporting 0x0!");
+            notifyListener(MEDIA_SET_VIDEO_SIZE, 0, 0);
+            return;
+        }
     }
     int32_t err = OK;
     inputFormat->findInt32("err", &err);
