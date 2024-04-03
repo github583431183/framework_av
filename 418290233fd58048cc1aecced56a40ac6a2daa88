@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96b4766_c48d55df",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-03T09:23:57Z",
+      "side": 0,
+      "message": "This method is aiming to pick a thumbnail that \u0027represents\u0027 the media (as [documented on `MediaMetadataRetriever.getFrameAtTime`](https://developer.android.com/reference/android/media/MediaMetadataRetriever#getFrameAtTime%28%29)). In many cases, naively selecting the first keyframe will result in a black or mostly empty frame (e.g. during opening credits or similar). This `20` threshold, combined with the `max(size)` logic below, is here as a heuristic to ensure we pick the largest keyframe (as a proxy for \u0027most interesting\u0027) from the first 20.\n\nYou can see the same logic is [implemented for MP4 files too](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/module/extractors/mp4/SampleTable.cpp;l\u003d911-937;drc\u003d2e87c835abea90b0cf61b42dc9aa8a882f2ef5aa).\n\nThe change proposed here would remove this heuristic and always select the first keyframe, which risks a reduction in quality of the result - it\u0027s very likely that more videos will be thumbnail\u0027d with ambiguous/unrepresentative thumbnails.\n\nAs such, i\u0027m afraid we\u0027re not going to accept this change in its current form.",
+      "range": {
+        "startLine": 2281,
+        "startChar": 0,
+        "endLine": 2281,
+        "endChar": 39
+      },
+      "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
