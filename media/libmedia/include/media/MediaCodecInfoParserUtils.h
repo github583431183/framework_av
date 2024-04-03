@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <optional>
 #include <vector>
 
 #include <media/stagefright/foundation/AUtils.h>
@@ -135,7 +136,6 @@ private:
     T lower_;
     T upper_;
 };
-
 
 /**
  * Sorts distinct (non-intersecting) range array in ascending order.
@@ -706,7 +706,6 @@ std::optional<Range<Rational>> ParseRationalRange(const std::string str);
 std::optional<std::pair<VideoSize, VideoSize>> ParseSizeRange(const std::string str);
 
 long divUpLong(long num, long den);
-
 
 }  // namespace android
 
