@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24e9996_cc968128",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-04-03T17:54:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "df4a7d98_67207056",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5d33565_8f25acfb",
@@ -85,6 +109,24 @@
       "writtenOn": "2024-02-28T00:20:26Z",
       "side": 1,
       "message": "Looks like this doesn\u0027t actually work without some libvintf changes since we don\u0027t look in apexes for the framework manifest file. Something like ag/26388431, but that CL doesn\u0027t actually work 😊",
+      "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba05bfa8_1fb87276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-04-03T17:54:47Z",
+      "side": 1,
+      "message": "libvintf changes are in.",
+      "parentUuid": "d5d33565_8f25acfb",
       "revId": "f3b034882a07c2c8349af7d174a9316bcf8f17cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
