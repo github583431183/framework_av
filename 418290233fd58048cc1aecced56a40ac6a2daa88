@@ -46,6 +46,30 @@
       },
       "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7137704a_dc1580e7",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-03T10:40:19Z",
+      "side": 0,
+      "message": "Have you dug in deeper to understand why that method takes too long? Do you see the same performance issues with MP4 files of a similar size? If not, it suggests that maybe the MP4 implementation is able to read the keyframe sizes while reading less data than this Matroska implementation.\n\nYou mention that the performance is slower on larger files. This surprises me, since in all cases we only need to read the first 20 GoPs - so why would a larger file be slower (assuming both files have \u003e20 keyframes)?\n\nHow much of a performance improvement do you see with this change? You\u0027ve mentioned you observe 6500ms with a 200MB video before this change. How long does the method take after this change?",
+      "parentUuid": "76ef5aa3_8bcb962a",
+      "range": {
+        "startLine": 2281,
+        "startChar": 0,
+        "endLine": 2281,
+        "endChar": 39
+      },
+      "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
