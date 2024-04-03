@@ -807,6 +807,13 @@ struct MediaCodecInfoParser : public RefBase {
          */
         bool isFormatSupported(const sp<AMessage> &format) const;
 
+        /**
+         * Not exposed as a public API. Make it public for internal testing purpose.
+         */
+        CodecCapabilities(Vector<MediaCodecInfo::ProfileLevel> profLevs,
+                Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
+                sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
+
     private:
         AString mMediaType;
         Vector<MediaCodecInfo::ProfileLevel> mProfileLevels;
@@ -825,10 +832,6 @@ struct MediaCodecInfoParser : public RefBase {
         std::shared_ptr<AudioCapabilities> mAudioCaps;
         std::shared_ptr<VideoCapabilities> mVideoCaps;
         std::shared_ptr<EncoderCapabilities> mEncoderCaps;
-
-        CodecCapabilities(Vector<MediaCodecInfo::ProfileLevel> profLevs,
-                Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
-                sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
 
         bool supportsProfileLevel(int profile, int level) const;
         std::vector<Feature> getValidFeatures() const;
