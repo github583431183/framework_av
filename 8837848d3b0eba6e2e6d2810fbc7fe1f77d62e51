@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ba5cfe_e7f9960c",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2081,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-04T12:50:11Z",
+      "side": 0,
+      "message": "what does it mean if we get here with `outputFormat !\u003d NULL` **and** `inputFormat` doesn\u0027t have either width and/or height set?\n\nIt looks like the code before your change will work fine and report video size based on `outputFormat` - but your new code will have already terminated above based on `inputFormat` missing some properties that ultimately aren\u0027t used/needed. Is that correct/expected behaviour?\n\nI think for a less significant change, you should put the presence check for these properties on `inputFormat` inside the `else` below (i.e. basically replace the `CHECK` calls with the `if` you\u0027ve already written).",
+      "revId": "8837848d3b0eba6e2e6d2810fbc7fe1f77d62e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8cc748a_d2bc3e11",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-04T12:50:11Z",
+      "side": 0,
+      "message": "should we be similarly permissive for these getters too?",
+      "range": {
+        "startLine": 2083,
+        "startChar": 0,
+        "endLine": 2083,
+        "endChar": 56
+      },
+      "revId": "8837848d3b0eba6e2e6d2810fbc7fe1f77d62e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
