@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c689f9_5f0b72b9",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2081,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-04T14:19:37Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "80ba5cfe_e7f9960c",
+      "revId": "8837848d3b0eba6e2e6d2810fbc7fe1f77d62e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8cc748a_d2bc3e11",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-04T12:50:11Z",
       "side": 0,
       "message": "should we be similarly permissive for these getters too?",
+      "range": {
+        "startLine": 2083,
+        "startChar": 0,
+        "endLine": 2083,
+        "endChar": 56
+      },
+      "revId": "8837848d3b0eba6e2e6d2810fbc7fe1f77d62e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b77b894_16743f29",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-04T14:19:37Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "d8cc748a_d2bc3e11",
       "range": {
         "startLine": 2083,
         "startChar": 0,
