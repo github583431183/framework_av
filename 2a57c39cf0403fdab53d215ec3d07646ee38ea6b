@@ -70,6 +70,24 @@
       "parentUuid": "e7ee2b96_a4ff9031",
       "revId": "2a57c39cf0403fdab53d215ec3d07646ee38ea6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c34c15_c5b6db84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-04T07:22:25Z",
+      "side": 1,
+      "message": "Abandoned the new gerrit and updated patchset#3 as per the recommendations, please help review",
+      "parentUuid": "e9bcb914_e94d99fe",
+      "revId": "2a57c39cf0403fdab53d215ec3d07646ee38ea6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
