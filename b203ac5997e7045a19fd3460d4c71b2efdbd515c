@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a664d546_c7d09c51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-05T10:26:47Z",
+      "side": 1,
+      "message": "please add `Bug: 331454351` here",
+      "revId": "b203ac5997e7045a19fd3460d4c71b2efdbd515c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73ec12a8_88cf3a9c",
         "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
         "patchSetId": 6
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "return statement was intentionally removed from here for below reason\n1. This condition will arise if both outputFormat and inputFormat are not NULL. If either width/height are missing in outputFormat, then inputFormat can still be utilized to obtain displayWidth \u0026 displayHeight. Please correct me if anything is missed",
       "parentUuid": "73ec12a8_88cf3a9c",
+      "revId": "b203ac5997e7045a19fd3460d4c71b2efdbd515c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27dbbad_ce05e160",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-05T10:26:47Z",
+      "side": 1,
+      "message": "Before this change there was an invariant of this method that it calls `notifyListener()` exactly once. If you don\u0027t put `return` here, then it seems we can end up calling `notifyListener()` twice, first with `0, 0` and then later with a \u0027real\u0027 width/height below on L2150. I think we should keep the original invariant.\n\nAlso before this change, if `outputFormat` and `inputFormat` were both non-null, but `outputFormat` was missing `width` or `height` then wouldn\u0027t we crash here? And that\u0027s not the crash reported in b/331454351.\n\nSo maybe we shouldn\u0027t change the `outputFormat` logic at all if we don\u0027t have any need to do so to resolve b/331454351?",
+      "parentUuid": "78147de0_a730a1dd",
       "revId": "b203ac5997e7045a19fd3460d4c71b2efdbd515c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
