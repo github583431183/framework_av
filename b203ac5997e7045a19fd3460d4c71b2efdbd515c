@@ -16,6 +16,24 @@
       "message": "should there be a `return` here?",
       "revId": "b203ac5997e7045a19fd3460d4c71b2efdbd515c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78147de0_a730a1dd",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-05T09:57:00Z",
+      "side": 1,
+      "message": "return statement was intentionally removed from here for below reason\n1. This condition will arise if both outputFormat and inputFormat are not NULL. If either width/height are missing in outputFormat, then inputFormat can still be utilized to obtain displayWidth \u0026 displayHeight. Please correct me if anything is missed",
+      "parentUuid": "73ec12a8_88cf3a9c",
+      "revId": "b203ac5997e7045a19fd3460d4c71b2efdbd515c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
