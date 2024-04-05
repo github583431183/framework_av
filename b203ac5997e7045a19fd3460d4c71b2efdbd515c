@@ -69,6 +69,24 @@
       "parentUuid": "78147de0_a730a1dd",
       "revId": "b203ac5997e7045a19fd3460d4c71b2efdbd515c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110355c2_09b3d57c",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-05T12:52:09Z",
+      "side": 1,
+      "message": "Agreed, for b/331454351 we don\u0027t need to change outputFormat condition. I will remove the conditions for outputFormat.",
+      "parentUuid": "c27dbbad_ce05e160",
+      "revId": "b203ac5997e7045a19fd3460d4c71b2efdbd515c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
