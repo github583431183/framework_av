@@ -94,6 +94,30 @@
       },
       "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e443c77_e3593e54",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-07T16:01:00Z",
+      "side": 0,
+      "message": "Because the first key frame is chosen as a thumbnail, it may result in a blank frame for many clips.\nGiven that it is not common for a file with 2000 frames to have a single key frame, I am not sure if choosing this approach of returning first key frame is a good idea..\n\nInstead of this, would it be acceptable to limit the loop to say 600 iterations? (i.e. 20 seconds of video at 30fps)?",
+      "parentUuid": "5b91c59b_41ea0c62",
+      "range": {
+        "startLine": 2281,
+        "startChar": 0,
+        "endLine": 2281,
+        "endChar": 39
+      },
+      "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
