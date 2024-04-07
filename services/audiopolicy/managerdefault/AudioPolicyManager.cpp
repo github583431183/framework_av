@@ -7753,8 +7753,7 @@ float AudioPolicyManager::computeVolume(IVolumeCurves &curves,
     }
 
     // in-call: always cap volume by voice volume + some low headroom
-    if ((volumeSource != callVolumeSrc && (isInCall() ||
-                                           mOutputs.isActiveLocally(callVolumeSrc))) &&
+    if ((volumeSource != callVolumeSrc && mOutputs.isActiveLocally(callVolumeSrc)) &&
             (volumeSource == toVolumeSource(AUDIO_STREAM_SYSTEM, false) ||
              volumeSource == ringVolumeSrc || volumeSource == musicVolumeSrc ||
              volumeSource == alarmVolumeSrc ||
