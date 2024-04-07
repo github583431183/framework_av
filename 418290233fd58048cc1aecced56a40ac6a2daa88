@@ -70,6 +70,30 @@
       },
       "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b91c59b_41ea0c62",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-04-07T07:51:04Z",
+      "side": 0,
+      "message": "1.I debug further and find that Matroska takes more time to find the first 20 key frames than MP4, because now the logic is to continue to advance, until the first 20 key frames are traversed, which takes about 1000-2000 iterations and takes 2-4s(findThumbnails()).\n\n2.This is because this file(phfx_4KHD_VP9TestFootage-NO-AUDIO.webm) is special, it has only one key frame, so the whole file needs to be traversed until EOS, so it takes longer.\n\n3.getFrameAtTime() cost 364ms, findThumbnails() cost 2ms with this change",
+      "parentUuid": "7137704a_dc1580e7",
+      "range": {
+        "startLine": 2281,
+        "startChar": 0,
+        "endLine": 2281,
+        "endChar": 39
+      },
+      "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
