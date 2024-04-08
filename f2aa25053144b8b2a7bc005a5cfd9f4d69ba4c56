@@ -22,6 +22,30 @@
       },
       "revId": "f2aa25053144b8b2a7bc005a5cfd9f4d69ba4c56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb2f303_b550b35a",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T23:19:41Z",
+      "side": 1,
+      "message": "The instances of the AF and APM created by the test are separate from \"real\" instances, thus the fact that the threadpool is disabled does not affect the latter ones.\n\nMaybe I\u0027m missing something, what is the scenario you have on your mind?",
+      "parentUuid": "7013c359_04636796",
+      "range": {
+        "startLine": 186,
+        "startChar": 9,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "f2aa25053144b8b2a7bc005a5cfd9f4d69ba4c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
