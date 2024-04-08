@@ -142,6 +142,30 @@
       },
       "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3629a621_838e0810",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-08T09:49:47Z",
+      "side": 0,
+      "message": "Thanks for the extra detail on the fact the video only has one keyframe. It looks like the MP4 extraction logic has a [nice look-up table of sync samples](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/module/extractors/mp4/include/SampleTable.h;l\u003d141;drc\u003d3d19fbcc09b1b44928639b06cd0b88f735cd988d) derived from the `stss` box. A quick scan through the [Matroska spec](https://www.matroska.org/technical/elements.html) doesn\u0027t reveal an equivalent source of this metadata (apart from the `Cues` element, which is a) optional and b) doesn\u0027t contain **all** sync samples, just some to enable faster seeking). So I don\u0027t think there\u0027s any option except to loop through frame-by-frame, checking each one if it\u0027s a keyframe.\n\n\n----\n\n\u003e Instead of this, would it be acceptable to limit the loop to say 600 iterations? (i.e. 20 seconds of video at 30fps)?\n\n@hmahendrakar@google.com Instead of proxying duration, we could just check duration directly? By comparing the `BlockIterator.blockTimeUs()` between the first block and the one we\u0027re currently inspecting.\n\n----\n\n\u003e I\u0027ve changed the number of iterations to 600.\n\n@guochuang@xiaomi.corp-partner.google.com The new code now **always** looks at 600 frames, which may result in looking at **more** than 20 key frames if the input video has dense key frames, which in that case makes it less efficient than before. I think you need to track \u0027number of keyframes considered for `maxBlockSize`\u0027 and \u0027total number of frames (or duration) inspected\u0027 separately. The first should remain capped at 20, and an additional loop control should exit when the second reaches 600 or 20s.",
+      "parentUuid": "2cebff5c_ebe03a61",
+      "range": {
+        "startLine": 2281,
+        "startChar": 0,
+        "endLine": 2281,
+        "endChar": 39
+      },
+      "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
