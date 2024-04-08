@@ -166,6 +166,30 @@
       },
       "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2a9bcb_5c9c2eca",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2281,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-04-08T12:03:30Z",
+      "side": 0,
+      "message": "Thank you for your suggestion. The new code adds additional judgment on iteration time. If the parser time exceeds 20s, the loop will be jumped out. Please review it, thank you.",
+      "parentUuid": "3629a621_838e0810",
+      "range": {
+        "startLine": 2281,
+        "startChar": 0,
+        "endLine": 2281,
+        "endChar": 39
+      },
+      "revId": "418290233fd58048cc1aecced56a40ac6a2daa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
