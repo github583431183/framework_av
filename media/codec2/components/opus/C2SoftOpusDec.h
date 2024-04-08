@@ -62,6 +62,7 @@ private:
     status_t initDecoder();
 
     C2_DO_NOT_COPY(C2SoftOpusDec);
+    bool permuteChannelMapping(int numChannels, uint8_t *opusMapping, uint8_t *vorbisMapping);
 };
 
 }  // namespace android

@@ -149,6 +149,30 @@ status_t C2SoftOpusDec::initDecoder() {
     return OK;
 }
 
+bool C2SoftOpusDec::permuteChannelMapping(int numChannels,
+                    uint8_t *opusMapping, uint8_t *vorbisMapping) {
+    static const uint8_t vorbis_channel_mapping_offset[8][8] = {
+        {0},
+        {0, 1},
+        {0, 2, 1},
+        {0, 1, 2, 3},
+        {0, 2, 1, 3, 4},
+        {0, 2, 1, 5, 3, 4},
+        {0, 2, 1, 6, 5, 3, 4},
+        {0, 2, 1, 7, 5, 6, 3, 4},
+    };
+
+    if (numChannels <= 0 || numChannels > 8 || !opusMapping || !vorbisMapping) {
+        return false;
+    }
+
+    for (int index = 0; index <= numChannels; ++index) {
+        vorbisMapping[index] = opusMapping[vorbis_channel_mapping_offset[numChannels - 1][index]];
+    }
+
+    return true;
+}
+
 c2_status_t C2SoftOpusDec::onFlush_sm() {
     if (mDecoder) {
         opus_multistream_decoder_ctl(mDecoder, OPUS_RESET_STATE);
@@ -275,9 +299,11 @@ void C2SoftOpusDec::process(
                        kDefaultOpusChannelLayout,
                        kMaxChannelsWithDefaultLayout);
             } else {
-                memcpy(&channel_mapping,
-                       mHeader.stream_map,
-                       mHeader.channels);
+                if (!permuteChannelMapping(mHeader.channels, mHeader.stream_map, channel_mapping)) {
+                    memcpy(&channel_mapping,
+                        mHeader.stream_map,
+                        mHeader.channels);
+                }
             }
             int status = OPUS_INVALID_STATE;
             mDecoder = opus_multistream_decoder_create(kRate,
