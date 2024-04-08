@@ -1069,6 +1069,9 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
             return;
         }
     }
+    if (mInputSurface != nullptr) {
+        mInputSurface->onInputBufferEmptied();
+    }
     size_t numActiveSlots = 0;
     while (!mPipelineWatcher.lock()->pipelineFull()) {
         sp<MediaCodecBuffer> inBuffer;
