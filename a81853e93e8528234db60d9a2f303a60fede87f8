@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42bc098_ebaf113d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T20:46:02Z",
+      "side": 1,
+      "message": "As I have noted on the doc, perhaps it\u0027s possible to add \"test only\" methods or static functions to drop strong refs to the other service? \"Accumulating\" the state over multiple fuzzing runs may lead to failures that will be hard to localize. It\u0027s more proper to start from a \"clean slate\" on each run.",
+      "revId": "a81853e93e8528234db60d9a2f303a60fede87f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
