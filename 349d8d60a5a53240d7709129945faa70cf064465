@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e36ed0_e0f7d8f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-08T07:19:59Z",
+      "side": 1,
+      "message": "Hi @taklee@google.com\nCould you please review the gerrit?",
+      "revId": "349d8d60a5a53240d7709129945faa70cf064465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
