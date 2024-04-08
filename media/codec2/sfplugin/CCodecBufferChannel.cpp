@@ -286,6 +286,7 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
 
     if (buffer->size() > 0u) {
         Mutexed<Input>::Locked input(mInput);
+        ALOGI("[%s] line %d input numActiveSlots = %zu", mName, __LINE__, input->buffers->numActiveSlots());
         std::shared_ptr<C2Buffer> c2buffer;
         if (!input->buffers->releaseBuffer(buffer, &c2buffer, false)) {
             return -ENOENT;
@@ -433,6 +434,7 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
         }
     } else {
         Mutexed<Input>::Locked input(mInput);
+        ALOGI("[%s] line %d input numActiveSlots = %zu", mName, __LINE__, input->buffers->numActiveSlots());
         bool released = false;
         if (copy) {
             released = input->extraBuffers.releaseSlot(copy, nullptr, true);
@@ -1069,12 +1071,16 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
             return;
         }
     }
+    if (mInputSurface != nullptr) {
+        mInputSurface->onInputBufferEmptied();
+    }
     size_t numActiveSlots = 0;
     while (!mPipelineWatcher.lock()->pipelineFull()) {
         sp<MediaCodecBuffer> inBuffer;
         size_t index;
         {
             Mutexed<Input>::Locked input(mInput);
+        ALOGI("[%s] line %d input numActiveSlots = %zu", mName, __LINE__, input->buffers->numActiveSlots());
             numActiveSlots = input->buffers->numActiveSlots();
             if (numActiveSlots >= input->numSlots) {
                 break;
@@ -1084,7 +1090,7 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
                 break;
             }
         }
-        ALOGV("[%s] new input index = %zu [%p]", mName, index, inBuffer.get());
+        ALOGI("[%s] new input index = %zu [%p]", mName, index, inBuffer.get());
         mCallback->onInputBufferAvailable(index, inBuffer);
     }
     ALOGV("[%s] # active slots after feedInputBufferIfAvailable = %zu", mName, numActiveSlots);
@@ -1098,6 +1104,7 @@ status_t CCodecBufferChannel::renderOutputBuffer(
     {
         Mutexed<Output>::Locked output(mOutput);
         if (output->buffers) {
+        ALOGI("[%s] line %d output numActiveSlots = %zu", mName, __LINE__, output->buffers->numActiveSlots());
             released = output->buffers->releaseBuffer(buffer, &c2Buffer);
         }
     }
@@ -1471,12 +1478,14 @@ status_t CCodecBufferChannel::discardBuffer(const sp<MediaCodecBuffer> &buffer) 
     {
         Mutexed<Input>::Locked input(mInput);
         if (input->buffers && input->buffers->releaseBuffer(buffer, nullptr, true)) {
+        ALOGI("[%s] line %d input numActiveSlots = %zu", mName, __LINE__, input->buffers->numActiveSlots());
             released = true;
         }
     }
     {
         Mutexed<Output>::Locked output(mOutput);
         if (output->buffers && output->buffers->releaseBuffer(buffer, nullptr)) {
+        ALOGI("[%s] line %d output numActiveSlots = %zu", mName, __LINE__, output->buffers->numActiveSlots());
             released = true;
         }
     }
@@ -1977,6 +1986,7 @@ status_t CCodecBufferChannel::prepareInitialInputBuffers(
     for (; clientInputBuffers->empty() && retryCount >= 0; retryCount--) {
         {
             Mutexed<Input>::Locked input(mInput);
+        ALOGI("[%s] line %d input numActiveSlots = %zu", mName, __LINE__, input->buffers->numActiveSlots());
             while (clientInputBuffers->size() < numInputSlots) {
                 size_t index;
                 sp<MediaCodecBuffer> buffer;
@@ -2199,6 +2209,7 @@ void CCodecBufferChannel::onInputBufferDone(
     bool newInputSlotAvailable = false;
     {
         Mutexed<Input>::Locked input(mInput);
+        ALOGI("[%s] line %d input numActiveSlots = %zu", mName, __LINE__, input->buffers->numActiveSlots());
         if (input->lastFlushIndex >= frameIndex) {
             ALOGD("[%s] Ignoring stale input buffer done callback: "
                   "last flush index = %lld, frameIndex = %lld",
@@ -2476,6 +2487,7 @@ bool CCodecBufferChannel::handleWork(
         if (!output->buffers) {
             return false;
         }
+        ALOGI("[%s] line %d output numActiveSlots = %zu", mName, __LINE__, output->buffers->numActiveSlots());
         if (outputFormat) {
             output->buffers->updateSkipCutBuffer(outputFormat);
             output->buffers->setFormat(outputFormat);
@@ -2553,6 +2565,7 @@ bool CCodecBufferChannel::handleWork(
         if (!output->buffers) {
             return false;
         }
+        ALOGI("[%s] line %d output numActiveSlots = %zu", mName, __LINE__, output->buffers->numActiveSlots());
         output->buffers->pushToStash(
                 buffer,
                 notifyClient,
@@ -2579,6 +2592,7 @@ void CCodecBufferChannel::sendOutputBuffers() {
         if (!output->buffers) {
             return;
         }
+        ALOGI("[%s] line %d output numActiveSlots = %zu", mName, __LINE__, output->buffers->numActiveSlots());
         action = output->buffers->popFromStashAndRegister(
                 &c2Buffer, &index, &outBuffer);
         if (action != OutputBuffers::REALLOCATE) {
