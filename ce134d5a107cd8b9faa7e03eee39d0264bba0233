@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7882008f_8cedde45",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T20:35:21Z",
+      "side": 1,
+      "message": "Should be `optionalInputFlags` as it\u0027s not a static constant anymore. Same for the output flags.",
+      "range": {
+        "startLine": 345,
+        "startChar": 37,
+        "endLine": 345,
+        "endChar": 56
+      },
+      "revId": "ce134d5a107cd8b9faa7e03eee39d0264bba0233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
