@@ -16,6 +16,29 @@
       "message": "Can you help me review? Thank you!",
       "revId": "566889e4ccfa7bcedb33869fa9a54fdf423bb5b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa8ea23_cbf40872",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7756,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-04-08T10:16:18Z",
+      "side": 1,
+      "message": "this change does not correspond to the commit message \"ignore ring volume limit when voice call is inactive\".\nWhat you are doing is only enforce the volume caping whne playback is active for voice communication use case (VoIP call, voice mail...). Why make a difference between a cell call and VoIP calls?",
+      "range": {
+        "startLine": 7756,
+        "startChar": 0,
+        "endLine": 7756,
+        "endChar": 85
+      },
+      "revId": "566889e4ccfa7bcedb33869fa9a54fdf423bb5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
