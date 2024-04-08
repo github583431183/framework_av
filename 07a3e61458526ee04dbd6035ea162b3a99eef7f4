@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a3e92e_c7290aea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T21:57:47Z",
+      "side": 1,
+      "message": "Please move down just before `Change-Id`",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "07a3e61458526ee04dbd6035ea162b3a99eef7f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82996733_d6ff9739",
+        "filename": "services/audiopolicy/engine/common/src/ProductStrategy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T21:57:47Z",
+      "side": 1,
+      "message": "Can we inline initialization here?\n\n\n```suggestion\n    mId((id !\u003d PRODUCT_STRATEGY_NONE) ?\n            static_cast\u003cproduct_strategy_t\u003e(id) :\n            static_cast\u003cproduct_strategy_t\u003e(HandleGenerator\u003cuint32_t\u003e::getNextHandle()))\n```",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "07a3e61458526ee04dbd6035ea162b3a99eef7f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663de7e2_6eca99f5",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T21:57:47Z",
+      "side": 1,
+      "message": "nit: bad indent",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 14
+      },
+      "revId": "07a3e61458526ee04dbd6035ea162b3a99eef7f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df274fa7_b75275ba",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T21:57:47Z",
+      "side": 1,
+      "message": "`index +\u003d 1`",
+      "range": {
+        "startLine": 167,
+        "startChar": 13,
+        "endLine": 167,
+        "endChar": 15
+      },
+      "revId": "07a3e61458526ee04dbd6035ea162b3a99eef7f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfac5351_81adc61f",
+        "filename": "services/audiopolicy/engineconfigurable/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T21:57:47Z",
+      "side": 1,
+      "message": "Please use alphabetical order",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "07a3e61458526ee04dbd6035ea162b3a99eef7f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1717cc86_91ca691c",
+        "filename": "services/audiopolicy/engineconfigurable/config/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T21:57:47Z",
+      "side": 1,
+      "message": "Please sort",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "07a3e61458526ee04dbd6035ea162b3a99eef7f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5132e9_df6ecd9d",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-08T21:57:47Z",
+      "side": 1,
+      "message": "This one is already listed at the bottom.\n\nAlso, please sort.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "07a3e61458526ee04dbd6035ea162b3a99eef7f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
