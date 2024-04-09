@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ccdb2a4_9fd3686d",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2297,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-09T09:07:14Z",
+      "side": 1,
+      "message": "I agree with Harish it would be safer to add `\u0026\u0026 maxBlockSize \u003e 0` here.\n\n\u003e If it appears at a long time point, such as an hour later, it will continue to iterate.\n\nyes, contining to iterate in this case is important to maintain existing behaviour. Otherwise with the current code, as you say we will incorrectly set `AMEDIAFORMAT_KEY_THUMBNAIL_TIME` to zero.",
+      "parentUuid": "6f66b8e9_7be1ad81",
+      "revId": "9dff4e01786b4bef2e905f223f4e4dddb487fb84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61893b9f_9c6a822b",
         "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
         "patchSetId": 5
