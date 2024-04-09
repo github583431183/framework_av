@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d4b6ce_922dfe19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-04-09T19:09:38Z",
+      "side": 1,
+      "message": "The vendor extension test in EffectsFactoryHalInterface_test.cpp requires individual support and doesn\u0027t really works on a physical device, so removing it, pls review again, thanks!",
+      "revId": "271a14d19dd66c5463810ed82be73ca2b6118af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
