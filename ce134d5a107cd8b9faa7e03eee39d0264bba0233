@@ -22,6 +22,30 @@
       },
       "revId": "ce134d5a107cd8b9faa7e03eee39d0264bba0233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba9e69ae_ba896b7c",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2024-04-09T11:04:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7882008f_8cedde45",
+      "range": {
+        "startLine": 345,
+        "startChar": 37,
+        "endLine": 345,
+        "endChar": 56
+      },
+      "revId": "ce134d5a107cd8b9faa7e03eee39d0264bba0233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
