@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d746a7e1_b5b03096",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-09T03:35:17Z",
+      "side": 1,
+      "message": "Ian, \nThe CL that was merged before and had to be reverted did not support a case where the first frame wasn\u0027t a key frame.\nI have updated the CL to handle that case now.\n\nPatchset 1: Was CL that was reviewed and merged before.\nPatchset 4: Handles the case where the first frame is not a key frame\nPatchset 5: In case synthesizeVP9() fails, instead of treating it as an error, log and ignore that error to maintain backward compatibility.\n\nCan you please review?\n\nAlso, would it be possible to trigger the tests in v2/pixel-testing-video/video-presubmit-cts-tests using the \"Run more tests\" option for this CL on husky or oriole?\nBecause I don\u0027t have access to the gcl that configures this, I am unable to start a test with this CL using the \"Run more tests\" option.",
+      "revId": "0a719fc8432c708f6753a5e1d1eb54da549a2f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b908f7_f2122dba",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2288,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-09T03:35:17Z",
+      "side": 1,
+      "message": "Ian,\nInstead of treating this as an error, I have modified this to log it and continue.\n\nIMHO, I think it is better to not treat this as an error so that we maintain backward compatibility for clips where synthesizeVP9() fails.\n\nWould this be ok?",
+      "range": {
+        "startLine": 2288,
+        "startChar": 0,
+        "endLine": 2288,
+        "endChar": 65
+      },
+      "revId": "0a719fc8432c708f6753a5e1d1eb54da549a2f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
