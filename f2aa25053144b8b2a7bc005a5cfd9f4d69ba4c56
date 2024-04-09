@@ -46,6 +46,30 @@
       },
       "revId": "f2aa25053144b8b2a7bc005a5cfd9f4d69ba4c56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13105eac_9901c10e",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-04-09T16:05:00Z",
+      "side": 1,
+      "message": "yes, I\u0027m wondering if there is any other testing use cases which needs to disable and reenable thread pool.\nJust some thoughts that from interface pov, seems a bit strange to have a way to disable but no way to enable.\nDoesn\u0027t necessary to do it now, up to you :)",
+      "parentUuid": "5bb2f303_b550b35a",
+      "range": {
+        "startLine": 186,
+        "startChar": 9,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "f2aa25053144b8b2a7bc005a5cfd9f4d69ba4c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
