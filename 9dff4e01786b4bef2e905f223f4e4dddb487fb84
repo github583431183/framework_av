@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f66b8e9_7be1ad81",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2297,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-04-09T01:27:32Z",
+      "side": 1,
+      "message": "Often the first frame is always a key frame. If not, we cannot predict where the first key frame will appear. If it appears at a long time point, such as an hour later, it will continue to iterate. In this case, We can only handle abnormal files according to exceptions and set thumbnailTimeUs to 0. What we want is to end the iteration at a certain time (20s). Even if the file length is less than 20s, the loop will exit due to EOS (line 2281).",
+      "parentUuid": "468327f7_7a14859e",
+      "revId": "9dff4e01786b4bef2e905f223f4e4dddb487fb84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61893b9f_9c6a822b",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-08T14:21:35Z",
       "side": 1,
       "message": "nit: please add {} even for a single line if condition.",
+      "range": {
+        "startLine": 2298,
+        "startChar": 15,
+        "endLine": 2298,
+        "endChar": 22
+      },
+      "revId": "9dff4e01786b4bef2e905f223f4e4dddb487fb84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb970c1_ff9c0b1c",
+        "filename": "media/module/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2298,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-04-09T01:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61893b9f_9c6a822b",
       "range": {
         "startLine": 2298,
         "startChar": 15,
