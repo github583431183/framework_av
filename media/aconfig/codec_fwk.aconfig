@@ -88,6 +88,16 @@ flag {
 }
 
 flag {
+  name: "set_callback_stall"
+  namespace: "codec_fwk"
+  description: "Bugfix flag for setCallback stall"
+  bug: "326010604"
+  metadata {
+    purpose: PURPOSE_BUGFIX
+  }
+}
+
+flag {
   name: "teamfood"
   namespace: "codec_fwk"
   description: "Feature flag to track teamfood population"
