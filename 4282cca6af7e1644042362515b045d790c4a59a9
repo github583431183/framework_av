@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0c926e_68280eb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-10T21:04:46Z",
+      "side": 1,
+      "message": "Hi David, PTAL! Following your comment on ag/26721957.",
+      "revId": "4282cca6af7e1644042362515b045d790c4a59a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
