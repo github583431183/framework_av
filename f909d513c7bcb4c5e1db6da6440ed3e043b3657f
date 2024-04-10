@@ -16,6 +16,24 @@
       "message": "Andrew,\nGiven that there is another issue reported w.r.t. timestamp validation, I think it is better to first remove the timestamp validation checks that were added and then investigate what would be a safer way to prevent integer overflows and still remain compatible with how this writer is used.",
       "revId": "f909d513c7bcb4c5e1db6da6440ed3e043b3657f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddecedb_cb82f637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-10T08:02:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b3df8572_62b4608b",
+      "revId": "f909d513c7bcb4c5e1db6da6440ed3e043b3657f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
