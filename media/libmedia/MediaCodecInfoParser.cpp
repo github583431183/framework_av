@@ -29,6 +29,12 @@
 
 namespace android {
 
+// MediaCodecInfoParser Constants
+const int FLAG_IS_ENCODER = (1 << 0);
+const int FLAG_IS_VENDOR = (1 << 1);
+const int FLAG_IS_SOFTWARE_ONLY = (1 << 2);
+const int FLAG_IS_HARDWARE_ACCELERATED = (1 << 3);
+
 static const Range<int> POSITIVE_INTEGERS = Range<int>(1, INT_MAX);
 static const Range<long> POSITIVE_LONGS = Range(1L, LONG_MAX);
 static const Range<int> BITRATE_RANGE = Range<int>(0, 500000000);
@@ -191,6 +197,8 @@ static const std::vector<MediaCodecInfoParser::Feature> EncoderFeatures = {
     MediaCodecInfoParser::Feature(FEATURE_SpecialCodec,     (1 << 30), false, true),
 };
 
+// MediaCodecInfoParser
+
 // static
 Range<int> MediaCodecInfoParser::GetSizeRange() {
 #ifdef __LP64__
@@ -205,6 +213,77 @@ Range<int> MediaCodecInfoParser::GetSizeRange() {
 // static
 void MediaCodecInfoParser::CheckPowerOfTwo(int value) {
     CHECK((value & (value - 1)) == 0);
+}
+
+const std::string MediaCodecInfoParser::getName() const {
+    return mName;
+}
+
+const std::string MediaCodecInfoParser::getCanonicalName() const {
+    return mCanonicalName;
+}
+
+bool MediaCodecInfoParser::isAlias() const {
+    return mName.compare(mCanonicalName) != 0;
+}
+
+bool MediaCodecInfoParser::isEncoder() const {
+    return (mFlags & FLAG_IS_ENCODER) != 0;
+}
+
+bool MediaCodecInfoParser::isVendor() const {
+    return (mFlags & FLAG_IS_VENDOR) != 0;
+}
+
+bool MediaCodecInfoParser::isSoftwareOnly() const {
+    return (mFlags & FLAG_IS_SOFTWARE_ONLY) != 0;
+}
+
+bool MediaCodecInfoParser::isHardwareAccelerated() const {
+    return (mFlags & FLAG_IS_HARDWARE_ACCELERATED) != 0;
+}
+
+const std::vector<AString> MediaCodecInfoParser::getSupportedTypes() const {
+    std::vector<AString> types;
+    for (auto it = mCaps.begin(); it != mCaps.end(); it++) {
+        types.push_back(it->first);
+    }
+    std::sort(types.begin(), types.end());
+
+    return types;
+}
+
+const MediaCodecInfoParser::CodecCapabilities MediaCodecInfoParser::getCapabilitiesForType(AString type) const {
+    CHECK(mCaps.find(type) != mCaps.end());
+    CodecCapabilities caps = mCaps.find(type)->second;
+    return caps;
+}
+
+std::shared_ptr<MediaCodecInfoParser> MediaCodecInfoParser::makeRegular() {
+    std::vector<CodecCapabilities> caps;
+    for (auto it = mCaps.begin(); it != mCaps.end(); it++) {
+        if (it->second.isRegular()) {
+            caps.push_back(it->second);
+        }
+    }
+    if (caps.size() == 0) {
+        return nullptr;
+    } else if (caps.size() == mCaps.size()) {
+        return std::shared_ptr<MediaCodecInfoParser>(this);
+    }
+
+    return std::make_shared<MediaCodecInfoParser>(mName, mCanonicalName, mFlags, caps);
+}
+
+MediaCodecInfoParser::MediaCodecInfoParser(std::string name, std::string canonicalName, int flags,
+        std::vector<CodecCapabilities> caps) {
+    mName = name;
+    mCanonicalName = canonicalName;
+    mFlags = flags;
+
+    for (CodecCapabilities c: caps) {
+        mCaps[c.getMediaType()] = c;
+    }
 }
 
 // XCapabilitiesBase
