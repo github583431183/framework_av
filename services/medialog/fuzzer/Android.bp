@@ -35,7 +35,8 @@ cc_fuzz {
     ],
     fuzz_config: {
         cc: [
-            "android-media-fuzzing-reports@google.com",
+            "atneya@google.com",
+            "hunga@google.com",
         ],
         componentid: 155276,
         hotlists: [
