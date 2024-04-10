@@ -844,11 +844,85 @@ struct MediaCodecInfoParser : public RefBase {
         friend struct EncoderCapabilities;
     };
 
+    /**
+     * Retrieve the codec name.
+     *
+     * <strong>Note:</strong> Implementations may provide multiple aliases (codec
+     * names) for the same underlying codec, any of which can be used to instantiate the same
+     * underlying codec in {@link MediaCodec#createByCodecName}.
+     *
+     * Applications targeting SDK < {@link android.os.Build.VERSION_CODES#Q}, cannot determine if
+     * the multiple codec names listed in MediaCodecList are in-fact for the same codec.
+     */
+    const std::string getName() const;
+
+    /**
+     * Retrieve the underlying codec name.
+     *
+     * Device implementations may provide multiple aliases (codec names) for the same underlying
+     * codec to maintain backward app compatibility. This method returns the name of the underlying
+     * codec name, which must not be another alias. For non-aliases this is always the name of the
+     * codec.
+     */
+    const std::string getCanonicalName() const;
+
+    /**
+     * Query if the codec is an alias for another underlying codec.
+     */
+    bool isAlias() const;
+
+    /**
+     * Query if the codec is an encoder.
+     */
+    bool isEncoder() const;
+
+    /**
+     * Query if the codec is provided by the Android platform (false) or the device manufacturer
+     * (true).
+     */
+    bool isVendor() const;
+
+    /**
+     * Query if the codec is software only. Software-only codecs are more secure as they run in
+     * a tighter security sandbox. On the other hand, software-only codecs do not provide any
+     * performance guarantees.
+     */
+    bool isSoftwareOnly() const;
+
+    /**
+     * Query if the codec is hardware accelerated. This attribute is provided by the device
+     * manufacturer. Note that it cannot be tested for correctness.
+     */
+    bool isHardwareAccelerated() const;
+
+    /**
+     * Query the media types supported by the codec.
+     */
+    const std::vector<AString> getSupportedTypes() const;
+
+    /**
+     * Enumerates the capabilities of the codec component. Since a single
+     * component can support data of a variety of types, the type has to be
+     * specified to yield a meaningful result.
+     * @param type The MIME type to query
+     */
+    const CodecCapabilities getCapabilitiesForType(AString type) const;
+
+    // @hide
+    std::shared_ptr<MediaCodecInfoParser> makeRegular();
+
+    // For internal use only. Not a public API
+    MediaCodecInfoParser(std::string name, std::string canonicalName, int flags,
+            std::vector<CodecCapabilities> caps);
+
 private:
+    int mFlags;
+    std::string mName;
+    std::string mCanonicalName;
+    std::map<AString, CodecCapabilities> mCaps;
 
     static Range<int> GetSizeRange();
     static void CheckPowerOfTwo(int value);
-
 };
 
 }  // namespace android
