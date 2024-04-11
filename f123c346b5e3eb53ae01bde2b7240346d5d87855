@@ -70,6 +70,30 @@
       },
       "revId": "f123c346b5e3eb53ae01bde2b7240346d5d87855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ef8a95_53a794f7",
+        "filename": "services/medialog/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1616561
+      },
+      "writtenOn": "2024-04-11T07:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48ee4e87_d3717ee6",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "f123c346b5e3eb53ae01bde2b7240346d5d87855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
