@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55b7c71_28d89f70",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-04-11T19:37:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e5b18fe7_ebfde2e6",
+      "range": {
+        "startLine": 1553,
+        "startChar": 0,
+        "endLine": 1553,
+        "endChar": 50
+      },
+      "revId": "68af8e59ac741a739408c1941ff24f33949debe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e77c2069_98c526e1",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3032002d_b4b9d1a7",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-04-11T19:37:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "453dc21c_368d6875",
+      "range": {
+        "startLine": 1567,
+        "startChar": 8,
+        "endLine": 1567,
+        "endChar": 13
+      },
+      "revId": "68af8e59ac741a739408c1941ff24f33949debe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bccb6fe_0303b269",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "3bccb6fe_0303b269",
+      "range": {
+        "startLine": 183,
+        "startChar": 12,
+        "endLine": 183,
+        "endChar": 17
+      },
+      "revId": "68af8e59ac741a739408c1941ff24f33949debe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002edaec_f9e27b7c",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-04-11T19:37:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "60887c35_f1545430",
       "range": {
         "startLine": 183,
         "startChar": 12,
