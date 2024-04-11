@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda47020_f942e815",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733827
+      },
+      "writtenOn": "2024-04-11T08:20:53Z",
+      "side": 1,
+      "message": "Hi All：\n    I am appreciated if you can help to review the patch.\nThanks.",
+      "revId": "fe00b6a837669565c99a7d9b1cf70a673d41ef3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
