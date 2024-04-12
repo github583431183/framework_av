@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73f61ba4_2a61ddb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-04-12T07:30:41Z",
+      "side": 1,
+      "message": "Hi, Google,\nDo you mean renew a gerrit commit, not use 1936178 anymore?",
+      "parentUuid": "803f9b5a_12b1c6e5",
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "855914ae_2ecb3a29",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-12T03:17:47Z",
       "side": 1,
       "message": "needs a numBitsLeft() check before getBits()\n\nand the function needs to return true/false.",
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f060307_5dbbcc3f",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-04-12T07:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "855914ae_2ecb3a29",
       "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2024-04-12T03:17:47Z",
       "side": 1,
       "message": "patchset had a check on br.numBitsLeft() before each getBits() call.\nCan you please add those before getBits() calls?\n\n\nNote: skipBits() has appropriate checks inside, but getBits() doesn\u0027t. So getBits() calls need to be done after appropriate numBitsLeft() check.",
+      "range": {
+        "startLine": 1573,
+        "startChar": 56,
+        "endLine": 1573,
+        "endChar": 63
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c498f7_e5966abc",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-04-12T07:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b33941c9_bcbef417",
       "range": {
         "startLine": 1573,
         "startChar": 56,
@@ -81,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98adc96f_2179dd8a",
+        "filename": "media/libstagefright/include/VvcUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-04-12T07:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6774a767_353cda86",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "766ec688_aa8e4203",
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd1cf9f_f067381b",
+        "filename": "media/libstagefright/include/VvcUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-04-12T07:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "766ec688_aa8e4203",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 106
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "992c1147_d97125c2",
@@ -117,6 +225,30 @@
       "writtenOn": "2024-04-12T03:17:47Z",
       "side": 1,
       "message": "for consistency with other functions, can you please use camelCase for all the methods?",
+      "range": {
+        "startLine": 118,
+        "startChar": 9,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d8e437_ddd6edfa",
+        "filename": "media/libstagefright/include/VvcUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-04-12T07:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "992c1147_d97125c2",
       "range": {
         "startLine": 118,
         "startChar": 9,
