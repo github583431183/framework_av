@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed84f45_63e03131",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-04-12T16:06:31Z",
+      "side": 1,
+      "message": "shouldn\u0027t this configuration be dynamic and different for different streams? Looks like this is only for 2 channels. what about higher channel count?",
+      "range": {
+        "startLine": 84,
+        "startChar": 33,
+        "endLine": 84,
+        "endChar": 85
+      },
+      "revId": "f769928dfda11f5dfb01eefa81664811bf7510ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
