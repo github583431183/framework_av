@@ -69,6 +69,30 @@
       },
       "revId": "aad6996a7988a423ac4ccb1dc0b79ff6f068fd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b19ce718_2558df35",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T18:19:45Z",
+      "side": 1,
+      "message": "it is not based on stream params.\nOnly if the hard-coded values in the library change, this will change.\nSo the issue can happen if the library changes this value and will show up when updrading the library. Issue will not happen in the runtime based on parameters.",
+      "parentUuid": "a95c1022_489bf545",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 39
+      },
+      "revId": "aad6996a7988a423ac4ccb1dc0b79ff6f068fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
