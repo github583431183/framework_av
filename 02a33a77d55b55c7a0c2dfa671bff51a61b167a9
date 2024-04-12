@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803f9b5a_12b1c6e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T03:17:47Z",
+      "side": 1,
+      "message": "Thank you for adding support to parse color aspects and profiles.\nCan you please repo sync and rebase this?\nThanks.",
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855914ae_2ecb3a29",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T03:17:47Z",
+      "side": 1,
+      "message": "needs a numBitsLeft() check before getBits()\n\nand the function needs to return true/false.",
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33941c9_bcbef417",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T03:17:47Z",
+      "side": 1,
+      "message": "patchset had a check on br.numBitsLeft() before each getBits() call.\nCan you please add those before getBits() calls?\n\n\nNote: skipBits() has appropriate checks inside, but getBits() doesn\u0027t. So getBits() calls need to be done after appropriate numBitsLeft() check.",
+      "range": {
+        "startLine": 1573,
+        "startChar": 56,
+        "endLine": 1573,
+        "endChar": 63
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6774a767_353cda86",
+        "filename": "media/libstagefright/include/VvcUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T03:17:47Z",
+      "side": 1,
+      "message": "nit: 2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "766ec688_aa8e4203",
+        "filename": "media/libstagefright/include/VvcUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T03:17:47Z",
+      "side": 1,
+      "message": "nit: please limit each line to under 100 chars.\n\nHere and few other places in this file and in VvcUtils.cpp",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 106
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992c1147_d97125c2",
+        "filename": "media/libstagefright/include/VvcUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T03:17:47Z",
+      "side": 1,
+      "message": "for consistency with other functions, can you please use camelCase for all the methods?",
+      "range": {
+        "startLine": 118,
+        "startChar": 9,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
