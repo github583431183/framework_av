@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f03061a_a169fd07",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T20:15:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "090386df_56e97d12",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "cddd3662500d19e7f56c52e30168f0377bedb0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72ace111_095d9c8f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-12T19:55:43Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 16
+      },
+      "revId": "cddd3662500d19e7f56c52e30168f0377bedb0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217374f2_fc74b07d",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T20:15:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ace111_095d9c8f",
       "range": {
         "startLine": 67,
         "startChar": 11,
