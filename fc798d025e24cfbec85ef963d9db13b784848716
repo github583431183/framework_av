@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e99415_725fca34",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3489,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2024-04-12T23:19:08Z",
+      "side": 1,
+      "message": "Can we refactor this into a separate function? That way we don\u0027t duplicate code between line 3484, line 3493, and line 3504.",
+      "range": {
+        "startLine": 3484,
+        "startChar": 0,
+        "endLine": 3489,
+        "endChar": 9
+      },
+      "revId": "fc798d025e24cfbec85ef963d9db13b784848716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
