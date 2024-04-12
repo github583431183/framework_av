@@ -46,6 +46,30 @@
       },
       "revId": "f769928dfda11f5dfb01eefa81664811bf7510ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25998145_9573738a",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T18:05:34Z",
+      "side": 1,
+      "message": "Arun,\nI have uploaded aosp/3040633 to calculate max input buffer size based on channel count and pcm info.\n(Note: I don\u0027t have permission to amend this CL, hence a new CL).",
+      "parentUuid": "dae1f874_0afda589",
+      "range": {
+        "startLine": 84,
+        "startChar": 33,
+        "endLine": 84,
+        "endChar": 85
+      },
+      "revId": "f769928dfda11f5dfb01eefa81664811bf7510ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
