@@ -22,6 +22,30 @@
       },
       "revId": "f769928dfda11f5dfb01eefa81664811bf7510ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae1f874_0afda589",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-04-12T17:18:48Z",
+      "side": 1,
+      "message": "Currently only stereo is supported, so hardcoded for the max supported config\n\naddParameter(\n                DefineParam(mChannelCount, C2_PARAMKEY_CHANNEL_COUNT)\n                .withDefault(new C2StreamChannelCountInfo::input(0u, 1))\n                .withFields({C2F(mChannelCount, value).inRange(1, 2)})\n                .withSetter(Setter\u003cdecltype(*mChannelCount)\u003e::StrictValueWithNoDeps)\n                .build());",
+      "parentUuid": "3ed84f45_63e03131",
+      "range": {
+        "startLine": 84,
+        "startChar": 33,
+        "endLine": 84,
+        "endChar": 85
+      },
+      "revId": "f769928dfda11f5dfb01eefa81664811bf7510ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
