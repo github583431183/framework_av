@@ -508,6 +508,7 @@ private:
     sp<AMessage> mOnFirstTunnelFrameReadyNotification;
 
     std::shared_ptr<ResourceManagerServiceProxy> mResourceManagerProxy;
+    Mutex mResourceManagerProxyLock;
 
     Domain mDomain;
     AString mLogSessionId;
