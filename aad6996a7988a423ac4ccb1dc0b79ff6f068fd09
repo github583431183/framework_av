@@ -22,6 +22,30 @@
       },
       "revId": "aad6996a7988a423ac4ccb1dc0b79ff6f068fd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1639a603_c39bc73a",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-12T18:10:30Z",
+      "side": 1,
+      "message": "Yes. for the CHECK() added at line 467.",
+      "parentUuid": "c21fb9dc_3a99ba66",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "aad6996a7988a423ac4ccb1dc0b79ff6f068fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
