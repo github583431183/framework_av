@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255b2a8d_4a4bff38",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-12T11:55:09Z",
+      "side": 1,
+      "message": "duplicated, remove",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "d9e0eab025b69f9a10283d0ddbb5c47cd2ed7ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
