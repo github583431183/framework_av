@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92990dba_c2bee074",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-04-12T01:58:55Z",
+      "side": 1,
+      "message": "indent is off",
+      "revId": "9d5fb7b6f7e0903c068f86eb5cd40434ddbe6ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb7ee97_b2eded44",
+        "filename": "media/codec2/components/aom/C2SoftAomEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-04-12T01:58:55Z",
+      "side": 1,
+      "message": "This matches the libvpx implementation, though it could go either way I guess. Where you took the max here and the min in the next line.",
+      "revId": "9d5fb7b6f7e0903c068f86eb5cd40434ddbe6ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
