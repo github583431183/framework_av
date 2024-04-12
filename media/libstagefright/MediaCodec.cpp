@@ -1237,8 +1237,11 @@ MediaCodec::MediaCodec(
       mGetCodecBase(getCodecBase),
       mGetCodecInfo(getCodecInfo) {
     mCodecId = GenerateCodecId();
-    mResourceManagerProxy = std::make_shared<ResourceManagerServiceProxy>(pid, uid,
-            ::ndk::SharedRefBase::make<ResourceManagerClient>(this, pid, uid));
+    {
+        Mutex::Autolock _lock(mResourceManagerProxyLock);
+        mResourceManagerProxy = std::make_shared<ResourceManagerServiceProxy>(pid, uid,
+                ::ndk::SharedRefBase::make<ResourceManagerClient>(this, pid, uid));
+    }
     if (!mGetCodecBase) {
         mGetCodecBase = [](const AString &name, const char *owner) {
             return GetCodecBase(name, owner);
@@ -1288,6 +1291,10 @@ MediaCodec::~MediaCodec() {
         if (mConfigureMsg->findInt64("metrics", &metricsHandle)) {
             mediametrics_delete(metricsHandle);
         }
+    }
+    {
+        Mutex::Autolock _lock(mResourceManagerProxyLock);
+        mResourceManagerProxy.clear();
     }
 }
 
