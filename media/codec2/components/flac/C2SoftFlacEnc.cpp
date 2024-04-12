@@ -81,9 +81,16 @@ public:
                     FLAC_COMPRESSION_LEVEL_MIN, FLAC_COMPRESSION_LEVEL_MAX)})
                 .withSetter(Setter<decltype(*mComplexity)>::NonStrictValueWithNoDeps)
                 .build());
+        // FLAC encoder processes 'FlacBlockSize * channel_count * bytes_per_channel' bytes at
+        // once. Set C2_PARAMKEY_INPUT_MAX_BUFFER_SIZE to a value corresponding to 'mBlockSize'
+        // that is one access unit size.
+        // WARN: mBlockSize by default is set to 4096 by flac encoder, If this value is configured
+        // to a different setting then this value needs to be modified.
         addParameter(
                 DefineParam(mInputMaxBufSize, C2_PARAMKEY_INPUT_MAX_BUFFER_SIZE)
-                .withConstValue(new C2StreamMaxBufferSizeInfo::input(0u, 4608))
+                .withConstValue(new C2StreamMaxBufferSizeInfo::input(
+                    0u, 4096 /* mBlockSize */ * kMaxNumChannels *
+                    sizeof(float) /* PCM float encoding */))
                 .build());
 
         addParameter(

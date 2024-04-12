@@ -63,7 +63,7 @@ private:
 
     std::shared_ptr<IntfImpl> mIntf;
     const unsigned int kInBlockSize = 1152;
-    const unsigned int kMaxNumChannels = 2;
+    static const unsigned int kMaxNumChannels = 2;
     FLAC__StreamEncoder* mFlacStreamEncoder;
     FLAC__int32* mInputBufferPcm32;
     std::shared_ptr<C2LinearBlock> mOutputBlock;
