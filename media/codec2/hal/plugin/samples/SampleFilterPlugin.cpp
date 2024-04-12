@@ -37,6 +37,11 @@ typedef C2StreamParam<C2Info, C2ColorAspectsStruct,
                 kParamIndexColorAspects | C2Param::CoreIndex::IS_REQUEST_FLAG>
         C2StreamColorAspectsRequestInfo;
 
+constexpr uint32_t kParamIndexVendorUnusedNumber = C2Param::TYPE_INDEX_VENDOR_START + 0x7000000;
+typedef C2StreamParam<C2Info, C2Int32Value, kParamIndexVendorUnusedNumber>
+        C2StreamVendorUnusedNumberInfo;
+constexpr char C2_PARAMKEY_VENDOR_UNUSED_NUMBER[] = "vendor.unused-number";
+
 namespace android {
 
 using namespace std::literals::chrono_literals;
@@ -278,6 +283,15 @@ public:
                                     mInputColorAspectInfo,
                                     mColorAspectRequestInfo)
                         .build());
+
+                addParameter(
+                        DefineParam(mVendorUnusedNumberInfo, C2_PARAMKEY_VENDOR_UNUSED_NUMBER)
+                        .withDefault(new C2StreamVendorUnusedNumberInfo::input(0u))
+                        .withFields({
+                            C2F(mVendorUnusedNumberInfo, value).any(),
+                        })
+                        .withSetter(VendorUnusedNumberSetter)
+                        .build());
             }
 
             static C2R OutputBlockPoolSetter(
@@ -336,6 +350,14 @@ public:
                 return C2R::Ok();
             }
 
+            static C2R VendorUnusedNumberSetter(
+                    bool mayBlock,
+                    C2P<C2StreamVendorUnusedNumberInfo::input> &me) {
+                (void)mayBlock, (void)me;
+                ALOGI("Unused number set to %d", me.v.value);
+                return C2R::Ok();
+            }
+
             std::shared_ptr<C2ApiFeaturesSetting> mApiFeatures;
 
             std::shared_ptr<C2ComponentNameSetting> mName;
@@ -362,6 +384,8 @@ public:
             std::shared_ptr<C2StreamColorAspectsInfo::input> mInputColorAspectInfo;
             std::shared_ptr<C2StreamColorAspectsInfo::output> mOutputColorAspectInfo;
             std::shared_ptr<C2StreamColorAspectsRequestInfo::output> mColorAspectRequestInfo;
+
+            std::shared_ptr<C2StreamVendorUnusedNumberInfo::input> mVendorUnusedNumberInfo;
         } mHelper;
     };
 
