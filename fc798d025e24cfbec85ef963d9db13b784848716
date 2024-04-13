@@ -22,6 +22,30 @@
       },
       "revId": "fc798d025e24cfbec85ef963d9db13b784848716",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2df0c2_ac76362e",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3489,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2024-04-13T02:22:21Z",
+      "side": 1,
+      "message": "Just realized one thing. Should we set `mLatestFailedRequestId` instead of `mLatestRequestId` instead?",
+      "parentUuid": "f6e99415_725fca34",
+      "range": {
+        "startLine": 3484,
+        "startChar": 0,
+        "endLine": 3489,
+        "endChar": 9
+      },
+      "revId": "fc798d025e24cfbec85ef963d9db13b784848716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
