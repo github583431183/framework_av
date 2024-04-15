@@ -522,7 +522,7 @@ private:
 namespace {
 
 static std::string asString(C2Param *p) {
-    char addr[20];
+    char addr[21];
     sprintf(addr, "%p:[", p);
     std::string v = addr;
     for (size_t i = 0; i < p->size(); ++i) {
