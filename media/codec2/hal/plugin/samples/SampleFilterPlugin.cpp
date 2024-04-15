@@ -37,6 +37,12 @@ typedef C2StreamParam<C2Info, C2ColorAspectsStruct,
                 kParamIndexColorAspects | C2Param::CoreIndex::IS_REQUEST_FLAG>
         C2StreamColorAspectsRequestInfo;
 
+// Answer to the Ultimate Question of Life, the Universe, and Everything
+constexpr uint32_t kParamIndexVendorUltimateAnswer = C2Param::TYPE_INDEX_VENDOR_START + 0x70000000;
+typedef C2StreamParam<C2Info, C2Int32Value, kParamIndexVendorUltimateAnswer>
+        C2StreamVendorUltimateAnswerInfo;
+constexpr char C2_PARAMKEY_VENDOR_ULTIMATE_ANSWER[] = "vendor.ultimate-answer";
+
 namespace android {
 
 using namespace std::literals::chrono_literals;
@@ -266,6 +272,15 @@ public:
                         .build());
 
                 addParameter(
+                        DefineParam(mVendorUltimateAnswerInfo, C2_PARAMKEY_VENDOR_ULTIMATE_ANSWER)
+                        .withDefault(new C2StreamVendorUltimateAnswerInfo::input(0u))
+                        .withFields({
+                            C2F(mVendorUltimateAnswerInfo, value).any(),
+                        })
+                        .withSetter(VendorUltimateAnswerSetter)
+                        .build());
+
+                addParameter(
                         DefineParam(mOutputColorAspectInfo, C2_PARAMKEY_COLOR_ASPECTS)
                         .withDefault(new C2StreamColorAspectsInfo::output(0u))
                         .withFields({
@@ -336,6 +351,15 @@ public:
                 return C2R::Ok();
             }
 
+            static C2R VendorUltimateAnswerSetter(
+                    bool mayBlock,
+                    C2P<C2StreamVendorUltimateAnswerInfo::input> &me) {
+                (void)mayBlock;
+                ALOGI("Answer to the Ultimate Question of Life, the Universe, and Everything "
+                      "set to %d", me.v.value);
+                return C2R::Ok();
+            }
+
             std::shared_ptr<C2ApiFeaturesSetting> mApiFeatures;
 
             std::shared_ptr<C2ComponentNameSetting> mName;
@@ -362,6 +386,8 @@ public:
             std::shared_ptr<C2StreamColorAspectsInfo::input> mInputColorAspectInfo;
             std::shared_ptr<C2StreamColorAspectsInfo::output> mOutputColorAspectInfo;
             std::shared_ptr<C2StreamColorAspectsRequestInfo::output> mColorAspectRequestInfo;
+
+            std::shared_ptr<C2StreamVendorUltimateAnswerInfo::input> mVendorUltimateAnswerInfo;
         } mHelper;
     };
 
@@ -802,7 +828,10 @@ const std::string SampleToneMappingFilter::Interface::NAME = "c2.sample.tone-map
 // static
 const FilterPlugin_V1::Descriptor SampleToneMappingFilter::Interface::DESCRIPTOR = {
     // controlParams
-    { C2StreamColorAspectsRequestInfo::output::PARAM_TYPE },
+    {
+        C2StreamColorAspectsRequestInfo::output::PARAM_TYPE,
+        C2StreamVendorUltimateAnswerInfo::input::PARAM_TYPE,
+    },
     // affectedParams
     {
         C2StreamHdrStaticInfo::output::PARAM_TYPE,
