@@ -50,8 +50,8 @@ void Shift_Sat_Float(const LVM_INT16 val, const LVM_FLOAT* src, LVM_FLOAT* dst, 
     AUDIO FORMAT CONVERSION FUNCTIONS
 ***********************************************************************************/
 void MonoTo2I_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 n);
-void From2iToMono_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 n);
-void FromMcToMono_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 NrFrames,
+void From2iToMono_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT32 n);
+void FromMcToMono_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT32 NrFrames,
                         LVM_INT16 NrChannels);
 void MSTo2i_Sat_Float(const LVM_FLOAT* srcM, const LVM_FLOAT* srcS, LVM_FLOAT* dst, LVM_INT16 n);
 void From2iToMS_Float(const LVM_FLOAT* src, LVM_FLOAT* dstM, LVM_FLOAT* dstS, LVM_INT16 n);

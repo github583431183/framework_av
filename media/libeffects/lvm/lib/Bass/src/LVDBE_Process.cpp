@@ -130,7 +130,7 @@ LVDBE_ReturnStatus_en LVDBE_Process(
          */
         FromMcToMono_Float(pScratch,            /* Source */
                            pMono,               /* Mono destination */
-                           (LVM_INT16)NrFrames, /* Number of frames */
+                           NrFrames, /* Number of frames */
                            (LVM_INT16)NrChannels);
 
         /*

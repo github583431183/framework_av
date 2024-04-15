@@ -194,7 +194,7 @@ LVM_ReturnStatus_en LVM_Process(LVM_Handle_t hInstance, const LVM_FLOAT* pInData
              */
             if ((pInstance->Params.PSA_Enable == LVM_PSA_ON) &&
                 (pInstance->InstParams.PSA_Included == LVM_PSA_ON)) {
-                FromMcToMono_Float(pProcessed, pInstance->pPSAInput, (LVM_INT16)(NrFrames),
+                FromMcToMono_Float(pProcessed, pInstance->pPSAInput, NrFrames,
                                    NrChannels);
 
                 LVPSA_Process(pInstance->hPSAInstance, pInstance->pPSAInput,
