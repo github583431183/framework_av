@@ -242,7 +242,7 @@ void CharacterEncodingDetector::detectAndConvert() {
                 }
             }
 
-            if (strcmp(enc,"UTF-8") != 0) {
+            if (enc && strcmp(enc,"UTF-8") != 0) {
                 // only convert if the source encoding isn't already UTF-8
                 ALOGV("@@@ using converter %s for %s", enc, mNames.getEntry(i));
                 status = U_ZERO_ERROR;
