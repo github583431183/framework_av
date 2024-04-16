@@ -69,6 +69,8 @@ void PlayerServiceMediaHTTP::clearDRMState_l() {
         CHECK(mDrmManagerClient);
         mDrmManagerClient->closeDecryptSession(mDecryptHandle);
         mDecryptHandle = NULL;
+        delete mDrmManagerClient;
+        mDrmManagerClient = NULL;
     }
 }
 

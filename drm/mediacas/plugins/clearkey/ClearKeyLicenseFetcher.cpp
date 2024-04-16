@@ -29,7 +29,9 @@ namespace clearkeycas {
 
 status_t ClearKeyLicenseFetcher::Init(const char *input) {
     JsonAssetLoader *extractor = new JsonAssetLoader();
-    return extractor->extractAssetFromString(String8(input), &asset_);
+    status_t ret = extractor->extractAssetFromString(String8(input), &asset_);
+    delete extractor;
+    return ret;
 }
 
 status_t ClearKeyLicenseFetcher::FetchLicense(
