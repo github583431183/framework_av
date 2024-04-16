@@ -22,6 +22,30 @@
       },
       "revId": "abc050eee69023709b28f8455ac818af3fdb1018",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972c414f_8ac7404a",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 5057,
+      "author": {
+        "id": 2005048
+      },
+      "writtenOn": "2024-04-16T01:07:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c427023_4e3fca94",
+      "range": {
+        "startLine": 5057,
+        "startChar": 0,
+        "endLine": 5057,
+        "endChar": 108
+      },
+      "revId": "abc050eee69023709b28f8455ac818af3fdb1018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
