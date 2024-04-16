@@ -16,6 +16,23 @@
       "message": "Hi Wonsik, Lajos and Sugtak,\n\nWhen you have a chance, can you help to review this CL?",
       "revId": "7cba94c6409be9983fb8adec86d3a3f8748f000b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904fb6da_7a4b6a9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-04-16T23:45:08Z",
+      "side": 1,
+      "message": "@wonsik@google.com, is it possible to \"force\" array mode for input buffers only? Can we allow devices to opt into this mode until we fix the re-mapping of buffers in bufferpool issue?",
+      "revId": "7cba94c6409be9983fb8adec86d3a3f8748f000b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
