@@ -87,6 +87,12 @@ aconfig_declarations {
     visibility: ["//visibility:private"],
 }
 
+cc_aconfig_library {
+    name: "android.media.audiopolicy-aconfig-cc",
+    aconfig_declarations: "android.media.audiopolicy-aconfig",
+    defaults: ["audio-aconfig-cc-defaults"],
+}
+
 java_aconfig_library {
     name: "android.media.audio-aconfig-java",
     aconfig_declarations: "android.media.audio-aconfig",
