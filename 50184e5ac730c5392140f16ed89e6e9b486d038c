@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60576ca_3db460c6",
+        "filename": "media/codec2/vndk/util/C2InterfaceHelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-04-16T16:50:58Z",
+      "side": 1,
+      "message": "if we say \"%18p:[\" here,  specifying the length of the string,\nthen it makes it much clearer how we get the value [21] for the string length.\n\n18 being \"0x\" plus up to 16 hex digits...\n\nSpecifying the size like that also means we would never overflow -- even if someday the pointer representation grew to more than 64 bits  [we\u0027d chop data, but not overflow the buffer].",
+      "range": {
+        "startLine": 526,
+        "startChar": 19,
+        "endLine": 526,
+        "endChar": 22
+      },
+      "revId": "50184e5ac730c5392140f16ed89e6e9b486d038c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
