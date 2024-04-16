@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b30bfc6_612be896",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-16T15:23:59Z",
+      "side": 1,
+      "message": "Would be suitable to control volume for primary zone. Just wondering how to get current user in native.",
+      "parentUuid": "4eecef56_17a29142",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "139ab131a0b283664baf2829bb0601b5a3888de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e20b754_4908f84a",
         "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-02T17:27:14Z",
       "side": 1,
       "message": "\"WA\"?",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "139ab131a0b283664baf2829bb0601b5a3888de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e495dde_69868e09",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-16T15:23:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e20b754_4908f84a",
       "range": {
         "startLine": 57,
         "startChar": 23,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-04-02T17:27:14Z",
       "side": 1,
       "message": "\"evaluates the rules before\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "139ab131a0b283664baf2829bb0601b5a3888de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "663ffc22_8bde1bc2",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-04-16T15:23:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1431753_93896734",
       "range": {
         "startLine": 59,
         "startChar": 26,
