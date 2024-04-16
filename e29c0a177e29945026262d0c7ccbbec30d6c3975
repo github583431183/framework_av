@@ -71,6 +71,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33162d3d_2c0fdab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-04-16T15:20:48Z",
+      "side": 1,
+      "message": "I think we should not limit this to the remote submix output but go over all HW modules in a certain order of preference:\n Primary\n Usb\n Bluetooth\n remote submix\n \n Ideally getInputBufferSize() should be routed via audio policy manager that would handle this priority list based on supported HW modules and currently connected devices.",
+      "revId": "e29c0a177e29945026262d0c7ccbbec30d6c3975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06360f76_dfc9304c",
