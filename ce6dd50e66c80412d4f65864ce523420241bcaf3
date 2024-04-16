@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a3ddd3_a0ca6b7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-04-16T02:00:41Z",
+      "side": 1,
+      "message": "nit: move the description above the `Bug: ...` line. \n\nAlso could you explain the problem a little more here, and how this patch solves it?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "ce6dd50e66c80412d4f65864ce523420241bcaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7de6775_fee1f7cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-04-16T02:00:41Z",
+      "side": 1,
+      "message": "Some minor nits, but generally LGTM. Thank you for the patch!",
+      "revId": "ce6dd50e66c80412d4f65864ce523420241bcaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb4f1ca_48976d00",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 5058,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-04-16T02:00:41Z",
+      "side": 1,
+      "message": "formatting nit: indent parameters with 8 spaces.",
+      "range": {
+        "startLine": 5058,
+        "startChar": 0,
+        "endLine": 5058,
+        "endChar": 5
+      },
+      "revId": "ce6dd50e66c80412d4f65864ce523420241bcaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f71d80ac_98d626bc",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 5060,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-04-16T02:00:41Z",
+      "side": 1,
+      "message": "formatting nit: indent with 4 spaces (currently 3). See nearby functions as reference.",
+      "range": {
+        "startLine": 5060,
+        "startChar": 0,
+        "endLine": 5060,
+        "endChar": 3
+      },
+      "revId": "ce6dd50e66c80412d4f65864ce523420241bcaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
