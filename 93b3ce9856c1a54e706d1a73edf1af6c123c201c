@@ -16,6 +16,24 @@
       "message": "Looks like it\u0027s fixing the memory leaks correctly, but I wonder if the direct \"delete\" syntax (vs using a smart pointer class) is in line with general C++ coding guidelines (which I\u0027m not super familiar with). Adding more reviewers to provide additional opinions.",
       "revId": "93b3ce9856c1a54e706d1a73edf1af6c123c201c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db14beb_1876351d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-16T09:26:05Z",
+      "side": 1,
+      "message": "I agree that switching to `unique_ptr` would be a better approach.\n\nIt seems like there\u0027s plenty of usages in media framework code already: https://cs.android.com/search?q\u003df:%2Fmedia%2F%20unique_ptr\u0026sq\u003d\n\nI think this will \u0027just work\u0027 for the clearkey and `MtpServer` case because the deletion will happen when the pointer goes out of scope, but for the logic in `PlayerServiceMediaHTTP` I guess we will still need an explicit call to `unique_ptr::reset(NULL)`.",
+      "parentUuid": "3a1b6b82_e6a431a1",
+      "revId": "93b3ce9856c1a54e706d1a73edf1af6c123c201c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
