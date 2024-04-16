@@ -85,7 +85,7 @@ sp<hardware::ICameraService> CameraManagerGlobal::getCameraServiceLocked() {
         sp<IServiceManager> sm = defaultServiceManager();
         sp<IBinder> binder;
         do {
-            binder = sm->getService(toString16(kCameraServiceName));
+            binder = sm->waitForService(toString16(kCameraServiceName));
             if (binder != nullptr) {
                 break;
             }
