@@ -22,6 +22,30 @@
       },
       "revId": "ef7e8b9af8bc5e1c648a2731dfa8359f99089f7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae94ef4_60ab6a38",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-04-16T07:24:38Z",
+      "side": 1,
+      "message": "In scenarios where fuzzing data is entirely consumed, any call to ConsumeRandomLengthString() will return an empty string. All calls to such ConsumeXXX() APIs will return default values.",
+      "parentUuid": "a99f0c2c_d684cc64",
+      "range": {
+        "startLine": 314,
+        "startChar": 34,
+        "endLine": 314,
+        "endChar": 65
+      },
+      "revId": "ef7e8b9af8bc5e1c648a2731dfa8359f99089f7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
