@@ -526,7 +526,14 @@ void C2SoftMpeg4Dec::process(
             work->result = err;
             return;
         }
-        C2GraphicView wView = mOutBlock->map().get();
+        // Cache mOutBlock
+        std::shared_ptr<C2GraphicBlock> outBlock = mOutBlock;
+        if (!outBlock) {
+            ALOGE("output block null");
+            work->result = C2_CORRUPTED;
+            return;
+        }
+        C2GraphicView wView = outBlock->map().get();
         if (wView.error()) {
             ALOGE("graphic view map failed %d", wView.error());
             work->result = C2_CORRUPTED;
