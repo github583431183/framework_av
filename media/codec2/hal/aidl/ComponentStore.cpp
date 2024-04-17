@@ -144,7 +144,15 @@ ComponentStore::ComponentStore(const std::shared_ptr<C2ComponentStore>& store)
     ::android::SetPreferredCodec2ComponentStore(store);
 
     // Retrieve struct descriptors
-    mParamReflector = mStore->getParamReflector();
+    mParamReflectors.push_back(mStore->getParamReflector());
+#ifndef __ANDROID_APEX__
+    std::shared_ptr<C2ParamReflector> paramReflector =
+        GetFilterWrapper()->getParamReflector();
+    if (paramReflector != nullptr) {
+        ALOGD("[%s] added param reflector from filter wrapper", mStore->getName().c_str());
+        mParamReflectors.push_back(paramReflector);
+    }
+#endif
 
     // Retrieve supported parameters from store
     using namespace std::placeholders;
@@ -173,8 +181,7 @@ c2_status_t ComponentStore::validateSupportedParams(
         std::lock_guard<std::mutex> lock(mStructDescriptorsMutex);
         auto it = mStructDescriptors.find(coreIndex);
         if (it == mStructDescriptors.end()) {
-            std::shared_ptr<C2StructDescriptor> structDesc =
-                    mParamReflector->describe(coreIndex);
+            std::shared_ptr<C2StructDescriptor> structDesc = describe(coreIndex);
             if (!structDesc) {
                 // All supported params must be described
                 res = C2_BAD_INDEX;
@@ -222,7 +229,8 @@ std::shared_ptr<MultiAccessUnitInterface> ComponentStore::tryCreateMultiAccessUn
             }
             if (!isComponentSupportsLargeAudioFrame) {
                 multiAccessUnitIntf = std::make_shared<MultiAccessUnitInterface>(
-                        c2interface, std::static_pointer_cast<C2ReflectorHelper>(mParamReflector));
+                        c2interface,
+                        std::static_pointer_cast<C2ReflectorHelper>(mParamReflectors[0]));
             }
         }
     }
@@ -347,8 +355,7 @@ ScopedAStatus ComponentStore::getStructDescriptors(
         if (item == mStructDescriptors.end()) {
             // not in the cache, and not known to be unsupported, query local reflector
             if (!mUnsupportedStructDescriptors.count(coreIndex)) {
-                std::shared_ptr<C2StructDescriptor> structDesc =
-                    mParamReflector->describe(coreIndex);
+                std::shared_ptr<C2StructDescriptor> structDesc = describe(coreIndex);
                 if (!structDesc) {
                     mUnsupportedStructDescriptors.emplace(coreIndex);
                 } else {
@@ -399,6 +406,16 @@ ScopedAStatus ComponentStore::getConfigurable(
         std::shared_ptr<IConfigurable> *configurable) {
     *configurable = mConfigurable;
     return ScopedAStatus::ok();
+}
+
+std::shared_ptr<C2StructDescriptor> ComponentStore::describe(const C2Param::CoreIndex &index) {
+    for (const std::shared_ptr<C2ParamReflector> &reflector : mParamReflectors) {
+        std::shared_ptr<C2StructDescriptor> desc = reflector->describe(index);
+        if (desc) {
+            return desc;
+        }
+    }
+    return nullptr;
 }
 
 // Called from createComponent() after a successful creation of `component`.
