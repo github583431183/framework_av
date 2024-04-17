@@ -105,6 +105,23 @@
       "parentUuid": "5d60d46e_bfc5d70a",
       "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9d4244_68d3cb5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-04-17T07:11:02Z",
+      "side": 1,
+      "message": "Any concerns over this patch ?",
+      "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
