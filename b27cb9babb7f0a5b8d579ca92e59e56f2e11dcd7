@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126c4cb6_8eeb83f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-04-17T21:48:04Z",
+      "side": 1,
+      "message": "Shunkai, could you please review.",
+      "revId": "b27cb9babb7f0a5b8d579ca92e59e56f2e11dcd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
