@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c13facfa_ea621d70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2024-04-17T12:06:06Z",
+      "side": 1,
+      "message": "Hi, Google,\nI rebased like this:\n  rm -rf av/\n  git clone https://gerrit.mediatek.inc/dtv/platform/frameworks/av\n  cd av/\n  git fetch https://android.googlesource.com/platform/frameworks/av refs/changes/78/1936178/9 \u0026\u0026 git cherry-pick FETCH_HEAD\n  //For I can cherry pick this commit successfully and no conflict, so I git commit directly\n  git commit --amend --no-edit\n  git push https://android-review.googlesource.com/platform/frameworks/av HEAD:refs/for/master\nIs this OK?",
+      "parentUuid": "ab48f7a1_f8583c8c",
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "855914ae_2ecb3a29",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 7
