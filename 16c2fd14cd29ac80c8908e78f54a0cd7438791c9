@@ -70,6 +70,30 @@
       },
       "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698c0b4f_32376a03",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-04-18T18:27:41Z",
+      "side": 1,
+      "message": "Because CameraService should always be present and running by the time any app loads, it is better to use `getService` rather than `waitForService` and error out if cameraservice is missing when the app starts. \n\nCameraService doesn\u0027t advertise itself in VINTF, so if cameraservice crashloops or is missing from the system, `waitForService` will wait indefinitely for cameraservice to come up.",
+      "parentUuid": "a137dc4a_d8b55f14",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
