@@ -1335,11 +1335,6 @@ void MediaCodec::updateMediametrics() {
     Mutex::Autolock _lock(mMetricsLock);
 
     mediametrics_setInt32(mMetricsHandle, kCodecArrayMode, mApiUsageMetrics.isArrayMode ? 1 : 0);
-    mApiUsageMetrics.operationMode = (mFlags & kFlagIsAsync) ?
-            ((mFlags & kFlagUseBlockModel) ? ApiUsageMetrics::kBlockMode
-                    : ApiUsageMetrics::kAsynchronousMode)
-            : ApiUsageMetrics::kSynchronousMode;
-    mediametrics_setInt32(mMetricsHandle, kCodecOperationMode, mApiUsageMetrics.operationMode);
     mediametrics_setInt32(mMetricsHandle, kCodecOutputSurface,
             mApiUsageMetrics.isUsingOutputSurface ? 1 : 0);
 
@@ -4793,6 +4788,12 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 mFlags &= ~kFlagIsAsync;
             }
 
+            mApiUsageMetrics.operationMode = (mFlags & kFlagIsAsync) ?
+                    ((mFlags & kFlagUseBlockModel) ? ApiUsageMetrics::kBlockMode
+                            : ApiUsageMetrics::kAsynchronousMode)
+                    : ApiUsageMetrics::kSynchronousMode;
+            mediametrics_setInt32(mMetricsHandle, kCodecOperationMode, mApiUsageMetrics.operationMode);
+
             sp<AMessage> response = new AMessage;
             response->postReply(replyID);
             break;
@@ -4924,6 +4925,12 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
             mReplyID = replyID;
             setState(CONFIGURING);
+
+            mApiUsageMetrics.operationMode = (mFlags & kFlagIsAsync) ?
+                    ((mFlags & kFlagUseBlockModel) ? ApiUsageMetrics::kBlockMode
+                            : ApiUsageMetrics::kAsynchronousMode)
+                    : ApiUsageMetrics::kSynchronousMode;
+            mediametrics_setInt32(mMetricsHandle, kCodecOperationMode, mApiUsageMetrics.operationMode);
 
             void *crypto;
             if (!msg->findPointer("crypto", &crypto)) {

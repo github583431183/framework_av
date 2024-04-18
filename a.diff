@@ -1,0 +1,42 @@
+diff --git a/media/libstagefright/MediaCodec.cpp b/media/libstagefright/MediaCodec.cpp
+index 4e378d43a2..fc959ca692 100644
+--- a/media/libstagefright/MediaCodec.cpp
++++ b/media/libstagefright/MediaCodec.cpp
+@@ -1337,11 +1337,6 @@ void MediaCodec::updateMediametrics() {
+     Mutex::Autolock _lock(mMetricsLock);
+ 
+     mediametrics_setInt32(mMetricsHandle, kCodecArrayMode, mApiUsageMetrics.isArrayMode ? 1 : 0);
+-    mApiUsageMetrics.operationMode = (mFlags & kFlagIsAsync) ?
+-            ((mFlags & kFlagUseBlockModel) ? ApiUsageMetrics::kBlockMode
+-                    : ApiUsageMetrics::kAsynchronousMode)
+-            : ApiUsageMetrics::kSynchronousMode;
+-    mediametrics_setInt32(mMetricsHandle, kCodecOperationMode, mApiUsageMetrics.operationMode);
+     mediametrics_setInt32(mMetricsHandle, kCodecOutputSurface,
+             mApiUsageMetrics.isUsingOutputSurface ? 1 : 0);
+ 
+@@ -4802,6 +4797,12 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
+                 mFlags &= ~kFlagIsAsync;
+             }
+ 
++            mApiUsageMetrics.operationMode = (mFlags & kFlagIsAsync) ?
++                    ((mFlags & kFlagUseBlockModel) ? ApiUsageMetrics::kBlockMode
++                            : ApiUsageMetrics::kAsynchronousMode)
++                    : ApiUsageMetrics::kSynchronousMode;
++            mediametrics_setInt32(mMetricsHandle, kCodecOperationMode, mApiUsageMetrics.operationMode);
++
+             sp<AMessage> response = new AMessage;
+             response->postReply(replyID);
+             break;
+@@ -4949,6 +4950,12 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
+             mReplyID = replyID;
+             setState(CONFIGURING);
+ 
++            mApiUsageMetrics.operationMode = (mFlags & kFlagIsAsync) ?
++                    ((mFlags & kFlagUseBlockModel) ? ApiUsageMetrics::kBlockMode
++                            : ApiUsageMetrics::kAsynchronousMode)
++                    : ApiUsageMetrics::kSynchronousMode;
++            mediametrics_setInt32(mMetricsHandle, kCodecOperationMode, mApiUsageMetrics.operationMode);
++
+             void *crypto;
+             if (!msg->findPointer("crypto", &crypto)) {
+                 crypto = NULL;
