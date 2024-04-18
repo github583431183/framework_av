@@ -94,6 +94,30 @@
       },
       "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d496aab_c6672e8f",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2024-04-18T21:02:53Z",
+      "side": 1,
+      "message": "Just in general, since we do have handling for the \u0027no service\u0027 case already, at some point we should stop waiting and return `null`.  \n\nI\u0027m not sure what the right delay is (1 second? 5 seems too long), but we should get rid of this infinite loop either way.",
+      "parentUuid": "698c0b4f_32376a03",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
