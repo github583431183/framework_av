@@ -46,6 +46,30 @@
       },
       "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a137dc4a_d8b55f14",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2024-04-18T16:08:34Z",
+      "side": 1,
+      "message": "which would be the same as getService() effectively",
+      "parentUuid": "4f28839f_1a7630a5",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
