@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64afc398_4f176a16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2024-04-18T00:46:53Z",
+      "side": 1,
+      "message": "New warnings detected by clang-r522817. Please fix the warning or accept the warning suppression.",
+      "revId": "9c992cb3d46d00b0dc3f803efc2edbabe857a028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
