@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cc094e7_859de04d",
+        "filename": "media/libstagefright/SurfaceUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-18T04:02:48Z",
+      "side": 1,
+      "message": "native_window_set_usage expects its second arg as uint64_t so, we feel that it is better to have uint64_t data type for finalUsage.\nAnd, as usage and consumerUsage are used as flags so, essentially bitwise AND with 0x00000000FFFFFFFF or typecast to uint32_t should have the same effect, right?",
+      "parentUuid": "5c6525ed_3631152d",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 70
+      },
+      "revId": "349d8d60a5a53240d7709129945faa70cf064465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d155aee6_ec268f82",
         "filename": "media/libstagefright/SurfaceUtils.cpp",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2024-04-10T22:15:27Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 105
+      },
+      "revId": "349d8d60a5a53240d7709129945faa70cf064465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46144db_f7b3048d",
+        "filename": "media/libstagefright/SurfaceUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 3374500
+      },
+      "writtenOn": "2024-04-18T04:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d155aee6_ec268f82",
       "range": {
         "startLine": 115,
         "startChar": 0,
