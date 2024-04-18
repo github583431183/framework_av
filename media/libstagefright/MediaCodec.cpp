@@ -4970,8 +4970,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
             mDescrambler = static_cast<IDescrambler *>(descrambler);
             mBufferChannel->setDescrambler(mDescrambler);
-            if ((mFlags & kFlagUseCryptoAsync) &&
-                mCrypto  && (mDomain == DOMAIN_VIDEO)) {
+            if ((mFlags & kFlagUseCryptoAsync) && mCrypto) {
                 // set kFlagUseCryptoAsync but do-not use this for block model
                 // this is to propagate the error in onCryptoError()
                 // TODO (b/274628160): Enable Use of CONFIG_FLAG_USE_CRYPTO_ASYNC
@@ -6263,15 +6262,8 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
         cryptoInfo->setInt32("secure", mFlags & kFlagIsSecure);
         sp<RefBase> obj;
         if (msg->findObject("cryptoInfos", &obj)) {
-            sp<CryptoInfosWrapper> infos{(CryptoInfosWrapper*)obj.get()};
-            sp<CryptoInfosWrapper> asyncInfos{
-                    new CryptoInfosWrapper(std::vector<std::unique_ptr<CodecCryptoInfo>>())};
-            for (std::unique_ptr<CodecCryptoInfo> &info : infos->value) {
-                if (info) {
-                    asyncInfos->value.emplace_back(new CryptoAsync::CryptoAsyncInfo(info));
-                }
-            }
-            buffer->meta()->setObject("cryptoInfos", asyncInfos);
+            // this object is a standalone object when created (no copy requied here)
+            buffer->meta()->setObject("cryptoInfos", obj);
         } else {
             size_t key_len = (key != nullptr)? 16 : 0;
             size_t iv_len = (iv != nullptr)? 16 : 0;
@@ -6410,7 +6402,6 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
             }
         }
         if (mCryptoAsync) {
-            // TODO b/316565675 - enable async path for audio
             // prepare a message and enqueue
             sp<AMessage> cryptoInfo = new AMessage();
             buildCryptoInfoAMessage(cryptoInfo, CryptoAsync::kActionDecrypt);
