@@ -16,6 +16,23 @@
       "message": "Hi @ibaker@google.com\nCould you please help to resolve CI issues and get the change merged?",
       "revId": "5a9cbb27a7b437be4ee3093cf34260b4aed652a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67b13c7_a99677de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-04-18T13:24:53Z",
+      "side": 1,
+      "message": "Bypassing as this is another occurrence of b/322289517",
+      "revId": "5a9cbb27a7b437be4ee3093cf34260b4aed652a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
