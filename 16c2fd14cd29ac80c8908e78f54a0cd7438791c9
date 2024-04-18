@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41329f1a_4cb78175",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2024-04-18T15:49:39Z",
+      "side": 1,
+      "message": "if we change to `waitForService()` we shouldn\u0027t need to do this in a loop ?\n\n`waitForService()` only returns nullptr on a permission error / fatal error : https://cs.android.com/android/platform/superproject/main/+/main:prebuilts/vndk/v34/x86/include/frameworks/native/libs/binder/include/binder/IServiceManager.h;l\u003d95?q\u003d%22prefer%20waitFor%22",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
