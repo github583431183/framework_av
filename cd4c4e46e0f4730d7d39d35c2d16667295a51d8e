@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b48763_76669fe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-04-18T20:15:31Z",
+      "side": 1,
+      "message": "appears to be stacked up behind a separate CL that has not yet merged.",
+      "revId": "cd4c4e46e0f4730d7d39d35c2d16667295a51d8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
