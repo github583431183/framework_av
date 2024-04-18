@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97680b7f_1a91cf13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-18T01:15:54Z",
+      "side": 1,
+      "message": "I am not sure about the contents of https://gerrit.mediatek.inc/dtv/platform/frameworks/av.\n\nPlease note android.googlesource.com has now moved to \"main\" branch instead of \"master\".\n\nYou will need to ensure that you have the latest changes from frameworks/av from main branch.\n\nhttps://android.googlesource.com/platform/frameworks/av/+log/refs/heads/main",
+      "parentUuid": "c13facfa_ea621d70",
+      "revId": "02a33a77d55b55c7a0c2dfa671bff51a61b167a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "855914ae_2ecb3a29",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 7
