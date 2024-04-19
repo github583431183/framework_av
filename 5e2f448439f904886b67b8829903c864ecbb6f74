@@ -16,6 +16,24 @@
       "message": "Should we document the behavior change in the API reference as well?",
       "revId": "5e2f448439f904886b67b8829903c864ecbb6f74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9764e439_c9e00c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-04-19T19:36:49Z",
+      "side": 1,
+      "message": "did you mean for the developer docs ? //developer.android.com/reference/android/media/MediaCodec#CONFIGURE_FLAG_USE_CRYPTO_ASYNC\n\nThe description says for mediacodec in general, but it was gated for audio till now.",
+      "parentUuid": "355337b4_db249117",
+      "revId": "5e2f448439f904886b67b8829903c864ecbb6f74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
