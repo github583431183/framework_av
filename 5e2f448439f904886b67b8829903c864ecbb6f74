@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355337b4_db249117",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-19T19:30:20Z",
+      "side": 1,
+      "message": "Should we document the behavior change in the API reference as well?",
+      "revId": "5e2f448439f904886b67b8829903c864ecbb6f74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
