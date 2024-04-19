@@ -40,7 +40,115 @@
 #include <media/stagefright/Utils.h>
 #include <media/CharacterEncodingDetector.h>
 
+#include <utils/Mutex.h>
+#include <utils/Vector.h>
+
 namespace android {
+
+// keep track of how many codecs we have cached for a subsequent metadata retrieval.
+// The idea being that we'll only cache a few; if there's too many concurrent metadata
+// calls going on, we are careful not to blow through typical limits on concurrent
+// codec instances.
+// THIS IS TEMP STUFF for some debugging
+class CacheableDecoder {
+    // keep track of cached codecs; note that this is just 'void*' as values
+    // and not actually the sp<> stored in mDecoder.
+    Mutex mLock;
+    Vector<void*> mCached;
+
+  public:
+    // false if not added because it would exceed limit
+    // true if we actually added
+    // but false if already in the list (which shouldn't happen)
+    // false if not added because it would exceed limit
+    bool addCache(void *p) {
+        if (p == nullptr) {
+            ALOGD("RBE cache -- add nullptr");
+            return false;
+        }
+
+        Mutex::Autolock lock(mLock);
+        // if already in there, we're happy
+        // although I'm not sure that we will ever do this
+        for (int i = mCached.size()-1; i >= 0; i--) {
+            if (mCached.itemAt(i) == p) {
+                ALOGD("RBE cache -- codec %p is already in the cache?", p);
+                return false;
+            }
+        }
+        // <=0 == unlimited
+        // >0 limits # decoders we allow to be cached.
+        int  cacheLimit = property_get_int32("debug.stagefright.max_metadataretriever", 0);
+        if (cacheLimit < 0) cacheLimit = 0;
+        int count = mCached.size();
+        if (cacheLimit > 0 && count >= cacheLimit) {
+            ALOGD("RBE cache -- %p: too many cached (%d, limit %d)", p, count, cacheLimit);
+            return false;
+        }
+        mCached.add(p);
+        ALOGD("RBE cache -- %p added to cache for total count %d", p, count+1);
+        return true;
+    }
+
+    void removeCache(void *p) {
+        if (p == nullptr) {
+            ALOGD("RBE cache -- remove nullptr");
+            return;
+        }
+
+        Mutex::Autolock lock(mLock);
+        for (int i = mCached.size()-1; i >= 0; i--) {
+            if (mCached.itemAt(i) == p) {
+                mCached.removeAt(i);
+                ALOGD("RBE cache -- %p removed from cache", p);
+                return;
+            }
+        }
+        ALOGD("RBE cache -- %p was not in cache", p);
+    }
+
+    // quick measure of cache effectiveness
+    // added/inhibited are around cache insertion (to consider limiting # cached)
+    uint64_t n_reuse_added = 0;
+    uint64_t n_reuse_inhibited = 0;
+    // reuse_chance, reuses -- measure the lookup side
+    uint64_t n_reuses = 0;
+    uint64_t n_reuse_chance = 0;
+
+    // added() and inhibited() are stats for cache insertion
+    void added() {
+        Mutex::Autolock lock(mLock);
+        n_reuse_added++;
+        show_stats("added");
+    }
+    void inhibited() {
+        Mutex::Autolock lock(mLock);
+        n_reuse_inhibited++;
+        show_stats("inhibited");
+    }
+    // reused() and reuse_change() measure our cache hit rates
+    void reused() {
+        Mutex::Autolock lock(mLock);
+        n_reuses++;
+        show_stats("reused");
+    }
+    void reuse_chance() {
+        Mutex::Autolock lock(mLock);
+        n_reuse_chance++;
+        show_stats("chance");
+    }
+
+  private:
+    void show_stats(const char *p) {
+        ALOGD("RBE cache %s:"
+              " added %" PRIu64 " inhibited: %" PRIu64 
+              " reused %" PRIu64 " chances: %" PRIu64,
+              p,
+              n_reuse_added, n_reuse_inhibited,
+              n_reuses, n_reuse_chance);
+    }
+};
+static CacheableDecoder cacheable;
 
 StagefrightMetadataRetriever::StagefrightMetadataRetriever()
     : mParsedMetaData(false),
@@ -51,6 +159,8 @@ StagefrightMetadataRetriever::StagefrightMetadataRetriever()
 
 StagefrightMetadataRetriever::~StagefrightMetadataRetriever() {
     ALOGV("~StagefrightMetadataRetriever()");
+    // RBE avoid orphaning entries in this local cache.
+    cacheable.removeCache(mDecoder.get());
     clearMetadata();
     if (mSource != NULL) {
         mSource->close();
@@ -135,6 +245,9 @@ sp<IMemory> StagefrightMetadataRetriever::getImageAtIndex(
     ALOGV("getImageAtIndex: index(%d) colorFormat(%d) metaOnly(%d) thumbnail(%d)",
             index, colorFormat, metaOnly, thumbnail);
 
+    // RBE -- stagefright version; do we come straight here, or from the
+    // stuff in MetadataRetrieverClient.cpp?
+
     return getImageInternal(index, colorFormat, metaOnly, thumbnail, NULL);
 }
 
@@ -145,7 +258,11 @@ sp<IMemory> StagefrightMetadataRetriever::getImageRectAtIndex(
 
     FrameRect rect = {left, top, right, bottom};
 
+    ALOGD("RBE -- getImageRectAtIndex check for cached mDecoder");
+    cacheable.reuse_chance();
     if (mDecoder != NULL && index == mLastDecodedIndex) {
+        ALOGD("RBE -- using cached mDecoder %p in getImageRectAtIndex", mDecoder.get());
+        cacheable.reused();
         return mDecoder->extractFrame(&rect);
     }
 
@@ -155,7 +272,15 @@ sp<IMemory> StagefrightMetadataRetriever::getImageRectAtIndex(
 
 sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         int index, int colorFormat, bool metaOnly, bool thumbnail, FrameRect* rect) {
+
+    // RBE -- we start by clearing any codec we had in hand
+    // which seems strange that below we save in mDecoder for reuse
+    ALOGD("RBE -- enter StagefrightMetadataRetriever::getImageInternal() mDecoder=%p",
+          mDecoder.get());
+    void *p = mDecoder.get();
     mDecoder.clear();
+    cacheable.removeCache(p);
+    ALOGD("RBE -- and immediately clear mDecoder=%p", mDecoder.get());
     mLastDecodedIndex = -1;
 
     if (mExtractor.get() == NULL) {
@@ -167,12 +292,13 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
     size_t i;
     int imageCount = 0;
 
+    // RBE we find the appropriate track
     for (i = 0; i < n; ++i) {
         sp<MetaData> meta = mExtractor->getTrackMetaData(i);
         if (!meta) {
             continue;
         }
-        ALOGV("getting track %zu of %zu, meta=%s", i, n, meta->toString().c_str());
+        ALOGD("RBE getting track %zu of %zu, meta=%s", i, n, meta->toString().c_str());
 
         const char *mime;
         if (meta->findCString(kKeyMIMEType, &mime) && !strncasecmp(mime, "image/", 6)) {
@@ -190,6 +316,7 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         return NULL;
     }
 
+    // RBE and get the metadata for that track
     sp<MetaData> trackMeta = mExtractor->getTrackMetaData(i);
     if (!trackMeta) {
         return NULL;
@@ -201,7 +328,7 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         ALOGE("image track has no mime type");
         return NULL;
     }
-    ALOGV("extracting from %s track", mime);
+    ALOGD("RBE extracting from %s track", mime);
     if (!strcasecmp(mime, MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC)) {
         mime = MEDIA_MIMETYPE_VIDEO_HEVC;
         trackMeta = new MetaData(*trackMeta);
@@ -244,6 +371,7 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         return FrameDecoder::getMetadataOnly(trackMeta, colorFormat, thumbnail, bitDepth);
     }
 
+    // RBE and we come back to get the actual track data (not the metadata)
     sp<IMediaSource> source = mExtractor->getTrack(i);
 
     if (source.get() == NULL) {
@@ -275,6 +403,7 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
         }
     }
 
+    // RBE ... generate a list of suitable codecs.
     MediaCodecList::findMatchingCodecs(
             mime,
             false, /* encoder */
@@ -282,8 +411,12 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
             format,
             &matchingCodecs);
 
+    ALOGD("RBE -- found %d codec candidates", matchingCodecs.size());
+
+    // and walk through them looking for one we can successfully use
     for (size_t i = 0; i < matchingCodecs.size(); ++i) {
         const AString &componentName = matchingCodecs[i];
+        ALOGD("RBE looking at %s", componentName.c_str());
         sp<MediaImageDecoder> decoder = new MediaImageDecoder(componentName, trackMeta, source);
         int64_t frameTimeUs = thumbnail ? -1 : 0;
         if (decoder->init(frameTimeUs, 0 /*option*/, colorFormat) == OK) {
@@ -292,16 +425,23 @@ sp<IMemory> StagefrightMetadataRetriever::getImageInternal(
             if (frame != NULL) {
                 if (rect != NULL) {
                     // keep the decoder if slice decoding
-                    mDecoder = decoder;
+                    ALOGD("RBE -- save decoder for later mDecoder=%p getFrameInternal/slice/rect",
+                          decoder.get());
+                    if (cacheable.addCache(decoder.get())) {
+                        cacheable.added();
+                        mDecoder = decoder;
+                        // perhaps the mLastDecodedIndex inside here too
+                    } else 
+                        cacheable.inhibited();
                     mLastDecodedIndex = index;
                 }
                 return frame;
             }
         }
-        ALOGV("%s failed to extract thumbnail, trying next decoder.", componentName.c_str());
+        ALOGD("RBE %s failed to extract thumbnail, trying next decoder.", componentName.c_str());
     }
 
-    ALOGE("all codecs failed to extract frame.");
+    ALOGE("RBE all codecs failed to extract frame.");
     return NULL;
 }
 
@@ -317,7 +457,10 @@ sp<IMemory> StagefrightMetadataRetriever::getFrameAtIndex(
         int frameIndex, int colorFormat, bool metaOnly) {
     ALOGV("getFrameAtIndex: frameIndex %d, colorFormat: %d, metaOnly: %d",
             frameIndex, colorFormat, metaOnly);
+    ALOGD("RBE -- check for cached mDecoder");
+    cacheable.reuse_chance();
     if (mDecoder != NULL && frameIndex == mLastDecodedIndex + 1) {
+        ALOGD("RBE -- using cached mDecoder %p in getImageRectAtIndex", mDecoder.get());
         sp<IMemory> frame = mDecoder->extractFrame();
         if (frame != nullptr) {
             mLastDecodedIndex = frameIndex;
@@ -331,7 +474,12 @@ sp<IMemory> StagefrightMetadataRetriever::getFrameAtIndex(
 
 sp<IMemory> StagefrightMetadataRetriever::getFrameInternal(
         int64_t timeUs, int option, int colorFormat, bool metaOnly) {
+    ALOGD("RBE -- enter StagefrightMetadataRetriever::getFrameInternal() mDecoder=%p",
+          mDecoder.get());
+    void *p = mDecoder.get();
     mDecoder.clear();
+    cacheable.removeCache(p);
+    ALOGD("RBE -- and immediately clear mDecoder=%p", mDecoder.get());
     mLastDecodedIndex = -1;
 
     if (mExtractor.get() == NULL) {
@@ -422,7 +570,14 @@ sp<IMemory> StagefrightMetadataRetriever::getFrameInternal(
             if (frame != nullptr) {
                 // keep the decoder if seeking by frame index
                 if (option == MediaSource::ReadOptions::SEEK_FRAME_INDEX) {
-                    mDecoder = decoder;
+                    ALOGD("RBE -- save decoder for later mDecoder=%p getFrameInternal/seek_frame-index", decoder.get());
+                    if (cacheable.addCache(decoder.get())) {
+                        cacheable.added();
+                        mDecoder = decoder;
+                        // perhaps the mLastDecodedIndex inside here too
+                    } else  {
+                        cacheable.inhibited();
+                    }
                     mLastDecodedIndex = timeUs;
                 }
                 return frame;
