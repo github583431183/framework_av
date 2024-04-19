@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75dddfc_51f4062a",
+        "filename": "media/libstagefright/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-19T14:14:57Z",
+      "side": 1,
+      "message": "This mailing list is for the team that owns MediaMuxer, MediaRecorder and seamless transcoding. FrameDecoder, SkipCutBuffer and MediaClock are owned by other teams, so I think this list shouldn\u0027t be the CC\u0027ed for those.\n\nCan we omit this line and instead rely on the Buganizer configuration/triage processes to direct issues?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abd524f_b832f8e6",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-19T14:14:57Z",
+      "side": 1,
+      "message": "Super-nit: comment syntax looks unconventional -- any reason not to use //-style comments here and on L161 and L168 in this patchset to save some lines? Please let me know if I\u0027m missing some other code style conventions (I am not very familiar with this codebase).",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 7
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8f5f4a_157d4992",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-19T14:14:57Z",
+      "side": 1,
+      "message": "This error is unexpected, right? I am not sure how the results of running this are checked, but I wonder if we should signal that in a different way or log to make sure we notice if the fuzzer doesn\u0027t actually run?",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 5
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "520aea6b_c0959876",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-19T14:14:57Z",
+      "side": 1,
+      "message": "Can we also cover the other output formats? See https://developer.android.com/reference/android/media/MediaMuxer.OutputFormat\n\nI noticed \"// For some reason it only likes mp4s here...\" in old version -- any idea what the background is there? \"For some reason\" is a bit unhelpful!",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 62
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ecafc5_60d12c09",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-19T14:14:57Z",
+      "side": 1,
+      "message": "Please explain in the comment why we need to do this.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 93
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91440db5_702cfaeb",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-19T14:14:57Z",
+      "side": 1,
+      "message": "Optional nit: I think it was clearer as before with the arguments split out into locals, and it means the inline comments aren\u0027t needed?",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 80
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55da3dc_3820b282",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-04-19T14:14:57Z",
+      "side": 1,
+      "message": "Nit: the indentation looks wrong here -- please run a code formatter on this file to fix it.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 11
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
