@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a95228cd_eb7fc0c4",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-20T00:49:10Z",
+      "side": 1,
+      "message": "Andrew,\nYes, This is not expected, but if this ever happens, this check is to just prevent fuzzer from behaving unexpectedly and filing issues. (almost equivalent of malloc failing for example).\nLog can be added, but generally those don\u0027t get noticed only when someone is running locally.\n\nAashutosh,\nPlease add a log,\nThanks.",
+      "parentUuid": "cb8f5f4a_157d4992",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 5
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "520aea6b_c0959876",
         "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2024-04-19T14:14:57Z",
       "side": 1,
       "message": "Can we also cover the other output formats? See https://developer.android.com/reference/android/media/MediaMuxer.OutputFormat\n\nI noticed \"// For some reason it only likes mp4s here...\" in old version -- any idea what the background is there? \"For some reason\" is a bit unhelpful!",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 62
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817802e9_ab4b804f",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-20T00:49:10Z",
+      "side": 1,
+      "message": "Andrew,\nThis picks a value between OUTPUT_FORMAT_MPEG_4 and OUTPUT_FORMAT_LIST_END and uses that.\n\nUnlike the older version, this one doesn\u0027t limit it to MPEG_4 format.",
+      "parentUuid": "520aea6b_c0959876",
       "range": {
         "startLine": 151,
         "startChar": 0,
