@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b9c80c_951c4192",
+        "filename": "media/codec2/sfplugin/C2NodeImpl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-04-23T20:58:34Z",
+      "side": 1,
+      "message": "Do we need some log here?",
+      "revId": "2437aab6879c90cb45e88961bfa13efa469063e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54099a46_f5173629",
+        "filename": "media/codec2/sfplugin/C2NodeImpl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-04-23T20:58:34Z",
+      "side": 1,
+      "message": "Could we have some comments on this structure?",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 127,
+        "endChar": 25
+      },
+      "revId": "2437aab6879c90cb45e88961bfa13efa469063e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
