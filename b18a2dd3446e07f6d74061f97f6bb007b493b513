@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4d630d6_22106245",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-04-23T21:49:10Z",
+      "side": 1,
+      "message": "maxSize \u003e 0 will enable this module and the framework will startg receiving metadata. When that happens this also updates the metadata for buffers help in the skip-cut buffer. If maxSize is set to 0 in the middle then we dont send metadata. So changing from zero to non-zero or non-zero to zero can cause issues with skip cut logic. So once the codec is in session, this cannot be done. But changing maxSize to another non-zero value is ok.\nThis variable is to track that situation.",
+      "parentUuid": "fa0d7ae0_7a52aab5",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fd077ca_fe75f6b1",
         "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2024-04-23T17:20:32Z",
       "side": 1,
       "message": "nit: I\u0027d prefer listing all lambda captures explicitly",
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c91c5416_eff76b51",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-04-23T21:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fd077ca_fe75f6b1",
       "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +96,24 @@
       "writtenOn": "2024-04-23T17:20:32Z",
       "side": 1,
       "message": "do we just drop the config if the reconfigure fails?",
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92de1308_4c18541a",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-04-23T21:49:10Z",
+      "side": 1,
+      "message": "yes, if we are unable to apply it now, then the old config is retained? Not sure if we need to update work-\u003econfigUpdate if we dont change.",
+      "parentUuid": "f32d7c49_8d20d1af",
       "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
