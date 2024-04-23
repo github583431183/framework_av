@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab153ce6_fe3ef71d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-04-23T21:06:05Z",
+      "side": 1,
+      "message": "I guess we need to do inputsurface related cts tests for this. some of them might be from camera?",
+      "revId": "2437aab6879c90cb45e88961bfa13efa469063e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b9c80c_951c4192",
