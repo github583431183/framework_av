@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49e59083_44f4be57",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-04-23T12:30:31Z",
+      "side": 1,
+      "message": "Removed the changes from ```LVDBE_Process``` and ```LVM_Process```",
+      "parentUuid": "4b98f794_e37e81f4",
+      "range": {
+        "startLine": 133,
+        "startChar": 36,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "54d34a7f7cf417eb346b2f158e8e49ce9b36cd7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a3380c9_235e7c55",
         "filename": "media/libeffects/lvm/lib/Common/src/From2iToMono_32.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-22T16:54:32Z",
       "side": 1,
       "message": "I suppose we need to change the type of `ii` to avoid an overflow here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "54d34a7f7cf417eb346b2f158e8e49ce9b36cd7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c99635_4d4da3ee",
+        "filename": "media/libeffects/lvm/lib/Common/src/From2iToMono_32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-04-23T12:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3380c9_235e7c55",
       "range": {
         "startLine": 28,
         "startChar": 9,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-04-22T16:54:32Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "54d34a7f7cf417eb346b2f158e8e49ce9b36cd7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e260a828_77124702",
+        "filename": "media/libeffects/lvm/lib/Common/src/From2iToMono_32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-04-23T12:30:31Z",
+      "side": 1,
+      "message": "Removed the changes from ```LVDBE_Process``` and ```LVM_Process``` as ```BundleContext``` passes max of ```int16_t``` frames to process at a time.",
+      "parentUuid": "ad431851_6351a273",
       "range": {
         "startLine": 63,
         "startChar": 9,
