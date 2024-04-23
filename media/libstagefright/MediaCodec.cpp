@@ -4684,6 +4684,9 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         break;
                     }
                     setState(UNINITIALIZED);
+                    if (android::media::codec::provider_->keep_buffers_on_error()) {
+                        returnBuffersToCodec();
+                    }
                     mComponentName.clear();
 
                     mFlags &= ~kFlagIsComponentAllocated;
@@ -5280,6 +5283,9 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 response->setInt32("err", err);
                 // TODO: mErrorLog
                 if (err == OK && targetState == UNINITIALIZED) {
+                    if (android::media::codec::provider_->keep_buffers_on_error()) {
+                        returnBuffersToCodec();
+                    }
                     mComponentName.clear();
                 }
                 response->postReply(replyID);
@@ -5307,6 +5313,9 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 // any useful results now...
                 // Any pending reply would have been handled at kWhatError.
                 setState(UNINITIALIZED);
+                if (android::media::codec::provider_->keep_buffers_on_error()) {
+                    returnBuffersToCodec();
+                }
                 if (targetState == UNINITIALIZED) {
                     mComponentName.clear();
                 }
@@ -6065,8 +6074,11 @@ void MediaCodec::setState(State newState) {
     }
 
     if (newState == UNINITIALIZED) {
-        // return any straggling buffers, e.g. if we got here on an error
-        returnBuffersToCodec();
+        // Preserve old behavior if flag is not set
+        if (!android::media::codec::provider_->keep_buffers_on_error()) {
+            // return any straggling buffers, e.g. if we got here on an error
+            returnBuffersToCodec();
+        }
 
         // The component is gone, mediaserver's probably back up already
         // but should definitely be back up should we try to instantiate

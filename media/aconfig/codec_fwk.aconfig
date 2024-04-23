@@ -44,6 +44,15 @@ flag {
 }
 
 flag {
+  name: "keep_buffers_on_error"
+  namespace: "codec_fwk"
+  description:
+      "Feature flag for behavior change that framework keeps the buffer in case of error, "
+      "and release them when the app releases the codec"
+  bug: "232829674"
+}
+
+flag {
   name: "large_audio_frame_finish"
   namespace: "codec_fwk"
   description: "Implementation flag for large audio frame finishing tasks"
