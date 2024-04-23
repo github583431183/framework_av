@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bcdf8a_b6835206",
+        "filename": "media/libstagefright/tests/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-04-23T19:24:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a75dddfc_51f4062a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abd524f_b832f8e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-19T14:14:57Z",
       "side": 1,
       "message": "Super-nit: comment syntax looks unconventional -- any reason not to use //-style comments here and on L161 and L168 in this patchset to save some lines? Please let me know if I\u0027m missing some other code style conventions (I am not very familiar with this codebase).",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 7
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7a88e7_da74968b",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-04-23T19:24:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8abd524f_b832f8e6",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "Andrew,\nYes, This is not expected, but if this ever happens, this check is to just prevent fuzzer from behaving unexpectedly and filing issues. (almost equivalent of malloc failing for example).\nLog can be added, but generally those don\u0027t get noticed only when someone is running locally.\n\nAashutosh,\nPlease add a log,\nThanks.",
       "parentUuid": "cb8f5f4a_157d4992",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 5
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5347b148_5b12a3a0",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-04-23T19:24:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a95228cd_eb7fc0c4",
       "range": {
         "startLine": 146,
         "startChar": 0,
@@ -188,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3a9531_58cc7dfa",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-04-23T19:24:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "18ecafc5_60d12c09",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 93
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91440db5_702cfaeb",
@@ -211,6 +307,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f64256b9_cf74f188",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-04-23T19:24:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "91440db5_702cfaeb",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 80
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d55da3dc_3820b282",
@@ -224,6 +344,30 @@
       "writtenOn": "2024-04-19T14:14:57Z",
       "side": 1,
       "message": "Nit: the indentation looks wrong here -- please run a code formatter on this file to fix it.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 11
+      },
+      "revId": "095569c840e33a509978e9a5ff3350271e25d95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cac03c_a362442f",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-04-23T19:24:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d55da3dc_3820b282",
       "range": {
         "startLine": 232,
         "startChar": 0,
