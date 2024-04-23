@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0d7ae0_7a52aab5",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-23T17:20:32Z",
+      "side": 1,
+      "message": "is this equivalent to `mFrameHolder.empty()`? if so -- should we have it as a method?",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd077ca_fe75f6b1",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-23T17:20:32Z",
+      "side": 1,
+      "message": "nit: I\u0027d prefer listing all lambda captures explicitly",
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32d7c49_8d20d1af",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-23T17:20:32Z",
+      "side": 1,
+      "message": "do we just drop the config if the reconfigure fails?",
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
