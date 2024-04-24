@@ -27,6 +27,9 @@ cc_fuzz {
     srcs: [
         "codecServiceRegistrant_fuzzer.cpp",
     ],
+    cflags: [
+        "-DDISABLE_THREADPOOL",
+    ],
     static_libs: [
         "libmedia_codecserviceregistrant",
     ],
