@@ -16,6 +16,23 @@
       "message": "Any concerns over this patch ?",
       "revId": "5aa1c7bbf4a0bfb61c9880a37cbbf6a86ced9f4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc6adcb_0e287ca3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-04-24T17:03:47Z",
+      "side": 1,
+      "message": "I wold porefer we modify the flag at track creation time like we do for direct here:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/Threads.cpp;l\u003d2564?q\u003daudioflinger%20threads.cpp\n\nThen track-\u003eisOffloaded() and track-\u003egetOutputFlags() will always be consistent.",
+      "revId": "5aa1c7bbf4a0bfb61c9880a37cbbf6a86ced9f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
