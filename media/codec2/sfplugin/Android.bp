@@ -83,12 +83,15 @@ cc_library_shared {
         "libstagefright_xmlparser",
         "libui",
         "libutils",
-        "server_configurable_flags",
     ],
 
     export_shared_lib_headers: [
         "libcodec2",
         "libcodec2_client",
+    ],
+
+    defaults: [
+        "libaconfig_storage_read_api_cc.defaults",
     ],
 
     sanitize: {

@@ -27,10 +27,13 @@ cc_library {
         "libcodec2_vndk",
         "liblog",
         "libstagefright_foundation",
-        "server_configurable_flags",
     ],
 
     static_libs: ["aconfig_mediacodec_flags_c_lib"],
+
+    defaults: [
+        "libaconfig_storage_read_api_cc.defaults",
+    ],
 }
 
 cc_library_static {

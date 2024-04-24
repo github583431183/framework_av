@@ -40,4 +40,7 @@ cc_library_shared {
         "libutils",
         "libxml2",
     ],
+    defaults: [
+        "libaconfig_storage_read_api_cc.defaults",
+    ],
 }

@@ -27,7 +27,9 @@ cc_test {
         "libstatspull",
         "libstatssocket",
         "libactivitymanager_aidl",
-        "server_configurable_flags",
+    ],
+    defaults: [
+        "libaconfig_storage_read_api_cc.defaults",
     ],
     include_dirs: [
         "frameworks/av/include",

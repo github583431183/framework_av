@@ -53,6 +53,7 @@ cc_library {
     ],
 
     defaults: [
+	"libaconfig_storage_read_api_cc.defaults",
         "libcodec2_hal_selection",
     ],
 

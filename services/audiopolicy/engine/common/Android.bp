@@ -59,6 +59,8 @@ cc_library_static {
     ],
     whole_static_libs: [
         "com.android.media.audio-aconfig-cc",
-        "server_configurable_flags",
+    ],
+    defaults: [
+        "libaconfig_storage_read_api_cc.defaults",
     ],
 }
