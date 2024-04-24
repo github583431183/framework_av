@@ -18,6 +18,8 @@
 
 #define CODEC_SERVICE_REGISTRANT_H_
 
+extern "C" void RegisterCodecServices();
+
 typedef void (*RegisterCodecServicesFunc)();
 
 #endif  // CODEC_SERVICE_REGISTRANT_H_
