@@ -168,7 +168,7 @@ void CodecServiceRegistrantFuzzer::process(const uint8_t *data, size_t size) {
   invokeH2C2ComponentStore();
   /** RegisterCodecServices is called here to improve code coverage */
   /** as currently it is not called by codecServiceRegistrant       */
-  RegisterCodecServices();
+  RegisterCodecServices(0);
   delete mFDP;
 }
 

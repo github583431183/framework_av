@@ -775,12 +775,13 @@ static android::sp<c2_hidl_V1_0::IComponentStore> getDeclaredHidlSwcodec(
     return nullptr;
 }
 
-extern "C" void RegisterCodecServices() {
+extern "C" void RegisterCodecServices(const int threadCount = 64) {
     const bool aidlSelected = c2_aidl::utils::IsSelected();
-    constexpr int kThreadCount = 64;
-    ABinderProcess_setThreadPoolMaxThreadCount(kThreadCount);
-    ABinderProcess_startThreadPool();
-    ::android::hardware::configureRpcThreadpool(kThreadCount, false);
+    if (threadCount > 0) {
+        ABinderProcess_setThreadPoolMaxThreadCount(threadCount);
+        ABinderProcess_startThreadPool();
+        ::android::hardware::configureRpcThreadpool(threadCount, false);
+    }
 
     LOG(INFO) << "Creating software Codec2 service...";
     std::shared_ptr<C2ComponentStore> store =
@@ -881,7 +882,8 @@ extern "C" void RegisterCodecServices() {
         LOG(INFO) << "Software Codec2 service created and registered.";
     }
 
-    ABinderProcess_joinThreadPool();
-    ::android::hardware::joinRpcThreadpool();
+    if (threadCount > 0) {
+        ABinderProcess_joinThreadPool();
+        ::android::hardware::joinRpcThreadpool();
+    }
 }
-
