@@ -33,6 +33,29 @@
       "message": "I wold porefer we modify the flag at track creation time like we do for direct here:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/Threads.cpp;l\u003d2564?q\u003daudioflinger%20threads.cpp\n\nThen track-\u003eisOffloaded() and track-\u003egetOutputFlags() will always be consistent.",
       "revId": "5aa1c7bbf4a0bfb61c9880a37cbbf6a86ced9f4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d79d8c_5295e029",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2024-04-24T21:07:01Z",
+      "side": 1,
+      "message": "You lost the parenthesis that was around the original set of \u0026\u0026 clauses!",
+      "range": {
+        "startLine": 1332,
+        "startChar": 41,
+        "endLine": 1332,
+        "endChar": 43
+      },
+      "revId": "5aa1c7bbf4a0bfb61c9880a37cbbf6a86ced9f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
