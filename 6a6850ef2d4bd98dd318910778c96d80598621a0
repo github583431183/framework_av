@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5643ee0_8834994f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1998260
+      },
+      "writtenOn": "2024-04-24T14:17:27Z",
+      "side": 1,
+      "message": "Sungtak - I believe this CL is ready for review again.",
+      "revId": "6a6850ef2d4bd98dd318910778c96d80598621a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
