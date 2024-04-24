@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78498738_ca5d045e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-24T02:27:39Z",
+      "side": 1,
+      "message": "minor changes required w.r.t. line length to be under 100 chars.",
+      "revId": "99bd1f6ba816b4af74b5deef1b38cbc837571055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8b14b7_78017386",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-24T02:27:39Z",
+      "side": 1,
+      "message": "nit: please ensure line length is under 100 chars",
+      "range": {
+        "startLine": 1546,
+        "startChar": 0,
+        "endLine": 1546,
+        "endChar": 107
+      },
+      "revId": "99bd1f6ba816b4af74b5deef1b38cbc837571055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb016096_668b81e7",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-24T02:27:39Z",
+      "side": 1,
+      "message": "nit: please ensure line length is under 100 chars",
+      "range": {
+        "startLine": 1550,
+        "startChar": 0,
+        "endLine": 1550,
+        "endChar": 106
+      },
+      "revId": "99bd1f6ba816b4af74b5deef1b38cbc837571055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dcb0c50_7f79a162",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-24T02:27:39Z",
+      "side": 1,
+      "message": "nit: please ensure line length is under 100 chars",
+      "range": {
+        "startLine": 1598,
+        "startChar": 0,
+        "endLine": 1598,
+        "endChar": 101
+      },
+      "revId": "99bd1f6ba816b4af74b5deef1b38cbc837571055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7608bb24_f931a474",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1614,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-24T02:27:39Z",
+      "side": 1,
+      "message": "nit: please ensure line length is under 100 chars",
+      "range": {
+        "startLine": 1614,
+        "startChar": 0,
+        "endLine": 1614,
+        "endChar": 110
+      },
+      "revId": "99bd1f6ba816b4af74b5deef1b38cbc837571055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80870db7_555c2868",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1978,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-24T02:27:39Z",
+      "side": 1,
+      "message": "nit: please ensure line length is under 100 chars",
+      "range": {
+        "startLine": 1978,
+        "startChar": 0,
+        "endLine": 1978,
+        "endChar": 109
+      },
+      "revId": "99bd1f6ba816b4af74b5deef1b38cbc837571055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caeec340_b6fc77ff",
+        "filename": "media/libstagefright/VvcUtils.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-24T02:27:39Z",
+      "side": 1,
+      "message": "nit: please ensure line length is under 100 chars\n\nthere are a few more such occurrences in this file. Please fix all.",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 106
+      },
+      "revId": "99bd1f6ba816b4af74b5deef1b38cbc837571055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
