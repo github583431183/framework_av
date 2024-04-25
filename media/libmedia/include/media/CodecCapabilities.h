@@ -21,6 +21,8 @@
 #include <media/AudioCapabilities.h>
 #include <media/VideoCapabilities.h>
 #include <media/CodecCapabilitiesUtils.h>
+#include <media/EncoderCapabilities.h>
+#include <media/VideoCapabilities.h>
 #include <media/stagefright/foundation/ABase.h>
 #include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AString.h>
@@ -54,6 +56,7 @@ private:
 
     std::shared_ptr<AudioCapabilities> mAudioCaps;
     std::shared_ptr<VideoCapabilities> mVideoCaps;
+    std::shared_ptr<EncoderCapabilities> mEncoderCaps;
 };
 
 }  // namespace android
