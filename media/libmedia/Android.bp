@@ -223,7 +223,6 @@ cc_library_static {
         "com.android.media",
     ],
 
-
     srcs: ["MidiIoWrapper.cpp"],
 
     static_libs: [
@@ -255,6 +254,49 @@ cc_library_static {
         darwin: {
             enabled: false,
         },
+    },
+}
+
+cc_library_shared {
+    name: "libmedia_codeclist_codeccapabilities",
+
+    srcs: [
+        "CodecCapabilities.cpp",
+        "CodecCapabilitiesUtils.cpp",
+    ],
+
+    local_include_dirs: [
+        "include",
+    ],
+
+    shared_libs: [
+        "libmedia_codeclist",
+        "libbinder",
+        "liblog",
+        "libstagefright_foundation",
+        "libutils",
+    ],
+
+    include_dirs: [
+        "system/libhidl/transport/token/1.0/utils/include",
+    ],
+
+    export_include_dirs: [
+        "include",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wno-error=deprecated-declarations",
+        "-Wall",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
     },
 }
 
