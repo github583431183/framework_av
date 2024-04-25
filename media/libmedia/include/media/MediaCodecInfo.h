@@ -20,6 +20,8 @@
 
 #include <android-base/macros.h>
 #include <binder/Parcel.h>
+#include <media/CodecCapabilities.h>
+#include <media/CodecCapabilitiesUtils.h>
 #include <media/stagefright/foundation/ABase.h>
 #include <media/stagefright/foundation/AString.h>
 
