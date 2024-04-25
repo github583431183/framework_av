@@ -198,3 +198,58 @@ TEST(CodecCapabilitiesTest, AudioCapsTest) {
     EXPECT_EQ(audioCaps2->isSampleRateSupported(10000), true);
     EXPECT_EQ(audioCaps2->isSampleRateSupported(193000), false);
 }
+
+TEST(CodecCapabilitiesTest, VideoCapsTest) {
+
+    // Test Case 1 : HEVC
+
+    sp<AMessage> details1 = new AMessage;
+    details1->setString("alignment", "2x2");
+    details1->setString("bitrate-range", "1-120000000");
+    details1->setString("block-count-range", "1-32640");
+    details1->setString("block-size", "16x16");
+    details1->setString("blocks-per-second-range", "1-3916800");
+    details1->setInt32("feature-adaptive-playback", 0);
+    details1->setInt32("feature-can-swap-width-height", 1);
+    details1->setString("max-concurrent-instances", "16");
+    details1->setString("measured-frame-rate-1280x720-range", "547-553");
+    details1->setString("measured-frame-rate-1920x1080-range", "569-572");
+    details1->setString("measured-frame-rate-352x288-range", "1150-1250");
+    details1->setString("measured-frame-rate-3840x2160-range", "159-159");
+    details1->setString("measured-frame-rate-640x360-range", "528-529");
+    details1->setString("measured-frame-rate-720x480-range", "546-548");
+    details1->setString("performance-point-1280x720-range", "240");
+    details1->setString("performance-point-3840x2160-range", "120");
+    details1->setString("size-range", "64x64-3840x2176");
+
+    std::vector<ProfileLevel> profileLevel1{
+        ProfileLevel(1, 8388608),
+        ProfileLevel(2, 8388608),
+        ProfileLevel(4096, 8388608),
+        ProfileLevel(8192, 8388608),
+    };
+
+    // std::vector<uint32_t> colorFormats1{2130708361, 2135033992, 19, 21, 20, 39, 54};
+
+    // Test
+
+    std::shared_ptr<VideoCapabilities> videoCaps1
+            = VideoCapabilities::Create(MIMETYPE_VIDEO_HEVC, profileLevel1, details1);
+
+    int widthAlignment1 = videoCaps1->getWidthAlignment();
+    EXPECT_EQ(widthAlignment1, 2);
+    int heightAlignment1 = videoCaps1->getHeightAlignment();
+    EXPECT_EQ(heightAlignment1, 2);
+
+    Range<int> bitrateRange1 = videoCaps1->getBitrateRange();
+    EXPECT_EQ(bitrateRange1.lower(), 1);
+    EXPECT_EQ(bitrateRange1.upper(), 120000000);
+
+    Range<int> supportedWidths = videoCaps1->getSupportedWidths();  // 64, 3840
+    ALOGD("supportedWidths: %d, %d", supportedWidths.lower(), supportedWidths.upper());
+    Range<int> supportedHeights = videoCaps1->getSupportedHeights();  // 64, 3840
+    ALOGD("supportedHeights: %d, %d", supportedHeights.lower(), supportedHeights.upper());
+
+    Range<int> supportedFrameRates = videoCaps1->getSupportedFrameRates(); // 0, 960
+    ALOGD("supportedFrameRates: %d, %d", supportedFrameRates.lower(), supportedFrameRates.upper());
+}
