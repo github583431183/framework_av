@@ -45,13 +45,9 @@ struct MediaCodecInfoWriter;
 struct MediaCodecListWriter;
 
 struct MediaCodecInfo : public RefBase {
-    struct ProfileLevel {
-        uint32_t mProfile;
-        uint32_t mLevel;
-        bool operator <(const ProfileLevel &o) const {
-            return mProfile < o.mProfile || (mProfile == o.mProfile && mLevel < o.mLevel);
-        }
-    };
+
+    // Map MediaCodecInfo::ProfileLevel to ProfileLevel in global namespace.
+    typedef ProfileLevel ProfileLevel;
 
     struct CapabilitiesWriter;
 
