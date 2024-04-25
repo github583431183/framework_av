@@ -29,4 +29,30 @@
 
 namespace android {
 
+std::optional<Range<int>> ParseIntRange(const std::string &str) {
+    if (str.empty()) {
+        ALOGW("could not parse integer range: %s", str.c_str());
+        return std::nullopt;
+    }
+    int lower, upper;
+    size_t ix = str.find_first_of('-');
+    if (ix != std::string::npos) {
+        lower = strtol(str.substr(0, ix).c_str(), NULL, 10);
+        upper = strtol(str.substr(ix + 1).c_str(), NULL, 10);
+        if ((lower == 0 && str.substr(0, ix) != "0")
+                || (upper == 0 && str.substr(ix + 1) != "0")) {
+            ALOGW("could not parse integer range: %s", str.c_str());
+            return std::nullopt;
+        }
+    } else {
+        int value = strtol(str.c_str(), NULL, 10);
+        if (value == 0 && str != "0") {
+            ALOGW("could not parse integer range: %s", str.c_str());
+            return std::nullopt;
+        }
+        lower = upper = value;
+    }
+    return std::make_optional<Range<int>>(lower, upper);
+}
+
 }  // namespace android
