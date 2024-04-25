@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a85dc42_99dcf1c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-04-25T05:33:18Z",
+      "side": 1,
+      "message": "Updating track flags might cause CTS failure. Here is a patch that was abandoned due to the same, https://android-review.googlesource.com/c/platform/frameworks/av/+/2625182.\nBut if the track flags is a local variable in the latest AOSP base, then it could be feasible. \n@elaurent@google.com could you pls share your thoughts.",
+      "parentUuid": "cbc6adcb_0e287ca3",
+      "revId": "5aa1c7bbf4a0bfb61c9880a37cbbf6a86ced9f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76d79d8c_5295e029",
         "filename": "services/audioflinger/Tracks.cpp",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2024-04-24T21:07:01Z",
       "side": 1,
       "message": "You lost the parenthesis that was around the original set of \u0026\u0026 clauses!",
+      "range": {
+        "startLine": 1332,
+        "startChar": 41,
+        "endLine": 1332,
+        "endChar": 43
+      },
+      "revId": "5aa1c7bbf4a0bfb61c9880a37cbbf6a86ced9f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b19860_b62d2fc4",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-04-25T05:33:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "76d79d8c_5295e029",
       "range": {
         "startLine": 1332,
         "startChar": 41,
