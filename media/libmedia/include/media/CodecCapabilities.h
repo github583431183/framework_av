@@ -18,6 +18,7 @@
 
 #define CODEC_CAPABILITIES_H_
 
+#include <media/AudioCapabilities.h>
 #include <media/CodecCapabilitiesUtils.h>
 #include <media/stagefright/foundation/ABase.h>
 #include <media/stagefright/foundation/AMessage.h>
@@ -32,10 +33,29 @@
 namespace android {
 
 struct CodecCapabilities : public std::enable_shared_from_this<CodecCapabilities> {
+
+    static bool SupportsBitrate(Range<int> bitrateRange,
+            const sp<AMessage> &format);
+
+    /**
+     * Returns the media type for which this codec-capability object was created.
+     */
+    AString getMediaType();
+
+    /**
+     * Returns the supported profile levels.
+     */
+    std::vector<ProfileLevel> getProfileLevels();
+
 private:
+    AString mMediaType;
+    std::vector<ProfileLevel> mProfileLevels;
     int mError;
+ 
+    std::shared_ptr<AudioCapabilities> mAudioCaps;
 
     friend struct XCapabilitiesBase;
+    friend struct AudioCapabilities;
 };
 
 }  // namespace android
