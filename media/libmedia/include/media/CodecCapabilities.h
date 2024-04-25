@@ -53,9 +53,11 @@ private:
     int mError;
 
     std::shared_ptr<AudioCapabilities> mAudioCaps;
+    std::shared_ptr<VideoCapabilities> mVideoCaps;
 
     friend struct XCapabilitiesBase;
     friend struct AudioCapabilities;
+    friend struct VideoCapabilities;
 };
 
 }  // namespace android
