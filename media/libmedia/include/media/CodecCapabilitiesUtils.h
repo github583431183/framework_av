@@ -30,6 +30,14 @@
 
 namespace android {
 
+struct ProfileLevel {
+    uint32_t mProfile;
+    uint32_t mLevel;
+    bool operator <(const ProfileLevel &o) const {
+        return mProfile < o.mProfile || (mProfile == o.mProfile && mLevel < o.mLevel);
+    }
+};
+
 /**
  * Immutable class for describing the range of two numeric values.
  *
