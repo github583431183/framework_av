@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ddedd27_84961edb",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-04-26T15:16:15Z",
+      "side": 1,
+      "message": "LGTM but can you just use the positive condition if(isPlaying_l()) and inverse the blocks so that the style is consistent with line 1722",
+      "range": {
+        "startLine": 1710,
+        "startChar": 0,
+        "endLine": 1710,
+        "endChar": 37
+      },
+      "revId": "1558722bc8cf7417ad8ecd11076f06ca3be1b9c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
