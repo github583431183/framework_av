@@ -161,6 +161,8 @@ BINDER_METHOD_ENTRY(getSpatializer) \
 BINDER_METHOD_ENTRY(canBeSpatialized) \
 BINDER_METHOD_ENTRY(getDirectPlaybackSupport) \
 BINDER_METHOD_ENTRY(getDirectProfilesForAttributes)  \
+BINDER_METHOD_ENTRY(getDirectPlaybackSupportWithUid) \
+BINDER_METHOD_ENTRY(getDirectProfilesForAttributesAndUid)  \
 BINDER_METHOD_ENTRY(getSupportedMixerAttributes) \
 BINDER_METHOD_ENTRY(setPreferredMixerAttributes) \
 BINDER_METHOD_ENTRY(getPreferredMixerAttributes) \
@@ -1307,6 +1309,7 @@ status_t AudioPolicyService::onTransact(
         case TRANSACTION_initStreamVolume:
         case TRANSACTION_setStreamVolumeIndex:
         case TRANSACTION_setVolumeGroupVolumeIndex:
+        case TRANSACTION_setVolumeGroupVolumeIndexWithUid:
         case TRANSACTION_getStreamVolumeIndex:
         case TRANSACTION_getVolumeGroupVolumeIndex:
         case TRANSACTION_getVolumeGroupMinVolumeIndex:
@@ -1341,6 +1344,7 @@ status_t AudioPolicyService::onTransact(
         case TRANSACTION_clearDevicesRoleForStrategy:
         case TRANSACTION_getDevicesForRoleAndStrategy:
         case TRANSACTION_getDevicesForAttributes:
+        case TRANSACTION_getDevicesForAttributesAndUid:
         case TRANSACTION_setAllowedCapturePolicy:
         case TRANSACTION_onNewAudioModulesAvailable:
         case TRANSACTION_setCurrentImeUid:
