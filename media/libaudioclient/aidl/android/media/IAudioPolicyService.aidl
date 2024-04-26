@@ -118,14 +118,14 @@ interface IAudioPolicyService {
                           int indexMin,
                           int indexMax);
 
-    void setStreamVolumeIndex(AudioStreamType stream,
+    void setStreamVolumeIndex(AudioStreamType stream, int /* uid_t */ uid,
                               in AudioDeviceDescription device,
                               int index);
 
     int getStreamVolumeIndex(AudioStreamType stream,
                              in AudioDeviceDescription device);
 
-    void setVolumeGroupVolumeIndex(int /* volume_group_id */ groupId,
+    void setVolumeGroupVolumeIndex(int /* volume_group_id */ groupId, int /* uid_t */ uid,
                                    in AudioDeviceDescription device,
                                    int index);
 
@@ -138,7 +138,8 @@ interface IAudioPolicyService {
 
     int /* product_strategy_t */ getStrategyForStream(AudioStreamType stream);
 
-    AudioDevice[] getDevicesForAttributes(in AudioAttributes attr, boolean forVolume);
+    AudioDevice[] getDevicesForAttributes(
+            in AudioAttributes attr, int /* uid_t*/ uid, boolean forVolume);
 
     int /* audio_io_handle_t */ getOutputForEffect(in EffectDescriptor desc);
 
@@ -410,13 +411,14 @@ interface IAudioPolicyService {
      * Query how the direct playback is currently supported on the device.
      */
     AudioDirectMode getDirectPlaybackSupport(in AudioAttributes attr,
-                                              in AudioConfig config);
+                                             int /* uid_t */ uid,
+                                             in AudioConfig config);
 
     /**
      * Query audio profiles available for direct playback on the current output device(s)
      * for the specified audio attributes.
      */
-    AudioProfile[] getDirectProfilesForAttributes(in AudioAttributes attr);
+    AudioProfile[] getDirectProfilesForAttributes(in AudioAttributes attr, int /* uid_t */ uid);
 
     /**
      * Return a list of AudioMixerAttributes that can be used to set preferred mixer attributes

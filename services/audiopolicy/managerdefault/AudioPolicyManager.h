@@ -161,14 +161,14 @@ public:
          * @param indexMax to set
          */
         virtual void initStreamVolume(audio_stream_type_t stream, int indexMin, int indexMax);
-        virtual status_t setStreamVolumeIndex(audio_stream_type_t stream,
+        virtual status_t setStreamVolumeIndex(audio_stream_type_t stream, uid_t uid,
                                               int index,
                                               audio_devices_t device);
         virtual status_t getStreamVolumeIndex(audio_stream_type_t stream,
                                               int *index,
                                               audio_devices_t device);
 
-        virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId,
+        virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId, uid_t uid,
                                                    int index,
                                                    audio_devices_t device);
         virtual status_t getVolumeGroupVolumeIndex(volume_group_t groupId,
@@ -218,13 +218,14 @@ public:
          *    (from the default Engine::getOutputDevicesForAttributes() implementation).
          *
          * @param attributes to be considered
+         * @param uid to be considered
          * @param devices    an AudioDeviceTypeAddrVector container passed in that
          *                   will be filled on success.
          * @param forVolume  true if the devices are to be associated with current device volume.
          * @return           NO_ERROR on success.
          */
         virtual status_t getDevicesForAttributes(
-                const audio_attributes_t &attributes,
+                const audio_attributes_t &attributes, uid_t uid,
                 AudioDeviceTypeAddrVector *devices,
                 bool forVolume);
 
@@ -413,9 +414,11 @@ public:
         virtual status_t releaseSpatializerOutput(audio_io_handle_t output);
 
         virtual audio_direct_mode_t getDirectPlaybackSupport(const audio_attributes_t *attr,
+                                                             uid_t uid,
                                                              const audio_config_t *config);
 
         virtual status_t getDirectProfilesForAttributes(const audio_attributes_t* attr,
+                                                         uid_t uid,
                                                          AudioProfileVector& audioProfiles);
 
         status_t getSupportedMixerAttributes(
@@ -1340,7 +1343,7 @@ private:
         // Filters only the relevant flags for getProfileForOutput
         audio_output_flags_t getRelevantFlags (audio_output_flags_t flags, bool directOnly);
 
-        status_t getDevicesForAttributes(const audio_attributes_t &attr,
+        status_t getDevicesForAttributes(const audio_attributes_t &attr, uid_t uid,
                                          DeviceVector &devices,
                                          bool forVolume);
 

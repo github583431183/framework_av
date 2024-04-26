@@ -373,14 +373,14 @@ public:
     static status_t initStreamVolume(audio_stream_type_t stream,
                                       int indexMin,
                                       int indexMax);
-    static status_t setStreamVolumeIndex(audio_stream_type_t stream,
+    static status_t setStreamVolumeIndex(audio_stream_type_t stream, uid_t uid,
                                          int index,
                                          audio_devices_t device);
     static status_t getStreamVolumeIndex(audio_stream_type_t stream,
                                          int *index,
                                          audio_devices_t device);
 
-    static status_t setVolumeGroupVolumeIndex(volume_group_t groupId,
+    static status_t setVolumeGroupVolumeIndex(volume_group_t groupId, uid_t uid,
                                               int index,
                                               audio_devices_t device);
     static status_t getVolumeGroupVolumeIndex(volume_group_t groupId,
@@ -393,6 +393,7 @@ public:
 
     static product_strategy_t getStrategyForStream(audio_stream_type_t stream);
     static status_t getDevicesForAttributes(const audio_attributes_t &aa,
+                                            uid_t uid,
                                             AudioDeviceTypeAddrVector *devices,
                                             bool forVolume);
 
@@ -646,6 +647,7 @@ public:
      *         in case of error.
      */
     static status_t getDirectPlaybackSupport(const audio_attributes_t *attr,
+                                             uid_t uid,
                                              const audio_config_t *config,
                                              audio_direct_mode_t *directMode);
 
@@ -657,8 +659,8 @@ public:
      * @return NO_ERROR in case of success, DEAD_OBJECT, NO_INIT, BAD_VALUE, PERMISSION_DENIED
      *         in case of error.
      */
-    static status_t getDirectProfilesForAttributes(const audio_attributes_t* attr,
-                                            std::vector<audio_profile>* audioProfiles);
+    static status_t getDirectProfilesForAttributes(const audio_attributes_t* attr, uid_t uid,
+            std::vector<audio_profile>* audioProfiles);
 
     static status_t setRequestedLatencyMode(
             audio_io_handle_t output, audio_latency_mode_t mode);
