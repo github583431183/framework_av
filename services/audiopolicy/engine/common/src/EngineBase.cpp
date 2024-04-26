@@ -25,6 +25,7 @@
 #include "EngineDefaultConfig.h"
 #include <TypeConverter.h>
 #include <com_android_media_audio.h>
+#include <cutils/multiuser.h>
 
 namespace android {
 namespace audio_policy {
@@ -94,8 +95,8 @@ product_strategy_t EngineBase::getProductStrategyForAttributes(
 product_strategy_t EngineBase::getProductStrategyForAttributes(
         const audio_attributes_t &attr, uid_t uid, bool fallbackOnDefault) const
 {
-    return mProductStrategies.getProductStrategyForAttributes(attr, getZoneIdForUid(uid),
-                                                              fallbackOnDefault);
+    return mProductStrategies.getProductStrategyForAttributes(attr,
+            getZoneIdForUserId(multiuser_get_user_id(uid)), fallbackOnDefault);
 }
 
 audio_stream_type_t EngineBase::getStreamTypeForAttributes(const audio_attributes_t &attr) const
