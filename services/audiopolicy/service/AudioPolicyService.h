@@ -130,7 +130,7 @@ public:
     binder::Status getStreamVolumeIndex(AudioStreamType stream,
                                         const AudioDeviceDescription& device,
                                         int32_t* _aidl_return) override;
-    binder::Status setVolumeGroupVolumeIndex(int32_t groupId,
+    binder::Status setVolumeGroupVolumeIndex(int32_t groupId, int32_t uid,
                                              const AudioDeviceDescription& device,
                                              int32_t index) override;
     binder::Status getVolumeGroupVolumeIndex(int32_t groupId,
@@ -143,6 +143,7 @@ public:
     binder::Status getStrategyForStream(AudioStreamType stream,
                                         int32_t* _aidl_return) override;
     binder::Status getDevicesForAttributes(const media::audio::common::AudioAttributes& attr,
+                                           int32_t uid,
                                            bool forVolume,
                                            std::vector<AudioDevice>* _aidl_return) override;
     binder::Status getOutputForEffect(const media::EffectDescriptor& desc,
@@ -293,11 +294,12 @@ public:
             bool* _aidl_return) override;
 
     binder::Status getDirectPlaybackSupport(const media::audio::common::AudioAttributes& attr,
+                                            int32_t uid,
                                             const AudioConfig& config,
                                             media::AudioDirectMode* _aidl_return) override;
 
     binder::Status getDirectProfilesForAttributes(const media::audio::common::AudioAttributes& attr,
-                        std::vector<media::audio::common::AudioProfile>* _aidl_return) override;
+            int32_t uid, std::vector<media::audio::common::AudioProfile>* _aidl_return) override;
 
     binder::Status getSupportedMixerAttributes(
             int32_t portId,
