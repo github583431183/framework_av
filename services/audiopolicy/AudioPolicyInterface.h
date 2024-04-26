@@ -197,7 +197,7 @@ public:
                                           int *index,
                                           audio_devices_t device) = 0;
 
-    virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId,
+    virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId, uid_t uid,
                                                int index,
                                                audio_devices_t device) = 0;
     virtual status_t getVolumeGroupVolumeIndex(volume_group_t groupId,
@@ -212,7 +212,7 @@ public:
     virtual product_strategy_t getStrategyForStream(audio_stream_type_t stream) = 0;
 
     // retrieves the list of enabled output devices for the given audio attributes
-    virtual status_t getDevicesForAttributes(const audio_attributes_t &attr,
+    virtual status_t getDevicesForAttributes(const audio_attributes_t &attr, uid_t uid,
                                              AudioDeviceTypeAddrVector *devices,
                                              bool forVolume) = 0;
 
@@ -415,10 +415,12 @@ public:
      *         in case of error.
      */
     virtual audio_direct_mode_t getDirectPlaybackSupport(const audio_attributes_t *attr,
+                                                         uid_t uid,
                                                          const audio_config_t *config) = 0;
 
     // retrieves the list of available direct audio profiles for the given audio attributes
     virtual status_t getDirectProfilesForAttributes(const audio_attributes_t* attr,
+                                                    uid_t uid,
                                                     AudioProfileVector& audioProfiles) = 0;
 
     virtual status_t getSupportedMixerAttributes(
