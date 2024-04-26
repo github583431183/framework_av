@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2979a5_13f77642",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-04-26T15:21:32Z",
+      "side": 1,
+      "message": "this routine appears in most of our plugins.\nSeems a perfect opportunity to put it into a common directory/library\nand have all those other places call it.\n\ni\u0027m also wondering if this should return a thread count, not a core count, as part of such a commonizing move.",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 33
+      },
+      "revId": "a7c361f320fa3635d065a8e96d8667ae8b734cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76c090d_8bfdf0b4",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-04-26T15:21:32Z",
+      "side": 1,
+      "message": "let\u0027s think about how the correct flag can be determined at runtime.\nThe current expression is not really mainline suitable since\nit relies on preprocessor defines.\n\ncount \u003d 0;\n#ifdef NPROCESSORS\n  if (count\u003d\u003d0) {\n    newcount \u003d sysconf(NPROCESSORS)\n    if (newcount \u003e count) newcount \u003d count\n  }\n#endif\n#ifdef NPROC\n   ... same as above, with NPROC instead of NPROCESSORSe\n\nalthough we really want to always try both of the values.\nI see that the NPROC variant is no longer defined in our source base;\nif it\u0027s been that way long enough, maybe we can simplify this to use\nonly the NPROCESSORS variant.\n\ni\u0027m not sure that even this expression is the best.",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 33
+      },
+      "revId": "a7c361f320fa3635d065a8e96d8667ae8b734cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9229954c_38f6094d",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-04-26T15:21:32Z",
+      "side": 1,
+      "message": "i\u0027d rather see this map to 0 than do a CHECK() which is fatal to execution\nand would force a restart of the swcodec process.\n\ncpuCoreCount \u003d max(0, cpuCoreCount);",
+      "range": {
+        "startLine": 442,
+        "startChar": 4,
+        "endLine": 442,
+        "endChar": 29
+      },
+      "revId": "a7c361f320fa3635d065a8e96d8667ae8b734cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
