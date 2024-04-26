@@ -182,12 +182,14 @@ public:
          * Set the volume index for a given volume group.
          *
          * @param groupId the volume group id
+         * @param uid to consider
          * @param index the volume index to set
          * @param device the device to set the volume index for
          * @return NO_ERROR if the call is successful, otherwise an error code
          * @FlaggedApi("android.media.audiopolicy.volume_group_management_update")
+         * @FlaggedApi("android.media.audiopolicy.multi_zone_audio")
          */
-        virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId, int index,
+        virtual status_t setVolumeGroupVolumeIndex(volume_group_t groupId, uid_t uid, int index,
                 audio_devices_t device);
 
         /**
@@ -269,6 +271,39 @@ public:
          */
         virtual status_t getDevicesForAttributes(
                 const audio_attributes_t &attributes,
+                AudioDeviceTypeAddrVector *devices,
+                bool forVolume);
+
+        /**
+         * Returns a vector of devices associated with attributes.
+         *
+         * An AudioTrack opened with specified attributes should play on the returned devices.
+         * If forVolume is set to true, the caller is AudioService, determining the proper
+         * device volume to adjust.
+         *
+         * Devices are determined in the following precedence:
+         * 1) Devices associated with a dynamic policy matching the attributes.  This is often
+         *    a remote submix from MIX_ROUTE_FLAG_LOOP_BACK.  Secondary mixes from a
+         *    dynamic policy are not included.
+         *
+         * If no such dynamic policy then
+         * 2) Devices containing an active client using setPreferredDevice
+         *    with same strategy as the attributes.
+         *    (from the default Engine::getOutputDevicesForAttributes() implementation).
+         *
+         * If no corresponding active client with setPreferredDevice then
+         * 3) Devices associated with the strategy determined by the attributes
+         *    (from the default Engine::getOutputDevicesForAttributes() implementation).
+         *
+         * @param attributes to be considered
+         * @param uid to be considered
+         * @param devices    an AudioDeviceTypeAddrVector container passed in that
+         *                   will be filled on success.
+         * @param forVolume  true if the devices are to be associated with current device volume.
+         * @return           NO_ERROR on success.
+         */
+        virtual status_t getDevicesForAttributes(
+                const audio_attributes_t &attributes, uid_t uid,
                 AudioDeviceTypeAddrVector *devices,
                 bool forVolume);
 
@@ -463,6 +498,14 @@ public:
 
         virtual status_t getDirectProfilesForAttributes(const audio_attributes_t* attr,
                                                          AudioProfileVector& audioProfiles);
+
+        virtual audio_direct_mode_t getDirectPlaybackSupport(const audio_attributes_t *attr,
+                                                             uid_t uid,
+                                                             const audio_config_t *config);
+
+        virtual status_t getDirectProfilesForAttributes(const audio_attributes_t* attr,
+                                                        uid_t uid,
+                                                        AudioProfileVector& audioProfiles);
 
         status_t getSupportedMixerAttributes(
                 audio_port_handle_t portId,
@@ -1387,9 +1430,25 @@ private:
         // Filters only the relevant flags for getProfileForOutput
         audio_output_flags_t getRelevantFlags (audio_output_flags_t flags, bool directOnly);
 
-        status_t getDevicesForAttributes(const audio_attributes_t &attr,
+        status_t getDevicesForAttributes(const audio_attributes_t &attr, uid_t uid,
                                          DeviceVector &devices,
-                                         bool forVolume);
+                                         const sp<DeviceDescriptor> &preferredDevice = nullptr,
+                                         bool forVolume = false, bool fromCache = false);
+
+        /**
+         * Get the devices expected to be routed for given attributes and UID.
+         * It takes first dynamic mixes into account (if FLAG_MULTI_ZONE_AUDIO is enabled), then
+         * rely on engine device selection.
+         * @param attr to be considered
+         * @param uid to be considered
+         * @param preferredDevice non null if preferred device shall be considered
+         * @param forVolume if true, the request is specific to device selection from volume
+         * @param fromCache if set, the engine selection will be taken from current cache
+         * @return one or more devices matching the given attributes and uid.
+         */
+        DeviceVector getOutputDevicesForAttributes(const audio_attributes_t &attr, uid_t uid,
+                const sp<DeviceDescriptor> &preferredDevice = nullptr, bool forVolume = false,
+                bool fromCache = false);
 
         status_t getProfilesForDevices(const DeviceVector& devices,
                                        AudioProfileVector& audioProfiles,

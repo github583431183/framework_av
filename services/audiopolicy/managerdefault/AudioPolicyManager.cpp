@@ -50,9 +50,12 @@
 #include <system/audio_config.h>
 #include <system/audio_effects/effect_hapticgenerator.h>
 #include <utils/Log.h>
+#include <android_media_audiopolicy.h>
 
 #include "AudioPolicyManager.h"
 #include "TypeConverter.h"
+
+namespace audio_flags = android::media::audiopolicy;
 
 namespace android {
 
@@ -3254,7 +3257,7 @@ status_t AudioPolicyManager::setStreamVolumeIndex(audio_stream_type_t stream,
             return NO_ERROR;
         }
         ALOGV("%s: stream %s group=%d", __func__, toString(stream).c_str(), group);
-        return setVolumeGroupVolumeIndex(group, index, device);
+        return setVolumeGroupVolumeIndex(group, /* uid_t= */ 0, index, device);
     }
     auto attributes = mEngine->getAttributesForStreamType(stream);
     if (attributes == AUDIO_ATTRIBUTES_INITIALIZER) {
@@ -3292,10 +3295,10 @@ status_t AudioPolicyManager::setVolumeIndexForAttributes(const audio_attributes_
     }
     ALOGV("%s: group %d matching with %s index %d",
           __FUNCTION__, group, toString(attributes).c_str(), index);
-    return setVolumeGroupVolumeIndex(group, index, device);
+    return setVolumeGroupVolumeIndex(group, /* uid_t= */ 0, index, device);
 }
 
-status_t AudioPolicyManager::setVolumeGroupVolumeIndex(volume_group_t group,
+status_t AudioPolicyManager::setVolumeGroupVolumeIndex(volume_group_t group, uid_t uid,
                                                        int index,
                                                        audio_devices_t device)
 {
@@ -3320,7 +3323,8 @@ status_t AudioPolicyManager::setVolumeGroupVolumeIndex(volume_group_t group,
     auto curCurvAttrs = curves.getAttributes();
     if (!curCurvAttrs.empty() && curCurvAttrs.front() != defaultAttr) {
         auto attr = curCurvAttrs.front();
-        curSrcDevices = mEngine->getOutputDevicesForAttributes(attr, nullptr, false).types();
+        curSrcDevices = getOutputDevicesForAttributes(attr, uid, /* preferredDevices*/ nullptr,
+                /* forVolume */ true, /* fromCache= */ false).types();
     } else if (!curves.getStreamTypes().empty()) {
         auto stream = curves.getStreamTypes().front();
         curSrcDevices = mEngine->getOutputDevicesForStream(stream, false).types();
@@ -4493,6 +4497,11 @@ bool AudioPolicyManager::isOffloadPossible(const audio_offload_info_t &offloadIn
 
 audio_direct_mode_t AudioPolicyManager::getDirectPlaybackSupport(const audio_attributes_t *attr,
                                                                  const audio_config_t *config) {
+    return getDirectPlaybackSupport(attr, /* uid_t= */ 0, config);
+}
+
+audio_direct_mode_t AudioPolicyManager::getDirectPlaybackSupport(const audio_attributes_t *attr,
+        uid_t uid, const audio_config_t *config) {
     audio_offload_info_t offloadInfo = AUDIO_INFO_INITIALIZER;
     offloadInfo.format = config->format;
     offloadInfo.sample_rate = config->sample_rate;
@@ -4511,8 +4520,8 @@ audio_direct_mode_t AudioPolicyManager::getDirectPlaybackSupport(const audio_att
         relevantFlags |= AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD;
     }
     flags = (audio_output_flags_t)((flags & relevantFlags) | AUDIO_OUTPUT_FLAG_DIRECT);
-
-    DeviceVector engineOutputDevices = mEngine->getOutputDevicesForAttributes(*attr);
+    DeviceVector engineOutputDevices = getOutputDevicesForAttributes(*attr, uid,
+            /* preferredDevice= */ nullptr, /* forVolume= */ false, /* fromCache= */ false);
     for (const auto& hwModule : mHwModules) {
         DeviceVector outputDevices = engineOutputDevices;
         // the MSD module checks for different conditions and output devices
@@ -4559,12 +4568,17 @@ audio_direct_mode_t AudioPolicyManager::getDirectPlaybackSupport(const audio_att
 }
 
 status_t AudioPolicyManager::getDirectProfilesForAttributes(const audio_attributes_t* attr,
-                                                AudioProfileVector& audioProfilesVector) {
+                                                    AudioProfileVector& audioProfilesVector) {
+    return getDirectProfilesForAttributes(attr, /* uid= */ 0, audioProfilesVector);
+}
+
+status_t AudioPolicyManager::getDirectProfilesForAttributes(const audio_attributes_t* attr,
+            uid_t uid, AudioProfileVector& audioProfilesVector) {
     if (mEffects.isNonOffloadableEffectEnabled()) {
         return OK;
     }
     DeviceVector devices;
-    status_t status = getDevicesForAttributes(*attr, devices, false /* forVolume */);
+    status_t status = getDevicesForAttributes(*attr, uid, devices);
     if (status != OK) {
         return status;
     }
@@ -5662,8 +5676,7 @@ status_t AudioPolicyManager::connectAudioSource(const sp<SourceClientDescriptor>
                 sourceDesc->srcDevice()->type(),
                 String8(sourceDesc->srcDevice()->address().c_str()),
                 AUDIO_FORMAT_DEFAULT);
-    DeviceVector sinkDevices =
-            mEngine->getOutputDevicesForAttributes(attributes, nullptr, false /*fromCache*/);
+    DeviceVector sinkDevices = getOutputDevicesForAttributes(attributes, sourceDesc->uid());
     ALOG_ASSERT(!sinkDevices.isEmpty(), "connectAudioSource(): no device found for attributes");
     sp<DeviceDescriptor> sinkDevice = sinkDevices.itemAt(0);
     if (!mAvailableOutputDevices.contains(sinkDevice)) {
@@ -6083,7 +6096,7 @@ void AudioPolicyManager::checkVirtualizerClientRoutes() {
         const sp<SwAudioOutputDescriptor>& desc = mOutputs[i];
         for (const sp<TrackClientDescriptor>& client : desc->getClientIterable()) {
             audio_attributes_t attr = client->attributes();
-            DeviceVector devices = mEngine->getOutputDevicesForAttributes(attr, nullptr, false);
+            DeviceVector devices = getOutputDevicesForAttributes(attr, client->uid());
             AudioDeviceTypeAddrVector devicesTypeAddress = devices.toTypeAddrVector();
             audio_config_base_t clientConfig = client->config();
             audio_config_t config = audio_config_initializer(&clientConfig);
@@ -7367,12 +7380,19 @@ bool AudioPolicyManager::streamsMatchForvolume(audio_stream_type_t stream1,
 
 status_t AudioPolicyManager::getDevicesForAttributes(
         const audio_attributes_t &attr, AudioDeviceTypeAddrVector *devices, bool forVolume) {
+    return getDevicesForAttributes(attr, /* uid_t */ 0, devices, forVolume);
+}
+
+status_t AudioPolicyManager::getDevicesForAttributes(
+        const audio_attributes_t &attr, uid_t uid, AudioDeviceTypeAddrVector *devices,
+        bool forVolume) {
     if (devices == nullptr) {
         return BAD_VALUE;
     }
 
     DeviceVector curDevices;
-    if (status_t status = getDevicesForAttributes(attr, curDevices, forVolume); status != OK) {
+    if (status_t status = getDevicesForAttributes(attr, uid, curDevices,
+                /* preferredDevices= */ nullptr, forVolume, /* fromCache*/ false); status != OK) {
         return status;
     }
     for (const auto& device : curDevices) {
@@ -8465,8 +8485,8 @@ bool AudioPolicyManager::areAllActiveTracksRerouted(const sp<SwAudioOutputDescri
         }
         sp<DeviceDescriptor> preferredDevice =
                 mAvailableOutputDevices.getDeviceFromId(client->preferredDeviceId());
-        if (mEngine->getOutputDevicesForAttributes(
-                client->attributes(), preferredDevice, false) == routedDevices) {
+        if (getOutputDevicesForAttributes(client->attributes(), client->uid(), preferredDevice,
+                /* forVolume= */ false, /* fromCache*/ false) == routedDevices) {
             return false;
         }
     }
@@ -8577,8 +8597,19 @@ sp<SwAudioOutputDescriptor> AudioPolicyManager::openOutputWithProfileAndDevice(
     return desc;
 }
 
+DeviceVector AudioPolicyManager::getOutputDevicesForAttributes(const audio_attributes_t &attr,
+        uid_t uid, const sp<DeviceDescriptor> &preferredDevice, bool forVolume, bool fromCache) {
+    if (!audio_flags::multi_zone_audio()) {
+        return mEngine->getOutputDevicesForAttributes(attr, preferredDevice, fromCache);
+    }
+    DeviceVector devices;
+    getDevicesForAttributes(attr, uid, devices, preferredDevice, forVolume, fromCache);
+    return devices;
+}
+
 status_t AudioPolicyManager::getDevicesForAttributes(
-        const audio_attributes_t &attr, DeviceVector &devices, bool forVolume) {
+        const audio_attributes_t &attr, uid_t uid, DeviceVector &devices,
+        const sp<DeviceDescriptor> &preferredDevice, bool forVolume, bool fromCache) {
     // Devices are determined in the following precedence:
     //
     // 1) Devices associated with a dynamic policy matching the attributes.  This is often
@@ -8599,8 +8630,11 @@ status_t AudioPolicyManager::getDevicesForAttributes(
     // audio routing, only used for duplication for playback capture)
     sp<AudioPolicyMix> policyMix;
     bool unneededUsePrimaryOutputFromPolicyMixes = false;
+    if (!audio_flags::multi_zone_audio()) {
+        uid = 0;
+    }
     status_t status = mPolicyMixes.getOutputForAttr(attr, AUDIO_CONFIG_BASE_INITIALIZER,
-            0 /*uid unknown here*/, AUDIO_SESSION_NONE, AUDIO_OUTPUT_FLAG_NONE,
+            uid, AUDIO_SESSION_NONE, AUDIO_OUTPUT_FLAG_NONE,
             mAvailableOutputDevices, nullptr /* requestedDevice */, policyMix,
             nullptr /* secondaryMixes */, unneededUsePrimaryOutputFromPolicyMixes);
     if (status != OK) {
@@ -8620,9 +8654,11 @@ status_t AudioPolicyManager::getDevicesForAttributes(
         // The default Engine::getOutputDevicesForAttributes() uses findPreferredDevice()
         // which selects setPreferredDevice if active.  This means forVolume call
         // will take an active setPreferredDevice, if such exists.
-
-        devices = mEngine->getOutputDevicesForAttributes(
-                attr, nullptr /* preferredDevice */, false /* fromCache */);
+        if (audio_flags::multi_zone_audio()) {
+            devices = mEngine->getOutputDevicesForAttributes(attr, uid, preferredDevice, fromCache);
+        } else {
+            devices = mEngine->getOutputDevicesForAttributes(attr, preferredDevice, fromCache);
+        }
     }
 
     if (forVolume) {

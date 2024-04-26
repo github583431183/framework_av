@@ -137,14 +137,16 @@ interface IAudioPolicyService {
     int getMinVolumeIndexForAttributes(in AudioAttributes attr);
 
     /**
+     * Set the volume for the given group id, device and index. UID is given as the attenuation
+     * depends on the device. Routing rules may be registered for a given UID / User ID. Thus,
+     * AudioPolicy will re-check the device for which the attenuation shall be taken.
+
      * @FlaggedApi("android.media.audiopolicy.volume_group_management_update")
+     * @FlaggedApi(FLAG_MULTI_ZONE_AUDIO)
      */
-    void setVolumeGroupVolumeIndex(int /* volume_group_id */ groupId,
-                                   in AudioDeviceDescription device,
-                                   int index);
-    /**
-     * @FlaggedApi("android.media.audiopolicy.volume_group_management_update")
-     */
+    void setVolumeGroupVolumeIndex(int /* volume_group_id */ groupId, int /* uid_t */ uid,
+        in AudioDeviceDescription device, int index);
+
     int getVolumeGroupVolumeIndex(int /* volume_group_id */ groupId,
                                   in AudioDeviceDescription device);
     /**
@@ -159,6 +161,16 @@ interface IAudioPolicyService {
     int /* product_strategy_t */ getStrategyForStream(AudioStreamType stream);
 
     AudioDevice[] getDevicesForAttributes(in AudioAttributes attr, boolean forVolume);
+
+    /**
+     * Requests the devices that would be used for routing (if forVolume is false) or for volume
+     * operations for the given attributes and UID (as routing rules may be registered on
+     * UID / User ID)
+     *
+     * @FlaggedApi(FLAG_MULTI_ZONE_AUDIO)
+     */
+    AudioDevice[] getDevicesForAttributesAndUid(
+            in AudioAttributes attr, int /* uid_t */ uid, boolean forVolume);
 
     int /* audio_io_handle_t */ getOutputForEffect(in EffectDescriptor desc);
 
@@ -430,13 +442,32 @@ interface IAudioPolicyService {
      * Query how the direct playback is currently supported on the device.
      */
     AudioDirectMode getDirectPlaybackSupport(in AudioAttributes attr,
-                                              in AudioConfig config);
+                                             in AudioConfig config);
+
+    /**
+     * Query how the direct playback is currently supported on the device routed for the given
+     * attributes and UID (as routing rules may be registered on UID / User ID)
+     *
+     * @FlaggedApi(FLAG_MULTI_ZONE_AUDIO)
+     */
+    AudioDirectMode getDirectPlaybackSupportWithUid(in AudioAttributes attr,
+            int /* uid_t */ uid, in AudioConfig config);
 
     /**
      * Query audio profiles available for direct playback on the current output device(s)
      * for the specified audio attributes.
      */
     AudioProfile[] getDirectProfilesForAttributes(in AudioAttributes attr);
+
+    /**
+     * Query audio profiles available for direct playback on the current output device(s)
+     * for the specified audio attributes and UID (as routing rules may be registered on
+     * UID / User ID).
+     *
+     * @FlaggedApi(FLAG_MULTI_ZONE_AUDIO)
+     */
+    AudioProfile[] getDirectProfilesForAttributesAndUid(in AudioAttributes attr,
+            int /* uid_t */ uid);
 
     /**
      * Return a list of AudioMixerAttributes that can be used to set preferred mixer attributes

@@ -70,7 +70,7 @@ private:
 
     DeviceVector getOutputDevicesForAttributes(
             const audio_attributes_t &attributes,
-            uid_t /* uid */,
+            uid_t uid __unused,
             const sp<DeviceDescriptor> &preferredDevice = nullptr,
             bool fromCache = false) const override {
         return getOutputDevicesForAttributes(attributes, preferredDevice, fromCache);
