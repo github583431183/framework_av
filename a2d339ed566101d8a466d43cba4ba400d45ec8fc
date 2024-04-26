@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21ad299_d1bd7d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-26T04:24:05Z",
+      "side": 1,
+      "message": "will wait for https://android-review.git.corp.google.com/c/platform/external/libavc/+/3058982 to land.\nWithout landing libavc change, some color aspects test would fail when this CL lands.",
+      "revId": "a2d339ed566101d8a466d43cba4ba400d45ec8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
