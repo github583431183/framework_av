@@ -380,7 +380,21 @@ public:
                                          int *index,
                                          audio_devices_t device);
 
-    static status_t setVolumeGroupVolumeIndex(volume_group_t groupId,
+    /**
+     * Set the volume index for a given volume group, uid and device.
+     * Notes:
+     * -UID is given since routing rules may be added for either a UID or User ID, inferring
+     * a different device on which the volume shall be set. As AudioPolicy will recompute the
+     * affected device regardless of device given by caller, it is necessary to provide the UID).
+     * -Managing volume per UID does not really make sense, User ID is highly recommended.
+     *
+     * @param groupId the volume group id
+     * @param uid the uid of the client
+     * @param index the volume index to set
+     * @param device the device to set the volume index for
+     * @return NO_ERROR if the call is successful, otherwise an error code.
+     */
+    static status_t setVolumeGroupVolumeIndex(volume_group_t groupId, uid_t uid,
                                               int index,
                                               audio_devices_t device);
     static status_t getVolumeGroupVolumeIndex(volume_group_t groupId,
@@ -392,7 +406,18 @@ public:
     static status_t getVolumeGroupMinVolumeIndex(volume_group_t groupId, int &index);
 
     static product_strategy_t getStrategyForStream(audio_stream_type_t stream);
-    static status_t getDevicesForAttributes(const audio_attributes_t &aa,
+
+    /**
+     * Get the devices for the given audio attributes and uid.
+     * Note: UID is given since routing rules may have been added for either a UID or User ID.
+     *
+     * @param[in] aa the requested audio attributes
+     * @param[in] uid the uid of the client
+     * @param[out] devices the devices for the given audio attributes
+     * @param[in] forVolume true if the devices are for volume
+     * @return if the call is successful or not
+     */
+    static status_t getDevicesForAttributes(const audio_attributes_t &aa, uid_t uid,
                                             AudioDeviceTypeAddrVector *devices,
                                             bool forVolume);
 
@@ -638,7 +663,10 @@ public:
 
     /**
      * Query how the direct playback is currently supported on the device.
+     * Note: UID is given since routing rules may have been added for either a UID or User ID.
+     *
      * @param attr audio attributes describing the playback use case
+     * @param uid the uid of the client
      * @param config audio configuration for the playback
      * @param directMode out: a set of flags describing how the direct playback is currently
      *        supported on the device
@@ -646,19 +674,23 @@ public:
      *         in case of error.
      */
     static status_t getDirectPlaybackSupport(const audio_attributes_t *attr,
+                                             uid_t uid,
                                              const audio_config_t *config,
                                              audio_direct_mode_t *directMode);
 
 
     /**
      * Query which direct audio profiles are available for the specified audio attributes.
+     * Note: UID is given since routing rules may have been added for either a UID or User ID.
+     *
      * @param attr audio attributes describing the playback use case
+     * @param uid the uid of the client
      * @param audioProfiles out: a vector of audio profiles
      * @return NO_ERROR in case of success, DEAD_OBJECT, NO_INIT, BAD_VALUE, PERMISSION_DENIED
      *         in case of error.
      */
-    static status_t getDirectProfilesForAttributes(const audio_attributes_t* attr,
-                                            std::vector<audio_profile>* audioProfiles);
+    static status_t getDirectProfilesForAttributes(const audio_attributes_t* attr, uid_t uid,
+            std::vector<audio_profile>* audioProfiles);
 
     static status_t setRequestedLatencyMode(
             audio_io_handle_t output, audio_latency_mode_t mode);
