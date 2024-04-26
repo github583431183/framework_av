@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df42341b_b3ea04d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-04-26T22:48:46Z",
+      "side": 1,
+      "message": "add aosp/3063644 in same topic to remove the code existing on AOSP only (no need after this change)",
+      "revId": "1b7efb0bc035d62faf0430b4e446cd77c4a52df4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
