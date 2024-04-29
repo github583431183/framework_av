@@ -114,6 +114,18 @@ bool MultiAccessUnitInterface::getDecoderSampleRateAndChannelCount(
     return false;
 }
 
+bool MultiAccessUnitInterface::getMaxInputSize(
+        C2StreamMaxBufferSizeInfo::input* const maxInputSize) const {
+    if (maxInputSize == nullptr || mC2ComponentIntf == nullptr) {
+        return false;
+    }
+    c2_status_t err = mC2ComponentIntf->query_vb({maxInputSize}, {}, C2_MAY_BLOCK, nullptr);
+    if (err != OK) {
+        return false;
+    }
+    return true;
+}
+
 //C2MultiAccessUnitBuffer
 class C2MultiAccessUnitBuffer : public C2Buffer {
     public:
@@ -157,6 +169,21 @@ bool MultiAccessUnitHelper::tryReconfigure(const std::unique_ptr<C2Param> &param
     if (lfp == nullptr) {
         return false;
     }
+    bool isDecoder = (mInterface->kind() == C2Component::KIND_DECODER) ? true : false;
+    if (!isDecoder) {
+        C2StreamMaxBufferSizeInfo::input maxInputSize(0);
+        if (!mInterface->getMaxInputSize(&maxInputSize)) {
+            LOG(ERROR) << "Error in reconfigure: "
+                    << "Encoder failed to respond with a valid max input size";
+            return false;
+        }
+        // This is assuming a worst case compression ratio of 1:1
+        // In no case the encoder should give an output more than
+        // what is being provided to the encoder in a single call.
+        if (lfp->maxSize < maxInputSize.value) {
+            lfp->maxSize = maxInputSize.value;
+        }
+    }
     lfp->maxSize =
             (lfp->maxSize > MAX_SUPPORTED_SIZE) ? MAX_SUPPORTED_SIZE :
                     (lfp->maxSize < 0) ? 0 : lfp->maxSize;
@@ -169,14 +196,16 @@ bool MultiAccessUnitHelper::tryReconfigure(const std::unique_ptr<C2Param> &param
         // no need to update
         return false;
     }
-    bool isOnOffTransition =
-            (currentConfig.maxSize == 0 && lfp->maxSize != 0)
-            || (currentConfig.maxSize != 0 && lfp->maxSize == 0);
-    if (isOnOffTransition && !mMultiAccessOnOffAllowed) {
-        LOG(ERROR) << "Setting new configs not allowed"
-                << " MaxSize: " << lfp->maxSize
-                << " ThresholdSize: " << lfp->thresholdSize;
-        return false;
+    if (isDecoder) {
+        bool isOnOffTransition =
+                (currentConfig.maxSize == 0 && lfp->maxSize != 0)
+                || (currentConfig.maxSize != 0 && lfp->maxSize == 0);
+            if (isOnOffTransition && !mMultiAccessOnOffAllowed) {
+                LOG(ERROR) << "Setting new configs not allowed"
+                        << " MaxSize: " << lfp->maxSize
+                        << " ThresholdSize: " << lfp->thresholdSize;
+                return false;
+            }
     }
     std::vector<C2Param*> config{lfp};
     std::vector<std::unique_ptr<C2SettingResult>> failures;

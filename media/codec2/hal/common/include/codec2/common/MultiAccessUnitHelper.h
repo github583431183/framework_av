@@ -46,6 +46,7 @@ struct MultiAccessUnitInterface : public C2InterfaceHelper {
 protected:
     bool getDecoderSampleRateAndChannelCount(
             uint32_t * const sampleRate_, uint32_t * const channelCount_) const;
+    bool getMaxInputSize(C2StreamMaxBufferSizeInfo::input* const maxInputSize) const;
     const std::shared_ptr<C2ComponentInterface> mC2ComponentIntf;
     std::shared_ptr<C2LargeFrame::output> mLargeFrameParams;
     C2ComponentKindSetting mKind;
