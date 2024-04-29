@@ -142,6 +142,30 @@
       },
       "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122d8be3_54ac8a93",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-04-29T17:19:57Z",
+      "side": 1,
+      "message": "Sorry, just getting back to this.\n\nThe gist of the comments are:\n1. Remove the infinite `do..while` loop.\n2. Replace `waitForService` with `getService` so we don\u0027t end up waiting indefinitely if cameraservice is missing.\n\nCameraService should always be running, and in error case all access to cameraservice should be null checked and handle missing cameraservice, so the infinite loop is not needed here.\n\nThank you uploading the patch!",
+      "parentUuid": "e4a405a4_23aee5de",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
