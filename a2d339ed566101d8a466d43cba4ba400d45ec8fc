@@ -16,6 +16,24 @@
       "message": "will wait for https://android-review.git.corp.google.com/c/platform/external/libavc/+/3058982 to land.\nWithout landing libavc change, some color aspects test would fail when this CL lands.",
       "revId": "a2d339ed566101d8a466d43cba4ba400d45ec8fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c899f6bb_f147d5df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-04-29T23:28:56Z",
+      "side": 1,
+      "message": "libavc CL is now merged.",
+      "parentUuid": "a21ad299_d1bd7d25",
+      "revId": "a2d339ed566101d8a466d43cba4ba400d45ec8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
