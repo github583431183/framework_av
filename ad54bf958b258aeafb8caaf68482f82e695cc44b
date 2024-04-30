@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e28ed4_12b83789",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-04-30T23:42:32Z",
+      "side": 1,
+      "message": "Similar question here, do we have a test for these methods?",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 85
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "45cf7022_7acad362",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+              "range": {
+                "startLine": 70,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "ConversionResult\u003cProductStrategy\u003e aidl2legacy_AudioHalProductStrategy(\n"
+            },
+            {
+              "path": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+              "range": {
+                "startLine": 881,
+                "startChar": 0,
+                "endLine": 882,
+                "endChar": 0
+              },
+              "replacement": "                    aidl2legacy_AudioHalProductStrategy); conv.ok()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ad54bf958b258aeafb8caaf68482f82e695cc44b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
