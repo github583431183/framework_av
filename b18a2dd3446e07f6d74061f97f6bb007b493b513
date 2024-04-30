@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7393d4a_93c541d0",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-30T00:23:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b4d630d6_22106245",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fd077ca_fe75f6b1",
@@ -114,6 +138,24 @@
       "side": 1,
       "message": "yes, if we are unable to apply it now, then the old config is retained? Not sure if we need to update work-\u003econfigUpdate if we dont change.",
       "parentUuid": "f32d7c49_8d20d1af",
+      "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f455e8e_7cb9048e",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-30T00:23:15Z",
+      "side": 1,
+      "message": "Yes the old config will be retained on the component side. On the semantics though, I wonder if we want to keep the failed config so that the helper can reconfigure itself when it is ready for it, or it\u0027s okay to drop the request here.",
+      "parentUuid": "92de1308_4c18541a",
       "revId": "b18a2dd3446e07f6d74061f97f6bb007b493b513",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
