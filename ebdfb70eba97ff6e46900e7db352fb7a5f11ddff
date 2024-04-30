@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc714fc9_cef301d8",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-04-30T16:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9a7c8a_0a209618",
+      "revId": "ebdfb70eba97ff6e46900e7db352fb7a5f11ddff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af05ce20_de261b46",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-30T00:26:22Z",
       "side": 1,
       "message": "nit: size",
+      "range": {
+        "startLine": 656,
+        "startChar": 54,
+        "endLine": 656,
+        "endChar": 58
+      },
+      "revId": "ebdfb70eba97ff6e46900e7db352fb7a5f11ddff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75d9be9_fc6239c5",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2024-04-30T16:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af05ce20_de261b46",
       "range": {
         "startLine": 656,
         "startChar": 54,
