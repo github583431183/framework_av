@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9a7c8a_0a209618",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-30T00:26:22Z",
+      "side": 1,
+      "message": "please log or comment what we are doing in response to the error.",
+      "revId": "ebdfb70eba97ff6e46900e7db352fb7a5f11ddff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af05ce20_de261b46",
+        "filename": "media/codec2/hal/common/MultiAccessUnitHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-04-30T00:26:22Z",
+      "side": 1,
+      "message": "nit: size",
+      "range": {
+        "startLine": 656,
+        "startChar": 54,
+        "endLine": 656,
+        "endChar": 58
+      },
+      "revId": "ebdfb70eba97ff6e46900e7db352fb7a5f11ddff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
