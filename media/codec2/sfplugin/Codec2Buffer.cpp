@@ -1154,9 +1154,11 @@ c2_status_t GetHdrMetadataFromGralloc4Handle(
             if (!dynamicInfo) {
                 return;
             }
+            std::optional<std::vector<uint8_t>> smpte2094;
+            gralloc4::decodeSmpte2094_40(vec, &smpte2094);
             *dynamicInfo = C2StreamHdrDynamicMetadataInfo::input::AllocShared(
-                    vec.size(), 0u, C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
-            memcpy((*dynamicInfo)->m.data, vec.data(), vec.size());
+                    smpte2094->size(), 0u, C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
+            memcpy((*dynamicInfo)->m.data, smpte2094->data(), smpte2094->size());
         };
         Return<void> ret = mapper->get(buffer.get(), MetadataType_Smpte2094_40, cb);
         if (!ret.isOk() || mapperErr != Error4::NONE) {
