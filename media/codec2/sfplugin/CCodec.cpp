@@ -2220,15 +2220,8 @@ void CCodec::stop(bool pushBlankBuffer) {
         comp = state->comp;
     }
 
-    // Note: Logically mChannel->stopUseOutputSurface() should be after comp->stop().
-    // But in the case some HAL implementations hang forever on comp->stop().
-    // (HAL is waiting for C2Fence until fetchGraphicBlock unblocks and not
-    // completing stop()).
-    // So we reverse their order for stopUseOutputSurface() to notify C2Fence waiters
-    // prior to comp->stop().
-    // See also b/300350761.
-    mChannel->stopUseOutputSurface(pushBlankBuffer);
     status_t err = comp->stop();
+    mChannel->stopUseOutputSurface(pushBlankBuffer);
     if (err != C2_OK) {
         // TODO: convert err into status_t
         mCallback->onError(UNKNOWN_ERROR, ACTION_CODE_FATAL);
@@ -2316,15 +2309,8 @@ void CCodec::release(bool sendCallback, bool pushBlankBuffer) {
         }
         comp = state->comp;
     }
-    // Note: Logically mChannel->stopUseOutputSurface() should be after comp->release().
-    // But in the case some HAL implementations hang forever on comp->release().
-    // (HAL is waiting for C2Fence until fetchGraphicBlock unblocks and not
-    // completing release()).
-    // So we reverse their order for stopUseOutputSurface() to notify C2Fence waiters
-    // prior to comp->release().
-    // See also b/300350761.
-    mChannel->stopUseOutputSurface(pushBlankBuffer);
     comp->release();
+    mChannel->stopUseOutputSurface(pushBlankBuffer);
 
     {
         Mutexed<State>::Locked state(mState);
