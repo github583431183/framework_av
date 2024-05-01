@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef742bd_a01f4f92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-01T03:44:57Z",
+      "side": 1,
+      "message": "Will mark this as ready for review once libvpx supports generating codec private data.",
+      "revId": "263351c31749d80c102add16157823173c9575bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
