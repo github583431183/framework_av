@@ -1,0 +1,298 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2226c12_dc34c652",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "In order to satisfy the flags requirements we probably need to do something along the lines of:\n```\nif (!audio_flags::multi_zone_audio()) {\n        return INVALID_OPERATION;\n}\n```\n\nWhere audio_flags is defined as `namespace audio_flags \u003d android::media::audiopolicy;`\n\nSame for the method below.",
+      "range": {
+        "startLine": 2177,
+        "startChar": 3,
+        "endLine": 2177,
+        "endChar": 81
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddf48fc_e9c5940f",
+        "filename": "services/audiopolicy/engine/common/include/EngineBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "Any particular reason not to use std::map?",
+      "range": {
+        "startLine": 228,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ead948e1_bd7f9e30",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engine/common/include/EngineBase.h",
+              "range": {
+                "startLine": 227,
+                "startChar": 0,
+                "endLine": 229,
+                "endChar": 0
+              },
+              "replacement": "    std::map\u003cuserid_t, int\u003e mUserIdZoneCriteria;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323aa662_6edbd069",
+        "filename": "services/audiopolicy/engine/common/include/VolumeGroup.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "Do we need this here? How do we usually map from product strategy to volume?",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8ed62a06_2a5abbd2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engine/common/include/VolumeGroup.h",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "services/audiopolicy/engine/common/include/VolumeGroup.h",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "services/audiopolicy/engine/common/include/VolumeGroup.h",
+              "range": {
+                "startLine": 57,
+                "startChar": 0,
+                "endLine": 58,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd47c07_8406807f",
+        "filename": "services/audiopolicy/engine/interface/EngineInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "Can we add documentation, particularly around the UID section for cases where there is no UID.",
+      "range": {
+        "startLine": 139,
+        "startChar": 31,
+        "endLine": 139,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "69beb051_9dc8aac8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engine/interface/EngineInterface.h",
+              "range": {
+                "startLine": 139,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * @brief getProductStrategyForAttributes retrieves the strategy selected for a given audio\n     * attributes and uid.\n     * @param attr audio attributes to get the selected @product_strategy_t followed by.\n     * @param uid uid of the client requesting Device(s) selection\n     * @param fallbackOnDefault if true, will return the fallback strategy if the attributes\n     * are not explicitly assigned to a given strategy.\n     * @return @product_strategy_t to be followed.\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f1b33e_5304b060",
+        "filename": "services/audiopolicy/engineconfigurable/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "Not sure how other people are using their flags, but typically there would required a flag check here:\n```\nproduct_strategy_t strategy;\nif (flag) {\n    strategy \u003d getProductStrategyForAttributes(attributes, uid);\n} else {\n    strategy \u003d getProductStrategyForAttributes(attributes);\n}\n```",
+      "range": {
+        "startLine": 429,
+        "startChar": 4,
+        "endLine": 429,
+        "endChar": 83
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fc5f52dd_ba8cf67b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engineconfigurable/src/Engine.cpp",
+              "range": {
+                "startLine": 429,
+                "startChar": 0,
+                "endLine": 430,
+                "endChar": 0
+              },
+              "replacement": "    product_strategy_t strategy;\n    if (mPolicyParameterMgr-\u003eisProductStrategyForAttributesEnabled()) {\n        strategy \u003d getProductStrategyForAttributes(attributes, uid);\n    } else {\n        strategy \u003d getProductStrategyForStream(attributes.stream);\n    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0e413f_0e12a1e5",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "uid",
+      "range": {
+        "startLine": 73,
+        "startChar": 18,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d85d9469_12be25df",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/enginedefault/src/Engine.h",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": "            uid_t uid,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0708295_21ef29f6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "I wonder if we should have the flag check here instead, given that we are keeping the previous methods until the flags are removed?",
+      "range": {
+        "startLine": 1283,
+        "startChar": 4,
+        "endLine": 1284,
+        "endChar": 66
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26cb5aef_f536a02c",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-01T00:35:24Z",
+      "side": 1,
+      "message": "Same comment here, if the flag check fails should return error. Same for method below.",
+      "range": {
+        "startLine": 2161,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 81
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
