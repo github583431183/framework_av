@@ -2227,8 +2227,9 @@ void CCodec::stop(bool pushBlankBuffer) {
     // So we reverse their order for stopUseOutputSurface() to notify C2Fence waiters
     // prior to comp->stop().
     // See also b/300350761.
-    mChannel->stopUseOutputSurface(pushBlankBuffer);
+    // mChannel->stopUseOutputSurface(pushBlankBuffer);
     status_t err = comp->stop();
+    mChannel->stopUseOutputSurface(pushBlankBuffer);
     if (err != C2_OK) {
         // TODO: convert err into status_t
         mCallback->onError(UNKNOWN_ERROR, ACTION_CODE_FATAL);
@@ -2323,8 +2324,9 @@ void CCodec::release(bool sendCallback, bool pushBlankBuffer) {
     // So we reverse their order for stopUseOutputSurface() to notify C2Fence waiters
     // prior to comp->release().
     // See also b/300350761.
-    mChannel->stopUseOutputSurface(pushBlankBuffer);
+    // mChannel->stopUseOutputSurface(pushBlankBuffer);
     comp->release();
+    mChannel->stopUseOutputSurface(pushBlankBuffer);
 
     {
         Mutexed<State>::Locked state(mState);
