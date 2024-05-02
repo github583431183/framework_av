@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63cce7c2_b73c8dca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-02T00:34:30Z",
+      "side": 1,
+      "message": "If a bug is filed with the details, can you please add that bug id here?\n\nBug:",
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fec4ade_39904569",
+        "filename": "media/codec2/components/opus/C2SoftOpusDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-02T00:34:30Z",
+      "side": 1,
+      "message": "vorbis prefix in Opus sounds wrong.\n\nCan this be renamed?",
+      "range": {
+        "startLine": 153,
+        "startChar": 51,
+        "endLine": 153,
+        "endChar": 64
+      },
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426c0be1_df2a9361",
+        "filename": "media/codec2/components/opus/C2SoftOpusDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-02T00:34:30Z",
+      "side": 1,
+      "message": "Can you please share the source for this mapping?\nIt would be good to add that as a comment.",
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
