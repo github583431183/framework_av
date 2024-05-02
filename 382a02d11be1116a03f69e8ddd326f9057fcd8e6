@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe933ef4_31b9e0a5",
+        "filename": "media/libmedia/include/media/CodecCapabilities.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-02T21:20:09Z",
+      "side": 1,
+      "message": "let\u0027s use std:: for all new classes (e.g. std::string)",
+      "range": {
+        "startLine": 640,
+        "startChar": 8,
+        "endLine": 640,
+        "endChar": 15
+      },
+      "revId": "382a02d11be1116a03f69e8ddd326f9057fcd8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
