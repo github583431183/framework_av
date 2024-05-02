@@ -190,6 +190,7 @@ struct MediaCodecInfo : public RefBase {
     Attributes getAttributes() const;
     void getSupportedMediaTypes(Vector<AString> *mediaTypes) const;
     const sp<Capabilities> getCapabilitiesFor(const char *mediaType) const;
+    const std::shared_ptr<CodecCapabilities> getCodecCapsFor(const char *mediaType) const;
     const char *getCodecName() const;
 
     /**
@@ -231,10 +232,12 @@ private:
     AString mOwner;
     Attributes mAttributes;
     KeyedVector<AString, sp<Capabilities> > mCaps;
+    KeyedVector<AString, std::shared_ptr<CodecCapabilities>> mCodecCaps;
     Vector<AString> mAliases;
     uint32_t mRank;
 
     ssize_t getCapabilityIndex(const char *mediaType) const;
+    ssize_t getCodecCapIndex(const char *mediaType) const;
 
     /**
      * Construct an `MediaCodecInfo` object. After the construction, its
@@ -317,6 +320,11 @@ struct MediaCodecInfoWriter {
      * @param rank The rank of the component.
      */
     void setRank(uint32_t rank);
+
+    void setCodecCapsMap(int maxSupportedInstances = 0);
+
+    std::shared_ptr<CodecCapabilities> getCodecCapsFromCaps(AString mediaType,
+            sp<MediaCodecInfo::Capabilities> caps, int maxSupportedInstances = 0);
 private:
     /**
      * The associated `MediaCodecInfo`.
