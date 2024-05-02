@@ -22,6 +22,30 @@
       },
       "revId": "95edccd17ef856d0674c86c22c2d496dd8764eb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5e37a6_c7a9f039",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-02T16:21:25Z",
+      "side": 1,
+      "message": "since we\u0027ll have Register() and Register(int), we\u0027ll probably need a corresponding change in the header file to set up both function signatures.",
+      "parentUuid": "da3f120e_071b1f37",
+      "range": {
+        "startLine": 780,
+        "startChar": 2,
+        "endLine": 780,
+        "endChar": 26
+      },
+      "revId": "95edccd17ef856d0674c86c22c2d496dd8764eb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
