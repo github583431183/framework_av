@@ -198,6 +198,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cfe1ccc_4e94a04d",
+        "filename": "services/audiopolicy/engine/common/include/VolumeGroup.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T15:02:48Z",
+      "side": 1,
+      "message": "However, I like the idea. Will remove the zone from here and make another proposal",
+      "parentUuid": "4083f53e_85b7cfde",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 56
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fd47c07_8406807f",
