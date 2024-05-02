@@ -170,6 +170,14 @@ MediaCodecInfo::getCapabilitiesFor(const char *mediaType) const {
     return NULL;
 }
 
+const std::shared_ptr<CodecCaps> MediaCodecInfo::getCodecCapsFor(const char *mediaType) const {
+    ssize_t ix = getCodecCapIndex(mediaType);
+    if (ix >= 0) {
+        return mCodecCaps.valueAt(ix);
+    }
+    return nullptr;
+}
+
 const char *MediaCodecInfo::getCodecName() const {
     return mName.c_str();
 }
@@ -235,6 +243,17 @@ ssize_t MediaCodecInfo::getCapabilityIndex(const char *mediaType) const {
     return -1;
 }
 
+ssize_t MediaCodecInfo::getCodecCapIndex(const char *mediaType) const {
+    if (mediaType) {
+        for (size_t ix = 0; ix < mCaps.size(); ix++) {
+            if (mCodecCaps.keyAt(ix).equalsIgnoreCase(mediaType)) {
+                return ix;
+            }
+        }
+    }
+    return -1;
+}
+
 MediaCodecInfo::MediaCodecInfo()
     : mAttributes((MediaCodecInfo::Attributes)0),
       mRank(0x100) {
@@ -282,6 +301,36 @@ bool MediaCodecInfoWriter::removeMediaType(const char *mediaType) {
         return true;
     }
     return false;
+}
+
+void MediaCodecInfoWriter::setCodecCapsMap() {
+    mInfo->mCodecCaps.clear();
+    for (size_t ix = 0; ix < mInfo->mCaps.size(); ix++) {
+        AString mediaType = mInfo->mCaps.keyAt(ix);
+        sp<MediaCodecInfo::Capabilities> caps = mInfo->mCaps.valueAt(ix);
+
+        mInfo->mCodecCaps.add(mediaType, getCodecCapsFromCaps(mediaType, caps));
+    }
+}
+
+std::shared_ptr<CodecCaps> MediaCodecInfoWriter::getCodecCapsFromCaps(
+        AString mediaType, sp<MediaCodecInfo::Capabilities> caps) {
+    Vector<MediaCodecInfo::ProfileLevel> profileLevels;
+    Vector<uint32_t> colorFormats;
+    caps->getSupportedProfileLevels(&profileLevels);
+    caps->getSupportedColorFormats(&colorFormats);
+
+    sp<AMessage> defaultFormat = new AMessage();
+    defaultFormat->setString("mime", mediaType.c_str());
+
+    sp<AMessage> capabilitiesInfo = caps->getDetails();
+
+    // ToDo: Get mMaxConcurrentInstances from MediaCodecList GlobalSettings
+    // while constructing MediaCodecInfo object and pass it to CodecCapabilities.
+    std::shared_ptr<CodecCaps> codecCaps = std::make_shared<CodecCaps>(
+            profileLevels, colorFormats, mInfo->isEncoder(), defaultFormat, capabilitiesInfo);
+
+    return codecCaps;
 }
 
 MediaCodecInfoWriter::MediaCodecInfoWriter(MediaCodecInfo* info) :

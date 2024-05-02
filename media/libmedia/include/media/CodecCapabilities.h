@@ -18,9 +18,10 @@
 
 #define CODEC_CAPABILITIES_H_
 
-#include <media/MediaCodecInfo.h>
+// #include <media/MediaCodecInfo.h>
 #include <media/CodecCapabilitiesUtils.h>
 #include <media/stagefright/foundation/ABase.h>
+#include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AString.h>
 #include <media/stagefright/MediaCodecConstants.h>
 
@@ -47,7 +48,7 @@ namespace android {
         }
     };
 
-    struct CodecCapabilities;
+    struct CodecCaps;
 
     struct XCapabilitiesBase {
     protected:
@@ -58,7 +59,7 @@ namespace android {
          */
         void setParentError(int error);
 
-        std::weak_ptr<CodecCapabilities> mParent;
+        std::weak_ptr<CodecCaps> mParent;
     };
 
     struct AudioCapabilities : XCapabilitiesBase {
@@ -66,7 +67,7 @@ namespace android {
          * Create AudioCapabilities.
          */
         static std::shared_ptr<AudioCapabilities> Create(const sp<AMessage> &format,
-                std::shared_ptr<CodecCapabilities> parent);
+                std::shared_ptr<CodecCaps> parent);
 
         /**
          * Returns the range of supported bitrates in bits/second.
@@ -143,7 +144,7 @@ namespace android {
 
         /* no public constructor */
         AudioCapabilities() {};
-        void init(const sp<AMessage> &format, std::shared_ptr<CodecCapabilities> parent);
+        void init(const sp<AMessage> &format, std::shared_ptr<CodecCaps> parent);
         void initWithPlatformLimits();
         bool supports(int sampleRate, int inputChannels);
         bool isSampleRateSupported(int sampleRate);
@@ -458,7 +459,7 @@ namespace android {
          * Create VideoCapabilities.
          */
         static std::shared_ptr<VideoCapabilities> Create(const sp<AMessage> &format,
-                std::shared_ptr<CodecCapabilities> parent);
+                std::shared_ptr<CodecCaps> parent);
 
         /**
          * Get the block size.
@@ -516,7 +517,7 @@ namespace android {
         bool supports(int width, int height, double rate) const;
         /* no public constructor */
         VideoCapabilities() {};
-        void init(const sp<AMessage> &format, std::shared_ptr<CodecCapabilities> parent);
+        void init(const sp<AMessage> &format, std::shared_ptr<CodecCaps> parent);
         void initWithPlatformLimits();
         std::vector<PerformancePoint> getPerformancePoints(const sp<AMessage> &format) const;
         std::map<VideoSize, Range<long>, VideoSizeCompare>
@@ -581,7 +582,7 @@ namespace android {
 
         /** @hide */
         static std::shared_ptr<EncoderCapabilities> Create(
-                const sp<AMessage> &format, std::shared_ptr<CodecCapabilities> parent);
+                const sp<AMessage> &format, std::shared_ptr<CodecCaps> parent);
 
         /** @hide */
         void getDefaultFormat(sp<AMessage> &format);
@@ -607,14 +608,14 @@ namespace android {
 
         /* no public constructor */
         EncoderCapabilities() { }
-        void init(const sp<AMessage> &format, std::shared_ptr<CodecCapabilities> parent);
+        void init(const sp<AMessage> &format, std::shared_ptr<CodecCaps> parent);
         void applyLevelLimits();
         void parseFromInfo(const sp<AMessage> &format);
         bool supports(std::optional<int> complexity, std::optional<int> quality,
                 std::optional<int> profile);
     };
 
-    struct CodecCapabilities : public std::enable_shared_from_this<CodecCapabilities> {
+    struct CodecCaps : public std::enable_shared_from_this<CodecCaps> {
         static bool SupportsBitrate(Range<int> bitrateRange,
                 const sp<AMessage> &format);
 
@@ -626,13 +627,13 @@ namespace android {
          * method without calling any method of the {@link MediaCodecList} class beforehand
          * results in a {@link NullPointerException}.</p>
          */
-        static std::shared_ptr<CodecCapabilities> CreateFromProfileLevel(
+        static std::shared_ptr<CodecCaps> CreateFromProfileLevel(
                 AString mediaType, int profile, int level, int32_t maxConcurrentInstances = -1);
 
-        CodecCapabilities() {};
+        CodecCaps() {};
 
         /** @hide */
-        CodecCapabilities dup();
+        CodecCaps dup();
 
         /**
          * Returns the media type for which this codec-capability object was created.
@@ -642,7 +643,7 @@ namespace android {
         /**
          * Returns the supported profile levels.
          */
-        Vector<MediaCodecInfo::ProfileLevel> getProfileLevels();
+        Vector<ProfileLevel> getProfileLevels();
 
         /**
          * Returns a media format with default values for configurations that have defaults.
@@ -803,9 +804,13 @@ namespace android {
          */
         bool isFormatSupported(const sp<AMessage> &format) const;
 
+        CodecCaps(Vector<ProfileLevel> profLevs,
+                Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
+                sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
+
     private:
         AString mMediaType;
-        Vector<MediaCodecInfo::ProfileLevel> mProfileLevels;
+        Vector<ProfileLevel> mProfileLevels;
         Vector<uint32_t> mColorFormats;
         int mMaxSupportedInstances;
         int mError;
@@ -822,9 +827,9 @@ namespace android {
         std::shared_ptr<VideoCapabilities> mVideoCaps;
         std::shared_ptr<EncoderCapabilities> mEncoderCaps;
 
-        CodecCapabilities(Vector<MediaCodecInfo::ProfileLevel> profLevs,
-                Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
-                sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
+        // CodecCaps(Vector<ProfileLevel> profLevs,
+        //         Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
+        //         sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
 
         bool supportsProfileLevel(int profile, int level) const;
         std::vector<Feature> getValidFeatures() const;
