@@ -20,6 +20,7 @@
 
 #include <media/CodecCapabilitiesUtils.h>
 #include <media/stagefright/foundation/ABase.h>
+#include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AString.h>
 #include <media/stagefright/MediaCodecConstants.h>
 
