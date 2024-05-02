@@ -241,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af843808_1471145f",
+        "filename": "services/audiopolicy/engine/interface/EngineInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T14:02:28Z",
+      "side": 1,
+      "message": "sure will provide.",
+      "parentUuid": "2fd47c07_8406807f",
+      "range": {
+        "startLine": 139,
+        "startChar": 31,
+        "endLine": 139,
+        "endChar": 62
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4f1b33e_5304b060",
         "filename": "services/audiopolicy/engineconfigurable/src/Engine.cpp",
         "patchSetId": 1
@@ -357,6 +381,30 @@
       "writtenOn": "2024-05-01T00:35:24Z",
       "side": 1,
       "message": "Same comment here, if the flag check fails should return error. Same for method below.",
+      "range": {
+        "startLine": 2161,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 81
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97748956_ebe1a53f",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T14:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cb5aef_f536a02c",
       "range": {
         "startLine": 2161,
         "startChar": 4,
