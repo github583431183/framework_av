@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61189233_0a795ebb",
+        "filename": "media/libmedia/include/media/CodecCapabilities.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-02T21:22:00Z",
+      "side": 1,
+      "message": "can we make these classes with their own headers?",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "8e1ad13fd51f3fc7759703a91b67f175730c57fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
