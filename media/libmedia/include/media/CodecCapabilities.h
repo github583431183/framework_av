@@ -18,9 +18,10 @@
 
 #define CODEC_CAPABILITIES_H_
 
-#include <media/MediaCodecInfo.h>
+// #include <media/MediaCodecInfo.h>
 #include <media/CodecCapabilitiesUtils.h>
 #include <media/stagefright/foundation/ABase.h>
+#include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AString.h>
 #include <media/stagefright/MediaCodecConstants.h>
 
@@ -642,7 +643,7 @@ namespace android {
         /**
          * Returns the supported profile levels.
          */
-        Vector<MediaCodecInfo::ProfileLevel> getProfileLevels();
+        Vector<ProfileLevel> getProfileLevels();
 
         /**
          * Returns a media format with default values for configurations that have defaults.
@@ -803,9 +804,13 @@ namespace android {
          */
         bool isFormatSupported(const sp<AMessage> &format) const;
 
+        CodecCapabilities(Vector<ProfileLevel> profLevs,
+                Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
+                sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
+
     private:
         AString mMediaType;
-        Vector<MediaCodecInfo::ProfileLevel> mProfileLevels;
+        Vector<ProfileLevel> mProfileLevels;
         Vector<uint32_t> mColorFormats;
         int mMaxSupportedInstances;
         int mError;
@@ -822,9 +827,9 @@ namespace android {
         std::shared_ptr<VideoCapabilities> mVideoCaps;
         std::shared_ptr<EncoderCapabilities> mEncoderCaps;
 
-        CodecCapabilities(Vector<MediaCodecInfo::ProfileLevel> profLevs,
-                Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
-                sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
+        // CodecCapabilities(Vector<ProfileLevel> profLevs,
+        //         Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
+        //         sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
 
         bool supportsProfileLevel(int profile, int level) const;
         std::vector<Feature> getValidFeatures() const;

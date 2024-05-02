@@ -319,7 +319,7 @@ void AudioCapabilities::applyLevelLimits() {
     if (!lockParent) {
         return;
     }
-    Vector<MediaCodecInfo::ProfileLevel> profileLevels = lockParent->getProfileLevels();
+    Vector<ProfileLevel> profileLevels = lockParent->getProfileLevels();
     AString mediaTypeStr = lockParent->getMediaType();
     const char *mediaType = mediaTypeStr.c_str();
 
@@ -389,7 +389,7 @@ void AudioCapabilities::applyLevelLimits() {
         bitRates = Range<int>(96000, 1524000);
         maxChannels = 6;
     } else if (strcasecmp(mediaType, MIMETYPE_AUDIO_DTS_HD) == 0) {
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             switch (profileLevel.mProfile) {
                 case DTS_HDProfileLBR:
                     sampleRates = { 22050, 24000, 44100, 48000 };
@@ -409,7 +409,7 @@ void AudioCapabilities::applyLevelLimits() {
         }
         maxChannels = 8;
     } else if (strcasecmp(mediaType, MIMETYPE_AUDIO_DTS_UHD) == 0) {
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             switch (profileLevel.mProfile) {
                 case DTS_UHDProfileP2:
                     sampleRates = { 48000 };
@@ -1530,7 +1530,7 @@ void VideoCapabilities::applyLevelLimits() {
     if (!lockParent) {
         return;
     }
-    Vector<MediaCodecInfo::ProfileLevel> profileLevels = lockParent->getProfileLevels();
+    Vector<ProfileLevel> profileLevels = lockParent->getProfileLevels();
     AString mediaTypeStr = lockParent->getMediaType();
     const char *mediaType = mediaTypeStr.c_str();
 
@@ -1539,7 +1539,7 @@ void VideoCapabilities::applyLevelLimits() {
         maxBlocksPerSecond = 1485;
         maxBps = 64000;
         maxDPBBlocks = 396;
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             int MBPS = 0, FS = 0, BR = 0, DPB = 0;
             bool supported = true;
             switch (profileLevel.mLevel) {
@@ -1632,7 +1632,7 @@ void VideoCapabilities::applyLevelLimits() {
         maxBlocks = 99;
         maxBlocksPerSecond = 1485;
         maxBps = 64000;
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             int MBPS = 0, FS = 0, BR = 0, FR = 0, W = 0, H = 0;
             bool supported = true;
             switch (profileLevel.mProfile) {
@@ -1696,7 +1696,7 @@ void VideoCapabilities::applyLevelLimits() {
         maxBlocks = 99;
         maxBlocksPerSecond = 1485;
         maxBps = 64000;
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             int MBPS = 0, FS = 0, BR = 0, FR = 0, W = 0, H = 0;
             bool strict = false; // true: W, H and FR are individual max limits
             bool supported = true;
@@ -1805,7 +1805,7 @@ void VideoCapabilities::applyLevelLimits() {
         maxBlocks = 99;
         maxBlocksPerSecond = 1485;
         maxBps = 64000;
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             int MBPS = 0, BR = 0, FR = 0, W = 0, H = 0, minW = minWidth, minH = minHeight;
             bool strict = false; // true: support only sQCIF, QCIF (maybe CIF)
             switch (profileLevel.mLevel) {
@@ -1906,7 +1906,7 @@ void VideoCapabilities::applyLevelLimits() {
 
         // profile levels are not indicative for VPx, but verify
         // them nonetheless
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             switch (profileLevel.mLevel) {
                 case VP8Level_Version0:
                 case VP8Level_Version1:
@@ -1937,7 +1937,7 @@ void VideoCapabilities::applyLevelLimits() {
         maxBps = 200000;
         int maxDim = 512;
 
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             long long SR = 0; // luma sample rate
             int FS = 0;  // luma picture size
             int BR = 0;  // bit rate kbps
@@ -2011,7 +2011,7 @@ void VideoCapabilities::applyLevelLimits() {
         maxBlocks = 36864 >> 6; // 192x192 pixels == 576 8x8 blocks
         maxBlocksPerSecond = maxBlocks * 15;
         maxBps = 128000;
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             double FR = 0;
             int FS = 0;
             int BR = 0;
@@ -2113,7 +2113,7 @@ void VideoCapabilities::applyLevelLimits() {
         // corresponding to the definitions in
         // "AV1 Bitstream & Decoding Process Specification", Annex A
         // found at https://aomedia.org/av1-bitstream-and-decoding-process-specification/
-        for (MediaCodecInfo::ProfileLevel profileLevel: profileLevels) {
+        for (ProfileLevel profileLevel: profileLevels) {
             long long SR = 0; // luma sample rate
             int FS = 0;  // luma picture size
             int BR = 0;  // bit rate kbps
@@ -2310,7 +2310,7 @@ bool EncoderCapabilities::supports(
         if (!lockParent) {
             return false;
         }
-        for (MediaCodecInfo::ProfileLevel pl: lockParent->getProfileLevels()) {
+        for (ProfileLevel pl: lockParent->getProfileLevels()) {
             if (pl.mProfile == profile.value()) {
                 profile = std::nullopt;
                 break;
@@ -2507,7 +2507,7 @@ bool CodecCapabilities::isFormatSupported(const sp<AMessage> &format) const {
         // 1080p format is not supported even if codec supports Main Profile Level High,
         // as Simple Profile does not support 1080p.
         int maxLevel = 0;
-        for (MediaCodecInfo::ProfileLevel pl : mProfileLevels) {
+        for (ProfileLevel pl : mProfileLevels) {
             if (pl.mProfile == profile && pl.mLevel > maxLevel) {
                 // H.263 levels are not completely ordered:
                 // Level45 support only implies Level10 support
@@ -2571,7 +2571,7 @@ bool CodecCapabilities::isFormatSupported(const sp<AMessage> &format) const {
 }
 
 bool CodecCapabilities::supportsProfileLevel(int profile, int level) const {
-    for (MediaCodecInfo::ProfileLevel pl: mProfileLevels) {
+    for (ProfileLevel pl: mProfileLevels) {
         if (pl.mProfile != profile) {
             continue;
         }
@@ -2642,7 +2642,7 @@ AString CodecCapabilities::getMediaType() {
     return mMediaType;
 }
 
-Vector<MediaCodecInfo::ProfileLevel>
+Vector<ProfileLevel>
         CodecCapabilities::getProfileLevels() {
     return mProfileLevels;
 }
@@ -2701,13 +2701,13 @@ CodecCapabilities CodecCapabilities::dup() {
 // static
 std::shared_ptr<CodecCapabilities> CodecCapabilities::CreateFromProfileLevel(
         AString mediaType, int profile, int level, int32_t maxConcurrentInstances) {
-    MediaCodecInfo::ProfileLevel pl;
+    ProfileLevel pl;
     pl.mProfile = profile;
     pl.mLevel = level;
     sp<AMessage> defaultFormat = new AMessage;
     defaultFormat->setString(KEY_MIME, mediaType);
 
-    Vector<MediaCodecInfo::ProfileLevel> pls;
+    Vector<ProfileLevel> pls;
     pls.push_back(pl);
     Vector<uint32_t> colFmts;
     sp<AMessage> capabilitiesInfo = new AMessage;
@@ -2720,7 +2720,7 @@ std::shared_ptr<CodecCapabilities> CodecCapabilities::CreateFromProfileLevel(
 }
 
 CodecCapabilities::CodecCapabilities(
-        Vector<MediaCodecInfo::ProfileLevel> profLevs, Vector<uint32_t> colFmts,
+        Vector<ProfileLevel> profLevs, Vector<uint32_t> colFmts,
         bool encoder, sp<AMessage> &defaultFormat, sp<AMessage> &capabilitiesInfo,
         int32_t maxConcurrentInstances) {
     mColorFormats = colFmts;
@@ -2734,7 +2734,7 @@ CodecCapabilities::CodecCapabilities(
     /* VP9 introduced profiles around 2016, so some VP9 codecs may not advertise any
        supported profiles. Determine the level for them using the info they provide. */
     if (profLevs.size() == 0 && mMediaType == MIMETYPE_VIDEO_VP9) {
-        MediaCodecInfo::ProfileLevel profLev;
+        ProfileLevel profLev;
         profLev.mProfile = VP9Profile0;
         profLev.mLevel = VideoCapabilities::EquivalentVP9Level(capabilitiesInfo);
         profLevs.push_back(profLev);

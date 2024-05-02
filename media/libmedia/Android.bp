@@ -270,7 +270,6 @@ cc_library_shared {
     ],
 
     shared_libs: [
-        "libmedia_codeclist",
         "libbinder",
         "liblog",
         "libstagefright_foundation",
@@ -316,6 +315,7 @@ cc_library_shared {
         "android.hardware.media.omx@1.0",
         "libbinder",
         "liblog",
+        "libmedia_codeclist_capabilities",
         "libstagefright_foundation",
         "libutils",
     ],

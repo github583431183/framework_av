@@ -775,6 +775,7 @@ status_t Codec2InfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
                     }
                 }
             }
+            codecInfo->setCodecCapsMap();
         }
     }
     return OK;

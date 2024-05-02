@@ -20,6 +20,8 @@
 
 #include <android-base/macros.h>
 #include <binder/Parcel.h>
+#include <media/CodecCapabilities.h>
+#include <media/CodecCapabilitiesUtils.h>
 #include <media/stagefright/foundation/ABase.h>
 #include <media/stagefright/foundation/AString.h>
 
@@ -43,13 +45,9 @@ struct MediaCodecInfoWriter;
 struct MediaCodecListWriter;
 
 struct MediaCodecInfo : public RefBase {
-    struct ProfileLevel {
-        uint32_t mProfile;
-        uint32_t mLevel;
-        bool operator <(const ProfileLevel &o) const {
-            return mProfile < o.mProfile || (mProfile == o.mProfile && mLevel < o.mLevel);
-        }
-    };
+
+    // Map MediaCodecInfo::ProfileLevel to ProfileLevel in global namespace.
+    typedef ProfileLevel ProfileLevel;
 
     struct CapabilitiesWriter;
 
@@ -192,6 +190,7 @@ struct MediaCodecInfo : public RefBase {
     Attributes getAttributes() const;
     void getSupportedMediaTypes(Vector<AString> *mediaTypes) const;
     const sp<Capabilities> getCapabilitiesFor(const char *mediaType) const;
+    const std::shared_ptr<CodecCapabilities> getCodecCapsFor(const char *mediaType) const;
     const char *getCodecName() const;
 
     /**
@@ -233,10 +232,12 @@ private:
     AString mOwner;
     Attributes mAttributes;
     KeyedVector<AString, sp<Capabilities> > mCaps;
+    KeyedVector<AString, std::shared_ptr<CodecCapabilities>> mCodecCaps;
     Vector<AString> mAliases;
     uint32_t mRank;
 
     ssize_t getCapabilityIndex(const char *mediaType) const;
+    ssize_t getCodecCapIndex(const char *mediaType) const;
 
     /**
      * Construct an `MediaCodecInfo` object. After the construction, its
@@ -319,6 +320,11 @@ struct MediaCodecInfoWriter {
      * @param rank The rank of the component.
      */
     void setRank(uint32_t rank);
+
+    void setCodecCapsMap();
+
+    std::shared_ptr<CodecCapabilities> getCodecCapsFromCaps(
+            AString mediaType, sp<MediaCodecInfo::Capabilities> caps);
 private:
     /**
      * The associated `MediaCodecInfo`.
