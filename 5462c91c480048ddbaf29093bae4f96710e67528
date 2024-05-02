@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5cde100_9b61282e",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T13:34:34Z",
+      "side": 1,
+      "message": "thanks, this was the kind of helper I was looking for! Just need to add the cc shared lib from aconfig, I have only the java one in current master.",
+      "parentUuid": "f2226c12_dc34c652",
+      "range": {
+        "startLine": 2177,
+        "startChar": 3,
+        "endLine": 2177,
+        "endChar": 81
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ddf48fc_e9c5940f",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dbb3f6a_0a0b6659",
+        "filename": "services/audiopolicy/engine/common/include/EngineBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T13:34:34Z",
+      "side": 1,
+      "message": "good catch, the original impl was Uid to ZoneId, but now, with UserId to ZoneId, can switch to map",
+      "parentUuid": "5ddf48fc_e9c5940f",
+      "range": {
+        "startLine": 228,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 36
+      },
       "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -122,6 +170,30 @@
           ]
         }
       ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4083f53e_85b7cfde",
+        "filename": "services/audiopolicy/engine/common/include/VolumeGroup.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-02T13:34:34Z",
+      "side": 1,
+      "message": "It is quite conveniant to prevent from extra processing for volume management in AudioService and in order to get the device on which we need to set volume cache and apply it.\nA way to get rid of it would have been to have a getDeviceForVolumeGroupId in AudioSystem. I may not be a bad idea to split getDevice for volume request of for routing request.",
+      "parentUuid": "323aa662_6edbd069",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 56
+      },
       "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
