@@ -502,12 +502,17 @@ status_t Codec2InfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
         return OK;
     }
 
+    int maxSupportedInstances = 0;
     MediaCodecsXmlParser::AttributeMap settings = parser.getServiceAttributeMap();
     for (const auto &v : settings) {
         if (!hasPrefix(v.first, "media-type-")
                 && !hasPrefix(v.first, "domain-")
                 && !hasPrefix(v.first, "variant-")) {
             writer->addGlobalSetting(v.first.c_str(), v.second.c_str());
+            if (v.first == "max-concurrent-instances") {
+                // return 0 if cannot be converted.
+                maxSupportedInstances = std::atoi(v.second.c_str());
+            }
         }
     }
 
@@ -775,6 +780,7 @@ status_t Codec2InfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
                     }
                 }
             }
+            codecInfo->setCodecCapsMap(maxSupportedInstances);
         }
     }
     return OK;
