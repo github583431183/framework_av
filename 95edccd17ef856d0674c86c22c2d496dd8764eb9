@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3f120e_071b1f37",
+        "filename": "media/module/codecserviceregistrant/CodecServiceRegistrant.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-02T16:20:04Z",
+      "side": 1,
+      "message": "I\u0027m not wild about the #ifndef structure.\n+1 that it defaults to enabled; but I think i\u0027d prefer a structure more like:\n\nRegisterCodecServices() \n{ const int kThreadCount \u003d 64;registerCodecServices(kThreadCount);}\nRegisterCodecServices(int maxThreads) {\n   if (maxThreads \u003e 0) {\n       setup the threadpool, using provided maxThreads value)\n   }\n   ... rest of the routine\n   if (maxThreads \u003e 0) {\n       joinThreadpool() calls\n   }\n}\n\nfuzzer would then call with a maxThreads value \u003d\u003d 0\nregular consumer calls the non-arg variant, which then nests with an appropriate\nthread count.\n\nit does away with the #ifdef -- so there can never be a question of how the code was compiled that might affect its behavior.",
+      "range": {
+        "startLine": 780,
+        "startChar": 2,
+        "endLine": 780,
+        "endChar": 26
+      },
+      "revId": "95edccd17ef856d0674c86c22c2d496dd8764eb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
