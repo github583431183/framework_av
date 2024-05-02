@@ -128,9 +128,14 @@ status_t OmxInfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
         ALOGE("IOmxStore reports parsing error.");
         return NO_INIT;
     }
+    int maxSupportedInstances = 0;
     for (const auto& p : serviceAttributes) {
         writer->addGlobalSetting(
                 p.key.c_str(), p.value.c_str());
+        if (p.key == "max-concurrent-instances") {
+            // return 0 if cannot be converted.
+            maxSupportedInstances = std::atoi(p.value.c_str());
+        }
     }
 
     // Convert roles to lists of codecs
@@ -217,6 +222,8 @@ status_t OmxInfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
                 ALOGW("Fail to add media type %s to codec %s",
                         typeName.c_str(), nodeName.c_str());
                 info->removeMediaType(typeName.c_str());
+            } else {
+                info->setCodecCapsMap(maxSupportedInstances);
             }
         }
     }
