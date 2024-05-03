@@ -105,6 +105,30 @@
       },
       "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7323d7c4_ca92514f",
+        "filename": "media/audio/aconfig/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T22:40:46Z",
+      "side": 1,
+      "message": "The internal change for the cc library was added here using this changed-id: Icdc2a482228ab06ac7386915ddbeb0cfcc24889d\nag/25261515\n\nThe other ID (where multizone_zone_audio) was added is I749ce16455ffe26df4b7a16a9987add8e6148115\n\nFrancois if you can add `Merged-In: I749ce16455ffe26df4b7a16a9987add8e6148115` to your CL comment that would help reduce the conflict. This should be added after the Changed-Id: line.",
+      "parentUuid": "97b46589_fa6a7d95",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
