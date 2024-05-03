@@ -3,7 +3,6 @@
 # Please add flags in alphabetical order.
 
 package: "com.android.media.aaudio"
-container: "system"
 
 flag {
     name: "sample_rate_conversion"
