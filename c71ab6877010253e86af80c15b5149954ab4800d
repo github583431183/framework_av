@@ -1,0 +1,488 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60940b96_b1b2ab70",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Do we need this change here? Looks the same for me.",
+      "range": {
+        "startLine": 1316,
+        "startChar": 40,
+        "endLine": 1316,
+        "endChar": 60
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ec1bab50_aec7a1cc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/AudioSystem.cpp",
+              "range": {
+                "startLine": 1316,
+                "startChar": 0,
+                "endLine": 1317,
+                "endChar": 0
+              },
+              "replacement": "    return statusTFromBinderStatus(\n            aps-\u003esetStreamVolumeIndex(streamAidl, deviceAidl, indexAidl));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78405a1e_aa44bd19",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Mind updating the documentation for this since we are updating the API\n\n```\n    /**\n     * Set the volume index for a given volume group.\n     *\n     * @param groupId the volume group id\n     * @param uid the uid of the client\n     * @param index the volume index to set\n     * @param device the device to set the volume index for\n     * @return NO_ERROR if the call is successful, otherwise an error code\n     */\n```",
+      "range": {
+        "startLine": 383,
+        "startChar": 20,
+        "endLine": 383,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "47696ad2_0476e005",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 383,
+                "startChar": 0,
+                "endLine": 383,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Set the volume index for a given volume group.\n     *\n     * @param groupId the volume group id\n     * @param uid the uid of the client\n     * @param index the volume index to set\n     * @param device the device to set the volume index for\n     * @return NO_ERROR if the call is successful, BAD_VALUE if the volume group\n     *         or the device is invalid, PERMISSION_DENIED if the client is not\n     *         allowed to set the volume index for the volume group\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346bdcbb_520df707",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Mind updating the documentation for this since we are updating the API\n\n```\n  /**\n     * Get the devices for the given audio attributes.\n     *\n     * @param[in] aa the requested audio attributes\n     * @param[in] uid the uid of the client\n     * @param[out] devices the devices for the given audio attributes\n     * @param[in] forVolume true if the devices are for volume\n     * @return if the call is successful or not\n     */\n```",
+      "range": {
+        "startLine": 395,
+        "startChar": 20,
+        "endLine": 395,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8227df8f_42e5ed96",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 395,
+                "startChar": 0,
+                "endLine": 395,
+                "endChar": 0
+              },
+              "replacement": "\n    /**\n     * Get the devices for the given audio attributes.\n     *\n     * @param[in] aa the requested audio attributes\n     * @param[in] uid the uid of the client\n     * @param[out] devices the devices for the given audio attributes\n     * @param[in] forVolume true if the devices are for volume\n     * @return NO_ERROR in case of success, DEAD_OBJECT, NO_INIT, BAD_VALUE\n     *         in case of error.\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350abff4_9a7d7dd5",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Fits in prev line, like previous code.",
+      "range": {
+        "startLine": 396,
+        "startChar": 44,
+        "endLine": 396,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "82c96236_345a4da6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 395,
+                "startChar": 0,
+                "endLine": 397,
+                "endChar": 0
+              },
+              "replacement": "    static status_t getDevicesForAttributes(const audio_attributes_t \u0026aa, uid_t uid,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d0c950_1042ff8c",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Same here, we need to update documentation here.",
+      "range": {
+        "startLine": 649,
+        "startChar": 20,
+        "endLine": 649,
+        "endChar": 44
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "80b6c316_15849c9c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 644,
+                "startChar": 0,
+                "endLine": 644,
+                "endChar": 0
+              },
+              "replacement": "     * @param uid uid of the app requesting the direct playback\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc261c8_03dbae26",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Need to add documentation for the parameters here.",
+      "range": {
+        "startLine": 662,
+        "startChar": 89,
+        "endLine": 662,
+        "endChar": 92
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "26c2c1b1_a27dd9f2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 658,
+                "startChar": 0,
+                "endLine": 658,
+                "endChar": 0
+              },
+              "replacement": "     * @param uid uid of the app requesting the profiles\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c61e00_13d9d9f7",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "One more time documentation here also.",
+      "range": {
+        "startLine": 200,
+        "startChar": 21,
+        "endLine": 200,
+        "endChar": 46
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "48b81442_6b5428ff",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 200,
+                "startChar": 0,
+                "endLine": 200,
+                "endChar": 0
+              },
+              "replacement": "    // sets the new volume group volume at a level corresponding to the supplied index for the\n    // supplied device. By convention, specifying AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME means\n    // setting volume for all devices\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3315b974_6894e395",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Update documentation here also",
+      "range": {
+        "startLine": 418,
+        "startChar": 63,
+        "endLine": 418,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7ab98611_bb4b84fc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 418,
+                "startChar": 0,
+                "endLine": 419,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe39891_1a607277",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Update documentation here also",
+      "range": {
+        "startLine": 423,
+        "startChar": 58,
+        "endLine": 423,
+        "endChar": 61
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ba0629_8acff149",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4449,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Do we need `getDevicesForAttributes` here also?",
+      "range": {
+        "startLine": 4449,
+        "startChar": 39,
+        "endLine": 4449,
+        "endChar": 90
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7f861b40_b6f2c315",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 4449,
+                "startChar": 0,
+                "endLine": 4450,
+                "endChar": 0
+              },
+              "replacement": "    DeviceVector engineOutputDevices;\n    status \u003d getDevicesForAttributes(*attr, uid, engineOutputDevices, false /* forVolume */);\n    if (status !\u003d OK) {\n        return status;\n    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b1d136_e513ff36",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5595,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Similar question here, do we need `getDevicesForAttributes`",
+      "range": {
+        "startLine": 5595,
+        "startChar": 30,
+        "endLine": 5595,
+        "endChar": 69
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62ceafa_427b631f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6016,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Same here, `getDevicesForAttributes` ?",
+      "range": {
+        "startLine": 6016,
+        "startChar": 35,
+        "endLine": 6016,
+        "endChar": 73
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe97434_97c34b99",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 8392,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "One more time, getDevicesForAttributes?",
+      "range": {
+        "startLine": 8392,
+        "startChar": 21,
+        "endLine": 8392,
+        "endChar": 50
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3babfa94_9dd3bed0",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T20:58:23Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 83,
+        "endLine": 1051,
+        "endChar": 84
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
