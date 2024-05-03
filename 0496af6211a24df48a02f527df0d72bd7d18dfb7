@@ -57,6 +57,30 @@
       },
       "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b68b237_00fe48e2",
+        "filename": "media/audio/aconfig/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T21:56:12Z",
+      "side": 1,
+      "message": "My thought was to first merge internally and add a merged in ID from internal.\n\nBut given both changes are already internally not sure how we can proceed here, any suggestions.",
+      "parentUuid": "5476b10e_5152b734",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
