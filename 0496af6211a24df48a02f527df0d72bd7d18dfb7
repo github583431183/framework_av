@@ -34,6 +34,29 @@
       "parentUuid": "578c9669_d27b3587",
       "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5476b10e_5152b734",
+        "filename": "media/audio/aconfig/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-03T21:08:25Z",
+      "side": 1,
+      "message": "this is already declared in the internal git repo so we may have a conflict to resolve or a dual declaration to cleanup",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
