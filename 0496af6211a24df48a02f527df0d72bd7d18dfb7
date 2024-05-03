@@ -16,6 +16,24 @@
       "message": "Oscar, as i do not have the visibility on your patch, I do not know if you added the native lib generation also.",
       "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c384b61_d1b6f5a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-03T18:27:05Z",
+      "side": 1,
+      "message": "I did not, lets have Eric +2 and I can try to merge this code upstream to reduce the conflicts.",
+      "parentUuid": "578c9669_d27b3587",
+      "revId": "0496af6211a24df48a02f527df0d72bd7d18dfb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
