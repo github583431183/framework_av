@@ -3,7 +3,6 @@
 # Please add flags in alphabetical order.
 
 package: "com.android.media.audio"
-container: "system"
 
 flag {
     name: "alarm_min_volume_zero"
