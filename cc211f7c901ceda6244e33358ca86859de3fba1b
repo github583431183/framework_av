@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569d0a0e_1bf810bd",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 0,
+      "message": "Should we keep the log statement with a new info, could be useful for debugging in the future.",
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

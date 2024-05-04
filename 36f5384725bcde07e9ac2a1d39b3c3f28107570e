@@ -1,0 +1,424 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d856ba3_65c7edf9",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Should we add documentation to these method?",
+      "range": {
+        "startLine": 383,
+        "startChar": 20,
+        "endLine": 383,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "13854089_2ab5c6bf",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 383,
+                "startChar": 0,
+                "endLine": 383,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Set the volume index for a given volume group.\n     *\n     * @param groupId the volume group id\n     * @param index the volume index to set\n     * @param device the device to set the volume index for\n     * @return NO_ERROR if the call is successful, otherwise an error code\n     */\n"
+            },
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 386,
+                "startChar": 0,
+                "endLine": 386,
+                "endChar": 0
+              },
+              "replacement": "\n    /**\n     * Get the volume index for a given volume group.\n     *\n     * @param groupId the volume group id\n     * @param index the volume index to get\n     * @param device the device to get the volume index for\n     * @return NO_ERROR if the call is successful, otherwise an error code\n     */\n"
+            },
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 390,
+                "startChar": 0,
+                "endLine": 390,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Get the maximum volume index for a given volume group.\n     *\n     * @param groupId the volume group id\n     * @param index the maximum volume index to get\n     * @return NO_ERROR if the call is successful, otherwise an error code\n     */\n"
+            },
+            {
+              "path": "media/libaudioclient/include/media/AudioSystem.h",
+              "range": {
+                "startLine": 392,
+                "startChar": 0,
+                "endLine": 392,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Get the minimum volume index for a given volume group.\n     *\n     * @param groupId the volume group id\n     * @param index the minimum volume index to get\n     * @return NO_ERROR if the call is successful, otherwise an error code\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11b358a_500aa0bf",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Same comment here, should we add documentation?",
+      "range": {
+        "startLine": 200,
+        "startChar": 21,
+        "endLine": 200,
+        "endChar": 46
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3fe0e872_3f80d21f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 200,
+                "startChar": 0,
+                "endLine": 200,
+                "endChar": 0
+              },
+              "replacement": "    // Sets the volume index for the specified volume group and device.\n"
+            },
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 203,
+                "startChar": 0,
+                "endLine": 203,
+                "endChar": 0
+              },
+              "replacement": "\n    // Retrieves the volume index for the specified volume group and device.\n"
+            },
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 207,
+                "startChar": 0,
+                "endLine": 207,
+                "endChar": 0
+              },
+              "replacement": "    // Retrieves the maximum volume index for the specified volume group.\n"
+            },
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 209,
+                "startChar": 0,
+                "endLine": 209,
+                "endChar": 0
+              },
+              "replacement": "    // Retrieves the minimum volume index for the specified volume group.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50abbca1_21bfeeae",
+        "filename": "services/audiopolicy/engine/interface/EngineInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Documentation?",
+      "range": {
+        "startLine": 304,
+        "startChar": 31,
+        "endLine": 304,
+        "endChar": 58
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "78eda193_51959f38",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engine/interface/EngineInterface.h",
+              "range": {
+                "startLine": 304,
+                "startChar": 0,
+                "endLine": 304,
+                "endChar": 0
+              },
+              "replacement": "\n    /**\n     * @brief getAttributesForVolumeGroup gets the appropriate audio attributes to be used for a\n     * given volume group.\n     * @param group to be considered\n     * @param fallbackOnDefault if true, will return the fallback audio attributes if the volume\n     * group is not associated to any audio attributes.\n     * @return audio attributes associated to the given volume group, default attributes if none\n     * applicable, empty attributes if no default attributes defined.\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f346c010_6c93c4ec",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3282,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Maybe you do this elsewhere, getOutputDevicesForAttributes?",
+      "range": {
+        "startLine": 3282,
+        "startChar": 24,
+        "endLine": 3282,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b064cb86_fb332a12",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 3283,
+                "startChar": 0,
+                "endLine": 3284,
+                "endChar": 0
+              },
+              "replacement": "        strategy \u003d mEngine-\u003egetProductStrategyForAttributes(attr).value_or(PRODUCT_STRATEGY_NONE);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e54990a_ace3bd3c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Documentation",
+      "range": {
+        "startLine": 171,
+        "startChar": 25,
+        "endLine": 171,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "265267cc_94f8a67d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 171,
+                "endChar": 0
+              },
+              "replacement": "        /**\n         * @brief setVolumeGroupVolumeIndex: set the volume index for a given volume group\n         * @param groupId to be considered\n         * @param index to set\n         * @param device to be considered\n         */\n"
+            },
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+              "range": {
+                "startLine": 174,
+                "startChar": 0,
+                "endLine": 174,
+                "endChar": 0
+              },
+              "replacement": "        /**\n         * @brief getVolumeGroupVolumeIndex: get the volume index for a given volume group\n         * @param groupId to be considered\n         * @param index to be set\n         * @param device to be considered\n         */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3b8c69_9706fe90",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Documentation here also?",
+      "fixSuggestions": [
+        {
+          "fixId": "27396455_1a7821a4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+              "range": {
+                "startLine": 177,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "        /**\n         * @brief getVolumeGroupMaxVolumeIndex: returns the maximum volume index for the given\n         * volume group.\n         * @param groupId the volume group to consider\n         * @param index the maximum volume index for the given volume group\n         * @return NO_ERROR if the volume group is valid, error code otherwise.\n         */\n"
+            },
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+              "range": {
+                "startLine": 179,
+                "startChar": 0,
+                "endLine": 179,
+                "endChar": 0
+              },
+              "replacement": "        /**\n         * @brief getVolumeGroupMinVolumeIndex: returns the minimum volume index for the given\n         * volume group.\n         * @param groupId the volume group to consider\n         * @param index the minimum volume index for the given volume group\n         * @return NO_ERROR if the volume group is valid, error code otherwise.\n         */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0e19aa_559b9d2b",
+        "filename": "services/audiopolicy/service/AudioPolicyService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Documentation",
+      "fixSuggestions": [
+        {
+          "fixId": "ce9b4720_beabd6ed",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 133,
+                "startChar": 0,
+                "endLine": 133,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Sets the volume index for a volume group.\n     *\n     * @param groupId the volume group ID\n     * @param device the device description\n     * @param index the volume index\n     * @return binder::Status::EX_NONE on success\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63bd1b1d_999bfbc0",
+        "filename": "services/audiopolicy/service/AudioPolicyService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-04T00:48:20Z",
+      "side": 1,
+      "message": "Documentation",
+      "fixSuggestions": [
+        {
+          "fixId": "73c0188b_dd60006d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 133,
+                "startChar": 0,
+                "endLine": 133,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Sets the volume index for a volume group.\n     *\n     * @param groupId the volume group ID\n     * @param device the device description\n     * @param index the volume index\n     * @return binder::Status::EX_NONE on success\n     */\n"
+            },
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 136,
+                "startChar": 0,
+                "endLine": 136,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Gets the volume index for a volume group.\n     *\n     * @param groupId the volume group ID\n     * @param device the device description\n     * @param _aidl_return the volume index\n     * @return binder::Status::EX_NONE on success\n     */\n"
+            },
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 139,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Gets the maximum volume index for a volume group.\n     *\n     * @param groupId the volume group ID\n     * @param _aidl_return the maximum volume index\n     * @return binder::Status::EX_NONE on success\n     */\n"
+            },
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 141,
+                "startChar": 0,
+                "endLine": 141,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Gets the minimum volume index for a volume group.\n     *\n     * @param groupId the volume group ID\n     * @param _aidl_return the minimum volume index\n     * @return binder::Status::EX_NONE on success\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
