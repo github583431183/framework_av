@@ -40,7 +40,7 @@
 #include <codec2/aidl/ComponentStore.h>
 #include <codec2/aidl/ParamTypes.h>
 
-#include <media/CodecServiceRegistrant.h>
+#include <codecserviceregistrant/CodecServiceRegistrant.h>
 
 namespace /* unnamed */ {
 
@@ -775,13 +775,11 @@ static android::sp<c2_hidl_V1_0::IComponentStore> getDeclaredHidlSwcodec(
     return nullptr;
 }
 
-extern "C" void RegisterCodecServices() {
+// fuzzer comes in through this interface, so that it can skip threading.
+// RBE -- consider putting the threadpool logic in the above routine
+//
+static void RegisterCodecServicesActual() {
     const bool aidlSelected = c2_aidl::utils::IsSelected();
-    constexpr int kThreadCount = 64;
-    ABinderProcess_setThreadPoolMaxThreadCount(kThreadCount);
-    ABinderProcess_startThreadPool();
-    ::android::hardware::configureRpcThreadpool(kThreadCount, false);
-
     LOG(INFO) << "Creating software Codec2 service...";
     std::shared_ptr<C2ComponentStore> store =
         android::GetCodec2PlatformComponentStore();
@@ -832,22 +830,29 @@ extern "C" void RegisterCodecServices() {
         }
     }
 
+    std::string registeredList = "";
     bool registered = false;
     const std::string aidlServiceName =
         std::string(c2_aidl::IComponentStore::descriptor) + "/software";
     if (__builtin_available(android __ANDROID_API_S__, *)) {
         if (AServiceManager_isDeclared(aidlServiceName.c_str())) {
             std::shared_ptr<c2_aidl::IComponentStore> aidlStore;
+#if 1
+            // if we register, we register the real thing
+            aidlStore = ::ndk::SharedRefBase::make<c2_aidl::utils::ComponentStore>(store);
+#else
             if (aidlSelected) {
                 aidlStore = ::ndk::SharedRefBase::make<c2_aidl::utils::ComponentStore>(store);
             } else {
                 aidlStore = ::ndk::SharedRefBase::make<c2_aidl::utils::ComponentStore>(
                         std::make_shared<H2C2ComponentStore>(nullptr));
             }
+#endif
             binder_exception_t ex = AServiceManager_addService(
                     aidlStore->asBinder().get(), aidlServiceName.c_str());
             if (ex == EX_NONE) {
                 registered = true;
+                registeredList = registeredList + " aidl";
             } else {
                 LOG(WARNING) << "Cannot register software Codec2 AIDL service. Exception: " << ex;
             }
@@ -858,6 +863,9 @@ extern "C" void RegisterCodecServices() {
     // If the software component store isn't declared in the manifest, we don't
     // need to create the service and register it.
     if (hidlStore) {
+#if 1
+        // if we're going to register, we register the real thing
+#else
         if (registered && aidlSelected) {
             LOG(INFO) << "Both HIDL and AIDL software codecs are declared in the vintf "
                       << "manifest, but AIDL was selected. "
@@ -866,8 +874,11 @@ extern "C" void RegisterCodecServices() {
             hidlStore = ::android::sp<V1_2::utils::ComponentStore>::make(
                     std::make_shared<H2C2ComponentStore>(nullptr));
         }
+#endif
         if (hidlStore->registerAsService("software") == android::OK) {
             registered = true;
+            // RBE - would be even nicer to say "hidl-1.2" or "hidl-1.1" ...
+            registeredList = registeredList + " hidl";
         } else {
             LOG(ERROR) << "Cannot register software Codec2 " << hidlStore->descriptor
                        << " service.";
@@ -878,10 +889,22 @@ extern "C" void RegisterCodecServices() {
     }
 
     if (registered) {
-        LOG(INFO) << "Software Codec2 service created and registered.";
+        // RBE: I'd love for the diagnostic to say which we registered: aidl/hidl/both
+        LOG(INFO) << "Software Codec2 service created and registered:" + registeredList;
     }
+
+}
+
+extern "C" void RegisterCodecServices() {
+    const int kThreadCount = 64;
+
+    LOG(INFO) << "RegisterCodecServices(" << kThreadCount << ")";
+    ABinderProcess_setThreadPoolMaxThreadCount(kThreadCount);
+    ABinderProcess_startThreadPool();
+    ::android::hardware::configureRpcThreadpool(kThreadCount, false);
+
+    RegisterCodecServicesActual();
 
     ABinderProcess_joinThreadPool();
     ::android::hardware::joinRpcThreadpool();
 }
-
