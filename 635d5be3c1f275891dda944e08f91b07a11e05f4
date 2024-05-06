@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7633085c_99aee802",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-06T21:53:30Z",
+      "side": 1,
+      "message": "please add the buganizer issue number corresponding to this problem",
+      "parentUuid": "fef030b7_66dc2ee2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5d60d46e_bfc5d70a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
