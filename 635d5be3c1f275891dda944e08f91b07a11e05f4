@@ -122,6 +122,24 @@
       "message": "Any concerns over this patch ?",
       "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6314b9_11a08946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-06T21:52:19Z",
+      "side": 1,
+      "message": "I did not mean a change similar to  https://android-review.googlesource.com/c/platform/frameworks/av/+/2625182\n\nWhat I mean is to update trackFlags at line 2700 in Threads.cpp and also add the OFFLOAD flag, not just DIRECT.\nWhat was causing the issue is updating the flags returned to the AudioTrack client.\n\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Threads.cpp;l\u003d2700?q\u003d%20trackFlags%20Threads.cpp",
+      "parentUuid": "20497610_9d685d4d",
+      "revId": "635d5be3c1f275891dda944e08f91b07a11e05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
