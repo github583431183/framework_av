@@ -13,6 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// RBE -- do we really want to do this, or do we want to use headers and link
+// against the library?
+#include <codecserviceregistrant/CodecServiceRegistrant.h>
+
+// we bring the actual code of the registrant inline
 #include "../CodecServiceRegistrant.cpp"
 #include "fuzzer/FuzzedDataProvider.h"
 #include <C2Config.h>
@@ -168,7 +174,8 @@ void CodecServiceRegistrantFuzzer::process(const uint8_t *data, size_t size) {
   invokeH2C2ComponentStore();
   /** RegisterCodecServices is called here to improve code coverage */
   /** as currently it is not called by codecServiceRegistrant       */
-  RegisterCodecServices();
+  // call the internal routine, that doesn't do any threadpool manipulation
+  RegisterCodecServicesActual();
   delete mFDP;
 }
 
