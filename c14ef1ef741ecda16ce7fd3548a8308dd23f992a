@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79700b16_2deb0cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-06T21:54:45Z",
+      "side": 1,
+      "message": "this should be addressed by the proposed fix for https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2893100",
+      "revId": "c14ef1ef741ecda16ce7fd3548a8308dd23f992a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
