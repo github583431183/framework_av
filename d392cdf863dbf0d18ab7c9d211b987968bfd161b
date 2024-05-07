@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7fb1eb_05ce4067",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2231,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-05-07T20:15:52Z",
+      "side": 1,
+      "message": "nit: I think we can just write that the workaround is no longer needed with fetchGraphicBlock \u0026 C2Fence changes so we are reverting back to the logical sequence of the operations. Also I think the version reference could be removed.",
+      "revId": "d392cdf863dbf0d18ab7c9d211b987968bfd161b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
