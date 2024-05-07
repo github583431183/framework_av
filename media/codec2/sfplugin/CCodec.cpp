@@ -2227,8 +2227,17 @@ void CCodec::stop(bool pushBlankBuffer) {
     // So we reverse their order for stopUseOutputSurface() to notify C2Fence waiters
     // prior to comp->stop().
     // See also b/300350761.
-    mChannel->stopUseOutputSurface(pushBlankBuffer);
-    status_t err = comp->stop();
+    //
+    // From V, since fetchGraphicBlock and C2Fence are non blocking, the order
+    // will be as the original.
+    status_t err = C2_OK;
+    if (android::media::codec::provider_->stop_hal_before_surface()) {
+        err = comp->stop();
+        mChannel->stopUseOutputSurface(pushBlankBuffer);
+    } else {
+        mChannel->stopUseOutputSurface(pushBlankBuffer);
+        err = comp->stop();
+    }
     if (err != C2_OK) {
         // TODO: convert err into status_t
         mCallback->onError(UNKNOWN_ERROR, ACTION_CODE_FATAL);
@@ -2323,8 +2332,16 @@ void CCodec::release(bool sendCallback, bool pushBlankBuffer) {
     // So we reverse their order for stopUseOutputSurface() to notify C2Fence waiters
     // prior to comp->release().
     // See also b/300350761.
-    mChannel->stopUseOutputSurface(pushBlankBuffer);
-    comp->release();
+    //
+    // From V, since fetchGraphicBlock and C2Fence are non blocking, the order
+    // will be as the original.
+    if (android::media::codec::provider_->stop_hal_before_surface()) {
+        comp->release();
+        mChannel->stopUseOutputSurface(pushBlankBuffer);
+    } else {
+        mChannel->stopUseOutputSurface(pushBlankBuffer);
+        comp->release();
+    }
 
     {
         Mutexed<State>::Locked state(mState);
