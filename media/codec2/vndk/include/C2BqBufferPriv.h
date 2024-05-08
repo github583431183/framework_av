@@ -30,7 +30,21 @@ class GraphicBuffer;
 
 class C2BufferQueueBlockPool : public C2BlockPool {
 public:
-    C2BufferQueueBlockPool(const std::shared_ptr<C2Allocator> &allocator, const local_id_t localId);
+    /**
+     * Create BufferQueue(IGBP) backed blockpool.
+     *
+     * \param allocator   allocator for block allocation
+     * \param localId     id for the BlockPool
+     * \param deferDeallocAfterStop
+     *                    when \true deallocation of cached blocks can be
+     *                    deferred after Component is stopped, otherwise
+     *                    deallocation will happen immediately.
+     *                    Those deallocation deferred blocks should be deallocated
+     *                    explicitly from the component.
+     */
+    C2BufferQueueBlockPool(const std::shared_ptr<C2Allocator> &allocator,
+                           const local_id_t localId,
+                           bool deferDeallocAfterStop);
 
     virtual ~C2BufferQueueBlockPool() override;
 
@@ -109,6 +123,15 @@ public:
      * After the call, fetchGraphicBlock() will return C2_BAD_STATE.
      */
     virtual void invalidate();
+
+    /**
+     * clear deferred buffers.
+     *
+     * Deallocation of buffers can be deferred for some reason.
+     * clear(deallocate) those deferred buffers explicitly.
+     * Use this interface, if the object could be inactive indefinitely.
+     */
+    void clearDeferredBuffers();
 
 private:
     const std::shared_ptr<C2Allocator> mAllocator;

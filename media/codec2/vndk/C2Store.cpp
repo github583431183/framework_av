@@ -485,6 +485,7 @@ private:
             C2PlatformAllocatorDesc &allocatorParam,
             std::vector<std::shared_ptr<const C2Component>> components,
             C2BlockPool::local_id_t poolId,
+            bool deferDeallocAfterStop,
             std::shared_ptr<C2BlockPool> *pool) {
         std::shared_ptr<C2AllocatorStore> allocatorStore =
                 GetCodec2PlatformAllocatorStore();
@@ -547,7 +548,8 @@ private:
                         C2PlatformAllocatorStore::BUFFERQUEUE, &allocator);
                 if (res == C2_OK) {
                     std::shared_ptr<C2BlockPool> ptr(
-                            new C2BufferQueueBlockPool(allocator, poolId), deleter);
+                            new C2BufferQueueBlockPool(allocator, poolId, deferDeallocAfterStop),
+                            deleter);
                     *pool = ptr;
                     mBlockPools[poolId] = ptr;
                     mComponents[poolId].insert(
@@ -602,8 +604,14 @@ public:
             C2PlatformAllocatorDesc &allocator,
             std::vector<std::shared_ptr<const C2Component>> components,
             std::shared_ptr<C2BlockPool> *pool) {
+        bool deferDeallocAfterStop = false;
+#ifdef __ANDROID_APEX__
+        deferDeallocAfterStop =
+              ::android::base::GetIntProperty("debug.codec2.bqpool_dealloc_after_stop", 0) != 0;
+#endif
         std::unique_lock lock(mMutex);
-        return _createBlockPool(allocator, components, mBlockPoolSeqId++, pool);
+        return _createBlockPool(allocator, components, mBlockPoolSeqId++,
+                                deferDeallocAfterStop, pool);
     }
 
 
@@ -611,6 +619,11 @@ public:
             C2BlockPool::local_id_t blockPoolId,
             std::shared_ptr<const C2Component> component,
             std::shared_ptr<C2BlockPool> *pool) {
+        bool deferDeallocAfterStop = false;
+#ifdef __ANDROID_APEX__
+        deferDeallocAfterStop =
+              ::android::base::GetIntProperty("debug.codec2.bqpool_dealloc_after_stop", 0) != 0;
+#endif
         std::unique_lock lock(mMutex);
         // TODO: use one iterator for multiple blockpool type scalability.
         std::shared_ptr<C2BlockPool> ptr;
@@ -638,7 +651,7 @@ public:
             C2PlatformAllocatorDesc allocator;
             allocator.allocatorId = C2PlatformAllocatorStore::BUFFERQUEUE;
             return _createBlockPool(
-                    allocator, {component}, blockPoolId, pool);
+                    allocator, {component}, blockPoolId, deferDeallocAfterStop, pool);
         }
         return C2_NOT_FOUND;
     }
