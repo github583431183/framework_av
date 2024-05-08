@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d0eb70_29a0641a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-08T20:09:29Z",
+      "side": 1,
+      "message": "Would be nice to get more info in the abort string (as sometimes that\u0027s all we see), but not sure if that is feasible here.",
+      "revId": "d0135a5ecb220b54f920fd98e47db3bd9fbc32e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
