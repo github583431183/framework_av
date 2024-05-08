@@ -110,6 +110,26 @@ public:
      */
     virtual void invalidate();
 
+    /**
+     * Defer deallocation of cached blocks.
+     *
+     * Deallocation of cached blocks will be deferred until
+     * \clearDeferredBlocks() is called. Or a new block allocation is
+     * requested by \fetchGraphicBlock().
+     */
+    void setDeferDeallocationAfterStop();
+
+
+    /**
+     * Clear deferred blocks.
+     *
+     * Deallocation of cached blocks can be deferred by
+     * \setDeferDeallocationAfterStop().
+     * clear(deallocate) those deferred cached blocks explicitly.
+     * Use this interface, if the blockpool could be inactive indefinitely.
+     */
+    void clearDeferredBlocks();
+
 private:
     const std::shared_ptr<C2Allocator> mAllocator;
     const local_id_t mLocalId;
