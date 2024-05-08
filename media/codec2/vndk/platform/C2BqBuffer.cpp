@@ -588,11 +588,21 @@ private:
         return C2_BAD_VALUE;
     }
 
+    void clearDeferred_l() {
+        if (mDeferred) {
+            mDeferred = false;
+            for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                mDeferredBuffers[i].clear();
+            }
+        }
+    }
+
 public:
     Impl(const std::shared_ptr<C2Allocator> &allocator)
         : mInit(C2_OK), mProducerId(0), mGeneration(0),
           mConsumerUsage(0), mDqFailure(0), mLastDqTs(0),
-          mLastDqLogTs(0), mAllocator(allocator), mIgbpValidityToken(std::make_shared<int>(0)) {
+          mLastDqLogTs(0), mAllocator(allocator), mDeferred(false),
+          mIgbpValidityToken(std::make_shared<int>(0)) {
     }
 
     ~Impl() {
@@ -634,6 +644,7 @@ public:
             }
         }
         if (mProducerId == 0) {
+            clearDeferred_l();
             std::shared_ptr<C2GraphicAllocation> alloc;
             c2_status_t err = mAllocator->newGraphicAllocation(
                     width, height, format, usage, &alloc);
@@ -692,6 +703,7 @@ public:
                            uint32_t generation,
                            uint64_t usage,
                            bool bqInformation) {
+        bool toNullSurface = false;
         std::shared_ptr<C2SurfaceSyncMemory> c2SyncMem;
         if (syncHandle) {
             if (!producer) {
@@ -714,6 +726,9 @@ public:
                 mProducerId = producerId;
                 mGeneration = bqInformation ? generation : 0;
             } else {
+                if (mProducer) {
+                    toNullSurface = true;
+                }
                 mProducer = nullptr;
                 mProducerId = 0;
                 mGeneration = 0;
@@ -760,6 +775,15 @@ public:
                 // old buffers should not be cancelled since the associated IGBP
                 // is no longer valid.
                 mIgbpValidityToken = std::make_shared<int>(0);
+                if (toNullSurface) {
+                    for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                        mDeferred = true;
+                        mDeferredBuffers[i] = mBuffers[i];
+                    }
+                }
+            }
+            if (!toNullSurface) {
+                clearDeferred_l();
             }
             if (mInvalidated) {
                 mIgbpValidityToken = std::make_shared<int>(0);
@@ -811,6 +835,11 @@ public:
         }
     }
 
+    void clearDeferred() {
+        std::scoped_lock<std::mutex> lock(mMutex);
+        clearDeferred_l();
+    }
+
 private:
     friend struct C2BufferQueueBlockPoolData;
 
@@ -832,6 +861,9 @@ private:
 
     sp<GraphicBuffer> mBuffers[NUM_BUFFER_SLOTS];
     std::weak_ptr<C2BufferQueueBlockPoolData> mPoolDatas[NUM_BUFFER_SLOTS];
+
+    bool mDeferred;
+    sp<GraphicBuffer> mDeferredBuffers[NUM_BUFFER_SLOTS];
 
     std::mutex mSyncMemMutex;
     std::shared_ptr<C2SurfaceSyncMemory> mSyncMem;
@@ -1175,6 +1207,12 @@ void C2BufferQueueBlockPool::getConsumerUsage(uint64_t *consumeUsage) {
 void C2BufferQueueBlockPool::invalidate() {
     if (mImpl) {
         mImpl->invalidate();
+    }
+}
+
+void C2BufferQueueBlockPool::clearDeferred() {
+    if (mImpl) {
+        mImpl->clearDeferred();
     }
 }
 
