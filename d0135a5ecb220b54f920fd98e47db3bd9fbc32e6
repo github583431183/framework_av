@@ -51,6 +51,24 @@
       "message": "You could have a flag passed into the FMQ - abort on invalid state.",
       "revId": "d0135a5ecb220b54f920fd98e47db3bd9fbc32e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eccfbe9f_c291bbd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-08T20:55:35Z",
+      "side": 1,
+      "message": "Good idea, I wish we have done it this way in the initial patch to the FMQ. Let me revisit that code.",
+      "parentUuid": "d6e2995f_9786f150",
+      "revId": "d0135a5ecb220b54f920fd98e47db3bd9fbc32e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
