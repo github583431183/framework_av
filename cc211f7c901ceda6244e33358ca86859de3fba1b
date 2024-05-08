@@ -1,0 +1,804 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "001feb42_7ebf302e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "yb",
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3558a895_2f112fd8",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioFlingerService.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Nit fits on previous line.",
+      "range": {
+        "startLine": 100,
+        "startChar": 24,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a75700_66728d58",
+        "filename": "media/libaudioclient/include/media/IAudioFlinger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Can you provide parameter documentation also?",
+      "range": {
+        "startLine": 224,
+        "startChar": 7,
+        "endLine": 224,
+        "endChar": 10
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "43f518a3_5de42265",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/IAudioFlinger.h",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 226,
+                "endChar": 0
+              },
+              "replacement": "    /* set volume for a list of ports.\n     * @param portIds list of port ids to set volume for.\n     * @param value volume to set.\n     * @param output output handle to set volume for.\n"
+            },
+            {
+              "path": "media/libaudioclient/include/media/IAudioFlinger.h",
+              "range": {
+                "startLine": 230,
+                "startChar": 0,
+                "endLine": 230,
+                "endChar": 0
+              },
+              "replacement": "\n    /* set mute for a list of ports.\n     * @param portIds list of port ids to set mute for.\n     * @param muted mute state to set.\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2eba631_1a87da81",
+        "filename": "media/libaudioclient/include/media/IAudioFlinger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Need to add the documentation for this also, also the missing parameter descriptions.",
+      "range": {
+        "startLine": 230,
+        "startChar": 28,
+        "endLine": 230,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "43bc756f_e6200954",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudioclient/include/media/IAudioFlinger.h",
+              "range": {
+                "startLine": 230,
+                "startChar": 0,
+                "endLine": 230,
+                "endChar": 0
+              },
+              "replacement": "\n    /* set port ids mute state. This will probably be used by\n     * the preference panel, mostly.\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949710bc_7f2a4566",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3620,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Same here, we already annotated the method in the header file with `REQUIRES`\n\nAlso remove the extra empty line above, there should only be one.",
+      "range": {
+        "startLine": 3620,
+        "startChar": 0,
+        "endLine": 3620,
+        "endChar": 73
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e7a28e_e97a3069",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Nit, extra empty line below.",
+      "range": {
+        "startLine": 3637,
+        "startChar": 0,
+        "endLine": 3637,
+        "endChar": 1
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4a2971_6c4a965d",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3638,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "We can probably remove this comment, we already annotated the method in the header file with `REQUIRES`",
+      "range": {
+        "startLine": 3638,
+        "startChar": 0,
+        "endLine": 3638,
+        "endChar": 73
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fba1b16_a8a678ad",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "I wonder if we need a new flag, or should we just remove the code below?",
+      "range": {
+        "startLine": 2205,
+        "startChar": 0,
+        "endLine": 2205,
+        "endChar": 5
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673b593f_acce63c3",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7722,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Should we remove this part? Also not sure if we need the comment  here at all.",
+      "range": {
+        "startLine": 7722,
+        "startChar": 4,
+        "endLine": 7722,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e27839b8_e245d1b9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/Threads.cpp",
+              "range": {
+                "startLine": 7720,
+                "startChar": 0,
+                "endLine": 7723,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f818a6_7cf9d4b7",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 10867,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Do we still want to call set port volume/mute here also?",
+      "range": {
+        "startLine": 10858,
+        "startChar": 0,
+        "endLine": 10867,
+        "endChar": 61
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f16ac9_c13705bd",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 10940,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "getPortVolume_l",
+      "range": {
+        "startLine": 10940,
+        "startChar": 11,
+        "endLine": 10940,
+        "endChar": 22
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1ab793_5a0b8c7d",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 10951,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "isPortMuted_l?",
+      "range": {
+        "startLine": 10951,
+        "startChar": 4,
+        "endLine": 10951,
+        "endChar": 21
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bcd739_0b5c8044",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 10995,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "isPortMuted_l?",
+      "range": {
+        "startLine": 10995,
+        "startChar": 23,
+        "endLine": 10995,
+        "endChar": 34
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df23eadb_62312423",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 10998,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "getPortVolume_l?",
+      "range": {
+        "startLine": 10998,
+        "startChar": 33,
+        "endLine": 10998,
+        "endChar": 46
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7173969_4aeb022d",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11035,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Same here and line below, should we use locked methods?",
+      "range": {
+        "startLine": 11035,
+        "startChar": 31,
+        "endLine": 11035,
+        "endChar": 44
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8261f75_dfe71ed8",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Should we use javadoc?",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ab9ed5aa_2bc82bce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 503,
+                "startChar": 0,
+                "endLine": 506,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Set volume for given port ids for a particular output.\n     * For the same user setting, a given stream type can have different volumes\n     * for each output (destination device) it is attached to.\n     * @param ports the list of port ids to set the volume for\n     * @param volume the volume to set\n     * @param output the output to set the volume for\n     * @param delayMs the delay in ms to apply the volume change\n     * @return NO_ERROR if the volume was set, INVALID_OPERATION or BAD_VALUE otherwise\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8ca7fc_3c6dd7c5",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Nit, can be a less lines.",
+      "range": {
+        "startLine": 507,
+        "startChar": 36,
+        "endLine": 509,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1ec3eb73_b2a7b0ef",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/AudioPolicyInterface.h",
+              "range": {
+                "startLine": 507,
+                "startChar": 0,
+                "endLine": 508,
+                "endChar": 0
+              },
+              "replacement": "                                    float volume, // in [0,1]\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e57b245_ab76f23b",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioOutputDescriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 4
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9011db_f8ced58c",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioOutputDescriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "@brief and method name not needed",
+      "range": {
+        "startLine": 481,
+        "startChar": 3,
+        "endLine": 485,
+        "endChar": 7
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "081fbc18_7ffc543e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/common/managerdefinitions/include/AudioOutputDescriptor.h",
+              "range": {
+                "startLine": 481,
+                "startChar": 0,
+                "endLine": 486,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bbfc7b1_92488268",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Do we need to rephrase this with respect to device ports?",
+      "range": {
+        "startLine": 527,
+        "startChar": 32,
+        "endLine": 527,
+        "endChar": 67
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3d1fe2c0_850b5c00",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+              "range": {
+                "startLine": 526,
+                "startChar": 0,
+                "endLine": 528,
+                "endChar": 0
+              },
+              "replacement": "        // APM loops on all device ports, so filter on active device port to set the port gain,\n        // let the other device ports set the stream volume as per legacy\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44297f17_2661a69b",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Is this still relevant?",
+      "range": {
+        "startLine": 535,
+        "startChar": 14,
+        "endLine": 535,
+        "endChar": 79
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2db69f_fd4e8f20",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7924,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Since we are trying to remove the stream dependency should we use audio attributes for voice call instead?",
+      "range": {
+        "startLine": 7924,
+        "startChar": 55,
+        "endLine": 7924,
+        "endChar": 78
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "94331b0a_2eb16cef",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 7924,
+                "startChar": 0,
+                "endLine": 7925,
+                "endChar": 0
+              },
+              "replacement": "        const VolumeSource callVolSrc \u003d toVolumeSource(attributes_initializer(AUDIO_USAGE_VOICE_COMMUNICATION), false);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ee7fe5_370a118e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7935,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Fits in prev line?",
+      "range": {
+        "startLine": 7935,
+        "startChar": 12,
+        "endLine": 7935,
+        "endChar": 27
+      },
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3a6671_4f13f057",
+        "filename": "services/audiopolicy/service/AudioPolicyService.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Can we add parameters description documentation as javadoc documentation?",
+      "range": {
+        "startLine": 336,
+        "startChar": 4,
+        "endLine": 337,
+        "endChar": 89
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1de166e2_6ec54d56",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 336,
+                "startChar": 0,
+                "endLine": 338,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * set a volume on port(s) for a particular output. For the same user setting, a given port\n     * can have different volumes for each output (destination device) it is attached to.\n     * @param ports the list of ports to set the volume on\n     * @param volume the volume to set on the ports\n     * @param output the output to set the volume on\n     * @param delayMs the delay in ms to apply the volume change\n     * @return NO_ERROR if the volume was set successfully, error code otherwise\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023f688d_affbe47a",
+        "filename": "services/audiopolicy/service/AudioPolicyService.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Maybe call it dump and include the volume an IO data?",
+      "range": {
+        "startLine": 671,
+        "startChar": 24,
+        "endLine": 671,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0d377c15_c1014e36",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 671,
+                "startChar": 0,
+                "endLine": 672,
+                "endChar": 0
+              },
+              "replacement": "            std::string dump() {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a160c6e_c357d91d",
+        "filename": "services/audiopolicy/service/AudioPolicyService.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-08T18:06:40Z",
+      "side": 1,
+      "message": "Should we rewrite the documentation to reflect port changes as javadoc documentation?",
+      "range": {
+        "startLine": 810,
+        "startChar": 6,
+        "endLine": 815,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6585d95f_2c3dad63",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/service/AudioPolicyService.h",
+              "range": {
+                "startLine": 814,
+                "startChar": 0,
+                "endLine": 816,
+                "endChar": 0
+              },
+              "replacement": "        /**\n         * set a stream volume for a particular output. For the same user setting, a given stream\n         * type can have different volumes for each output (destination device) it is attached to.\n         *\n         * @param ports the list of ports to set the volume on\n         * @param volume the volume to set\n         * @param output the output to set the volume on\n         * @param delayMs the delay in ms to apply the volume change\n         * @return NO_ERROR if successful, error code otherwise\n         */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc211f7c901ceda6244e33358ca86859de3fba1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
