@@ -16,6 +16,24 @@
       "message": "Would be nice to get more info in the abort string (as sometimes that\u0027s all we see), but not sure if that is feasible here.",
       "revId": "d0135a5ecb220b54f920fd98e47db3bd9fbc32e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba48de6_2d8dbb6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-08T20:13:44Z",
+      "side": 1,
+      "message": "Agree that sometimes we do not have access to logs preceding the crash. Unfortunately, the FMQ pointers are private, if that\u0027s the info you are talking  about. In aosp/3073435 the FMQ will emit a log message with the bad values. So hopefully we will be able to locate a log related to the crash somehow.",
+      "parentUuid": "d4d0eb70_29a0641a",
+      "revId": "d0135a5ecb220b54f920fd98e47db3bd9fbc32e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
