@@ -110,6 +110,11 @@ public:
      */
     virtual void invalidate();
 
+    /**
+     * clear deferred buffers.
+     */
+    void clearDeferred();
+
 private:
     const std::shared_ptr<C2Allocator> mAllocator;
     const local_id_t mLocalId;

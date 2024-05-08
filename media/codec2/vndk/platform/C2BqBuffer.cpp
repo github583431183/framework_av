@@ -18,6 +18,7 @@
 #define LOG_TAG "C2BqBuffer"
 #define ATRACE_TAG  ATRACE_TAG_VIDEO
 #include <android/hardware_buffer.h>
+#include <cutils/properties.h>
 #include <utils/Log.h>
 #include <utils/Trace.h>
 
@@ -588,11 +589,22 @@ private:
         return C2_BAD_VALUE;
     }
 
+    void clearDeferred_l() {
+        if (mDeferred) {
+            mDeferred = false;
+            for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                mDeferredBuffers[i].clear();
+            }
+        }
+    }
+
 public:
     Impl(const std::shared_ptr<C2Allocator> &allocator)
         : mInit(C2_OK), mProducerId(0), mGeneration(0),
           mConsumerUsage(0), mDqFailure(0), mLastDqTs(0),
-          mLastDqLogTs(0), mAllocator(allocator), mIgbpValidityToken(std::make_shared<int>(0)) {
+          mLastDqLogTs(0), mAllocator(allocator),
+          mEnableDeferred(property_get_int32("debug.codec2.bqpool_deferred_dealloc", 0)),
+          mDeferred(false), mIgbpValidityToken(std::make_shared<int>(0)) {
     }
 
     ~Impl() {
@@ -634,6 +646,7 @@ public:
             }
         }
         if (mProducerId == 0) {
+            clearDeferred_l();
             std::shared_ptr<C2GraphicAllocation> alloc;
             c2_status_t err = mAllocator->newGraphicAllocation(
                     width, height, format, usage, &alloc);
@@ -692,6 +705,7 @@ public:
                            uint32_t generation,
                            uint64_t usage,
                            bool bqInformation) {
+        bool toNullSurface = false;
         std::shared_ptr<C2SurfaceSyncMemory> c2SyncMem;
         if (syncHandle) {
             if (!producer) {
@@ -714,6 +728,9 @@ public:
                 mProducerId = producerId;
                 mGeneration = bqInformation ? generation : 0;
             } else {
+                if (mProducer) {
+                    toNullSurface = true;
+                }
                 mProducer = nullptr;
                 mProducerId = 0;
                 mGeneration = 0;
@@ -760,6 +777,30 @@ public:
                 // old buffers should not be cancelled since the associated IGBP
                 // is no longer valid.
                 mIgbpValidityToken = std::make_shared<int>(0);
+#ifdef __ANDROID_APEX__
+                // swcodec
+                if (mEnableDeferred != 0) {
+                    if (toNullSurface) {
+                        mDeferred = true;
+                        for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                            mDeferredBuffers[i] = mBuffers[i];
+                        }
+                    }
+                }
+#else
+                // vendor codec
+                if (mEnableDeferred != 0 && mEnableDeferred != 1) {
+                    if (toNullSurface) {
+                        mDeferred = true;
+                        for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
+                            mDeferredBuffers[i] = mBuffers[i];
+                        }
+                    }
+                }
+#endif
+            }
+            if (!toNullSurface) {
+                clearDeferred_l();
             }
             if (mInvalidated) {
                 mIgbpValidityToken = std::make_shared<int>(0);
@@ -811,6 +852,11 @@ public:
         }
     }
 
+    void clearDeferred() {
+        std::scoped_lock<std::mutex> lock(mMutex);
+        clearDeferred_l();
+    }
+
 private:
     friend struct C2BufferQueueBlockPoolData;
 
@@ -832,6 +878,20 @@ private:
 
     sp<GraphicBuffer> mBuffers[NUM_BUFFER_SLOTS];
     std::weak_ptr<C2BufferQueueBlockPoolData> mPoolDatas[NUM_BUFFER_SLOTS];
+
+    // In order to workaround b/322731059,
+    // deallocating buffers due to stop using the current surface
+    // could be deferred until the component calling stop or a
+    // new allocation being requested.
+    // To control this deferred deallocation,
+    // "debug.codec2.bqpool_deferred_dealloc" property is introduced.
+    // The value of the property is integer. and the behavior is as below.
+    // 0: disabling deferred release.
+    // 1: enabling deferred release on mainline s/w codec HAL only.
+    // Any value(except 0 and 1): enabling deferred release on all codec HAL.
+    const int mEnableDeferred;
+    bool mDeferred;
+    sp<GraphicBuffer> mDeferredBuffers[NUM_BUFFER_SLOTS];
 
     std::mutex mSyncMemMutex;
     std::shared_ptr<C2SurfaceSyncMemory> mSyncMem;
@@ -1175,6 +1235,12 @@ void C2BufferQueueBlockPool::getConsumerUsage(uint64_t *consumeUsage) {
 void C2BufferQueueBlockPool::invalidate() {
     if (mImpl) {
         mImpl->invalidate();
+    }
+}
+
+void C2BufferQueueBlockPool::clearDeferred() {
+    if (mImpl) {
+        mImpl->clearDeferred();
     }
 }
 
