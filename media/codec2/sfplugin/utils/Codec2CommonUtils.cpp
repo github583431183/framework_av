@@ -33,9 +33,14 @@ namespace android {
 
 
 static bool isAtLeast(int version, const char *codeName) {
-    char deviceCodeName[PROP_VALUE_MAX];
-    __system_property_get("ro.build.version.codename", deviceCodeName);
-    return android_get_device_api_level() >= version || !strcmp(deviceCodeName, codeName);
+    static std::once_flag sCheckOnce;
+    static char sDeviceCodeName[PROP_VALUE_MAX];
+    static int sDeviceApiLevel;
+    std::call_once(sCheckOnce, [&](){
+        __system_property_get("ro.build.version.codename", sDeviceCodeName);
+        sDeviceApiLevel = android_get_device_api_level();
+    });
+    return sDeviceApiLevel >= version || !strcmp(sDeviceCodeName, codeName);
 }
 
 bool isAtLeastT() {
