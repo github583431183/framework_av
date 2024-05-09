@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a800880f_6111897b",
+        "filename": "media/codec2/sfplugin/utils/Codec2CommonUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-05-09T18:23:12Z",
+      "side": 1,
+      "message": "nit: maybe we should use `android::base::GetProperty`",
+      "fixSuggestions": [
+        {
+          "fixId": "22afba1e_52c40528",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/sfplugin/utils/Codec2CommonUtils.cpp",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": "        base::GetProperty(\"ro.build.version.codename\", sDeviceCodeName);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8731ec59b3b15de380967ec78bd65b74f143b0ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
