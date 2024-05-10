@@ -198,8 +198,13 @@ status_t DevicesFactoryHalAidl::setCallbackOnce(sp<DevicesFactoryHalCallback> ca
 
 AudioHalVersionInfo DevicesFactoryHalAidl::getHalVersion() const {
     int32_t versionNumber = 0;
-    if (ndk::ScopedAStatus status = mConfig->getInterfaceVersion(&versionNumber); !status.isOk()) {
-        ALOGE("%s getInterfaceVersion failed: %s", __func__, status.getDescription().c_str());
+    if (mConfig) {
+        if (ndk::ScopedAStatus status = mConfig->getInterfaceVersion(&versionNumber);
+            !status.isOk()) {
+            ALOGE("%s getInterfaceVersion failed: %s", __func__, status.getDescription().c_str());
+        }
+    } else {
+        ALOGW("%s IConfig not found", __func__);
     }
     // AIDL does not have minor version, fill 0 for all versions
     return AudioHalVersionInfo(AudioHalVersionInfo::Type::AIDL, versionNumber);
@@ -207,7 +212,12 @@ AudioHalVersionInfo DevicesFactoryHalAidl::getHalVersion() const {
 
 status_t DevicesFactoryHalAidl::getSurroundSoundConfig(media::SurroundSoundConfig *config) {
     SurroundSoundConfig ndkConfig;
-    RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mConfig->getSurroundSoundConfig(&ndkConfig)));
+    if (mConfig) {
+        RETURN_STATUS_IF_ERROR(
+                statusTFromBinderStatus(mConfig->getSurroundSoundConfig(&ndkConfig)));
+    } else {
+        ALOGW("%s IConfig not found", __func__);
+    }
     *config = VALUE_OR_RETURN_STATUS(ndk2cpp_SurroundSoundConfig(ndkConfig));
     return OK;
 }
@@ -215,14 +225,28 @@ status_t DevicesFactoryHalAidl::getSurroundSoundConfig(media::SurroundSoundConfi
 status_t DevicesFactoryHalAidl::getEngineConfig(
         media::audio::common::AudioHalEngineConfig *config) {
     AudioHalEngineConfig ndkConfig;
-    RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mConfig->getEngineConfig(&ndkConfig)));
+    if (mConfig) {
+        RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(mConfig->getEngineConfig(&ndkConfig)));
+    } else {
+        ALOGW("%s IConfig not found", __func__);
+    }
     *config = VALUE_OR_RETURN_STATUS(ndk2cpp_AudioHalEngineConfig(ndkConfig));
     return OK;
 }
 
 // Main entry-point to the shared library.
 extern "C" __attribute__((visibility("default"))) void* createIDevicesFactoryImpl() {
-    return new DevicesFactoryHalAidl(getServiceInstance<IConfig>("default"));
+
+    const std::string name = std::string(IConfig::descriptor).append("/").append("default");
+    const bool isDeclared = AServiceManager_isDeclared(name.c_str());
+    std::shared_ptr<IConfig> config;
+    if (isDeclared) {
+        config = getServiceInstance<IConfig>("default");
+    } else {
+        ALOGW("%s %s: not installed", __func__, name.c_str());
+    }
+
+    return new DevicesFactoryHalAidl(config);
 }
 
 } // namespace android

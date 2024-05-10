@@ -102,13 +102,25 @@ bool createHalService(const AudioHalVersionInfo& version, bool isDevice, void** 
 }
 
 bool hasAidlHalService(const InterfaceName& interface, const AudioHalVersionInfo& version) {
-    const std::string name = interface.first + "." + interface.second + "/default";
-    const bool isDeclared = AServiceManager_isDeclared(name.c_str());
+    static const std::vector<std::string> interfaces{"default",   "bluetooth", "usb", "r_submix",
+                                                     "bluetooth", "msd",       "stub"};
+    std::string name;
+    bool isDeclared = false;
+    std::string intfName = interface.first + "." + interface.second + "/";
+    for (const auto& fqName : interfaces) {
+        name = intfName + fqName;
+        auto declared = AServiceManager_isDeclared(name.c_str());
+        isDeclared |= declared;
+        if (declared) {
+            ALOGD("%s %s: found", __func__, name.c_str());
+            break;
+        }
+    }
     if (!isDeclared) {
-        ALOGW("%s %s: false", __func__, name.c_str());
+        ALOGE("found no fq in intfName.. %s", intfName.c_str());
         return false;
     }
-    ALOGI("%s %s: true, version %s", __func__, name.c_str(), version.toString().c_str());
+    ALOGI("%s %s: true, version %s", __func__, intfName.c_str(), version.toString().c_str());
     return true;
 }
 
