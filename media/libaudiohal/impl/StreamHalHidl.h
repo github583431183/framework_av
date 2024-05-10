@@ -119,6 +119,9 @@ class StreamHalHidl : public virtual StreamHalInterface, public CoreConversionHe
 
 class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
   public:
+    // Put the audio hardware input/output into standby mode (from StreamHalInterface).
+    status_t standby() override;
+
     // Return the frame size (number of bytes per sample) of a stream.
     virtual status_t getFrameSize(size_t *size);
 
@@ -136,10 +139,7 @@ class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
 
     // Return the number of audio frames written by the audio dsp to DAC since
     // the output has exited standby.
-    virtual status_t getRenderPosition(uint32_t *dspFrames);
-
-    // Get the local time at which the next write to the audio driver will be presented.
-    virtual status_t getNextWriteTimestamp(int64_t *timestamp);
+    virtual status_t getRenderPosition(uint64_t *dspFrames);
 
     // Set the callback for notifying completion of non-blocking write and drain.
     virtual status_t setCallback(wp<StreamOutHalInterfaceCallback> callback);
@@ -164,6 +164,9 @@ class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
 
     // Return a recent count of the number of audio frames presented to an external observer.
     virtual status_t getPresentationPosition(uint64_t *frames, struct timespec *timestamp);
+
+    // Notifies the HAL layer that the framework considers the current playback as completed.
+    status_t presentationComplete() override;
 
     // Called when the metadata of the stream's source has been changed.
     status_t updateSourceMetadata(const SourceMetadata& sourceMetadata) override;
@@ -221,6 +224,8 @@ class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
     std::unique_ptr<StatusMQ> mStatusMQ;
     std::atomic<pid_t> mWriterClient;
     EventFlag* mEfGroup;
+    uint64_t mRenderPosition = 0;   // Used to expand correctly the 32-bit position from the HAL.
+    bool mExpectRetrograde = false; // See 'presentationComplete'.
 
     // Can not be constructed directly by clients.
     StreamOutHalHidl(const sp<::android::hardware::audio::CPP_VERSION::IStreamOut>& stream);
