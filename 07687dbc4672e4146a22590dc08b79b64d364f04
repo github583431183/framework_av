@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c319d8_e12e776d",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-05-11T02:56:30Z",
+      "side": 1,
+      "message": "Ideally this will be done after encoding to ensure profile and level are correct:\n\nhttps://chromium.googlesource.com/webm/libvpx/+/db25581967de10f91ed99fb4fc0c5d8890224d74/vpx/vpx_encoder.h#978",
+      "revId": "07687dbc4672e4146a22590dc08b79b64d364f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
