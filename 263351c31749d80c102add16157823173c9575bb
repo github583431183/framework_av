@@ -16,6 +16,24 @@
       "message": "Will mark this as ready for review once libvpx supports generating codec private data.",
       "revId": "263351c31749d80c102add16157823173c9575bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42dc433_06c3e540",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-11T02:46:01Z",
+      "side": 1,
+      "message": "aosp/3083039 is the CL in external/libvpx that adds support for generating codec private data.\n\nNote: This CL doesn\u0027t require aosp/3083039 to build and run and can be merged independently (without adding these two in a topic branch etc).",
+      "parentUuid": "eef742bd_a01f4f92",
+      "revId": "263351c31749d80c102add16157823173c9575bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
