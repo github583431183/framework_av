@@ -59,3 +59,6 @@ on property:sys.audio.restart.hal=1
 
 on init
     mkdir /dev/socket/audioserver 0775 audioserver audioserver
+
+on post-fs-data
+    setprop audio.timestamp.corrected_output_device ${persist.audio.timestamp.corrected_output_device}
