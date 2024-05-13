@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff97932f_f597bf72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-13T20:35:19Z",
+      "side": 1,
+      "message": "This is a clean CP of aosp/26908776 to avoid downstream merge conflicts.",
+      "revId": "dafa723cbb7bdcc577db4f533eaacd55d843be06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
