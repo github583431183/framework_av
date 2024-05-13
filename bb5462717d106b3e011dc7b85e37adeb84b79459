@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b38093a4_63606d0d",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-05-13T17:48:25Z",
+      "side": 1,
+      "message": "Can we add comment here on what/why of this new block of code added?",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 305,
+        "endChar": 9
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9b3a4847_b6a2b336",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/hal/client/GraphicsTracker.cpp",
+              "range": {
+                "startLine": 292,
+                "startChar": 0,
+                "endLine": 292,
+                "endChar": 0
+              },
+              "replacement": "        // We need to update mDequeueable to reflect the number of buffers\n        // which are not yet released.\n        // mNumDequeueing is the number of buffers which are being dequeued\n        // and not yet released.\n        // mDequeued is the number of buffers which are dequeued and not yet\n        // released.\n        // So the total number of buffers which are not yet released is\n        // mNumDequeueing + mDequeued.size().\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bb5462717d106b3e011dc7b85e37adeb84b79459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0e0fe6_3c2171e0",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-05-13T17:48:25Z",
+      "side": 1,
+      "message": "Is this valid, even when newDequeueable is negative?",
+      "range": {
+        "startLine": 308,
+        "startChar": 8,
+        "endLine": 308,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "27eb47de_d69f82fe",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/hal/client/GraphicsTracker.cpp",
+              "range": {
+                "startLine": 308,
+                "startChar": 0,
+                "endLine": 309,
+                "endChar": 0
+              },
+              "replacement": "        if (newDequeueable \u003e\u003d 0) {\n            mDequeueable \u003d newDequeueable;\n        }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bb5462717d106b3e011dc7b85e37adeb84b79459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
