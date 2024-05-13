@@ -66,6 +66,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f469b8bb_bbba9f44",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-05-13T18:18:25Z",
+      "side": 1,
+      "message": "acknowledged",
+      "parentUuid": "e3a52007_b2d230ec",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 305,
+        "endChar": 9
+      },
+      "revId": "bb5462717d106b3e011dc7b85e37adeb84b79459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a0e0fe6_3c2171e0",
@@ -121,6 +145,30 @@
       "side": 1,
       "message": "negative will not happen here.\nWe have two options here.\n\n#1 abort\n#2 just log error and keep going.\n\nEven it is minus, it should be respected to keep the consistency.",
       "parentUuid": "0a0e0fe6_3c2171e0",
+      "range": {
+        "startLine": 308,
+        "startChar": 8,
+        "endLine": 308,
+        "endChar": 38
+      },
+      "revId": "bb5462717d106b3e011dc7b85e37adeb84b79459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6570c74f_d82be6f8",
+        "filename": "media/codec2/hal/client/GraphicsTracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2024-05-13T18:18:25Z",
+      "side": 1,
+      "message": "If it can\u0027t be negative this looks fine.",
+      "parentUuid": "62c3194e_06754f41",
       "range": {
         "startLine": 308,
         "startChar": 8,
