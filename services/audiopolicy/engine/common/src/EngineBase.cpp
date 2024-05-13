@@ -350,13 +350,13 @@ status_t EngineBase::listAudioProductStrategies(AudioProductStrategyVector &stra
     return NO_ERROR;
 }
 
-status_t EngineBase::setUserIdStrategiesAffinity(userid_t userId, int zoneId)
+status_t EngineBase::setProductStrategiesZoneIdForUserId(userid_t userId, int zoneId)
 {
     mUserIdZoneCriteria.emplace(userId, zoneId);
     return NO_ERROR;
 }
 
-status_t EngineBase::removeUserIdStrategiesAffinity(userid_t userId)
+status_t EngineBase::resetProductStrategiesZoneIdForUserId(userid_t userId)
 {
     mUserIdZoneCriteria.erase(userId);
     return NO_ERROR;

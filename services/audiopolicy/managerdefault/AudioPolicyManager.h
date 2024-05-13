@@ -370,13 +370,13 @@ public:
         {
             return mEngine->listAudioProductStrategies(strategies);
         }
-        virtual status_t setUserIdStrategiesAffinity(userid_t userId, int zoneId)
+        virtual status_t setProductStrategiesZoneIdForUserId(userid_t userId, int zoneId)
         {
-            return mEngine->setUserIdStrategiesAffinity(userId, zoneId);
+            return mEngine->setProductStrategiesZoneIdForUserId(userId, zoneId);
         }
-        virtual status_t removeUserIdStrategiesAffinity(userid_t userId)
+        virtual status_t resetProductStrategiesZoneIdForUserId(userid_t userId)
         {
-            return mEngine->removeUserIdStrategiesAffinity(userId);
+            return mEngine->resetProductStrategiesZoneIdForUserId(userId);
         }
 
         virtual status_t getProductStrategyFromAudioAttributes(

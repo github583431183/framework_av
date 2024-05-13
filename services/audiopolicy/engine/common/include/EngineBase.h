@@ -74,9 +74,9 @@ public:
 
     status_t listAudioProductStrategies(AudioProductStrategyVector &strategies) const override;
 
-    status_t setUserIdStrategiesAffinity(userid_t userId, int zoneId) override;
+    status_t setProductStrategiesZoneIdForUserId(userid_t userId, int zoneId) override;
 
-    status_t removeUserIdStrategiesAffinity(userid_t userId) override;
+    status_t resetProductStrategiesZoneIdForUserId(userid_t userId) override;
 
     VolumeCurves *getVolumeCurvesForAttributes(const audio_attributes_t &attr) const override;
 

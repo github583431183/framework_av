@@ -293,9 +293,9 @@ public:
      */
     virtual status_t listAudioProductStrategies(AudioProductStrategyVector &strategies) const = 0;
 
-    virtual status_t setUserIdStrategiesAffinity(userid_t userId, int zoneId) = 0;
+    virtual status_t setProductStrategiesZoneIdForUserId(userid_t userId, int zoneId) = 0;
 
-    virtual status_t removeUserIdStrategiesAffinity(userid_t userId) = 0;
+    virtual status_t resetProductStrategiesZoneIdForUserId(userid_t userId) = 0;
 
     /**
      * @brief getVolumeCurvesForAttributes retrieves the Volume Curves interface for the

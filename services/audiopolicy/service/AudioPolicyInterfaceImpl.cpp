@@ -2163,7 +2163,8 @@ Status AudioPolicyService::listAudioProductStrategies(
     return Status::ok();
 }
 
-Status AudioPolicyService::setUserIdStrategiesAffinity(int32_t userIdAidl, int32_t zoneIdAidl) {
+Status AudioPolicyService::setProductStrategiesZoneIdForUserId(
+        int32_t userIdAidl, int32_t zoneIdAidl) {
     userid_t userId = VALUE_OR_RETURN_BINDER_STATUS(aidl2legacy_int32_t_userid_t(userIdAidl));
     int zoneId = VALUE_OR_RETURN_BINDER_STATUS(convertIntegral<int>(zoneIdAidl));
     if (!audio_flags::multi_zone_audio()) {
@@ -2176,11 +2177,11 @@ Status AudioPolicyService::setUserIdStrategiesAffinity(int32_t userIdAidl, int32
         return binderStatusFromStatusT(NO_INIT);
     }
     AutoCallerClear acc;
-    return binderStatusFromStatusT(mAudioPolicyManager->setUserIdStrategiesAffinity(
+    return binderStatusFromStatusT(mAudioPolicyManager->setProductStrategiesZoneIdForUserId(
             userId, zoneId));
 }
 
-Status AudioPolicyService::removeUserIdStrategiesAffinity(int32_t userIdAidl) {
+Status AudioPolicyService::resetProductStrategiesZoneIdForUserId(int32_t userIdAidl) {
     userid_t userId = VALUE_OR_RETURN_BINDER_STATUS(aidl2legacy_int32_t_userid_t(userIdAidl));
     if (!audio_flags::multi_zone_audio()) {
         return binderStatusFromStatusT(INVALID_OPERATION);
@@ -2192,7 +2193,8 @@ Status AudioPolicyService::removeUserIdStrategiesAffinity(int32_t userIdAidl) {
         return binderStatusFromStatusT(NO_INIT);
     }
     AutoCallerClear acc;
-    return binderStatusFromStatusT(mAudioPolicyManager->removeUserIdStrategiesAffinity(userId));
+    return binderStatusFromStatusT(
+            mAudioPolicyManager->resetProductStrategiesZoneIdForUserId(userId));
 }
 
 Status AudioPolicyService::getProductStrategyFromAudioAttributes(
