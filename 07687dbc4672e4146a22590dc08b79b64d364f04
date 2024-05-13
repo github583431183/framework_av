@@ -52,6 +52,24 @@
       "parentUuid": "b5fc7121_1ce03ad2",
       "revId": "07687dbc4672e4146a22590dc08b79b64d364f04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f978e6_d1fbc5d4",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-13T23:48:12Z",
+      "side": 1,
+      "message": "Given that the encoders are expected to produce CSD before they are given any input, this is the best that the plugin can do currently and this is consistent with what is being done in C2SoftAomEnc.cpp.\n\nIncorrect level shouldn\u0027t be an issue as of now.\nFrom what I understand, lack of subsampling info also should be fine.\n\nIMHO, I think we can go ahead and land this and if needed, relook at default subsampling that is set in the libvpx encoder later.",
+      "parentUuid": "54ebe7c3_8d815073",
+      "revId": "07687dbc4672e4146a22590dc08b79b64d364f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
