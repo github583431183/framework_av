@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dec3298_576a92ce",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "nope, i reverted the change of uid param in this APIs (since will be deprecated) but tabulation was changed by editor !",
+      "parentUuid": "60940b96_b1b2ab70",
+      "range": {
+        "startLine": 1316,
+        "startChar": 40,
+        "endLine": 1316,
+        "endChar": 60
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78405a1e_aa44bd19",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6a97fc_0ab32e81",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78405a1e_aa44bd19",
+      "range": {
+        "startLine": 383,
+        "startChar": 20,
+        "endLine": 383,
+        "endChar": 45
+      },
       "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -124,6 +172,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59801715_066ffe32",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346bdcbb_520df707",
+      "range": {
+        "startLine": 395,
+        "startChar": 20,
+        "endLine": 395,
+        "endChar": 43
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "350abff4_9a7d7dd5",
@@ -161,6 +233,30 @@
           ]
         }
       ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "362bded5_45c45009",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350abff4_9a7d7dd5",
+      "range": {
+        "startLine": 396,
+        "startChar": 44,
+        "endLine": 396,
+        "endChar": 54
+      },
       "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -206,6 +302,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "653e5929_f4675169",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57d0c950_1042ff8c",
+      "range": {
+        "startLine": 649,
+        "startChar": 20,
+        "endLine": 649,
+        "endChar": 44
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cc261c8_03dbae26",
@@ -243,6 +363,30 @@
           ]
         }
       ],
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34806b2c_9d72a312",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cc261c8_03dbae26",
+      "range": {
+        "startLine": 662,
+        "startChar": 89,
+        "endLine": 662,
+        "endChar": 92
+      },
       "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -288,6 +432,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "347efd25_1403ffa2",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4c61e00_13d9d9f7",
+      "range": {
+        "startLine": 200,
+        "startChar": 21,
+        "endLine": 200,
+        "endChar": 46
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3315b974_6894e395",
@@ -329,6 +497,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc22f1a_263a615c",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3315b974_6894e395",
+      "range": {
+        "startLine": 418,
+        "startChar": 63,
+        "endLine": 418,
+        "endChar": 66
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fe39891_1a607277",
@@ -342,6 +534,30 @@
       "writtenOn": "2024-05-03T20:58:23Z",
       "side": 1,
       "message": "Update documentation here also",
+      "range": {
+        "startLine": 423,
+        "startChar": 58,
+        "endLine": 423,
+        "endChar": 61
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc3e28d_a329c1b3",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe39891_1a607277",
       "range": {
         "startLine": 423,
         "startChar": 58,
@@ -395,6 +611,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f063b610_adcc182d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4449,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "good catch, I guess yes, we should take mixes into account. @Eric, since the variable name was inferring only taking engine devices, is there any reason why not taking mixes also into account?",
+      "parentUuid": "01ba0629_8acff149",
+      "range": {
+        "startLine": 4449,
+        "startChar": 39,
+        "endLine": 4449,
+        "endChar": 90
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6b1d136_e513ff36",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -406,6 +646,30 @@
       "writtenOn": "2024-05-03T20:58:23Z",
       "side": 1,
       "message": "Similar question here, do we need `getDevicesForAttributes`",
+      "range": {
+        "startLine": 5595,
+        "startChar": 30,
+        "endLine": 5595,
+        "endChar": 69
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6372ab48_1a03b395",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5595,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "I would say we shall",
+      "parentUuid": "e6b1d136_e513ff36",
       "range": {
         "startLine": 5595,
         "startChar": 30,
@@ -441,6 +705,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32a3edf1_a40a939d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6016,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "would say yes",
+      "parentUuid": "f62ceafa_427b631f",
+      "range": {
+        "startLine": 6016,
+        "startChar": 35,
+        "endLine": 6016,
+        "endChar": 73
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afe97434_97c34b99",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -464,6 +752,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45233a09_052d1b12",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 8392,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "also yes, need to consider preferred devices also in internal getDevicesForAttributes method",
+      "parentUuid": "afe97434_97c34b99",
+      "range": {
+        "startLine": 8392,
+        "startChar": 21,
+        "endLine": 8392,
+        "endChar": 50
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3babfa94_9dd3bed0",
         "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
         "patchSetId": 3
@@ -475,6 +787,30 @@
       "writtenOn": "2024-05-03T20:58:23Z",
       "side": 1,
       "message": "Do we need this?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 83,
+        "endLine": 1051,
+        "endChar": 84
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac874e0b_86d4f7d9",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-13T09:16:32Z",
+      "side": 1,
+      "message": "nope",
+      "parentUuid": "3babfa94_9dd3bed0",
       "range": {
         "startLine": 1051,
         "startChar": 83,
