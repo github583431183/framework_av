@@ -61,6 +61,14 @@ class AudioFlinger
 public:
     static void instantiate() ANDROID_API;
 
+    // TODO : Make it Test API
+    void reset() {
+        mDeviceEffectManager.clear();
+        mPatchPanel.clear();
+        mMelReporter->reset();
+        mMelReporter.clear();
+    }
+
 private:
 
     // ---- begin IAudioFlinger interface

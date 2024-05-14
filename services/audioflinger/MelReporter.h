@@ -48,6 +48,11 @@ public:
     explicit MelReporter(const sp<IAfMelReporterCallback>& afMelReporterCallback)
         : mAfMelReporterCallback(afMelReporterCallback) {}
 
+    // TODO : Make it Test API
+    void reset() {
+        mAfMelReporterCallback.clear();
+    }
+
     void onFirstRef() override;
 
     /**
@@ -130,7 +135,7 @@ private:
 
     bool useHalSoundDoseInterface_l() REQUIRES(mutex());
 
-    const sp<IAfMelReporterCallback> mAfMelReporterCallback;
+    sp<IAfMelReporterCallback> mAfMelReporterCallback;
 
     /* const */ sp<SoundDoseManager> mSoundDoseManager;  // set onFirstRef
 
