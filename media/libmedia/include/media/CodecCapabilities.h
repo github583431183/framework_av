@@ -646,6 +646,11 @@ namespace android {
         Vector<ProfileLevel> getProfileLevels();
 
         /**
+         * Returns the supported color formats.
+         */
+        Vector<uint32_t> getColorFormats() const;
+
+        /**
          * Returns a media format with default values for configurations that have defaults.
          */
         sp<AMessage> getDefaultFormat() const;
@@ -804,6 +809,27 @@ namespace android {
          */
         bool isFormatSupported(const sp<AMessage> &format) const;
 
+        /**
+         * If the CodecCapabilities contains an AudioCapabilities.
+         *
+         * Not a public API to users.
+         */
+        bool isAudio() const;
+
+        /**
+         * If the CodecCapabilities contains a VideoCapabilities.
+         *
+         * Not a public API to users.
+         */
+        bool isVideo() const;
+
+        /**
+         * If the CodecCapabilities contains an EncoderCapabilities.
+         *
+         * Not a public API to users.
+         */
+        bool isEncoder() const;
+
         CodecCapabilities(Vector<ProfileLevel> profLevs,
                 Vector<uint32_t> colFmts, bool encoder, sp<AMessage> &defaultFormat,
                 sp<AMessage> &capabilitiesInfo, int32_t maxConcurrentInstances = -1);
@@ -834,10 +860,6 @@ namespace android {
         bool supportsProfileLevel(int profile, int level) const;
         std::vector<Feature> getValidFeatures() const;
         bool checkFeature(std::string name, int flags) const;
-
-        bool isAudio() const;
-        bool isVideo() const;
-        bool isEncoder() const;
 
         friend struct XCapabilitiesBase;
         friend struct AudioCapabilities;

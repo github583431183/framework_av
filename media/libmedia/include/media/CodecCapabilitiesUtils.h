@@ -21,7 +21,10 @@
 #include <algorithm>
 #include <cmath>
 #include <optional>
+#include <string>
 #include <vector>
+
+#include <utils/Log.h>
 
 #include <media/stagefright/foundation/AUtils.h>
 

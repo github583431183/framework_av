@@ -2642,9 +2642,12 @@ AString CodecCapabilities::getMediaType() {
     return mMediaType;
 }
 
-Vector<ProfileLevel>
-        CodecCapabilities::getProfileLevels() {
+Vector<ProfileLevel> CodecCapabilities::getProfileLevels() {
     return mProfileLevels;
+}
+
+Vector<uint32_t> CodecCapabilities::getColorFormats() const {
+    return mColorFormats;
 }
 
 int CodecCapabilities::getMaxSupportedInstances() const {
