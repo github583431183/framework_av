@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c155fbf2_87834295",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-14T14:08:26Z",
+      "side": 1,
+      "message": "No need to update mts-smoke-tests-list.xml.\nThis will be automatically included in MTS once this is merged.",
+      "parentUuid": "85f3f937_97f457cf",
+      "revId": "bbae1197152dbbb80c1c855bde17fd5c8d812a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "230cc680_f5109317",
         "filename": "media/module/extractors/mp4/MPEG4Extractor.cpp",
         "patchSetId": 2
