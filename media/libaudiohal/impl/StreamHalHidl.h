@@ -161,10 +161,15 @@ class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
     // Requests notification when data buffered by the driver/hardware has been played.
     virtual status_t drain(bool earlyNotify);
 
-    // Notifies to the audio driver to flush the queued data.
+    // Notifies to the audio driver to flush (that is, drop) the queued data. Stream must
+    // already be paused before calling 'flush'. For compressed and offload streams the
+    // frame count returned by 'getPresentationPosition' must reset after flush.
     virtual status_t flush();
 
     // Return a recent count of the number of audio frames presented to an external observer.
+    // This excludes frames which have been written but are still in the pipeline. The count
+    // must not reset to zero when a PCM output enters standby. For compressed and offload
+    // streams it is recommended that HAL resets the frame count.
     virtual status_t getPresentationPosition(uint64_t *frames, struct timespec *timestamp);
 
     // Notifies the HAL layer that the framework considers the current playback as completed.
@@ -259,6 +264,7 @@ class StreamInHalHidl : public StreamInHalInterface, public StreamHalHidl {
 
     // Return a recent count of the number of audio frames received and
     // the clock time associated with that frame count.
+    // The count must not reset to zero when a PCM input enters standby.
     virtual status_t getCapturePosition(int64_t *frames, int64_t *time);
 
     // Get active microphones

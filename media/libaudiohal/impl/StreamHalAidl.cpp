@@ -276,11 +276,12 @@ status_t StreamHalAidl::getLatency(uint32_t *latency) {
     return OK;
 }
 
-status_t StreamHalAidl::getObservablePosition(int64_t *frames, int64_t *timestamp) {
+status_t StreamHalAidl::getObservablePosition(int64_t* frames, int64_t* timestamp,
+                                              StatePositions *statePositions) {
     ALOGV("%p %s::%s", this, getClassName().c_str(), __func__);
     if (!mStream) return NO_INIT;
     StreamDescriptor::Reply reply;
-    RETURN_STATUS_IF_ERROR(updateCountersIfNeeded(&reply));
+    RETURN_STATUS_IF_ERROR(updateCountersIfNeeded(&reply, statePositions));
     *frames = std::max<int64_t>(0, reply.observable.frames);
     *timestamp = std::max<int64_t>(0, reply.observable.timeNs);
     return OK;
@@ -505,9 +506,10 @@ status_t StreamHalAidl::legacyReleaseAudioPatch() {
 }
 
 status_t StreamHalAidl::sendCommand(
-        const ::aidl::android::hardware::audio::core::StreamDescriptor::Command &command,
+        const ::aidl::android::hardware::audio::core::StreamDescriptor::Command& command,
         ::aidl::android::hardware::audio::core::StreamDescriptor::Reply* reply,
-        bool safeFromNonWorkerThread) {
+        bool safeFromNonWorkerThread,
+        StatePositions *statePositions) {
     // TIME_CHECK();  // TODO(b/243839867) reenable only when optimized.
     if (!safeFromNonWorkerThread) {
         const pid_t workerTid = mWorkerTid.load(std::memory_order_acquire);
@@ -539,6 +541,18 @@ status_t StreamHalAidl::sendCommand(
             }
             mLastReply = *reply;
             mLastReplyExpirationNs = uptimeNanos() + mLastReplyLifeTimeNs;
+            if (!mIsInput && reply->status == STATUS_OK) {
+                if (command.getTag() == StreamDescriptor::Command::standby &&
+                        reply->state == StreamDescriptor::State::STANDBY) {
+                    mStatePositions.framesAtStandby = reply->observable.frames;
+                } else if (command.getTag() == StreamDescriptor::Command::flush &&
+                           reply->state == StreamDescriptor::State::IDLE) {
+                    mStatePositions.framesAtFlush = reply->observable.frames;
+                }
+            }
+            if (statePositions != nullptr) {
+                *statePositions = mStatePositions;
+            }
         }
     }
     switch (reply->status) {
@@ -554,7 +568,8 @@ status_t StreamHalAidl::sendCommand(
 }
 
 status_t StreamHalAidl::updateCountersIfNeeded(
-        ::aidl::android::hardware::audio::core::StreamDescriptor::Reply* reply) {
+        ::aidl::android::hardware::audio::core::StreamDescriptor::Reply* reply,
+        StatePositions *statePositions) {
     bool doUpdate = false;
     {
         std::lock_guard l(mLock);
@@ -564,10 +579,13 @@ status_t StreamHalAidl::updateCountersIfNeeded(
         // Since updates are paced, it is OK to perform them from any thread, they should
         // not interfere with I/O operations of the worker.
         return sendCommand(makeHalCommand<HalCommand::Tag::getStatus>(),
-                reply, true /*safeFromNonWorkerThread */);
+                reply, true /*safeFromNonWorkerThread */, statePositions);
     } else if (reply != nullptr) {  // provide cached reply
         std::lock_guard l(mLock);
         *reply = mLastReply;
+        if (statePositions != nullptr) {
+            *statePositions = mStatePositions;
+        }
     }
     return OK;
 }
@@ -659,8 +677,12 @@ status_t StreamOutHalAidl::getRenderPosition(uint64_t *dspFrames) {
         return BAD_VALUE;
     }
     int64_t aidlFrames = 0, aidlTimestamp = 0;
-    RETURN_STATUS_IF_ERROR(getObservablePosition(&aidlFrames, &aidlTimestamp));
-    *dspFrames = aidlFrames;
+    StatePositions statePositions{};
+    RETURN_STATUS_IF_ERROR(
+            getObservablePosition(&aidlFrames, &aidlTimestamp, &statePositions));
+    // Number of audio frames since the stream has exited standby.
+    *dspFrames = aidlFrames <= statePositions.framesAtStandby
+            ? 0 : aidlFrames - statePositions.framesAtStandby;
     return OK;
 }
 
@@ -717,8 +739,17 @@ status_t StreamOutHalAidl::getPresentationPosition(uint64_t *frames, struct time
         return BAD_VALUE;
     }
     int64_t aidlFrames = 0, aidlTimestamp = 0;
-    RETURN_STATUS_IF_ERROR(getObservablePosition(&aidlFrames, &aidlTimestamp));
-    *frames = aidlFrames;
+    StatePositions statePositions{};
+    RETURN_STATUS_IF_ERROR(getObservablePosition(&aidlFrames, &aidlTimestamp, &statePositions));
+    if (!mContext.isAsynchronous()) {
+        *frames = aidlFrames;
+    } else {
+        // For compressed and offload streams the frame count must reset after flush,
+        // also, it is recommended that HAL resets the frame count when the stream enters STANDBY.
+        const int64_t mostRecentResetPoint =
+                std::max(statePositions.framesAtStandby, statePositions.framesAtFlush);
+        *frames = aidlFrames <= mostRecentResetPoint ? 0 : aidlFrames - mostRecentResetPoint;
+    }
     timestamp->tv_sec = aidlTimestamp / NANOS_PER_SECOND;
     timestamp->tv_nsec = aidlTimestamp - timestamp->tv_sec * NANOS_PER_SECOND;
     return OK;
