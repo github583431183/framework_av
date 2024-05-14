@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55897910_741b526c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-14T20:13:53Z",
+      "side": 1,
+      "message": "just the one bit about joining the comment. otherwise, looks good.",
+      "revId": "e9f9767394b176c0db9ae5c7ddd566bb2ab41f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c063c70f_e0ee28c4",
+        "filename": "media/module/codecserviceregistrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-14T20:13:53Z",
+      "side": 1,
+      "message": "please make this a single comment instead of 2 separate comments.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3c7174a7_76e68377",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/module/codecserviceregistrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+              "range": {
+                "startLine": 172,
+                "startChar": 0,
+                "endLine": 174,
+                "endChar": 0
+              },
+              "replacement": "  /** RegisterCodecServicesActual() is called here to improve code coverage as\n   * currently it is not called by codecServiceRegistrant */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e9f9767394b176c0db9ae5c7ddd566bb2ab41f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
