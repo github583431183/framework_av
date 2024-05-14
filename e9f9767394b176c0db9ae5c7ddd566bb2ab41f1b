@@ -57,6 +57,30 @@
       ],
       "revId": "e9f9767394b176c0db9ae5c7ddd566bb2ab41f1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f33cea5_58e5298b",
+        "filename": "media/module/codecserviceregistrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-05-14T20:29:41Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "c063c70f_e0ee28c4",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "e9f9767394b176c0db9ae5c7ddd566bb2ab41f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
