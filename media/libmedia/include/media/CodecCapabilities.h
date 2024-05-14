@@ -31,21 +31,6 @@
 #include <utils/StrongPointer.h>
 
 namespace android {
-    struct Feature {
-        std::string mName;
-        int mValue;
-        bool mDefault;
-        bool mInternal;
-        Feature(std::string name, int value, bool def, bool internal) {
-            mName = name;
-            mValue = value;
-            mDefault = def;
-            mInternal = internal;
-        }
-        Feature(std::string name, int value, bool def) {
-            Feature(name, value, def, false /* internal */);
-        }
-    };
 
     struct CodecCapabilities;
 
@@ -570,13 +555,13 @@ namespace android {
         Range<int> getComplexityRange();
 
         /** Constant quality mode */
-        static const int BITRATE_MODE_CQ = 0;
+        inline static constexpr int BITRATE_MODE_CQ = 0;
         /** Variable bitrate mode */
-        static const int BITRATE_MODE_VBR = 1;
+        inline static constexpr int BITRATE_MODE_VBR = 1;
         /** Constant bitrate mode */
-        static const int BITRATE_MODE_CBR = 2;
+        inline static constexpr int BITRATE_MODE_CBR = 2;
         /** Constant bitrate mode with frame drops */
-        static const int BITRATE_MODE_CBR_FD =  3;
+        inline static constexpr int BITRATE_MODE_CBR_FD =  3;
 
         /**
          * Query whether a bitrate mode is supported.
@@ -594,7 +579,7 @@ namespace android {
         bool supportsFormat(const sp<AMessage> &format);
 
     private:
-        static inline Feature bitrates[] = {
+        inline static const std::vector<Feature> BitRates = {
             Feature("VBR", BITRATE_MODE_VBR, true),
             Feature("CBR", BITRATE_MODE_CBR, false),
             Feature("CQ",  BITRATE_MODE_CQ,  false),
