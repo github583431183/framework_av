@@ -594,12 +594,12 @@ namespace android {
         bool supportsFormat(const sp<AMessage> &format);
 
     private:
-        static inline Feature bitrates[] = {
-            Feature("VBR", BITRATE_MODE_VBR, true),
-            Feature("CBR", BITRATE_MODE_CBR, false),
-            Feature("CQ",  BITRATE_MODE_CQ,  false),
-            Feature("CBR-FD", BITRATE_MODE_CBR_FD, false)
-        };
+        // static const Feature bitrates[] = {
+        //     Feature("VBR", BITRATE_MODE_VBR, true),
+        //     Feature("CBR", BITRATE_MODE_CBR, false),
+        //     Feature("CQ",  BITRATE_MODE_CQ,  false),
+        //     Feature("CBR-FD", BITRATE_MODE_CBR_FD, false)
+        // };
         static int ParseBitrateMode(std::string mode);
 
         Range<int> mQualityRange;

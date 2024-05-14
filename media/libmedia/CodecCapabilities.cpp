@@ -166,6 +166,13 @@ static const VideoCapabilities::PerformancePoint UHD_200
 static const VideoCapabilities::PerformancePoint UHD_240
         = VideoCapabilities::PerformancePoint(3840, 2160, 240);
 
+static const std::vector<Feature> bitrates = {
+    Feature("VBR", BITRATE_MODE_VBR, true),
+    Feature("CBR", BITRATE_MODE_CBR, false),
+    Feature("CQ",  BITRATE_MODE_CQ,  false),
+    Feature("CBR-FD", BITRATE_MODE_CBR_FD, false)
+};
+
 // CodecCapabilities Features
 static const std::vector<Feature> DecoderFeatures = {
     Feature(FEATURE_AdaptivePlayback, (1 << 0), true),
@@ -977,6 +984,8 @@ void VideoCapabilities::initWithPlatformLimits() {
 
     mWidthRange  = GetSizeRange();
     mHeightRange = GetSizeRange();
+    ALOGD("mWidthRange: %d, %d", mWidthRange.lower(), mHeightRange.upper());
+    ALOGD("mHeightRange: %d, %d", mHeightRange.lower(), mHeightRange.upper());
     mFrameRateRange = FRAME_RATE_RANGE;
 
     mHorizontalBlockRange = GetSizeRange();
@@ -1208,6 +1217,7 @@ int VideoCapabilities::EquivalentVP9Level(const sp<AMessage> &format) {
 }
 
 void VideoCapabilities::parseFromInfo(const sp<AMessage> &format) {
+    ALOGD("parseFromInfo");
     VideoSize blockSize = VideoSize(mBlockWidth, mBlockHeight);
     VideoSize alignment = VideoSize(mWidthAlignment, mHeightAlignment);
     std::optional<Range<int>> counts, widths, heights;
@@ -1264,6 +1274,7 @@ void VideoCapabilities::parseFromInfo(const sp<AMessage> &format) {
             mSmallerDimensionUpperLimit =
                 std::min(mWidthRange.upper(), mHeightRange.upper());
             mWidthRange = mHeightRange = mWidthRange.extend(mHeightRange);
+            ALOGD("feature swap width/height: %d, %d", mWidthRange.lower(), mWidthRange.upper());
         }
     }
 
@@ -1316,11 +1327,14 @@ void VideoCapabilities::parseFromInfo(const sp<AMessage> &format) {
     if ((lockParent->mError & ERROR_UNSUPPORTED) != 0 || mAllowMbOverride) {
         // codec supports profiles that we don't know.
         // Use supplied values clipped to platform limits
+        ALOGD("codec supports profiles that we don't know.");
         if (widths) {
             mWidthRange = GetSizeRange().intersect(widths.value());
+            ALOGD("mWidthRange: %d, %d", mWidthRange.lower(), mWidthRange.upper());
         }
         if (heights) {
             mHeightRange = GetSizeRange().intersect(heights.value());
+            ALOGD("mHeightRange: %d, %d", mHeightRange.lower(), mHeightRange.upper());
         }
         if (counts) {
             mBlockCountRange = POSITIVE_INTEGERS.intersect(
@@ -1354,8 +1368,10 @@ void VideoCapabilities::parseFromInfo(const sp<AMessage> &format) {
         }
     } else {
         // no unsupported profile/levels, so restrict values to known limits
+        ALOGD("no unsupported profile/levels");
         if (widths) {
             mWidthRange = mWidthRange.intersect(widths.value());
+            ALOGD("mWidthRange: %d, %d", mWidthRange.lower(), mWidthRange.upper());
         }
         if (heights) {
             mHeightRange = mHeightRange.intersect(heights.value());
@@ -2221,7 +2237,9 @@ Range<int> EncoderCapabilities::getComplexityRange() {
 
 // static
 int EncoderCapabilities::ParseBitrateMode(std::string mode) {
+    ALOGD("ParseBitrateMode: mode: %s", mode.c_str());
     for (Feature feat: bitrates) {
+        ALOGD("feat: mName: %s, mValue: %d", feat.mName.c_str(), feat.mValue);
         if (strcasecmp(feat.mName.c_str(), mode.c_str()) == 0) {
             return feat.mValue;
         }
@@ -2296,6 +2314,8 @@ void EncoderCapabilities::parseFromInfo(const sp<AMessage> &format) {
         mBitControl = 0;
         for (std::string mode: base::Split(std::string(bitrateModesAStr.c_str()), ",")) {
             mBitControl |= (1 << ParseBitrateMode(mode));
+            ALOGD("modes: %s, ParseBitrateMode: %d, 1 << ParseBitrateMode: %d, mBitControl: %d",
+                    mode.c_str(), ParseBitrateMode(mode), 1 << ParseBitrateMode(mode), mBitControl);
         }
     }
     format->findInt32("complexity-default", &mDefaultComplexity);
