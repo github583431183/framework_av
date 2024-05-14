@@ -16,6 +16,23 @@
       "message": "if audio.timestamp.corrected_output_device is in the property_contexts as audio_config_prop, does it work?\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/property_contexts;drc\u003d5c5ff28912ba4001f48589e88a7f13f25a9989e3;l\u003d399",
       "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18405c2d_d66d0c14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-14T20:19:40Z",
+      "side": 1,
+      "message": "If this property needs to be configurable by vendor, it can be made a \"system internal\" property which means, it can be set from the `system_ext` partition, which is controlled by the vendor. At some point, I have defined `system_audio_config_prop` property context, and the audio server can access it: https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/property_contexts;l\u003d429;drc\u003d5c5ff28912ba4001f48589e88a7f13f25a9989e3. When performing CTS testing, GSI only provides the system partition, leaving system_ext from the vendor-provided image: https://source.android.com/docs/core/architecture/partitions/shared-system-image\n\nI think, this is more straightforward approach, unless the vendor needs to set the value of this property on a device by device basis.",
+      "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
