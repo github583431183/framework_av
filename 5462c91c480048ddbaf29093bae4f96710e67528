@@ -418,6 +418,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acedb237_02118693",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-14T08:59:20Z",
+      "side": 1,
+      "message": "I guess we can either check the flags to ignore the parameter in the engine, or check the flag from caller and keep / use previous method.",
+      "parentUuid": "e0708295_21ef29f6",
+      "range": {
+        "startLine": 1283,
+        "startChar": 4,
+        "endLine": 1284,
+        "endChar": 66
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26cb5aef_f536a02c",
         "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
         "patchSetId": 1
