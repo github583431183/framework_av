@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f41171a6_ef7bac31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-14T18:14:17Z",
+      "side": 1,
+      "message": "if audio.timestamp.corrected_output_device is in the property_contexts as audio_config_prop, does it work?\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/property_contexts;drc\u003d5c5ff28912ba4001f48589e88a7f13f25a9989e3;l\u003d399",
+      "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
