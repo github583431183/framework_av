@@ -51,7 +51,7 @@ struct Range {
 
     Range(T l, T u) : lower_(l), upper_(u) {}
 
-    constexpr bool empty() const { return lower_ >= upper_; }
+    constexpr bool empty() const { return lower_ > upper_; }
 
     T lower() const { return lower_; }
 
@@ -59,7 +59,7 @@ struct Range {
 
     // Check if a value is in the range.
     bool contains(T value) const {
-        return lower_ <= value && upper_ > value;
+        return lower_ <= value && upper_ >= value;
     }
 
     bool contains(Range<T> range) const {
@@ -79,10 +79,10 @@ struct Range {
 
     // Return the intersected range
     Range<T> intersect(Range<T> range) const {
-        if (lower_ > range.lower() && range.upper() > upper_) {
+        if (lower_ >= range.lower() && range.upper() >= upper_) {
             // range includes this
             return *this;
-        } else if (range.lower() > lower_ && range.upper() < upper_) {
+        } else if (range.lower() >= lower_ && range.upper() <= upper_) {
             // this includes range
             return range;
         } else {
@@ -157,12 +157,12 @@ void sortDistinctRanges(std::vector<Range<T>> &ranges) {
     std::sort(ranges.begin(), ranges.end(),
             [](Range<T> r1, Range<T> r2) {
         if (r1.upper() < r2.lower()) {
-            return -1;
+            return true;
         } else if (r1.lower() > r2.upper()) {
-            return 1;
+            return false;
         } else {
             ALOGE("sample rate ranges must be distinct.");
-            return 0;
+            return false;
         }
     });
 }
@@ -177,7 +177,7 @@ void sortDistinctRanges(std::vector<Range<T>> &ranges) {
 template<typename T>
 std::vector<Range<T>> intersectSortedDistinctRanges(
         const std::vector<Range<T>> &one, const std::vector<Range<T>> &another) {
-    std::vector<Range<T>> result(one.size() + another.size());
+    std::vector<Range<T>> result;
     int ix = 0;
     for (Range<T> range : another) {
         while (ix < one.size() && one[ix].upper() < range.lower()) {

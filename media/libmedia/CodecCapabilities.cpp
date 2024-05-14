@@ -270,22 +270,34 @@ void AudioCapabilities::initWithPlatformLimits() {
 
 bool AudioCapabilities::supports(int sampleRate, int inputChannels) {
     // channels and sample rates are checked orthogonally
-    return std::any_of(mInputChannelRanges.begin(), mInputChannelRanges.end(),
-            [inputChannels](Range<int> a) { return a.contains(inputChannels); })
-            && std::any_of(mSampleRateRanges.begin(), mSampleRateRanges.end(),
-            [sampleRate](Range<int> a) { return a.contains(sampleRate); });
+    if (inputChannels != 0
+            && !std::any_of(mInputChannelRanges.begin(), mInputChannelRanges.end(),
+            [inputChannels](Range<int> a) { return a.contains(inputChannels); })) {
+        return false;
+    }
+
+    if (sampleRate != 0
+            && !std::any_of(mSampleRateRanges.begin(), mSampleRateRanges.end(),
+            [sampleRate](Range<int> a) { return a.contains(sampleRate); })) {
+        return false;
+    }
+    return true;
 }
 
 bool AudioCapabilities::isSampleRateSupported(int sampleRate) {
     return supports(sampleRate, 0);
 }
 
-void AudioCapabilities::limitSampleRates(const std::vector<int> &rates) {
+void AudioCapabilities::limitSampleRates(std::vector<int> rates) {
+    // mSampleRateRanges.clear();
+    std::vector<Range<int>> sampleRateRanges;
+    std::sort(rates.begin(), rates.end());
     for (int rate : rates) {
         if (supports(rate, 0 /* channels */)) {
-            mSampleRateRanges.push_back(Range<int>(rate, rate));
+            sampleRateRanges.push_back(Range<int>(rate, rate));
         }
     }
+    mSampleRateRanges = intersectSortedDistinctRanges(mSampleRateRanges, sampleRateRanges);
     createDiscreteSampleRates();
 }
 
@@ -296,7 +308,7 @@ void AudioCapabilities::createDiscreteSampleRates() {
 }
 
 void AudioCapabilities::limitSampleRates(
-        std::vector<Range<int>> &rateRanges) {
+        std::vector<Range<int>> rateRanges) {
     sortDistinctRanges(rateRanges);
     mSampleRateRanges = intersectSortedDistinctRanges(mSampleRateRanges, rateRanges);
     // check if all values are discrete
@@ -475,7 +487,7 @@ void AudioCapabilities::parseFromInfo(const sp<AMessage> &format) {
     AString rateAString;
     if (format->findString("sample-rate-ranges", &rateAString)) {
         std::vector<std::string> rateStrings = base::Split(std::string(rateAString.c_str()), ",");
-        std::vector<Range<int>> rateRanges(rateStrings.size());
+        std::vector<Range<int>> rateRanges;
         for (std::string rateString : rateStrings) {
             std::optional<Range<int>> rateRange = ParseIntRange(rateString);
             if (!rateRange) {

@@ -151,9 +151,9 @@ namespace android {
         void init(const sp<AMessage> &format, std::shared_ptr<CodecCapabilities> parent);
         void initWithPlatformLimits();
         bool supports(int sampleRate, int inputChannels);
-        void limitSampleRates(const std::vector<int> &rates);
+        void limitSampleRates(std::vector<int> rates);
         void createDiscreteSampleRates();
-        void limitSampleRates(std::vector<Range<int>> &rateRanges);
+        void limitSampleRates(std::vector<Range<int>> rateRanges);
         void applyLevelLimits();
         void applyLimits(const std::vector<Range<int>> &inputChannels,
                 const std::optional<Range<int>> &bitRates);
