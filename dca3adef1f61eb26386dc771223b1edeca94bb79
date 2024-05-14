@@ -16,6 +16,23 @@
       "message": "Andy is the Mutex Master now 😊",
       "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fdff45d_47e4d68d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-14T17:37:42Z",
+      "side": 1,
+      "message": "Agree, this is a problem.  I checked, and this is one of the complex thread safety parts that we haven\u0027t resolved yet.  Adding Shunkai to see what he thinks.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Effects.cpp;drc\u003d9f6b4d688dfb6d6604d987e1d5441fbd49932265;l\u003d3093\n\n\nWe are better off caching the frameSize while we have the lock.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/Effects.cpp;drc\u003d9f6b4d688dfb6d6604d987e1d5441fbd49932265;l\u003d2203",
+      "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
