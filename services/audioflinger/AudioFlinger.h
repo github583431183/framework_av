@@ -61,6 +61,8 @@ class AudioFlinger
 public:
     static void instantiate() ANDROID_API;
 
+    status_t reset();
+
 private:
 
     // ---- begin IAudioFlinger interface

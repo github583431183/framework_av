@@ -117,6 +117,11 @@ void MelReporter::updateMetadataForCsd(audio_io_handle_t streamHandle,
     }
 }
 
+void MelReporter::reset() {
+    mAfMelReporterCallback.clear();
+    mSoundDoseManager->reset();
+}
+
 void MelReporter::onCreateAudioPatch(audio_patch_handle_t handle,
         const IAfPatchPanel::Patch& patch) {
     if (!mSoundDoseManager->isCsdEnabled()) {

@@ -193,6 +193,7 @@ BINDER_METHOD_ENTRY(supportsBluetoothVariableLatency) \
 BINDER_METHOD_ENTRY(getSoundDoseInterface) \
 BINDER_METHOD_ENTRY(getAudioPolicyConfig) \
 BINDER_METHOD_ENTRY(getAudioMixPort) \
+BINDER_METHOD_ENTRY(reset) \
 
 // singleton for Binder Method Statistics for IAudioFlinger
 static auto& getIAudioFlingerStatistics() {
@@ -465,6 +466,8 @@ AudioFlinger::~AudioFlinger()
             sMediaLogService->unregisterWriter(iMemory);
         }
     }
+    mMediaLogNotifier->requestExit();
+    mPatchCommandThread->exit();
 }
 
 //static
@@ -4801,6 +4804,13 @@ status_t AudioFlinger::getAudioMixPort(const struct audio_port_v7 *devicePort,
     return mPatchPanel->getAudioMixPort_l(devicePort, mixPort);
 }
 
+status_t AudioFlinger::reset() {
+    mDeviceEffectManager.clear();
+    mPatchPanel.clear();
+    mMelReporter->reset();
+    return NO_ERROR;
+}
+
 // ----------------------------------------------------------------------------
 
 status_t AudioFlinger::onTransactWrapper(TransactionCode code,
@@ -4835,6 +4845,7 @@ status_t AudioFlinger::onTransactWrapper(TransactionCode code,
         case TransactionCode::INVALIDATE_TRACKS:
         case TransactionCode::GET_AUDIO_POLICY_CONFIG:
         case TransactionCode::GET_AUDIO_MIX_PORT:
+        case TransactionCode::RESET:
             ALOGW("%s: transaction %d received from PID %d",
                   __func__, static_cast<int>(code), IPCThreadState::self()->getCallingPid());
             // return status only for non void methods
