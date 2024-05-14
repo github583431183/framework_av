@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9d6509_d50d2eaf",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-14T17:22:42Z",
+      "side": 1,
+      "message": "Let\u0027s align the sorting implementation with the code here: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libaudiohal/impl/DevicesFactoryHalAidl.cpp;l\u003d159;drc\u003dd8f2441693ce6c9abf4891a5163be7dcdba455d4. Note that the order of modules will be different for the input buffer size scenario.",
+      "range": {
+        "startLine": 2630,
+        "startChar": 0,
+        "endLine": 2630,
+        "endChar": 49
+      },
+      "revId": "f716d26204688d5ae067d1e47a05c2c5573cad4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
