@@ -485,7 +485,7 @@ void AudioCapabilities::parseFromInfo(const sp<AMessage> &format) {
     AString rateAString;
     if (format->findString("sample-rate-ranges", &rateAString)) {
         std::vector<std::string> rateStrings = base::Split(std::string(rateAString.c_str()), ",");
-        std::vector<Range<int>> rateRanges();
+        std::vector<Range<int>> rateRanges;
         for (std::string rateString : rateStrings) {
             std::optional<Range<int>> rateRange = ParseIntRange(rateString);
             if (!rateRange) {
