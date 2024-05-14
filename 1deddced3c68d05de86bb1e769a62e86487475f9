@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81fd7738_74bc7dbf",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-14T15:09:45Z",
+      "side": 1,
+      "message": "what\u0027s the significance of this value?",
+      "range": {
+        "startLine": 33,
+        "startChar": 35,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e5313c_1651aa5b",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-14T15:09:45Z",
+      "side": 1,
+      "message": "i\u0027d like to see some comments about why we\u0027re doing this\nstring concatenation -- probably to answer the question\n\"what is it that we\u0027re building\".",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1762760a_392b1ec3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+              "range": {
+                "startLine": 43,
+                "startChar": 0,
+                "endLine": 58,
+                "endChar": 0
+              },
+              "replacement": "std::string keyMediaValues[] \u003d {\"metrics.manager\",\n                                \"mediadrm\",\n                                AMEDIAMETRICS_KEY_AUDIO_MIDI,\n                                AMEDIAMETRICS_KEY_PREFIX_AUDIO_SPATIALIZER,\n                                AMEDIAMETRICS_KEY_PREFIX_AUDIO_THREAD,\n                                AMEDIAMETRICS_KEY_AUDIO_FLINGER,\n                                AMEDIAMETRICS_KEY_AUDIO_POLICY,\n                                AMEDIAMETRICS_KEY_PREFIX_AUDIO_TRACK,\n                                AMEDIAMETRICS_KEY_PREFIX_AUDIO_RECORD,\n                                AMEDIAMETRICS_KEY_PREFIX_AUDIO_STREAM,\n                                \"audio.device.a2dp\",\n                                AMEDIAMETRICS_KEY_PREFIX_AUDIO_DEVICE,\n                                \"postBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent\"};\n"
+            },
+            {
+              "path": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+              "range": {
+                "startLine": 59,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "std::string keyMediaAction[] \u003d {AMEDIAMETRICS_PROP_EVENT_VALUE_CREATE,\n                                AMEDIAMETRICS_PROP_EVENT_VALUE_TIMEOUT,\n                                AMEDIAMETRICS_PROP_EVENT_VALUE_CTOR,\n                                AMEDIAMETRICS_PROP_EVENT_VALUE_ENDAAUDIOSTREAM,\n                                AMEDIAMETRICS_PROP_EVENT_VALUE_DEVICECLOSED,\n                                \"createAudioPatch\",\n                                AMEDIAMETRICS_PROP_EVENT_VALUE_SETVOICEVOLUME,\n                                AMEDIAMETRICS_PROP_EVENT_VALUE_SETMODE,\n                                AMEDIAMETRICS_PROP_EVENT_VALUE_ENDAUDIOINTERVALGROUP,\n                                \"connected\"};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a726b602_137de60b",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-14T15:09:45Z",
+      "side": 1,
+      "message": "missed a comma?  or are we deliberately doing string concatenation here?\n\nif deliberate, let\u0027s add a comment",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "35c301b5_dde8c56d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": "        \"createAudioPatch\", AMEDIAMETRICS_PROP_EVENT_VALUE_SETVOICEVOLUME,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61eba1f8_b1074d4e",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-14T15:09:45Z",
+      "side": 1,
+      "message": "setTimestamp(nsecs_t) -- that\u0027s a uint64_t, i believe.",
+      "range": {
+        "startLine": 97,
+        "startChar": 58,
+        "endLine": 97,
+        "endChar": 72
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1432170c_65688e84",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+              "range": {
+                "startLine": 97,
+                "startChar": 0,
+                "endLine": 98,
+                "endChar": 0
+              },
+              "replacement": "            [\u0026]() { item-\u003esetTimestamp(mFdp.ConsumeIntegral\u003cuint64_t\u003e()); },\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
