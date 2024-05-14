@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "710fa65a_1db5e0df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-05-14T14:31:51Z",
+      "side": 1,
+      "message": "Please check the new revision, now the code traverses all the HW modules in the order proposed above. @mnaganov@google.com @hunga@google.com @elaurent@google.com",
+      "parentUuid": "99d0b917_0857138d",
+      "revId": "e29c0a177e29945026262d0c7ccbbec30d6c3975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06360f76_dfc9304c",
