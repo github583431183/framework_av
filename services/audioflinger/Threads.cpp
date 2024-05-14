@@ -4046,6 +4046,9 @@ bool AudioFlinger::PlaybackThread::threadLoop()
 
             // only process effects if we're going to write
             if (mSleepTimeUs == 0 && mType != OFFLOAD) {
+                unlockEffectChains(effectChains);
+                Mutex::Autolock _l(mLock);
+                lockEffectChains_l(effectChains);
                 for (size_t i = 0; i < effectChains.size(); i ++) {
                     effectChains[i]->process_l();
                     // TODO: Write haptic data directly to sink buffer when mixing.
@@ -4077,6 +4080,9 @@ bool AudioFlinger::PlaybackThread::threadLoop()
         // and thus does have to be synchronized with audio writes but may have
         // to be called while waiting for async write callback
         if (mType == OFFLOAD) {
+            unlockEffectChains(effectChains);
+            Mutex::Autolock _l(mLock);
+            lockEffectChains_l(effectChains);
             for (size_t i = 0; i < effectChains.size(); i ++) {
                 effectChains[i]->process_l();
             }
