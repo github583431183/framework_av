@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89fe4eb3_906ac4a8",
+        "filename": "media/codec2/components/opus/C2SoftOpusDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-05-14T06:06:47Z",
+      "side": 1,
+      "message": "Vorbis name here is coming from https://www.rfc-editor.org/rfc/rfc7845#section-5.1.1.2. \n\"This set of surround options and speaker location orderings is the\n   same as those used by the Vorbis codec [VORBIS-MAPPING].\"",
+      "parentUuid": "3fec4ade_39904569",
+      "range": {
+        "startLine": 153,
+        "startChar": 51,
+        "endLine": 153,
+        "endChar": 64
+      },
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "426c0be1_df2a9361",
         "filename": "media/codec2/components/opus/C2SoftOpusDec.cpp",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2024-05-02T00:34:30Z",
       "side": 1,
       "message": "Can you please share the source for this mapping?\nIt would be good to add that as a comment.",
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a3459d_04f1ba5a",
+        "filename": "media/codec2/components/opus/C2SoftOpusDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-05-14T06:06:47Z",
+      "side": 1,
+      "message": "About OPUS mapping, the \"vorbisMapping\" input parameter name comes from OGG spec, that is Ogg Encapsulation for the Opus Audio Codec .\nAccording to spec https://www.rfc-editor.org/rfc/rfc7845#section-5.1.1.2, 5.1 channel layout is FL+C+FR+RL+RR+LFE.\nWhile AOSP 5.1 ch layout is FL+FR+C+LFE+BL+BR.\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/media/java/android/media/AudioFormat.java;drc\u003d539f45ae7f742685fd04bb55ab6da8beaec87556;l\u003d544 \n\nThe values in the tables is based on the channel definition on AOSP.",
+      "parentUuid": "426c0be1_df2a9361",
       "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
