@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ce6b5c_eb296be9",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2024-05-15T18:50:31Z",
+      "side": 1,
+      "message": "Conflict with the one in MediaErrors.h. This one is never used.",
+      "range": {
+        "startLine": 885,
+        "startChar": 20,
+        "endLine": 885,
+        "endChar": 27
+      },
+      "revId": "adcfc16de90fc6507a1a6415a505bec9ef882ead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
