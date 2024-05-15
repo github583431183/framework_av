@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd1a064_f27653ad",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-15T02:42:48Z",
+      "side": 1,
+      "message": "nit: inconsistent spacing here and on line 512 and 572",
+      "range": {
+        "startLine": 279,
+        "startChar": 60,
+        "endLine": 279,
+        "endChar": 63
+      },
+      "revId": "f9fa11bf9473c5412de87272d1ec52309098ebfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f061950a_16f066f6",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-15T02:42:48Z",
+      "side": 1,
+      "message": "this also is supposed to be reset on flush.",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 685,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ca211aa6_ba7cab9c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudiohal/impl/StreamHalAidl.cpp",
+              "range": {
+                "startLine": 624,
+                "startChar": 0,
+                "endLine": 624,
+                "endChar": 0
+              },
+              "replacement": "    // Reset the state positions on exit.\n    mStatePositions \u003d {};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f9fa11bf9473c5412de87272d1ec52309098ebfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
