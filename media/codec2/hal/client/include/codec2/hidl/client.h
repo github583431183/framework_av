@@ -216,9 +216,6 @@ struct Codec2Client : public Codec2ConfigurableClient {
             C2String const& name,
             std::shared_ptr<Interface>* const interface);
 
-    c2_status_t createInputSurface(
-            std::shared_ptr<InputSurface>* const inputSurface);
-
     std::vector<C2Component::Traits> const& listComponents() const;
 
     c2_status_t copyBuffer(
@@ -265,10 +262,6 @@ struct Codec2Client : public Codec2ConfigurableClient {
 
     // List traits from all known IComponentStore services.
     static std::vector<C2Component::Traits> const& ListComponents();
-
-    // Create an input surface.
-    static std::shared_ptr<InputSurface> CreateInputSurface(
-            char const* serviceName = nullptr);
 
     // Whether AIDL is selected.
     static bool IsAidlSelected();

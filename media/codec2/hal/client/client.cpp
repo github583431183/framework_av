@@ -1357,34 +1357,6 @@ c2_status_t Codec2Client::createInterface(
     return status;
 }
 
-c2_status_t Codec2Client::createInputSurface(
-        std::shared_ptr<InputSurface>* const inputSurface) {
-    if (mAidlBase) {
-        // FIXME
-        return C2_OMITTED;
-    }
-
-    c2_status_t status;
-    Return<void> transStatus = mHidlBase1_0->createInputSurface(
-            [&status, inputSurface](
-                    c2_hidl::Status s,
-                    const sp<c2_hidl::IInputSurface>& i) {
-                status = static_cast<c2_status_t>(s);
-                if (status != C2_OK) {
-                    return;
-                }
-                *inputSurface = std::make_shared<InputSurface>(i);
-            });
-    if (!transStatus.isOk()) {
-        LOG(ERROR) << "createInputSurface -- transaction failed.";
-        return C2_TRANSACTION_FAILED;
-    } else if (status != C2_OK) {
-        LOG(DEBUG) << "createInputSurface -- call failed: "
-                   << status << ".";
-    }
-    return status;
-}
-
 std::vector<C2Component::Traits> const& Codec2Client::listComponents() const {
     return Cache::List()[mServiceIndex].getTraits();
 }
@@ -1828,44 +1800,6 @@ std::vector<C2Component::Traits> const& Codec2Client::ListComponents() {
         return list;
     }()};
     return sList;
-}
-
-std::shared_ptr<Codec2Client::InputSurface> Codec2Client::CreateInputSurface(
-        char const* serviceName) {
-    int32_t inputSurfaceSetting = ::android::base::GetIntProperty(
-            "debug.stagefright.c2inputsurface", int32_t(0));
-    if (inputSurfaceSetting <= 0) {
-        return nullptr;
-    }
-    size_t index = GetServiceNames().size();
-    if (serviceName) {
-        index = getServiceIndex(serviceName);
-        if (index == GetServiceNames().size()) {
-            LOG(DEBUG) << "CreateInputSurface -- invalid service name: \""
-                       << serviceName << "\"";
-        }
-    }
-
-    std::shared_ptr<Codec2Client::InputSurface> inputSurface;
-    if (index != GetServiceNames().size()) {
-        std::shared_ptr<Codec2Client> client = Cache::List()[index].getClient();
-        if (client->createInputSurface(&inputSurface) == C2_OK) {
-            return inputSurface;
-        }
-    }
-    LOG(INFO) << "CreateInputSurface -- attempting to create an input surface "
-                 "from all services...";
-    for (Cache& cache : Cache::List()) {
-        std::shared_ptr<Codec2Client> client = cache.getClient();
-        if (client->createInputSurface(&inputSurface) == C2_OK) {
-            LOG(INFO) << "CreateInputSurface -- input surface obtained from "
-                         "service \"" << client->getServiceName() << "\"";
-            return inputSurface;
-        }
-    }
-    LOG(WARNING) << "CreateInputSurface -- failed to create an input surface "
-                    "from all services";
-    return nullptr;
 }
 
 bool Codec2Client::IsAidlSelected() {
