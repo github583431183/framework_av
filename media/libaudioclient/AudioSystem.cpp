@@ -1747,7 +1747,8 @@ status_t AudioSystem::removeAudioPortCallback(const sp<AudioPortCallback>& callb
     return (ret < 0) ? INVALID_OPERATION : NO_ERROR;
 }
 
-status_t AudioSystem::addAudioVolumeGroupCallback(const sp<AudioVolumeGroupCallback>& callback) {
+status_t AudioSystem::addAudioVolumeGroupCallback(
+        const sp<media::INativeAudioVolumeGroupCallback>& callback) {
     const sp<IAudioPolicyService> aps = get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
     const auto apc = gAudioPolicyServiceHandler.getClient();
@@ -1761,7 +1762,8 @@ status_t AudioSystem::addAudioVolumeGroupCallback(const sp<AudioVolumeGroupCallb
     return (ret < 0) ? INVALID_OPERATION : NO_ERROR;
 }
 
-status_t AudioSystem::removeAudioVolumeGroupCallback(const sp<AudioVolumeGroupCallback>& callback) {
+status_t AudioSystem::removeAudioVolumeGroupCallback(
+        const sp<media::INativeAudioVolumeGroupCallback>& callback) {
     const sp<IAudioPolicyService> aps = get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
     const auto apc = gAudioPolicyServiceHandler.getClient();
@@ -2799,14 +2801,14 @@ Status AudioSystem::AudioPolicyServiceClient::onAudioPatchListUpdate() {
 
 // ----------------------------------------------------------------------------
 int AudioSystem::AudioPolicyServiceClient::addAudioVolumeGroupCallback(
-        const sp<AudioVolumeGroupCallback>& callback) {
+        const sp<media::INativeAudioVolumeGroupCallback>& callback) {
     std::lock_guard _l(mMutex);
     return mAudioVolumeGroupCallbacks.insert(callback).second
             ? mAudioVolumeGroupCallbacks.size() : -1;
 }
 
 int AudioSystem::AudioPolicyServiceClient::removeAudioVolumeGroupCallback(
-        const sp<AudioVolumeGroupCallback>& callback) {
+        const sp<media::INativeAudioVolumeGroupCallback>& callback) {
     std::lock_guard _l(mMutex);
     return mAudioVolumeGroupCallbacks.erase(callback) > 0
             ? mAudioVolumeGroupCallbacks.size() : -1;
