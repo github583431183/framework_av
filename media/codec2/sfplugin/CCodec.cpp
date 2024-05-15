@@ -3001,45 +3001,37 @@ void CCodec::initiateReleaseIfStuck() {
 PersistentSurface *CCodec::CreateInputSurface() {
     using namespace android;
     using ::android::hardware::media::omx::V1_0::implementation::TWGraphicBufferSource;
-    // Attempt to create a Codec2's input surface.
-    std::shared_ptr<Codec2Client::InputSurface> inputSurface =
-            Codec2Client::CreateInputSurface();
-    if (!inputSurface) {
-        if (property_get_int32("debug.stagefright.c2inputsurface", 0) == -1) {
-            if (Codec2Client::IsAidlSelected()) {
-                sp<IGraphicBufferProducer> gbp;
-                sp<AidlGraphicBufferSource> gbs = new AidlGraphicBufferSource();
-                status_t err = gbs->initCheck();
-                if (err != OK) {
-                    ALOGE("Failed to create persistent input surface: error %d", err);
-                    return nullptr;
-                }
-                ALOGD("aidl based PersistentSurface created");
-                std::shared_ptr<WAidlGraphicBufferSource> wrapper =
-                        ::ndk::SharedRefBase::make<WAidlGraphicBufferSource>(gbs);
 
-                return new PersistentSurface(
-                      gbs->getIGraphicBufferProducer(), wrapper->asBinder());
-            } else {
-                sp<IGraphicBufferProducer> gbp;
-                sp<OmxGraphicBufferSource> gbs = new OmxGraphicBufferSource();
-                status_t err = gbs->initCheck();
-                if (err != OK) {
-                    ALOGE("Failed to create persistent input surface: error %d", err);
-                    return nullptr;
-                }
-                ALOGD("hidl based PersistentSurface created");
-                return new PersistentSurface(
-                        gbs->getIGraphicBufferProducer(), new TWGraphicBufferSource(gbs));
+    if (property_get_int32("debug.stagefright.c2inputsurface", 0) == -1) {
+        if (Codec2Client::IsAidlSelected()) {
+            sp<IGraphicBufferProducer> gbp;
+            sp<AidlGraphicBufferSource> gbs = new AidlGraphicBufferSource();
+            status_t err = gbs->initCheck();
+            if (err != OK) {
+                ALOGE("Failed to create persistent input surface: error %d", err);
+                return nullptr;
             }
+            ALOGD("aidl based PersistentSurface created");
+            std::shared_ptr<WAidlGraphicBufferSource> wrapper =
+                    ::ndk::SharedRefBase::make<WAidlGraphicBufferSource>(gbs);
+
+            return new PersistentSurface(
+                    gbs->getIGraphicBufferProducer(), wrapper->asBinder());
         } else {
-            return nullptr;
+            sp<IGraphicBufferProducer> gbp;
+            sp<OmxGraphicBufferSource> gbs = new OmxGraphicBufferSource();
+            status_t err = gbs->initCheck();
+            if (err != OK) {
+                ALOGE("Failed to create persistent input surface: error %d", err);
+                return nullptr;
+            }
+            ALOGD("hidl based PersistentSurface created");
+            return new PersistentSurface(
+                    gbs->getIGraphicBufferProducer(), new TWGraphicBufferSource(gbs));
         }
     }
-    return new PersistentSurface(
-            inputSurface->getGraphicBufferProducer(),
-            static_cast<sp<android::hidl::base::V1_0::IBase>>(
-            inputSurface->getHalInterface()));
+
+    return nullptr;
 }
 
 class IntfCache {
