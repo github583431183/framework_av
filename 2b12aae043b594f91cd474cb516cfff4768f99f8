@@ -51,6 +51,24 @@
       "parentUuid": "18405c2d_d66d0c14",
       "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3a517d_1dd4dd47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-15T21:17:46Z",
+      "side": 1,
+      "message": "Steven, you are right. I misunderstood the use of `system_ext`.\n\nIf I understand it correctly, this property needs to be set by the vendor, and then it is read by the system. According to the guide (https://source.android.com/docs/core/architecture/configuration/add-system-properties), it\u0027s a `system_vendor_config_prop`. The audio system already seems to have this kind of properties for AAudio:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/property_contexts;l\u003d1227;drc\u003d1a3775bbb8c9d50a0ffdd944a2dd3d5fbfc4b262\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/public/property.te;l\u003d138;drc\u003d3458c57e5a59c119784597d56c606debcdefce26\n\nSo we can change `audio.timestamp.corrected_output_device` to be a `system_vendor_config_prop`.\n\nI\u0027m curious where `persist.audio.timestamp.corrected_output_device` is currently defined? It seems to me that it should be classified similarly, and it\u0027s also persistent—I suppose these should be thoroughly reviewed.",
+      "parentUuid": "47144b90_9baf00e4",
+      "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
