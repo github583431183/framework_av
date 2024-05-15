@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59008bbe_59394c8f",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-15T22:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd1a064_f27653ad",
+      "range": {
+        "startLine": 279,
+        "startChar": 60,
+        "endLine": 279,
+        "endChar": 63
+      },
+      "revId": "f9fa11bf9473c5412de87272d1ec52309098ebfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f061950a_16f066f6",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "f9fa11bf9473c5412de87272d1ec52309098ebfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd7c350_d3399036",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-15T22:24:12Z",
+      "side": 1,
+      "message": "For all output streams, or just for compressed and offload streams? Done assuming the latter.",
+      "parentUuid": "f061950a_16f066f6",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 685,
+        "endChar": 62
+      },
       "revId": "f9fa11bf9473c5412de87272d1ec52309098ebfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
