@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8346da73_e4b903fb",
+        "filename": "media/libaudioclient/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-15T18:16:33Z",
+      "side": 1,
+      "message": "I notice that spatializer-aidl-cpp and volumegroupcallback-aidl-cpp are being used together most of the time, I wonder if they can be together as a part of a cc_defaults",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "a48549879c16e5badfbc5c057445da5eb3027dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac3ccbd_6429c07f",
+        "filename": "media/libaudioclient/aidl/android/media/INativeAudioVolumeGroupCallback.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-15T18:16:33Z",
+      "side": 1,
+      "message": "Could make this into a parcelable, this way it could be changed in the future without having to add new API.\n\nVolumeGroupChangedInfo, that could contain the volume group along with the flag info, or even port id if we decide to use that for volume management of each device.",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 57
+      },
+      "revId": "a48549879c16e5badfbc5c057445da5eb3027dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
