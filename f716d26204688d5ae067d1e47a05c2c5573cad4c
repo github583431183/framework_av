@@ -22,6 +22,30 @@
       },
       "revId": "f716d26204688d5ae067d1e47a05c2c5573cad4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37098a7_6dbbb3f6",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-05-15T13:55:38Z",
+      "side": 1,
+      "message": "Please check the latest revision. As for me, this approach doesn\u0027t fit as good as in the `DevicesFactoryHalAidl`. I am not sure how to implement it better.",
+      "parentUuid": "3d9d6509_d50d2eaf",
+      "range": {
+        "startLine": 2630,
+        "startChar": 0,
+        "endLine": 2630,
+        "endChar": 49
+      },
+      "revId": "f716d26204688d5ae067d1e47a05c2c5573cad4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
