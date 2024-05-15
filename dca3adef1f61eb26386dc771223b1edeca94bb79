@@ -50,6 +50,24 @@
       "message": "Can we add thread safety annotation to catch this?",
       "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f42a09_74ad3a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-15T00:48:37Z",
+      "side": 1,
+      "message": "Eventually that is the goal, yes.  This stuff is a bit complex, so there are many gaps.  It will take time.",
+      "parentUuid": "67f25d7d_fb194577",
+      "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
