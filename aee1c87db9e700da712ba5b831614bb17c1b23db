@@ -16,6 +16,29 @@
       "message": "Andy, Eric, do you have any comments?",
       "revId": "aee1c87db9e700da712ba5b831614bb17c1b23db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4227476_7b5e37ff",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-15T17:47:31Z",
+      "side": 1,
+      "message": "It seems that on bots with CFI enabled this code crashes while inserting some value, so it\u0027s likely due to the sorting function. From the stack, it does not look like it\u0027s because of `AudioHwDevice`. I suspect there could be some caveat with the use of `string_view` in the static map. In the code I suggested as a template I was using `string`.",
+      "range": {
+        "startLine": 2617,
+        "startChar": 0,
+        "endLine": 2619,
+        "endChar": 5
+      },
+      "revId": "aee1c87db9e700da712ba5b831614bb17c1b23db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
