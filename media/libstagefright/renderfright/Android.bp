@@ -98,9 +98,7 @@ cc_library_static {
         ":librenderfright_gl_sources",
         ":librenderfright_threaded_sources",
     ],
-    lto: {
-        thin: true,
-    },
+    lto_opt: "2",
 }
 
 cc_library_static {
