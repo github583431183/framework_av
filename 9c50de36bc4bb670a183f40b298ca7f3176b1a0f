@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fc0a3d8_575057e5",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-16T16:01:30Z",
+      "side": 1,
+      "message": "Please note that in the AIDL interface we just require the frame count to increase all the time, regardless of the scenario. This is to minimize potential misunderstandings. These \"recommended\" wordings come from the C / HIDL interfaces and reflect the requirements of the audioflinger.\n\nSo, for AIDL VTS tests we don\u0027t have this question because we simply check that the position does not reset in all scenarios. And CTS tests are mediated by the audio server which may have some logic to deal with these uncertainties in requirements. I think, it\u0027s a good question for Andy—what AF actually prefers and how it handles cases when the requirements for the frame count are not as expected.\n\nhunga@ Andy, could you please clarify on this?",
+      "parentUuid": "741f1eaa_8b025de6",
+      "range": {
+        "startLine": 351,
+        "startChar": 21,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "9c50de36bc4bb670a183f40b298ca7f3176b1a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebb626e4_9cd33b3f",
         "filename": "media/libaudiohal/impl/StreamHalAidl.h",
         "patchSetId": 2
