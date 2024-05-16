@@ -69,6 +69,24 @@
       "parentUuid": "47144b90_9baf00e4",
       "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b0db4b_91e54e32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2007245
+      },
+      "writtenOn": "2024-05-16T12:29:30Z",
+      "side": 1,
+      "message": "Yes, you understand correctly, the property needs to be set by the vendor and is read by the system.\n\nWe have a similar approach at https://android-review.googlesource.com/c/platform/system/sepolicy/+/3067142. Setting audio.timestamp.corrected_output_device to aaudio_config_prop also needs to modify prebuilts/api/34.0/private/property_contexts but we are not sure if it\u0027s suitable to do so.\n\nIf we can set audio.timestamp.corrected_output_device directly at vendor, we don\u0027t have to use the persist property anymore.",
+      "parentUuid": "1b3a517d_1dd4dd47",
+      "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
