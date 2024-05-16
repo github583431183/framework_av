@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e63102a7_6492c00d",
+        "filename": "media/libaudioclient/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T09:56:13Z",
+      "side": 1,
+      "message": "I prefer let Eric answer to this if i shall merge or not...",
+      "parentUuid": "8346da73_e4b903fb",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "a48549879c16e5badfbc5c057445da5eb3027dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ac3ccbd_6429c07f",
         "filename": "media/libaudioclient/aidl/android/media/INativeAudioVolumeGroupCallback.aidl",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-15T18:16:33Z",
       "side": 1,
       "message": "Could make this into a parcelable, this way it could be changed in the future without having to add new API.\n\nVolumeGroupChangedInfo, that could contain the volume group along with the flag info, or even port id if we decide to use that for volume management of each device.",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 57
+      },
+      "revId": "a48549879c16e5badfbc5c057445da5eb3027dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb8ae0e_e4dcaa81",
+        "filename": "media/libaudioclient/aidl/android/media/INativeAudioVolumeGroupCallback.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T09:56:13Z",
+      "side": 1,
+      "message": "sounds like great idea",
+      "parentUuid": "0ac3ccbd_6429c07f",
       "range": {
         "startLine": 28,
         "startChar": 35,
