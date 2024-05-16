@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a535ce_767da531",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T14:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d856ba3_65c7edf9",
+      "range": {
+        "startLine": 383,
+        "startChar": 20,
+        "endLine": 383,
+        "endChar": 45
+      },
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a11b358a_500aa0bf",
@@ -143,6 +167,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aeeff60_1a21e462",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T14:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11b358a_500aa0bf",
+      "range": {
+        "startLine": 200,
+        "startChar": 21,
+        "endLine": 200,
+        "endChar": 46
+      },
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50abbca1_21bfeeae",
@@ -180,6 +228,30 @@
           ]
         }
       ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4a306a_e2e9f305",
+        "filename": "services/audiopolicy/engine/interface/EngineInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T14:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50abbca1_21bfeeae",
+      "range": {
+        "startLine": 304,
+        "startChar": 31,
+        "endLine": 304,
+        "endChar": 58
+      },
       "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -321,6 +393,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2984ec5_89e791a0",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T14:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b3b8c69_9706fe90",
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0e19aa_559b9d2b",
@@ -417,6 +507,24 @@
           ]
         }
       ],
+      "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a98fc2_39b40f3f",
+        "filename": "services/audiopolicy/service/AudioPolicyService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T14:42:04Z",
+      "side": 1,
+      "message": "I guess when overriding no need to ditto the doc, am i right?",
+      "parentUuid": "63bd1b1d_999bfbc0",
       "revId": "36f5384725bcde07e9ac2a1d39b3c3f28107570e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
