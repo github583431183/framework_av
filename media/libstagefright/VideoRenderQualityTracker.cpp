@@ -304,10 +304,14 @@ void VideoRenderQualityTracker::onFrameRendered(int64_t contentTimeUs, int64_t a
 
     // Now that a frame has been rendered, the previously skipped frames can be processed as skipped
     // frames since the app is not skipping them to terminate playback.
-    for (int64_t contentTimeUs : mPendingSkippedFrameContentTimeUsList) {
-        processMetricsForSkippedFrame(contentTimeUs);
+    // Now that a frame has been rendered, the previously skipped frames can be processed as skipped
+    // frames since the app is not skipping them to terminate playback.
+    if (!mPendingSkippedFrameContentTimeUsList.empty()) {
+        while (mPendingSkippedFrameContentTimeUsList.front() < contentTimeUs) {
+            processMetricsForSkippedFrame(mPendingSkippedFrameContentTimeUsList.front());
+            mPendingSkippedFrameContentTimeUsList.pop_front();
+        }
     }
-    mPendingSkippedFrameContentTimeUsList = {};
 
     // We can render a pending queued frame if it's the last frame of the video, so release it
     // immediately.

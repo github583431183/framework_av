@@ -19,7 +19,7 @@
 #define VIDEO_RENDER_QUALITY_TRACKER_H_
 
 #include <assert.h>
-#include <list>
+#include <deque>
 #include <queue>
 
 #include <media/stagefright/MediaHistogram.h>
@@ -458,7 +458,7 @@ private:
 
     // Frames skipped at the end of playback shouldn't really be considered skipped, therefore keep
     // a list of the frames, and process them as skipped frames the next time a frame is rendered.
-    std::list<int64_t> mPendingSkippedFrameContentTimeUsList;
+    std::deque<int64_t> mPendingSkippedFrameContentTimeUsList;
 
     // Since the system only signals when a frame is rendered, dropped frames are detected by
     // checking to see if the next expected frame is rendered. If not, it is considered dropped.
