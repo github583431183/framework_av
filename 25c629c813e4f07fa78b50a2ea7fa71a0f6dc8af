@@ -40,6 +40,30 @@
       ],
       "revId": "25c629c813e4f07fa78b50a2ea7fa71a0f6dc8af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35263fb3_037bde5f",
+        "filename": "media/codec2/hal/hidl/1.0/vts/functional/master/VtsHalMediaC2V1_0TargetMasterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1859273
+      },
+      "writtenOn": "2024-05-16T11:00:09Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "bc474543_80f0396b",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "25c629c813e4f07fa78b50a2ea7fa71a0f6dc8af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
