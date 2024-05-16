@@ -16,6 +16,29 @@
       "message": "Eric, Oscar, feel free to propose better name !",
       "revId": "b01b7bea32104499070fdc68f283632e1ce83669",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf734c1_03defe41",
+        "filename": "media/audio/aconfig/audiopolicy_framework.aconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-05-16T21:35:12Z",
+      "side": 1,
+      "message": "How about \"Improves volume group management to remove usage of legacy audio attributes and stream types\" or something along those lines.",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 95
+      },
+      "revId": "b01b7bea32104499070fdc68f283632e1ce83669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
