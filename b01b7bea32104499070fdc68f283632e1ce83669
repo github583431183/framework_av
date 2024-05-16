@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45e58d2_23f40426",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T16:09:32Z",
+      "side": 1,
+      "message": "Eric, Oscar, feel free to propose better name !",
+      "revId": "b01b7bea32104499070fdc68f283632e1ce83669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
