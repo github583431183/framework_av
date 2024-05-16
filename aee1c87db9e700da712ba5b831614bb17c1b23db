@@ -39,6 +39,30 @@
       },
       "revId": "aee1c87db9e700da712ba5b831614bb17c1b23db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd6d516_bbe864de",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-05-16T07:00:36Z",
+      "side": 1,
+      "message": "Thanks! Unfortunately, I have no access to the bot check results. It seems that the issue is in the `mInputBufferSizeOrderedDevs` declaration, because code doesn\u0027t pass the comparator in the ctor params. I missed this part while moving the patch from my local AOSP 13 source tree, which I tested on the physical device, to the `main` branch.\n\nHere is the small example confirms that https://godbolt.org/z/4fcxn73sd. Compiler even excludes `Bar::cmp` since nobody uses it.",
+      "parentUuid": "a4227476_7b5e37ff",
+      "range": {
+        "startLine": 2617,
+        "startChar": 0,
+        "endLine": 2619,
+        "endChar": 5
+      },
+      "revId": "aee1c87db9e700da712ba5b831614bb17c1b23db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
