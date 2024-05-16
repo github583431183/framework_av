@@ -633,6 +633,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0398fb2f_032df92c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4449,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T09:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f063b610_adcc182d",
+      "range": {
+        "startLine": 4449,
+        "startChar": 39,
+        "endLine": 4449,
+        "endChar": 90
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6b1d136_e513ff36",
@@ -670,6 +694,30 @@
       "side": 1,
       "message": "I would say we shall",
       "parentUuid": "e6b1d136_e513ff36",
+      "range": {
+        "startLine": 5595,
+        "startChar": 30,
+        "endLine": 5595,
+        "endChar": 69
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc65a457_7fe05101",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5595,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T09:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6372ab48_1a03b395",
       "range": {
         "startLine": 5595,
         "startChar": 30,
@@ -727,6 +775,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f3482f_1756a265",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6016,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T09:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a3edf1_a40a939d",
+      "range": {
+        "startLine": 6016,
+        "startChar": 35,
+        "endLine": 6016,
+        "endChar": 73
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afe97434_97c34b99",
@@ -764,6 +836,30 @@
       "side": 1,
       "message": "also yes, need to consider preferred devices also in internal getDevicesForAttributes method",
       "parentUuid": "afe97434_97c34b99",
+      "range": {
+        "startLine": 8392,
+        "startChar": 21,
+        "endLine": 8392,
+        "endChar": 50
+      },
+      "revId": "c71ab6877010253e86af80c15b5149954ab4800d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4984347a_c1e3eccc",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 8392,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-16T09:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45233a09_052d1b12",
       "range": {
         "startLine": 8392,
         "startChar": 21,
