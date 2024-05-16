@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be7bb47_ac3d0f09",
+        "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-16T03:01:08Z",
+      "side": 1,
+      "message": "i do not agree with this.  if it\u0027s flagged as a CSD buffer, then we\nshould pass it along.",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 367,
+        "endChar": 9
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1b1e4deb_8b64ab6f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libstagefright/webm/WebmFrameThread.cpp",
+              "range": {
+                "startLine": 358,
+                "startChar": 0,
+                "endLine": 367,
+                "endChar": 0
+              },
+              "replacement": "        int32_t isCodecConfig \u003d 0;\n        if ((md.findInt32(kKeyIsCodecConfig, \u0026isCodecConfig) \u0026\u0026 isCodecConfig) \u0026\u0026\n            (mStartTimeUs \u003d\u003d kUninitialized)) {\n            ALOGI(\"ignoring CSD for video track at first frame\");\n            buffer-\u003erelease();\n            buffer \u003d NULL;\n            continue;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f0a1122607c14affe406d60add502853965f4229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
