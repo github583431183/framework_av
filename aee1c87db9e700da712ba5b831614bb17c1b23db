@@ -63,6 +63,30 @@
       },
       "revId": "aee1c87db9e700da712ba5b831614bb17c1b23db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a6e258_48a2e785",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-16T17:19:56Z",
+      "side": 1,
+      "message": "\u003e Thanks! Unfortunately, I have no access to the bot check results.\n\nI think, that\u0027s intentional, for security purposes. That\u0027s why I was sharing more details in my comment.\n\nOK, let\u0027s re-run presubmit checks with your latest patch set.",
+      "parentUuid": "9cd6d516_bbe864de",
+      "range": {
+        "startLine": 2617,
+        "startChar": 0,
+        "endLine": 2619,
+        "endChar": 5
+      },
+      "revId": "aee1c87db9e700da712ba5b831614bb17c1b23db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
