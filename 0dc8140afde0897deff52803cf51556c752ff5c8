@@ -34,6 +34,24 @@
       "parentUuid": "d804cb19_4a45f18c",
       "revId": "0dc8140afde0897deff52803cf51556c752ff5c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad87b57d_c28ab7d7",
+        "filename": "media/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2024-05-16T19:48:55Z",
+      "side": 1,
+      "message": "ab/I00700010277664046\n\nthere is a check for that, but tv-* groups are not covered, as that requires the test to depend on tv target, which is not a presubmit build target.",
+      "parentUuid": "8f83dbaa_feef86e2",
+      "revId": "0dc8140afde0897deff52803cf51556c752ff5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
