@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f840b2a8_0a060900",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-16T08:35:06Z",
+      "side": 1,
+      "message": "I would write \"non offload\" here because for direct PCM offload the contract is the same as for compressed offload no?",
+      "range": {
+        "startLine": 350,
+        "startChar": 37,
+        "endLine": 350,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1ae34ef8_fa2410e0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudiohal/impl/StreamHalAidl.h",
+              "range": {
+                "startLine": 350,
+                "startChar": 0,
+                "endLine": 351,
+                "endChar": 0
+              },
+              "replacement": "    // must not reset to zero when a PCM output enters standby. For non offload\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9c50de36bc4bb670a183f40b298ca7f3176b1a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741f1eaa_8b025de6",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-16T08:35:06Z",
+      "side": 1,
+      "message": "\"recommended\" only or is it mandatory for the CTS/VTS to pass?",
+      "range": {
+        "startLine": 351,
+        "startChar": 21,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "9c50de36bc4bb670a183f40b298ca7f3176b1a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb626e4_9cd33b3f",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-16T08:35:06Z",
+      "side": 1,
+      "message": "same here: \"non offload\" or mixed outputs?",
+      "range": {
+        "startLine": 433,
+        "startChar": 47,
+        "endLine": 433,
+        "endChar": 50
+      },
+      "revId": "9c50de36bc4bb670a183f40b298ca7f3176b1a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
