@@ -26,3 +26,10 @@ flag {
     description: "Enable multi-zone audio support in audio product strategies."
     bug: "316643994"
 }
+
+flag {
+    name: "volume_group_management_update"
+    namespace: "media_audio"
+    description: "Improves volume group management to remove usage of legacy audio attributes and stream types and control by identifier."
+    bug: "317212590"
+}
