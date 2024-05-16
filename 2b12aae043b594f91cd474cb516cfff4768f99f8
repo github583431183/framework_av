@@ -87,6 +87,24 @@
       "parentUuid": "1b3a517d_1dd4dd47",
       "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdec82ac_01dc6167",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-16T23:11:10Z",
+      "side": 1,
+      "message": "OK, thanks for the explanation!\n\nAgree, making the original property `system_public_prop` (by making it `audio_prop`) is even wider exposure than `system_vendor_config_prop`, via `audio_config_prop`.\n\nSo, are you going to try to get aosp/3067142 through?",
+      "parentUuid": "a4b0db4b_91e54e32",
+      "revId": "2b12aae043b594f91cd474cb516cfff4768f99f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
