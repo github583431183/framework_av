@@ -17,3 +17,9 @@ flag {
     description: "Enable multi-zone audio support in audio product strategies."
     bug: "316643994"
 }
+flag {
+    name: "volume_group_management_update"
+    namespace: "media_audio"
+    description: "Update Volume Group API management to get rid of attributes and stream type."
+    bug: "317212590"
+}
