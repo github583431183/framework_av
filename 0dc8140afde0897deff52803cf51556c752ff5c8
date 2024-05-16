@@ -70,6 +70,24 @@
       "parentUuid": "ad87b57d_c28ab7d7",
       "revId": "0dc8140afde0897deff52803cf51556c752ff5c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "495c71c0_a5cccd42",
+        "filename": "media/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2024-05-16T20:47:37Z",
+      "side": 1,
+      "message": "Fixed in aosp/3092182",
+      "parentUuid": "d804cb19_4a45f18c",
+      "revId": "0dc8140afde0897deff52803cf51556c752ff5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
