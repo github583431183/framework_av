@@ -52,6 +52,24 @@
       "parentUuid": "8f83dbaa_feef86e2",
       "revId": "0dc8140afde0897deff52803cf51556c752ff5c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9deeaa01_3f5d5823",
+        "filename": "media/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2024-05-16T19:52:37Z",
+      "side": 1,
+      "message": "also, another thing you can try locally is with atest, e.g.,\n\n`atest --test-mapping .:tv-postsubmit`",
+      "parentUuid": "ad87b57d_c28ab7d7",
+      "revId": "0dc8140afde0897deff52803cf51556c752ff5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
