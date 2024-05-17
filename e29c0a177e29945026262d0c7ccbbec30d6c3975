@@ -147,6 +147,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f8a54a_4d910de5",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1906,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-17T16:15:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06360f76_dfc9304c",
+      "range": {
+        "startLine": 1906,
+        "startChar": 59,
+        "endLine": 1906,
+        "endChar": 74
+      },
+      "revId": "e29c0a177e29945026262d0c7ccbbec30d6c3975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04984c60_2e82f0f4",
@@ -160,6 +184,30 @@
       "writtenOn": "2024-03-13T17:57:15Z",
       "side": 1,
       "message": "nit: would prefer to scan the primary first then scan the remote submix, so maybe on line 1958:\n\n    for (auto dev : {primaryDev, remoteSubmixDev}) {\n        for (auto testChannelMask : channelMasks) { \n         ...\n\n    }\n\nNot sure what Eric thinks here.",
+      "range": {
+        "startLine": 1968,
+        "startChar": 0,
+        "endLine": 1968,
+        "endChar": 80
+      },
+      "revId": "e29c0a177e29945026262d0c7ccbbec30d6c3975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80cbe499_12ea6fc4",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-17T16:15:09Z",
+      "side": 1,
+      "message": "Done, see `AudioFlinger::inputBufferSizeDevsCmp`.",
+      "parentUuid": "04984c60_2e82f0f4",
       "range": {
         "startLine": 1968,
         "startChar": 0,

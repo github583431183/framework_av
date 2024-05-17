@@ -64,6 +64,30 @@
       },
       "revId": "8f717e7e68048b5e3ec401c5d709612c710689d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d7942e_215b6228",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-17T16:15:09Z",
+      "side": 1,
+      "message": "Added in lines `1925–1927`.",
+      "parentUuid": "69a65e8f_9e2d49ba",
+      "range": {
+        "startLine": 1975,
+        "startChar": 0,
+        "endLine": 1975,
+        "endChar": 47
+      },
+      "revId": "8f717e7e68048b5e3ec401c5d709612c710689d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
