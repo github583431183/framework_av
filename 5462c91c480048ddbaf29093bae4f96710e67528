@@ -287,6 +287,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6384e10_e4218ed8",
+        "filename": "services/audiopolicy/engine/interface/EngineInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-17T08:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af843808_1471145f",
+      "range": {
+        "startLine": 139,
+        "startChar": 31,
+        "endLine": 139,
+        "endChar": 62
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4f1b33e_5304b060",
@@ -324,6 +348,30 @@
           ]
         }
       ],
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e8306c_387380cd",
+        "filename": "services/audiopolicy/engineconfigurable/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-17T08:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f1b33e_5304b060",
+      "range": {
+        "startLine": 429,
+        "startChar": 4,
+        "endLine": 429,
+        "endChar": 83
+      },
       "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -430,6 +478,30 @@
       "side": 1,
       "message": "I guess we can either check the flags to ignore the parameter in the engine, or check the flag from caller and keep / use previous method.",
       "parentUuid": "e0708295_21ef29f6",
+      "range": {
+        "startLine": 1283,
+        "startChar": 4,
+        "endLine": 1284,
+        "endChar": 66
+      },
+      "revId": "5462c91c480048ddbaf29093bae4f96710e67528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f384c5b6_04675a15",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-17T08:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acedb237_02118693",
       "range": {
         "startLine": 1283,
         "startChar": 4,
