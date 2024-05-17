@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9362a63_d7ff0da0",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-17T15:25:24Z",
+      "side": 1,
+      "message": "we should avoid those loops altogether in case mInputBufferSizeOrderedDevs is empty because in this case we would just do all the inner loops for nothing as we systematically continue on line 1990. \nNot sure if this can happen in real life but better be protected.",
+      "range": {
+        "startLine": 1975,
+        "startChar": 0,
+        "endLine": 1975,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0e6f8b34_d29a9a07",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/AudioFlinger.cpp",
+              "range": {
+                "startLine": 1975,
+                "startChar": 0,
+                "endLine": 1975,
+                "endChar": 0
+              },
+              "replacement": "    if (mInputBufferSizeOrderedDevs.empty()) {\n        return BAD_VALUE;\n    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8f717e7e68048b5e3ec401c5d709612c710689d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
