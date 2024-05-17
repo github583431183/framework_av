@@ -39,6 +39,30 @@
       },
       "revId": "493ad62004fea12b2c52166dc8895e7d90a01d83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac07355_4578d01a",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2024-05-17T11:20:59Z",
+      "side": 1,
+      "message": "Can\u0027t we just check the `getInputBufferSize` lambda return value on line 1988 without introducing a new error code?\n\nLike this:\n```\nsize_t bytes \u003d 0;\nstatus_t ret \u003d BAD_VALUE;\nfor (const AudioHwDevice* dev : mInputBufferSizeOrderedDevs) {\n    ret \u003d getInputBufferSize(dev-\u003ehwDevice(), config, \u0026bytes);\n    if (ret \u003d\u003d OK) {\n        break;\n    }\n}\nif (ret !\u003d OK) continue;\n```",
+      "parentUuid": "c0d70350_97ad690a",
+      "range": {
+        "startLine": 1967,
+        "startChar": 19,
+        "endLine": 1967,
+        "endChar": 28
+      },
+      "revId": "493ad62004fea12b2c52166dc8895e7d90a01d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
