@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f847a2d_037e02c7",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-18T01:00:44Z",
+      "side": 1,
+      "message": "Clarified more systematically in new comments.",
+      "parentUuid": "f840b2a8_0a060900",
+      "range": {
+        "startLine": 350,
+        "startChar": 37,
+        "endLine": 350,
+        "endChar": 40
+      },
+      "revId": "9c50de36bc4bb670a183f40b298ca7f3176b1a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "741f1eaa_8b025de6",
@@ -89,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfc70fe_4540bde5",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-18T01:00:44Z",
+      "side": 1,
+      "message": "Discussed with Andy over the chat.",
+      "parentUuid": "9fc0a3d8_575057e5",
+      "range": {
+        "startLine": 351,
+        "startChar": 21,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "9c50de36bc4bb670a183f40b298ca7f3176b1a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebb626e4_9cd33b3f",
@@ -102,6 +150,30 @@
       "writtenOn": "2024-05-16T08:35:06Z",
       "side": 1,
       "message": "same here: \"non offload\" or mixed outputs?",
+      "range": {
+        "startLine": 433,
+        "startChar": 47,
+        "endLine": 433,
+        "endChar": 50
+      },
+      "revId": "9c50de36bc4bb670a183f40b298ca7f3176b1a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1dd4a4_737861cd",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-18T01:00:44Z",
+      "side": 1,
+      "message": "Also clarified.",
+      "parentUuid": "ebb626e4_9cd33b3f",
       "range": {
         "startLine": 433,
         "startChar": 47,
