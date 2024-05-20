@@ -1683,7 +1683,11 @@ status_t CCodecBufferChannel::start(
         if (!buffersBoundToCodec
                 && !input->frameReassembler
                 && (hasCryptoOrDescrambler() || conforming)) {
-            input->buffers.reset(new SlotInputBuffers(mName));
+            if (!secure) {
+                input->buffers.reset(new LinearInputBuffers(mName));
+            } else {
+                input->buffers.reset(new SlotInputBuffers(mName));
+            } 
         } else if (graphic) {
             if (mInputSurface) {
                 input->buffers.reset(new DummyInputBuffers(mName));
