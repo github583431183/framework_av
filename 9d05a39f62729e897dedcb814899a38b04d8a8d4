@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91ae5e5e_e22d90b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-20T04:57:25Z",
+      "side": 1,
+      "message": "Deeraj,\nThank you for your responses.\n\nhttps://github.com/google/ExoPlayer/issues/8396 seems to be the same issue reported earlier and is currently under internal discussion towards what is the best way to address this.\n\nLooking at C2SoftAacDec.cpp, it returns the channel map to the framework without modifying the actual data. \n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/codec2/components/aac/C2SoftAacDec.cpp;l\u003d855;drc\u003dc2c869c7733bff9b54d55952c77bf5464e1eb2b4;bpv\u003d1;bpt\u003d1\n\nWould a similar approach work for opus too?",
+      "parentUuid": "6554d984_b7f7c7d2",
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fec4ade_39904569",
         "filename": "media/codec2/components/opus/C2SoftOpusDec.cpp",
         "patchSetId": 1
