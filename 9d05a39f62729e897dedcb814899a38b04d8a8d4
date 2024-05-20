@@ -71,6 +71,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb1d8ea_0193acab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-20T17:24:04Z",
+      "side": 1,
+      "message": "Thanks for this CL. We are exploring how we can maintain app workarounds with this fix.",
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fec4ade_39904569",
