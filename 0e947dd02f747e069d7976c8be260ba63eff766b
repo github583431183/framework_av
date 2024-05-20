@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c639ec5_dd2d034b",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-20T21:51:31Z",
+      "side": 1,
+      "message": "Thank you! I have fixed that however it seems that overall these files use inconsistent placement of the indirection indicator:\n\n```\n    status_t getObservablePosition(int64_t* frames, int64_t* timestamp,\n            StatePositions* statePositions \u003d nullptr);\n\n    // Always returns non-negative values.\n    status_t getHardwarePosition(int64_t *frames, int64_t *timestamp);\n```\n\nI should fix that at some point.",
+      "parentUuid": "fd990492_989150a8",
+      "range": {
+        "startLine": 280,
+        "startChar": 21,
+        "endLine": 280,
+        "endChar": 25
+      },
+      "revId": "0e947dd02f747e069d7976c8be260ba63eff766b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6a2236f_f91a31bd",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-18T01:58:05Z",
       "side": 1,
       "message": "as I recall, the behavior of the timestamp frame counter reset for HIDL normally occurs when the drain or partial drain is complete in the offload case.  there should be a callback for it.",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 85
+      },
+      "revId": "0e947dd02f747e069d7976c8be260ba63eff766b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0749e0aa_2a07d7aa",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-20T21:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a2236f_f91a31bd",
       "range": {
         "startLine": 549,
         "startChar": 0,
@@ -88,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1313a8a4_1def1bdc",
+        "filename": "media/libaudiohal/impl/StreamHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-20T21:51:31Z",
+      "side": 1,
+      "message": "Thank you, Andy! I have realized that the contents of the table was not correct wrt encapsulated PCM. Fixed.",
+      "parentUuid": "54723102_c22ecda4",
+      "range": {
+        "startLine": 756,
+        "startChar": 38,
+        "endLine": 756,
+        "endChar": 57
+      },
+      "revId": "0e947dd02f747e069d7976c8be260ba63eff766b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e0c52eb_cb2f718c",
@@ -101,6 +173,30 @@
       "writtenOn": "2024-05-18T01:58:05Z",
       "side": 1,
       "message": "why does this change to getPresentationPosition on line 149?",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "0e947dd02f747e069d7976c8be260ba63eff766b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d05cddf_e811a4e1",
+        "filename": "media/libaudiohal/include/media/audiohal/StreamHalInterface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-20T21:51:31Z",
+      "side": 1,
+      "message": "Sorry, a typo. There indeed exists \u0027getObservablePosition\u0027, but it\u0027s a private method of \u0027StreamHalAidl\u0027. Fixed.",
+      "parentUuid": "2e0c52eb_cb2f718c",
       "range": {
         "startLine": 140,
         "startChar": 4,
