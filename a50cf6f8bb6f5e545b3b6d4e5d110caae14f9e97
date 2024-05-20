@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df89b1ca_605fdc12",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-20T16:41:05Z",
+      "side": 1,
+      "message": "I think it will be more universal to use `getOutputFrameSize() * frameCount` instead.",
+      "range": {
+        "startLine": 352,
+        "startChar": 27,
+        "endLine": 352,
+        "endChar": 67
+      },
+      "revId": "a50cf6f8bb6f5e545b3b6d4e5d110caae14f9e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61855f5_b67e41f2",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-20T16:41:05Z",
+      "side": 1,
+      "message": "Same here. This is even incorrect now given that `memcpy` also expects the number of bytes.",
+      "range": {
+        "startLine": 354,
+        "startChar": 28,
+        "endLine": 354,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "76dba484_f06a73da",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+              "range": {
+                "startLine": 354,
+                "startChar": 0,
+                "endLine": 355,
+                "endChar": 0
+              },
+              "replacement": "            memcpy(out, in, outChannels * frameCount * sizeof(float));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a50cf6f8bb6f5e545b3b6d4e5d110caae14f9e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
