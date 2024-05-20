@@ -16,6 +16,24 @@
       "message": "this should be addressed by the proposed fix for https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2893100",
       "revId": "c14ef1ef741ecda16ce7fd3548a8308dd23f992a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8be9e3_3fcc2619",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-05-20T09:39:48Z",
+      "side": 1,
+      "message": "Will abandon this patch once 2893100 is merged.",
+      "parentUuid": "79700b16_2deb0cf3",
+      "revId": "c14ef1ef741ecda16ce7fd3548a8308dd23f992a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
