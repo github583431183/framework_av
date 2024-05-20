@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb06073_484a852c",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-20T17:31:14Z",
+      "side": 1,
+      "message": "can we name this clearDeferredBuffers()? But what are deferred buffers? I do not see that term defined in this header.",
+      "range": {
+        "startLine": 116,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "39b8b7dd_7d4c1e6a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/vndk/include/C2BqBufferPriv.h",
+              "range": {
+                "startLine": 114,
+                "startChar": 0,
+                "endLine": 115,
+                "endChar": 0
+              },
+              "replacement": "     * clear deferred buffers. Deferred buffers are buffers which are not\n     * returned to IGBP.\n"
+            },
+            {
+              "path": "media/codec2/vndk/include/C2BqBufferPriv.h",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": "    void clearDeferredBuffers();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9d73cb_5ddba426",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-20T17:31:14Z",
+      "side": 1,
+      "message": "I thought setOutputSurface to null surface was disallowed. When are we configuring to null producer?",
+      "range": {
+        "startLine": 732,
+        "startChar": 20,
+        "endLine": 732,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ff6d0020_75d87d16",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 731,
+                "startChar": 0,
+                "endLine": 734,
+                "endChar": 0
+              },
+              "replacement": "                toNullSurface \u003d true;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69e71dc_799e4592",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-20T17:31:14Z",
+      "side": 1,
+      "message": "Based on this description \"mEnableDeferred\" and \"mDeferred\" can be confusing.\n\nHow about renaming mEnableDeferred to mDeferDeallocationAfterStop and renaming mDeferred to mDeallocationDeferred (or mNotYetDeallocated?)\n\nAlso instead of mDeferredBuffers we could use mBuffersWithDeallocationDeferred, or mBufferReferencesPastStop?\n\nclearDeferred becomes clearBufferReferencesPastStop.",
+      "range": {
+        "startLine": 883,
+        "startChar": 7,
+        "endLine": 884,
+        "endChar": 58
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "29495b2a_9456489f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 606,
+                "startChar": 0,
+                "endLine": 608,
+                "endChar": 0
+              },
+              "replacement": "          mDeferDeallocationAfterStop(property_get_int32(\"debug.codec2.bqpool_deferred_dealloc\", 0)),\n          mDeallocationDeferred(false), mIgbpValidityToken(std::make_shared\u003cint\u003e(0)) {\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 649,
+                "startChar": 0,
+                "endLine": 650,
+                "endChar": 0
+              },
+              "replacement": "            clearDeallocationDeferred_l();\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 784,
+                "startChar": 0,
+                "endLine": 785,
+                "endChar": 0
+              },
+              "replacement": "                        mDeallocationDeferred \u003d true;\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 794,
+                "startChar": 0,
+                "endLine": 795,
+                "endChar": 0
+              },
+              "replacement": "                        mDeallocationDeferred \u003d true;\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 803,
+                "startChar": 0,
+                "endLine": 804,
+                "endChar": 0
+              },
+              "replacement": "                clearDeallocationDeferred_l();\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 855,
+                "startChar": 0,
+                "endLine": 856,
+                "endChar": 0
+              },
+              "replacement": "    void clearDeallocationDeferred() {\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 857,
+                "startChar": 0,
+                "endLine": 858,
+                "endChar": 0
+              },
+              "replacement": "        clearDeallocationDeferred_l();\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 892,
+                "startChar": 0,
+                "endLine": 894,
+                "endChar": 0
+              },
+              "replacement": "    const int mDeferDeallocationAfterStop;\n    bool mDeallocationDeferred;\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 1241,
+                "startChar": 0,
+                "endLine": 1242,
+                "endChar": 0
+              },
+              "replacement": "void C2BufferQueueBlockPool::clearDeallocationDeferred() {\n"
+            },
+            {
+              "path": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+              "range": {
+                "startLine": 1243,
+                "startChar": 0,
+                "endLine": 1244,
+                "endChar": 0
+              },
+              "replacement": "        mImpl-\u003eclearDeallocationDeferred();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
