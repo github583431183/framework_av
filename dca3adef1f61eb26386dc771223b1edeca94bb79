@@ -85,6 +85,24 @@
       "message": "Hello Shunkai, please help to review, Thanks",
       "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94aca64_f125fee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-05-20T22:18:57Z",
+      "side": 1,
+      "message": "Thanks for submitting the fix Wei!\nYes this is in the category of known issue with EffectCallback/ThreadBase locking as Andy pointed out, we didn\u0027t got chance to fix them.\nThe CL is an valid fix for `EffectCallback::inChannelMask()`, but maybe this is not a pattern we want to follow, because there are more than a few callbacks have similar problem...\n\nFor this specific case, it seems to me we don\u0027t really need a callback into `IAfThreadBase` to get channelMask, might better to have Thread set the channelMask to EffectChain whenever there is a EffectChain change?\nSame approach can be applied for sampleRate()/frameCount() and all of EffectCallback::is*() methods, what do you think? @elaurent@google.com",
+      "parentUuid": "7fdff45d_47e4d68d",
+      "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
