@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16de28c_55e4678b",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2795,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-05-20T21:34:18Z",
+      "side": 1,
+      "message": "ok with this for now, but a way to attach this with the surface buffer would be to add `setInfoBuffer` into InputSurfaceWrapper and plumb it through to C2NodeImpl",
+      "revId": "2b095d9c050f1c350eade645dfcc5b193e15da04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
