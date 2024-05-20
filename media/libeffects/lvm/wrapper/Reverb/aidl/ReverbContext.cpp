@@ -347,6 +347,15 @@ IEffect::Status ReverbContext::process(float* in, float* out, int samples) {
             mCommon.output.base.channelMask);
     int frameCount = mCommon.input.frameCount;
 
+    if (mBypass) {
+        if (isAuxiliary()) {
+            memset(out, 0, outChannels * frameCount * sizeof(float));
+        } else {
+            memcpy(out, in, outChannels * frameCount);
+        }
+        return {STATUS_OK, samples, outChannels * frameCount};
+    }
+
     // Reverb only effects the stereo channels in multichannel source.
     if (channels < 1 || channels > LVM_MAX_CHANNELS) {
         LOG(ERROR) << __func__ << " process invalid PCM channels " << channels;
