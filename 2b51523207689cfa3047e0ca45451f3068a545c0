@@ -16,6 +16,24 @@
       "message": "@elaurent@google.com could you pls review the latest patchset.",
       "revId": "2b51523207689cfa3047e0ca45451f3068a545c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b7abdf_c87b90e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-21T08:51:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4524fb8c_5883b705",
+      "revId": "2b51523207689cfa3047e0ca45451f3068a545c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
