@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "887c29c0_bfb16e58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-21T17:58:48Z",
+      "side": 1,
+      "message": "Wonsik,\nCan you please submit this manually as this has unrelated warnings and we don\u0027t have manual submit permissions.\nThanks.",
+      "revId": "f98dd6754cebc3b241da96a31808ee575902b344",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
