@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646114da_4b82f420",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2024-05-21T10:23:08Z",
+      "side": 1,
+      "message": "libstagefright_headers is already included on line 193.",
+      "revId": "9fdac457bf61faded54e856cb68df6eee9b71720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
