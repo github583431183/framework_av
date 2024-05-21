@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af619b98_58a288f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2024-05-21T16:01:48Z",
+      "side": 1,
+      "message": "I agree with Ray about the concatenation. Not knowing the mediametrics code well, it\u0027s pretty mysterious to me what\u0027s going on.\n\nI like the refactor and think it makes the fuzzer a lot clearer.",
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81fd7738_74bc7dbf",
