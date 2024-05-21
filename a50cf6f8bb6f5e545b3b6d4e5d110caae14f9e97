@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d757d94b_949e4abd",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-05-21T13:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df89b1ca_605fdc12",
+      "range": {
+        "startLine": 352,
+        "startChar": 27,
+        "endLine": 352,
+        "endChar": 67
+      },
+      "revId": "a50cf6f8bb6f5e545b3b6d4e5d110caae14f9e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61855f5_b67e41f2",
@@ -79,6 +103,30 @@
       "side": 1,
       "message": "can also use `memcpy_to_float_from_float_with_clamping`",
       "parentUuid": "d61855f5_b67e41f2",
+      "range": {
+        "startLine": 354,
+        "startChar": 28,
+        "endLine": 354,
+        "endChar": 52
+      },
+      "revId": "a50cf6f8bb6f5e545b3b6d4e5d110caae14f9e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e0a453_fa3696e2",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/aidl/ReverbContext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 2051456
+      },
+      "writtenOn": "2024-05-21T13:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8a6b50_c9014f51",
       "range": {
         "startLine": 354,
         "startChar": 28,
