@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cb1ac2_759c20e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-21T17:05:38Z",
+      "side": 1,
+      "message": "Confirmed by the partner that this CL resolves their issue with compressed playback scenarios.",
+      "revId": "f0a9fbc32ce1a89d987e18580b28585c0b2f4bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
