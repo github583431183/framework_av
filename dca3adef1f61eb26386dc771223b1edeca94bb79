@@ -103,6 +103,24 @@
       "parentUuid": "7fdff45d_47e4d68d",
       "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cd2563_54b82a6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-21T16:22:38Z",
+      "side": 1,
+      "message": "Yes, I agree that we cannot hold the thread mutex while we call the process method on the effect chain or the effect. So we can either push it down to the effect when the effect chain is attached to a mixer thread or if it changes during the life cycle we can update the effect chains properties (sampling rate, channel mask, format, ( while under lock in the thread loop like we do for track with prepareTracks_l (we would have a prepareEffects_l())",
+      "parentUuid": "e94aca64_f125fee3",
+      "revId": "dca3adef1f61eb26386dc771223b1edeca94bb79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
