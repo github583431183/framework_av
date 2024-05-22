@@ -373,7 +373,10 @@ status_t C2NodeImpl::submitBuffer(
     }
     work->worklets.clear();
     work->worklets.emplace_back(new C2Worklet);
-    mBufferIdsInUse.lock()->emplace(work->input.ordinal.frameIndex.peeku(), buffer);
+    {
+        Mutexed<BuffersTracker>::Locked buffers(mBuffersTracker);
+        buffers->mIdsInUse.emplace(work->input.ordinal.frameIndex.peeku(), buffer);
+    }
     mQueueThread->queue(comp, fenceFd, std::move(work), std::move(fd0), std::move(fd1));
 
     return OK;
@@ -405,29 +408,41 @@ void C2NodeImpl::setFrameSize(uint32_t width, uint32_t height) {
 }
 
 void C2NodeImpl::onInputBufferDone(c2_cntr64_t index) {
+    Mutexed<BuffersTracker>::Locked buffers(mBuffersTracker);
+    auto it = buffers->mIdsInUse.find(index.peeku());
+    if (it == buffers->mIdsInUse.end()) {
+        ALOGV("Untracked input index %llu (maybe already removed)", index.peekull());
+        return;
+    }
+    int32_t bufferId = it->second;
+    (void)buffers->mIdsInUse.erase(it);
+    buffers->mAvailableIds.push_back(bufferId);
+}
+
+void C2NodeImpl::onInputBufferEmptied() {
     if (mAidlHal) {
         if (!mAidlBufferSource) {
-            ALOGD("Buffer source not set (index=%llu)", index.peekull());
+            ALOGD("Buffer source not set");
             return;
         }
     } else {
         if (!mBufferSource) {
-            ALOGD("Buffer source not set (index=%llu)", index.peekull());
+            ALOGD("Buffer source not set");
             return;
         }
     }
 
     int32_t bufferId = 0;
     {
-        decltype(mBufferIdsInUse)::Locked bufferIds(mBufferIdsInUse);
-        auto it = bufferIds->find(index.peeku());
-        if (it == bufferIds->end()) {
-            ALOGV("Untracked input index %llu (maybe already removed)", index.peekull());
+        Mutexed<BuffersTracker>::Locked buffers(mBuffersTracker);
+        if (buffers->mAvailableIds.empty()) {
+            ALOGV("The codec is ready to take more input buffers but no input buffers are ready yet.");
             return;
         }
-        bufferId = it->second;
-        (void)bufferIds->erase(it);
+        bufferId = buffers->mAvailableIds.front();
+        buffers->mAvailableIds.pop_front();
     }
+
     if (mAidlHal) {
         ::ndk::ScopedFileDescriptor nullFence;
         (void)mAidlBufferSource->onInputBufferEmptied(bufferId, nullFence);
