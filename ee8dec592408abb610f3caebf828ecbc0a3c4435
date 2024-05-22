@@ -155,6 +155,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65097cd9_424620da",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-05-22T19:54:26Z",
+      "side": 1,
+      "message": "stop using the current surface is implemented to setting null surface.\nSo even setOuputSurface to null is not used, Codec2Client::Component::stopUsingOutputSurface() will configure null surface to BqPool.\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/av/media/codec2/hal/client/client.cpp;drc\u003df0f627613b8d4db7e912f70661997e96e6fd6ed1;l\u003d2531",
+      "parentUuid": "ea9d73cb_5ddba426",
+      "range": {
+        "startLine": 732,
+        "startChar": 20,
+        "endLine": 732,
+        "endChar": 33
+      },
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f69e71dc_799e4592",
