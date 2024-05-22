@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad612e56_8f2871ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-05-22T07:13:52Z",
+      "side": 1,
+      "message": "@hmahendrakar@google.com @lajos@google.com\nCould you pls help with the following queries,\n1. Does the channel mask definition in AOSP AudioFormat means that, the PCM should follow the same channel sequence ?\n2. Which component should be responsible for channel mapping ? Is it app (exoplayer) or is it platform (C2 or OMX) ?",
+      "parentUuid": "91ae5e5e_e22d90b3",
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fec4ade_39904569",
         "filename": "media/codec2/components/opus/C2SoftOpusDec.cpp",
         "patchSetId": 1
