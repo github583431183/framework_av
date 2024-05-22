@@ -34,6 +34,23 @@
       "parentUuid": "db80b0aa_92f22da8",
       "revId": "ea69c950e55e3c8f4a4a4e7af37e5f33885f50b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf81e7cd_d3bcba88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-22T17:34:51Z",
+      "side": 1,
+      "message": "I am worried that some of these libraries (bqhelper and bufferpool 2.0) may be \"responsible for the communication between system and vendor processes\" which is one concern listed in the vndk deprecation document. Sungtak, do you have any concerns?",
+      "revId": "ea69c950e55e3c8f4a4a4e7af37e5f33885f50b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
