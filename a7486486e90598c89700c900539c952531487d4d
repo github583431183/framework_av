@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87cc6795_927f2c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-22T20:52:34Z",
+      "side": 1,
+      "message": "This causes CTS failures \n\nb/341413421, b/341415125 and b/341413868 (4 failures in CtsMediaDecoderTestCases:DecoderTest)\nb/341591810 (3 failures in CtsMediaMuxerTestCases:android.media.muxer.cts.NativeMuxerTest)",
+      "revId": "a7486486e90598c89700c900539c952531487d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
