@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "567c7b16_afdcc778",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-05-22T20:01:29Z",
+      "side": 1,
+      "message": "mEnableDeferred -\u003e mDeferDeallocationAfterStop;\n\nmDeferred -\u003e mHaveDeallocationDeferred;\n\nmDeferredBuffers -\u003e mBuffersWithDeallocationDeferred\n\nSeems to be good to me.",
+      "parentUuid": "f69e71dc_799e4592",
+      "range": {
+        "startLine": 883,
+        "startChar": 7,
+        "endLine": 884,
+        "endChar": 58
+      },
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "682a0baf_9bf3f5db",
         "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
         "patchSetId": 3
