@@ -16,6 +16,24 @@
       "message": "This causes CTS failures \n\nb/341413421, b/341415125 and b/341413868 (4 failures in CtsMediaDecoderTestCases:DecoderTest)\nb/341591810 (3 failures in CtsMediaMuxerTestCases:android.media.muxer.cts.NativeMuxerTest)",
       "revId": "a7486486e90598c89700c900539c952531487d4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce734758_61ff382f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2024-05-23T05:35:11Z",
+      "side": 1,
+      "message": "I\u0027m sorry for that. I just tested my new added test case in a workaround method. Since I have no permission to access above issues, I\u0027ll try to reproduce it on my side.",
+      "parentUuid": "87cc6795_927f2c2c",
+      "revId": "a7486486e90598c89700c900539c952531487d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
