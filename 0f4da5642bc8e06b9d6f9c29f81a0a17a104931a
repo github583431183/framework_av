@@ -1,0 +1,116 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3747c9f5_649a96ac",
+        "filename": "media/libmedia/tests/codeccapabilities/CodecCapabilitiesTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-23T21:23:08Z",
+      "side": 1,
+      "message": "This should be moved into its own test suite, e.g. AudioCapabilitiesTest, and then broken into multiple tests.\n\nThen each test would just have 1 details and profileLevels vector.",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b11ec834_bdfecaa9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libmedia/tests/codeccapabilities/CodecCapabilitiesTest.cpp",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "TEST(CodecCapabilitiesTest, AudioCapsTest) {\n"
+            },
+            {
+              "path": "media/libmedia/tests/codeccapabilities/CodecCapabilitiesTest.cpp",
+              "range": {
+                "startLine": 211,
+                "startChar": 0,
+                "endLine": 212,
+                "endChar": 0
+              },
+              "replacement": "}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0f4da5642bc8e06b9d6f9c29f81a0a17a104931a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e912df86_4ca40af9",
+        "filename": "media/libmedia/tests/codeccapabilities/CodecCapabilitiesTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-23T21:23:08Z",
+      "side": 1,
+      "message": "let\u0027s use the MediaCodecConstants for these.",
+      "range": {
+        "startLine": 134,
+        "startChar": 24,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9f873914_8ef2ef5f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libmedia/tests/codeccapabilities/CodecCapabilitiesTest.cpp",
+              "range": {
+                "startLine": 134,
+                "startChar": 0,
+                "endLine": 141,
+                "endChar": 0
+              },
+              "replacement": "    //     ProfileLevel(kProfileAACLC, 0),\n    //     ProfileLevel(kProfileAACSB, 0),\n    //     ProfileLevel(kProfileAACHE, 0),\n    //     ProfileLevel(kProfileAACLD, 0),\n    //     ProfileLevel(kProfileAACHE, 0),\n    //     ProfileLevel(kProfileAACELD, 0),\n    //     ProfileLevel(kProfileAACLD, 0),\n"
+            },
+            {
+              "path": "media/libmedia/tests/codeccapabilities/CodecCapabilitiesTest.cpp",
+              "range": {
+                "startLine": 283,
+                "startChar": 0,
+                "endLine": 288,
+                "endChar": 0
+              },
+              "replacement": "    //     ProfileLevel(kProfileAACLC, 0),\n    //     ProfileLevel(kProfileAACSB, 0),\n    //     ProfileLevel(kProfileAACHE, 0),\n    //     ProfileLevel(kProfileAACLD, 0),\n    //     ProfileLevel(kProfileAACHE, 0),\n"
+            },
+            {
+              "path": "media/libmedia/tests/codeccapabilities/CodecCapabilitiesTest.cpp",
+              "range": {
+                "startLine": 374,
+                "startChar": 0,
+                "endLine": 378,
+                "endChar": 0
+              },
+              "replacement": "        ProfileLevel(kProfileHEVCMain, 2097152),\n        ProfileLevel(kProfileHEVCHigh, 2097152),\n        ProfileLevel(kProfileHEVCMain10, 2097152),\n        ProfileLevel(kProfileHEVCHigh10, 2097152),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0f4da5642bc8e06b9d6f9c29f81a0a17a104931a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
