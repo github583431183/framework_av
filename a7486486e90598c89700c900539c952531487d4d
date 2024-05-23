@@ -34,6 +34,24 @@
       "parentUuid": "87cc6795_927f2c2c",
       "revId": "a7486486e90598c89700c900539c952531487d4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08158753_6d78a308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2024-05-23T05:36:22Z",
+      "side": 1,
+      "message": "But I guess it is due to the new code get the track duration from different MP4 box and it results in track duration related cases failed.",
+      "parentUuid": "ce734758_61ff382f",
+      "revId": "a7486486e90598c89700c900539c952531487d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
