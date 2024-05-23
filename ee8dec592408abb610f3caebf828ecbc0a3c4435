@@ -69,6 +69,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b031cf2e_b5f9ea95",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-05-23T07:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb06073_484a852c",
+      "range": {
+        "startLine": 116,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abbc86a3_0f6450ed",
@@ -382,6 +406,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ecce94_d8cf5718",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-05-23T07:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cf1058c_abca35f1",
+      "range": {
+        "startLine": 883,
+        "startChar": 7,
+        "endLine": 884,
+        "endChar": 58
+      },
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "682a0baf_9bf3f5db",
@@ -429,6 +477,30 @@
           ]
         }
       ],
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3473dd3_0bca618c",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-05-23T07:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "682a0baf_9bf3f5db",
+      "range": {
+        "startLine": 887,
+        "startChar": 21,
+        "endLine": 887,
+        "endChar": 44
+      },
       "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
