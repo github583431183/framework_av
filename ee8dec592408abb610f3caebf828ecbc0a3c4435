@@ -138,6 +138,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdb2652_780a2ae2",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-05-23T07:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abbc86a3_0f6450ed",
+      "revId": "ee8dec592408abb610f3caebf828ecbc0a3c4435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea9d73cb_5ddba426",
