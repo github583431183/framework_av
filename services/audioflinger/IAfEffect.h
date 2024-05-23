@@ -332,6 +332,24 @@ public:
     virtual sp<android::media::IEffect> asIEffect() = 0;
     virtual const sp<Client>& client() const = 0;
 
+    /**
+     * Enable an audio effect. Can be called from a client or internally from DeviceEffectManager.
+     * Thus, lock schema may be different.
+     * Today, the current enforcement does not allow to make logical rule on more than one lock.
+     * Requires either EffectHandle::mutex() or DeviceEffectProxy::mutex() held
+     */
+    virtual status_t enable_l() = 0;
+    // REQUIRES(audio_utils::EffectHandle_Mutex || audio_utils::DeviceEffectProxy_Mutex)
+
+    /**
+     * Disable an audio effect. Can be called from a client or internally from DeviceEffectManager.
+     * Thus, lock schema may be different.
+     * Today, the current enforcement does not allow to make logical rule on more than one lock.
+     * Requires either EffectHandle::mutex() or DeviceEffectProxy::mutex() held
+     */
+    virtual status_t disable_l() = 0;
+    // REQUIRES(audio_utils::EffectHandle_Mutex || audio_utils::DeviceEffectProxy_Mutex)
+
 private:
     virtual void setControl(bool hasControl, bool signal, bool enabled) = 0;
     virtual bool hasControl() const = 0;
