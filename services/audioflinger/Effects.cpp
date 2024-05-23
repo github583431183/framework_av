@@ -3453,6 +3453,7 @@ NO_THREAD_SAFETY_ANALYSIS
 
     if (status == NO_ERROR || status == ALREADY_EXISTS) {
         Status bs;
+        audio_utils::lock_guard _l(proxyMutex());
         if (isEnabled()) {
             bs = (*handle)->asIEffect()->enable(&status);
         } else {
