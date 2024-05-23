@@ -1859,7 +1859,7 @@ Status EffectHandle::disconnect()
 
 void EffectHandle::disconnect(bool unpinIfLast)
 {
-    audio_utils::lock_guard _l(mutex());
+    audio_utils::unique_lock _l(mutex());
     ALOGV("disconnect(%s) %p", unpinIfLast ? "true" : "false", this);
     if (mDisconnected) {
         if (unpinIfLast) {
@@ -1871,11 +1871,14 @@ void EffectHandle::disconnect(bool unpinIfLast)
     {
         sp<IAfEffectBase> effect = mEffect.promote();
         if (effect != 0) {
+            // Unlock e.g. for non hw accelerated device effect, need to acquire AudioFlinger lock
+            _l.unlock();
             if (effect->disconnectHandle(this, unpinIfLast) > 0) {
                 ALOGW("%s Effect handle %p disconnected after thread destruction",
                     __func__, this);
             }
             effect->updatePolicyState();
+            _l.lock();
         }
     }
 
@@ -3465,15 +3468,16 @@ NO_THREAD_SAFETY_ANALYSIS
     return status;
 }
 
-void DeviceEffectProxy::onReleasePatch(audio_patch_handle_t patchHandle) {
-    sp<IAfEffectHandle> effect;
+sp<IAfEffectHandle> DeviceEffectProxy::onReleasePatch(audio_patch_handle_t patchHandle) {
+    sp<IAfEffectHandle> disconnectedHandle = nullptr;
     {
         audio_utils::lock_guard _l(proxyMutex());
         if (mEffectHandles.find(patchHandle) != mEffectHandles.end()) {
-            effect = mEffectHandles.at(patchHandle);
+            disconnectedHandle = mEffectHandles.at(patchHandle);
             mEffectHandles.erase(patchHandle);
         }
     }
+    return disconnectedHandle;
 }
 
 

@@ -323,6 +323,12 @@ public:
                                       int32_t* _aidl_return) final;
 
     const sp<Client>& client() const final { return mClient; }
+    /**
+     * Checks if the handle is internal, aka created by AudioFlinger for internal needs (e.g.
+     * device effect HAL handle or device effect thread handle).
+     * Note: disconnected effect does not have client, handle won't be reused
+     */
+    bool isInternal() const { return !mDisconnected && client() == nullptr; }
 
     sp<android::media::IEffect> asIEffect() final {
         return sp<android::media::IEffect>::fromExisting(this);
@@ -363,10 +369,29 @@ private:
 
 private:
     DISALLOW_COPY_AND_ASSIGN(EffectHandle);
-
-    audio_utils::mutex& mutex() const { return mMutex; }
+    /**
+     * There are 2 sequence flows to control effects through the handle.
+     * -Session Effect: handle is directly called from the client, without AudioFlinger lock.
+     * -Device Effect: the device effect proxy is aggragating a collection of handle that controls
+     * the same effect added on all audio patches involving the device effect selected port.
+     * Handle can be also called from a client for device effect created by Fx App.
+     * In general, as it depends of the routing, device effects are enabled upon patch lifecycle,
+     * thus enable/disable operation will be called under the lock of AudioFlinger ->
+     * DeviceEffectManager -> DeviceEffectProxy.
+     * Hence, it requires the Mutex order to be after Proxy.
+     */
+    audio_utils::mutex& mutex() const { return isInternal() ? mInternalHandleMutex : mMutex; }
     // protects IEffect method calls
     mutable audio_utils::mutex mMutex{audio_utils::MutexOrder::kEffectHandle_Mutex};
+
+    audio_utils::mutex& internalHandleMutex() const { return mInternalHandleMutex; }
+    /**
+     * protects IEffect method calls for internal AudioFlinger handles, e.g. handle created to
+     * control device effect.
+     */
+    mutable audio_utils::mutex
+            mInternalHandleMutex{audio_utils::MutexOrder::kDeviceEffectHandle_Mutex};
+
     const wp<IAfEffectBase> mEffect;               // pointer to controlled EffectModule
     const sp<media::IEffectClient> mEffectClient;  // callback interface for client notifications
     /*const*/ sp<Client> mClient;            // client for shared memory allocation, see
@@ -678,7 +703,7 @@ public:
     status_t onUpdatePatch(audio_patch_handle_t oldPatchHandle, audio_patch_handle_t newPatchHandle,
            const IAfPatchPanel::Patch& patch) final;
 
-    void onReleasePatch(audio_patch_handle_t patchHandle) final;
+    sp<IAfEffectHandle> onReleasePatch(audio_patch_handle_t patchHandle) final;
 
     size_t removeEffect(const sp<IAfEffectModule>& effect) final;
 
