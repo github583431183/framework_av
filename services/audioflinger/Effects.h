@@ -323,6 +323,12 @@ public:
                                       int32_t* _aidl_return) final;
 
     const sp<Client>& client() const final { return mClient; }
+    /**
+     * Checks if the handle is internal, aka created by AudioFlinger for internal needs (e.g.
+     * device effect HAL handle or device effect thread handle).
+     * Note: disconnected effect does not have client, handle won't be reused
+     */
+    bool  isInternal() const { return !mDisconnected && client() == nullptr; }
 
     sp<android::media::IEffect> asIEffect() final {
         return sp<android::media::IEffect>::fromExisting(this);
@@ -364,9 +370,14 @@ private:
 private:
     DISALLOW_COPY_AND_ASSIGN(EffectHandle);
 
-    audio_utils::mutex& mutex() const { return mMutex; }
+    audio_utils::mutex& mutex() const { return isInternal() ? mInternalHandleMutex : mMutex; }
     // protects IEffect method calls
     mutable audio_utils::mutex mMutex{audio_utils::MutexOrder::kEffectHandle_Mutex};
+
+    audio_utils::mutex& internalHandleMutex() const { return mInternalHandleMutex; }
+    // protects IEffect method calls
+    mutable audio_utils::mutex mInternalHandleMutex{audio_utils::MutexOrder::kDeviceEffectHandle_Mutex};
+
     const wp<IAfEffectBase> mEffect;               // pointer to controlled EffectModule
     const sp<media::IEffectClient> mEffectClient;  // callback interface for client notifications
     /*const*/ sp<Client> mClient;            // client for shared memory allocation, see

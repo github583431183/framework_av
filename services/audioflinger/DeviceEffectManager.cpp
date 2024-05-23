@@ -52,7 +52,7 @@ status_t DeviceEffectManager::addEffectToHal(const struct audio_port_config* dev
 status_t DeviceEffectManager::removeEffectFromHal(const struct audio_port_config* device,
         const sp<EffectHalInterface>& effect) {
     return mAfDeviceEffectManagerCallback->removeEffectFromHal(device, effect);
-};
+}
 
 void DeviceEffectManager::onCreateAudioPatch(audio_patch_handle_t handle,
         const IAfPatchPanel::Patch& patch) {
