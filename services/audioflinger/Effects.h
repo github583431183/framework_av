@@ -327,6 +327,10 @@ public:
     sp<android::media::IEffect> asIEffect() final {
         return sp<android::media::IEffect>::fromExisting(this);
     }
+protected:
+    status_t enable_l() final;
+    status_t disable_l() final;
+    void disconnect_l(bool unpinIfLast);
 
 private:
     void disconnect(bool unpinIfLast);
