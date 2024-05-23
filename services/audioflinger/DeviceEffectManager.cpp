@@ -26,6 +26,7 @@
 #include <audio_utils/primitives.h>
 #include <media/audiohal/EffectsFactoryHalInterface.h>
 #include <utils/Log.h>
+#include <future>
 
 // ----------------------------------------------------------------------------
 
@@ -46,10 +47,24 @@ void DeviceEffectManager::onFirstRef() {
 
 status_t DeviceEffectManager::addEffectToHal(const struct audio_port_config* device,
         const sp<EffectHalInterface>& effect) {
+    auto future = std::async(std::launch::async, &DeviceEffectManager::addEffectToHalUnsafe,
+                             this, device, effect);
+    return future.get();
+};
+
+status_t DeviceEffectManager::addEffectToHalUnsafe(const struct audio_port_config* device,
+        const sp<EffectHalInterface>& effect) {
     return mAfDeviceEffectManagerCallback->addEffectToHal(device, effect);
 };
 
 status_t DeviceEffectManager::removeEffectFromHal(const struct audio_port_config* device,
+        const sp<EffectHalInterface>& effect) {
+    auto future = std::async(std::launch::async, &DeviceEffectManager::removeEffectFromHalUnsafe,
+                             this, device, effect);
+    return future.get();
+}
+
+status_t DeviceEffectManager::removeEffectFromHalUnsafe(const struct audio_port_config* device,
         const sp<EffectHalInterface>& effect) {
     return mAfDeviceEffectManagerCallback->removeEffectFromHal(device, effect);
 };

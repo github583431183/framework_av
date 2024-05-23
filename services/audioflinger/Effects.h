@@ -323,10 +323,28 @@ public:
                                       int32_t* _aidl_return) final;
 
     const sp<Client>& client() const final { return mClient; }
+    /**
+     * Checks if the handle is internal, aka created by AudioFlinger for internal needs (e.g.
+     * device effect HAL handle or device effect thread handle).
+     * Note: disconnected effect does not have client, handle wont be reused
+     */
+    bool  isInternal() const { return !mDisconnected && client() == nullptr; }
 
     sp<android::media::IEffect> asIEffect() final {
         return sp<android::media::IEffect>::fromExisting(this);
     }
+protected:
+    // Requires either EffectHandle::mutex() or DeviceEffectManager::mutex() held
+    status_t enable_l() final;
+    // REQUIRES(audio_utils::EffectHandle_Mutex || audio_utils::DeviceEffectManager_Mutex)
+
+    // Requires either EffectHandle::mutex() or DeviceEffectManager::mutex() held
+    status_t disable_l() final;
+    // REQUIRES(audio_utils::EffectHandle_Mutex || audio_utils::DeviceEffectManager_Mutex)
+
+    // Requires either EffectHandle::mutex() or DeviceEffectProxy::mutex() held
+    void disconnect_l(bool unpinIfLast);
+    // REQUIRES(audio_utils::EffectHandle_Mutex || audio_utils::DeviceEffectProxy_Mutex)
 
 private:
     void disconnect(bool unpinIfLast);

@@ -607,6 +607,7 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
 
 status_t AudioFlinger::addEffectToHal(
         const struct audio_port_config *device, const sp<EffectHalInterface>& effect) {
+    audio_utils::lock_guard _l(mutex());
     audio_utils::lock_guard lock(hardwareMutex());
     AudioHwDevice *audioHwDevice = mAudioHwDevs.valueFor(device->ext.device.hw_module);
     if (audioHwDevice == nullptr) {
@@ -617,6 +618,7 @@ status_t AudioFlinger::addEffectToHal(
 
 status_t AudioFlinger::removeEffectFromHal(
         const struct audio_port_config *device, const sp<EffectHalInterface>& effect) {
+    audio_utils::lock_guard _l(mutex());
     audio_utils::lock_guard lock(hardwareMutex());
     AudioHwDevice *audioHwDevice = mAudioHwDevs.valueFor(device->ext.device.hw_module);
     if (audioHwDevice == nullptr) {

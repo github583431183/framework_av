@@ -332,6 +332,9 @@ public:
     virtual sp<android::media::IEffect> asIEffect() = 0;
     virtual const sp<Client>& client() const = 0;
 
+    virtual status_t enable_l() = 0;
+    virtual status_t disable_l() = 0;
+
 private:
     virtual void setControl(bool hasControl, bool signal, bool enabled) = 0;
     virtual bool hasControl() const = 0;
