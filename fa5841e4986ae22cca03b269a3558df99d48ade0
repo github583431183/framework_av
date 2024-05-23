@@ -16,6 +16,46 @@
       "message": "Eric, Mikhail, I got new regressions on Device Effects due to lock order enforcmenet. Not really sure it is the best way to fix... Feel free to propose.",
       "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87fef968_6fd9005d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-23T17:56:30Z",
+      "side": 1,
+      "message": "Shunkai, since you know better how effects are handled in the AF, could you please check if you can suggest anything here?",
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a86f28_d844dd1a",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-23T17:56:30Z",
+      "side": 1,
+      "message": "I think this is reserved for cases when there is no sane way to express mutex requirements, and when the scope of the manual mutex management is obvious. In this case we are calling into some method of another object, so we are not really in control of what happens there.\n\nI would consider re-engineering this code a bit to use `audio_utils::unique_lock` (https://cs.android.com/android/platform/superproject/main/+/main:system/media/audio_utils/include/audio_utils/mutex.h;l\u003d1566;drc\u003daead8b971fcfe6bdb30459501f9e605829f73b37) instead of `lock_guard` because the former provides `unlock()` and `lock()` methods that provide necessary information to the thread safety analysis framework.",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 25
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
