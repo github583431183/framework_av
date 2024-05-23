@@ -1724,6 +1724,11 @@ EffectHandle::EffectHandle(const sp<IAfEffectBase>& effect,
 EffectHandle::~EffectHandle()
 {
     ALOGV("Destructor %p", this);
+    if (isInternal()) {
+        // no need to guard as protected by audio_utils::DeviceEffectProxy_ProxyMutex
+        disconnect_l(false);
+        return;
+    }
     disconnect(false);
 }
 
@@ -1788,17 +1793,22 @@ status_t EffectHandle::initCheck() const
 Status EffectHandle::enable(int32_t* _aidl_return)
 {
     audio_utils::lock_guard _l(mutex());
+    RETURN(enable_l());
+}
+
+status_t EffectHandle::enable_l()
+{
     ALOGV("enable %p", this);
     sp<IAfEffectBase> effect = mEffect.promote();
     if (effect == 0 || mDisconnected) {
-        RETURN(DEAD_OBJECT);
+        return DEAD_OBJECT;
     }
     if (!mHasControl) {
-        RETURN(INVALID_OPERATION);
+        return INVALID_OPERATION;
     }
 
     if (mEnabled) {
-        RETURN(NO_ERROR);
+        return NO_ERROR;
     }
 
     mEnabled = true;
@@ -1806,60 +1816,72 @@ Status EffectHandle::enable(int32_t* _aidl_return)
     status_t status = effect->updatePolicyState();
     if (status != NO_ERROR) {
         mEnabled = false;
-        RETURN(status);
+        return status;
     }
 
     effect->checkSuspendOnEffectEnabled(true, false /*threadLocked*/);
 
     // checkSuspendOnEffectEnabled() can suspend this same effect when enabled
     if (effect->suspended()) {
-        RETURN(NO_ERROR);
+        return NO_ERROR;
     }
 
     status = effect->setEnabled(true, true /*fromHandle*/);
     if (status != NO_ERROR) {
         mEnabled = false;
     }
-    RETURN(status);
+    return status;
 }
 
 Status EffectHandle::disable(int32_t* _aidl_return)
 {
-    ALOGV("disable %p", this);
     audio_utils::lock_guard _l(mutex());
+    ALOGV("disable %p", this);
+    RETURN(disable_l());
+}
+
+status_t EffectHandle::disable_l()
+{
+    ALOGV("disable %p", this);
     sp<IAfEffectBase> effect = mEffect.promote();
     if (effect == 0 || mDisconnected) {
-        RETURN(DEAD_OBJECT);
+        return DEAD_OBJECT;
     }
     if (!mHasControl) {
-        RETURN(INVALID_OPERATION);
+        return INVALID_OPERATION;
     }
 
     if (!mEnabled) {
-        RETURN(NO_ERROR);
+        return NO_ERROR;
     }
     mEnabled = false;
 
     effect->updatePolicyState();
 
     if (effect->suspended()) {
-        RETURN(NO_ERROR);
+        return NO_ERROR;
     }
 
     status_t status = effect->setEnabled(false, true /*fromHandle*/);
-    RETURN(status);
+    return status;
 }
 
 Status EffectHandle::disconnect()
 {
     ALOGV("%s %p", __FUNCTION__, this);
-    disconnect(true);
+    audio_utils::lock_guard _l(mutex());
+    disconnect_l(true);
     return Status::ok();
 }
 
 void EffectHandle::disconnect(bool unpinIfLast)
 {
     audio_utils::lock_guard _l(mutex());
+    disconnect_l(unpinIfLast);
+}
+
+void EffectHandle::disconnect_l(bool unpinIfLast)
+{
     ALOGV("disconnect(%s) %p", unpinIfLast ? "true" : "false", this);
     if (mDisconnected) {
         if (unpinIfLast) {
@@ -3296,14 +3318,10 @@ status_t DeviceEffectProxy::setEnabled(bool enabled, bool fromHandle)
     audio_utils::lock_guard _l(proxyMutex());
     if (status == NO_ERROR) {
         for (auto& handle : mEffectHandles) {
-            Status bs;
             if (enabled) {
-                bs = handle.second->asIEffect()->enable(&status);
+                status = handle.second->enable_l();
             } else {
-                bs = handle.second->asIEffect()->disable(&status);
-            }
-            if (!bs.isOk()) {
-              status = statusTFromBinderStatus(bs);
+                status = handle.second->disable_l();
             }
         }
     }
@@ -3452,14 +3470,11 @@ NO_THREAD_SAFETY_ANALYSIS
     }
 
     if (status == NO_ERROR || status == ALREADY_EXISTS) {
-        Status bs;
+        audio_utils::lock_guard _l(proxyMutex());
         if (isEnabled()) {
-            bs = (*handle)->asIEffect()->enable(&status);
+            status = (*handle)->enable_l();
         } else {
-            bs = (*handle)->asIEffect()->disable(&status);
-        }
-        if (!bs.isOk()) {
-            status = statusTFromBinderStatus(bs);
+            status = (*handle)->disable_l();
         }
     }
     return status;

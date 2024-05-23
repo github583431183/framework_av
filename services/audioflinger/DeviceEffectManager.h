@@ -80,6 +80,17 @@ public:
             EXCLUDES_DeviceEffectManager_Mutex;
 
 private:
+    /**
+     * Add /remove an HW Accelerated device effect to / from Audio HAL.
+     * Lock schema is different since it requires AudioFlinger_HardwareMutex, breaking the order
+     * of mutexes.
+     * Adding it asynchronously to fix this specific lock sequence.
+     */
+    status_t addEffectToHalUnsafe(const struct audio_port_config *device,
+            const sp<EffectHalInterface>& effect) EXCLUDES(mutex());
+    status_t removeEffectFromHalUnsafe(const struct audio_port_config *device,
+            const sp<EffectHalInterface>& effect) EXCLUDES(mutex());
+
     static status_t checkEffectCompatibility(const effect_descriptor_t *desc);
 
     audio_utils::mutex& mutex() const RETURN_CAPABILITY(audio_utils::DeviceEffectManager_Mutex) {
