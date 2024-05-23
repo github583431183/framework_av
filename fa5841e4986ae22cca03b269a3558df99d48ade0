@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc00eb1a_4a718945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-23T12:05:51Z",
+      "side": 1,
+      "message": "Eric, Mikhail, I got new regressions on Device Effects due to lock order enforcmenet. Not really sure it is the best way to fix... Feel free to propose.",
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
