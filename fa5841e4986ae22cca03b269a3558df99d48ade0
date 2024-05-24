@@ -124,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2a6a655_bd462025",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T08:35:12Z",
+      "side": 1,
+      "message": "Not directly but when a handle is released by DeviceEffectProxy::onCreatePatch",
+      "parentUuid": "e1357a06_48b8eb04",
+      "range": {
+        "startLine": 1880,
+        "startChar": 0,
+        "endLine": 1880,
+        "endChar": 63
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a229cd3c_75193d66",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
