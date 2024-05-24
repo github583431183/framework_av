@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfecc2a8_200862a8",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T11:57:29Z",
+      "side": 1,
+      "message": "since EffectHandle destructor calls disconnect",
+      "parentUuid": "c2a6a655_bd462025",
+      "range": {
+        "startLine": 1880,
+        "startChar": 0,
+        "endLine": 1880,
+        "endChar": 63
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a229cd3c_75193d66",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
@@ -159,6 +183,30 @@
       "writtenOn": "2024-05-24T00:54:34Z",
       "side": 1,
       "message": "mEffectHandles should be guarded by proxyMutex().  it is possible to make a copy under lock.",
+      "range": {
+        "startLine": 3324,
+        "startChar": 28,
+        "endLine": 3324,
+        "endChar": 44
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb6af8a_66e84fed",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3324,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T11:57:29Z",
+      "side": 1,
+      "message": "lock removed by mistake",
+      "parentUuid": "a229cd3c_75193d66",
       "range": {
         "startLine": 3324,
         "startChar": 28,
