@@ -240,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "168ecdae_45b54fc8",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3326,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T12:24:50Z",
+      "side": 1,
+      "message": "proxyMutex was removed by mistake in previous patch set.",
+      "parentUuid": "0967c223_fcf2e6cc",
+      "range": {
+        "startLine": 3326,
+        "startChar": 40,
+        "endLine": 3326,
+        "endChar": 51
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70e935b1_35731bd0",
@@ -318,6 +342,30 @@
       "writtenOn": "2024-05-24T00:54:34Z",
       "side": 1,
       "message": "REQUIRES()",
+      "range": {
+        "startLine": 335,
+        "startChar": 31,
+        "endLine": 335,
+        "endChar": 32
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20aba0a0_6f033957",
+        "filename": "services/audioflinger/IAfEffect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T12:24:50Z",
+      "side": 1,
+      "message": "partially done...",
+      "parentUuid": "bc2a1590_fcd886d5",
       "range": {
         "startLine": 335,
         "startChar": 31,
