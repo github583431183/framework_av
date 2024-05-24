@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6042f9_00fe7705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T20:06:42Z",
+      "side": 1,
+      "message": "Thanks for the additional explanation.  this is a complex problem, and i have made some suggestions and thoughts for a long term fix.  i don\u0027t know if you think the suggestions can work or are comfortable doing such changes.  i am away from the office until the start of June, and can help with the change as needed then, or perhaps Shunkai can assist.\n\nAnother possibility is to merge an interim solution and then do the final fix later.  In that case, it is preferable to align the interim solution as close as possible to the exentual fix.",
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179ab328_f5a823fb",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T20:06:42Z",
+      "side": 1,
+      "message": "would prefer first to unlock the mutexes before the callback.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e1a765bd_66e39055",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/DeviceEffectManager.cpp",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "    audio_utils::lock_guard _l(mutex());\n"
+            },
+            {
+              "path": "services/audioflinger/DeviceEffectManager.cpp",
+              "range": {
+                "startLine": 62,
+                "startChar": 0,
+                "endLine": 62,
+                "endChar": 0
+              },
+              "replacement": "    audio_utils::lock_guard _l(mutex());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -16,6 +16,52 @@
       "message": "Need urgently test on device effect to prevent from regression and handle properly future refactor.",
       "revId": "69f56cac489c0605a675a62b7c9a0d7f1ee4a8f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "058e9a7a_e6e6a0cf",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T20:06:42Z",
+      "side": 1,
+      "message": "why do we need the AudioFlinger mutex here and below.",
+      "range": {
+        "startLine": 610,
+        "startChar": 30,
+        "endLine": 610,
+        "endChar": 40
+      },
+      "revId": "69f56cac489c0605a675a62b7c9a0d7f1ee4a8f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0445d26_c2166b81",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T20:06:42Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \" wont \" -- should it be \" won\u0027t \"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \" wont \" -- should it be \" won\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 329,
+        "startChar": 61,
+        "endLine": 329,
+        "endChar": 67
+      },
+      "revId": "69f56cac489c0605a675a62b7c9a0d7f1ee4a8f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
