@@ -52,6 +52,23 @@
       "parentUuid": "ce734758_61ff382f",
       "revId": "a7486486e90598c89700c900539c952531487d4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef1a9a5_d61adf4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1604644
+      },
+      "writtenOn": "2024-05-24T07:46:03Z",
+      "side": 1,
+      "message": "Hi, all, \n\nFirst of all, sorry to bring trouble to your team and you have to reverted this change. I actually just ran the extractor CTS cases but not for decoder and muxer CTS cases. \n\nAlthough you have already reverted this submit, I still check the root cause of these failed cases.\n\nAs far as muxer failed cases, the reason is MPEG4Writter doesn\u0027t differentiate tkhd-\u003eduration (track duration) and mdhd-\u003eduration (media duration) either. This is not correct behavior. \n(see https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libstagefright/MPEG4Writer.cpp;l\u003d4763 and https://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libstagefright/MPEG4Writer.cpp;l\u003d4974)\n\nThis bug is same as the bug I fixed in MPEG4Extractor. Because I just fixed the bug in MPEG4Extractor but not for MPEG4Writer, it results in the failure of some muxer cases. (The generated mp4 file has the different track duration of the original one.) \n\nI have not checked the root cause of failed cases of decoder testing.\n\nCurrently, iOS/AndroidX Media\u0027s behavior is correct. To fix this bug in AOSP, it seems a little risky. I know AOSP MediaExtractor has been deprecated. So that I\u0027d like to hear your suggestion: whether I need to submit this code change again after implementing an improved patch with a full regression test? If yes, I\u0027ll do it. If no, I can understand your consideration.\n\nSorry again for my fault.",
+      "revId": "a7486486e90598c89700c900539c952531487d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
