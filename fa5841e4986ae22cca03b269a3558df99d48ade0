@@ -211,6 +211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cac210f_0c05b99c",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T06:31:25Z",
+      "side": 1,
+      "message": "This is the biggest issue: it can be either EffectHandle_Mutex or DeviceEffectProxy_Mutex (since the chaining of lock is not the same in case of device effect).\nI saw some comment on containsHapticGeneratingEffect_l for example. Is there any macro to express it rather than comment?",
+      "parentUuid": "70e935b1_35731bd0",
+      "range": {
+        "startLine": 331,
+        "startChar": 21,
+        "endLine": 331,
+        "endChar": 30
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc2a1590_fcd886d5",
         "filename": "services/audioflinger/IAfEffect.h",
         "patchSetId": 1
