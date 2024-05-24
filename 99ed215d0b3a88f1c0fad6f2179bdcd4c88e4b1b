@@ -67,6 +67,47 @@
       ],
       "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121230c6_00b2094b",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T20:21:14Z",
+      "side": 1,
+      "message": "perhaps this could be changed to kEffectChain_Mutex\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/media/audio_utils/include/audio_utils/mutex.h;drc\u003daead8b971fcfe6bdb30459501f9e605829f73b37;l\u003d67",
+      "range": {
+        "startLine": 791,
+        "startChar": 37,
+        "endLine": 791,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f52acd71_0f0b3a35",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/Effects.h",
+              "range": {
+                "startLine": 791,
+                "startChar": 0,
+                "endLine": 792,
+                "endChar": 0
+              },
+              "replacement": "            audio_utils::MutexOrder::kEffectChain_Mutex};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
