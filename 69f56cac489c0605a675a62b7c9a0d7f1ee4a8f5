@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc32350_726d0b26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T12:29:15Z",
+      "side": 1,
+      "message": "Need urgently test on device effect to prevent from regression and handle properly future refactor.",
+      "revId": "69f56cac489c0605a675a62b7c9a0d7f1ee4a8f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

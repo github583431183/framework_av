@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6bdc3b2_1d1a61dd",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-24T12:29:15Z",
+      "side": 1,
+      "message": "NO_THREAD_SAFETY_ANALYSIS removed. I used as for today a Workaround: asynchronously add/remove device effect.\nIt is risky to try breaking the lock schema since add/remove can be added from several flow, with chain/module lock handled. \nDevice effect needs Hw lock in the end, which is expected before Chain / Module lock.\n\nHuge refactor may be needed to \"unlock\" chain/module on demand for device effect.",
+      "parentUuid": "09d8f39c_14b16c60",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 25
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1357a06_48b8eb04",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
