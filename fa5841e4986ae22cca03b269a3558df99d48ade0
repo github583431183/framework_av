@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f674be_a07dfbb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T00:54:34Z",
+      "side": 1,
+      "message": "Ideally we can make the device effect code work with thread-safety annotations.  I have added some comments below, but am not sure on the exact call stacks which cause issues.",
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29a86f28_d844dd1a",
@@ -53,6 +70,163 @@
         "startChar": 0,
         "endLine": 1040,
         "endChar": 25
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d8f39c_14b16c60",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T00:54:34Z",
+      "side": 1,
+      "message": "Agree that we should avoid NO_THREAD_SAFETY_ANALYSIS whenever possible. In this case, the mutex().unlock() requires the mutex() to be held. I would suggest adding a REQUIRES(audio_utils::EffectBase_Mutex) or REQUIRES(mutex()) in the Effects.h declaration of addEffectToHal_l(), which should solve this.  Unfortunately, these thread safety annotations can become viral, so often more methods must be annotated for the code to compile properly.\n\nWe haven\u0027t had the time to fully clean up all of the AudioFlinger annotations.\n\nSimilar comment for removeEffectFromHal_l().",
+      "parentUuid": "29a86f28_d844dd1a",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 25
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1357a06_48b8eb04",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T00:54:34Z",
+      "side": 1,
+      "message": "can the DeviceEffectManager call disconnect_l()?",
+      "range": {
+        "startLine": 1880,
+        "startChar": 0,
+        "endLine": 1880,
+        "endChar": 63
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a229cd3c_75193d66",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3324,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T00:54:34Z",
+      "side": 1,
+      "message": "mEffectHandles should be guarded by proxyMutex().  it is possible to make a copy under lock.",
+      "range": {
+        "startLine": 3324,
+        "startChar": 28,
+        "endLine": 3324,
+        "endChar": 44
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0967c223_fcf2e6cc",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3326,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T00:54:34Z",
+      "side": 1,
+      "message": "this presumes a mutex is being held... here and below.",
+      "range": {
+        "startLine": 3326,
+        "startChar": 40,
+        "endLine": 3326,
+        "endChar": 51
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e935b1_35731bd0",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T00:54:34Z",
+      "side": 1,
+      "message": "please annotate REQUIRES(audio_utils::EffectHandle_Mutex) here.",
+      "range": {
+        "startLine": 331,
+        "startChar": 21,
+        "endLine": 331,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9f95aaac_67b3f628",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/Effects.h",
+              "range": {
+                "startLine": 331,
+                "startChar": 0,
+                "endLine": 333,
+                "endChar": 0
+              },
+              "replacement": "    status_t enable_l() final REQUIRES(audio_utils::EffectHandle_Mutex);\n    status_t disable_l() final REQUIRES(audio_utils::EffectHandle_Mutex);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2a1590_fcd886d5",
+        "filename": "services/audioflinger/IAfEffect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-24T00:54:34Z",
+      "side": 1,
+      "message": "REQUIRES()",
+      "range": {
+        "startLine": 335,
+        "startChar": 31,
+        "endLine": 335,
+        "endChar": 32
       },
       "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
