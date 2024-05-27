@@ -173,6 +173,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23bd57dd_2c03dcac",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-27T16:03:36Z",
+      "side": 1,
+      "message": "Started the WIP... last issue to solve is the addEffecToHal that requires HW lock, which needs to unlock several stuff.\nWould it be acceptable to move down the Hw lock (at least under new lock I added ?)",
+      "parentUuid": "a96025d7_cfe02bda",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 25
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1357a06_48b8eb04",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
