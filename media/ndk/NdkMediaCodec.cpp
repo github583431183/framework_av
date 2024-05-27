@@ -54,6 +54,10 @@ static media_status_t translate_error(status_t err) {
         return AMEDIACODEC_ERROR_INSUFFICIENT_RESOURCE;
     } else if (err == DEAD_OBJECT) {
         return AMEDIACODEC_ERROR_RECLAIMED;
+    } else if (err == INVALID_OPERATION) {
+        return AMEDIA_ERROR_INVALID_OPERATION;
+    } else if (err == BAD_VALUE) {
+        return AMEDIA_ERROR_INVALID_PARAMETER;
     }
 
     {
