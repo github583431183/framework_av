@@ -46,14 +46,31 @@ using namespace android;
 
 static media_status_t translate_error(status_t err) {
 
-    if (err == OK) {
+    switch (err) {
+    case OK:
         return AMEDIA_OK;
-    } else if (err == -EAGAIN) {
+    case -EAGAIN:
         return (media_status_t) AMEDIACODEC_INFO_TRY_AGAIN_LATER;
-    } else if (err == NO_MEMORY) {
+    case NO_MEMORY:
         return AMEDIACODEC_ERROR_INSUFFICIENT_RESOURCE;
-    } else if (err == DEAD_OBJECT) {
+    case DEAD_OBJECT:
         return AMEDIACODEC_ERROR_RECLAIMED;
+    case INVALID_OPERATION:
+        return AMEDIA_ERROR_INVALID_OPERATION;
+    case BAD_VALUE:
+        return AMEDIA_ERROR_INVALID_PARAMETER;
+    case UNKNOWN_ERROR:
+        return AMEDIA_ERROR_UNKNOWN;
+    case ERROR_MALFORMED:
+        return AMEDIA_ERROR_MALFORMED;
+    case ERROR_UNSUPPORTED:
+        return AMEDIA_ERROR_UNSUPPORTED;
+    case ERROR_END_OF_STREAM:
+        return AMEDIA_ERROR_END_OF_STREAM;
+    case ERROR_IO:
+        return AMEDIA_ERROR_IO;
+    default:
+        break;
     }
 
     {
