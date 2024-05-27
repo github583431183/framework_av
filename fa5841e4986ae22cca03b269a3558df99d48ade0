@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a96025d7_cfe02bda",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-27T15:19:05Z",
+      "side": 1,
+      "message": "It will not be enougth. The safest thing may be to introduce a lock of EffectHandle created and managed internally by AudioFlinger, and which lock would need to be acquired after Proxy.\n\nFor example, if creating, the AudioFlinger / DeviceEffectMgnt/ Proxy are taken, if we need to delete the handle, the disconnect cannot be called with current Handle lock.\n\nIf you agree with this propal, I can test it.",
+      "parentUuid": "fd26d33b_89e9a2e7",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 25
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1357a06_48b8eb04",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
