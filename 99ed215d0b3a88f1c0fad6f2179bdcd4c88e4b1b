@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d66e41b_e68b526c",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-27T14:08:51Z",
+      "side": 1,
+      "message": "Agree, after day of struggle, I tried the async to break \"lock chain\". Will continue however, not surrending...",
+      "parentUuid": "179ab328_f5a823fb",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "121230c6_00b2094b",
         "filename": "services/audioflinger/Effects.h",
         "patchSetId": 4
