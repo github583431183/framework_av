@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdae8ab3_01cc8840",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-27T16:05:34Z",
+      "side": 1,
+      "message": "if this condition is not acceptable, I propose to have a new class to handle internal device effect handle..",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 373,
+        "endChar": 94
+      },
+      "revId": "01996f8191f98b6a6bd47e676cc674a99a7ad84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
