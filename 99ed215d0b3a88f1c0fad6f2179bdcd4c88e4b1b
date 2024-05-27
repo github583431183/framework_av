@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd90c334_4fb910ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-27T13:40:40Z",
+      "side": 1,
+      "message": "I tried and struggle to follow your recommandation to unlock, but I had to change so many code, even putting are risk some code section that shall not release locks (of chain / effect). Will try to reconsider.",
+      "parentUuid": "fe6042f9_00fe7705",
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "179ab328_f5a823fb",
