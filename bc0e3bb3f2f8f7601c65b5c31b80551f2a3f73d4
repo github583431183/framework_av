@@ -22,6 +22,30 @@
       },
       "revId": "bc0e3bb3f2f8f7601c65b5c31b80551f2a3f73d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765f403e_bacfa426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-28T23:23:18Z",
+      "side": 1,
+      "message": "I\u0027m sorry, this commit message is old! \n\nThis is removing it from `mediaserver` also because we do not use prebuilts _by default_.\n\nI do see that we still use the prebuilts on the ap*a release configs :( So this CL would cause problems on those.\n\nMy aosp repo is in a bad state today, so I\u0027ll try some things tomorrow.",
+      "parentUuid": "b4766055_b6e9e05d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "bc0e3bb3f2f8f7601c65b5c31b80551f2a3f73d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
