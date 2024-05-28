@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9407684b_72d3d45d",
+        "filename": "services/audioflinger/IAfEffect.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-05-28T17:44:15Z",
+      "side": 1,
+      "message": "is `shouldDispatchAddRemoveToHal` a little bit better?",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e84cb44b_b075707b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/IAfEffect.h",
+              "range": {
+                "startLine": 49,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "    virtual bool shouldDispatchAddRemoveToHal(bool isAdded) const \u003d 0;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a7b3c5d1650cb40d9f83a55d2a58f79475858e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
