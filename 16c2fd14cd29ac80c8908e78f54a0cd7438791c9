@@ -231,6 +231,30 @@
       },
       "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f5b78f_9fdd33d0",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2024-05-28T18:23:58Z",
+      "side": 1,
+      "message": "My apologies, I said `getService` (which is deprecated) in my comment above instead of `checkService` which is what ServiceManager recommends using. \n\nCould you change the call to `checkService` instead. It won\u0027t \"wake up\" cameraservice, but it shouldn\u0027t have to anyway as the system handles restarting cameraservice if it is ever killed.",
+      "parentUuid": "a384b4c1_c40910ec",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
