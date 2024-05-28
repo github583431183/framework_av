@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5f1561_5d19fbb1",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T20:53:47Z",
+      "side": 1,
+      "message": "nit: maybe explain this is for internal AudioFlinger managed effects.",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5ee0eae9_5ffb4c35",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/Effects.h",
+              "range": {
+                "startLine": 378,
+                "startChar": 0,
+                "endLine": 379,
+                "endChar": 0
+              },
+              "replacement": "    // protects IEffect method calls for internal AudioFlinger handles\n"
+            }
+          ]
+        }
+      ],
+      "revId": "56600fed8b18cec766e55e3dac88ea96df42a163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

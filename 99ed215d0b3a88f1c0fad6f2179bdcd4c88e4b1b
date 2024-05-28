@@ -135,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e1abca_997145fd",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T20:53:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b8bf3770_fb8d675a",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "121230c6_00b2094b",
@@ -172,6 +196,30 @@
           ]
         }
       ],
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "470cb21d_4f09e9c6",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T20:53:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "121230c6_00b2094b",
+      "range": {
+        "startLine": 791,
+        "startChar": 37,
+        "endLine": 791,
+        "endChar": 66
+      },
       "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

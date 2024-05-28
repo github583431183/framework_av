@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f000410e_2bbb2207",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T20:53:47Z",
+      "side": 1,
+      "message": "i think this is fine for now.  when we finish annotating Effects.cpp for thread safety, we may make EffectHandle take a phantom resource with capability kDeviceEffectHandle_Mutex and then do static thread safety annotation based on that.\n\nCan you please make a comment on your logic for this, that there are two calling paths?",
+      "parentUuid": "aea55158_f580ab4c",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 373,
+        "endChar": 94
+      },
+      "revId": "01996f8191f98b6a6bd47e676cc674a99a7ad84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8d11125_50f25567",
         "filename": "services/audioflinger/Effects.h",
         "patchSetId": 6
