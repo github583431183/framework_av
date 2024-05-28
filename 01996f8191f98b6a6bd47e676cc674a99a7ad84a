@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "809f21dd_decdbde0",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T00:50:15Z",
+      "side": 1,
+      "message": "nit: extra space.",
+      "range": {
+        "startLine": 331,
+        "startChar": 9,
+        "endLine": 331,
+        "endChar": 10
+      },
+      "revId": "01996f8191f98b6a6bd47e676cc674a99a7ad84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdae8ab3_01cc8840",
         "filename": "services/audioflinger/Effects.h",
         "patchSetId": 6
@@ -19,6 +42,53 @@
         "startChar": 2,
         "endLine": 373,
         "endChar": 94
+      },
+      "revId": "01996f8191f98b6a6bd47e676cc674a99a7ad84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4344d08_3d379cbc",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T00:50:15Z",
+      "side": 1,
+      "message": "that would be fine if the mutex has the same order (or off by one), right now kDeviceEffectHandle_Mutex is significantly different than kEffectHandleMutex.  Otherwise static checking through thread safety annotations will differ from dynamic checking built in with audio_utils::mutex.",
+      "parentUuid": "cdae8ab3_01cc8840",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 373,
+        "endChar": 94
+      },
+      "revId": "01996f8191f98b6a6bd47e676cc674a99a7ad84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d11125_50f25567",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T00:50:15Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 104
       },
       "revId": "01996f8191f98b6a6bd47e676cc674a99a7ad84a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

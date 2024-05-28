@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8bf3770_fb8d675a",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T00:50:15Z",
+      "side": 1,
+      "message": "Thanks for your efforts!",
+      "parentUuid": "5d66e41b_e68b526c",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "99ed215d0b3a88f1c0fad6f2179bdcd4c88e4b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "121230c6_00b2094b",
         "filename": "services/audioflinger/Effects.h",
         "patchSetId": 4

@@ -197,6 +197,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8111b74_ecb7dfc5",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T00:50:15Z",
+      "side": 1,
+      "message": "It is fine to move the hw lock down, if that does not cause any other order conflicts.",
+      "parentUuid": "23bd57dd_2c03dcac",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 25
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1357a06_48b8eb04",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
@@ -487,6 +511,30 @@
       "side": 1,
       "message": "This needs to be a comment for now. Thread safety annotations may be ANDed through multiple REQUIRES, but not ORed as the case of ORing is not guaranteed consistent.\n\nIt is possible, however, to assign the same muted capability order to different mutexes, which is the similar to ORing, but with better behavior.\n\nWe should remove the DeviceEffectProxy_Mutex as a category.  Instead the DeviceEffectProxy\u0027s proxyMutex should be assigned the same order as EffectChain_Mutex.  I think we can create a phantom resource that obtains the EffectHandle_Mutex capability order when calling from the DeviceEffectProxy so as to keep the eventual REQUIRES the same.\n\nHere\u0027s where the device effect proxy category is automatixally generated:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/media/audio_utils/tests/generate_mutex_order.cpp;drc\u003d87844a7445b445e2255a249f37aa629f08f7dac6;l\u003d57\n\nwe have the actual handle mutex here in DeviceEffectManager.  I would prefer to use it, or we need to create a phantom resource with the same capability order.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/services/audioflinger/DeviceEffectManager.cpp;drc\u003da2e690035e3e9443d04548b484d3332c4b87af07;l\u003d140\n\nwe don\u0027t currently have a way for a single mutex to be associated with multiple capability orders, it is currently only.one capability.",
       "parentUuid": "8cac210f_0c05b99c",
+      "range": {
+        "startLine": 331,
+        "startChar": 21,
+        "endLine": 331,
+        "endChar": 30
+      },
+      "revId": "fa5841e4986ae22cca03b269a3558df99d48ade0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5018c1_be085574",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-28T00:50:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b8d13fc7_2374f9cd",
       "range": {
         "startLine": 331,
         "startChar": 21,
