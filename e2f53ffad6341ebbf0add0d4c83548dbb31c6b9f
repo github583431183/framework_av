@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f16277e_20d20ee8",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "251b33c8_939adff8",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 51
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b4862a0_f3f8d768",
@@ -105,6 +129,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2872ca09_c0964b65",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioFlingerService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "143a4631_c237cd89",
+      "range": {
+        "startLine": 103,
+        "startChar": 37,
+        "endLine": 103,
+        "endChar": 96
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef8096a_3c084aba",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioFlingerService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4862a0_f3f8d768",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f653ce0e_b49a2bbd",
@@ -128,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a9b07e_ef48e04d",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioFlingerService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f653ce0e_b49a2bbd",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 55
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3492969c_394efaca",
@@ -141,6 +237,30 @@
       "writtenOn": "2024-05-28T15:03:27Z",
       "side": 1,
       "message": "I am not sure we need this API as setStreamMute() is not used so far.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 83
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05520d48_4575964f",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioFlingerService.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "if you confirm, I will completely remove it.",
+      "parentUuid": "3492969c_394efaca",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -212,6 +332,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86dd8267_ed4803da",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c069a3_23086a4d",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 57
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "374cb844_cc7e6466",
@@ -225,6 +369,30 @@
       "writtenOn": "2024-05-28T15:03:27Z",
       "side": 1,
       "message": "AudioTrack port ids",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 28
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa4f0af_2d928794",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "374cb844_cc7e6466",
       "range": {
         "startLine": 136,
         "startChar": 27,
@@ -258,6 +426,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "934beefa_692389c1",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a77e302_b74e0606",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 55
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f35b6a8_6c448a08",
@@ -271,6 +463,30 @@
       "writtenOn": "2024-05-28T15:03:27Z",
       "side": 1,
       "message": "AudioTrack port",
+      "range": {
+        "startLine": 232,
+        "startChar": 28,
+        "endLine": 232,
+        "endChar": 32
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49dca10b_ef9ee5f8",
+        "filename": "media/libaudioclient/include/media/IAudioFlinger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f35b6a8_6c448a08",
       "range": {
         "startLine": 232,
         "startChar": 28,
@@ -304,6 +520,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8cf42c1_d5bf552d",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27fb5685_e0529951",
+      "range": {
+        "startLine": 1555,
+        "startChar": 0,
+        "endLine": 1558,
+        "endChar": 5
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0623f174_ec3f492a",
@@ -317,6 +557,30 @@
       "writtenOn": "2024-05-28T15:03:27Z",
       "side": 1,
       "message": "add port volume commands here",
+      "range": {
+        "startLine": 4847,
+        "startChar": 0,
+        "endLine": 4847,
+        "endChar": 49
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffa5dda_98033ab9",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4847,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0623f174_ec3f492a",
       "range": {
         "startLine": 4847,
         "startChar": 0,
@@ -350,6 +614,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "538ce60d_cfb5a7fa",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 7949,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "Initialy, i removed the list of streams in the function. Morever getVoiceSource was added in  AudiouOutputDesc, so no more blocker to move it back",
+      "parentUuid": "72cfe700_c74d5b66",
+      "range": {
+        "startLine": 7939,
+        "startChar": 1,
+        "endLine": 7949,
+        "endChar": 0
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bc96857_2b916bc9",
@@ -363,6 +651,30 @@
       "writtenOn": "2024-05-28T15:03:27Z",
       "side": 1,
       "message": "It is probably more complex than this because because we must keep command for ports that are not part of both commands.",
+      "range": {
+        "startLine": 2604,
+        "startChar": 0,
+        "endLine": 2604,
+        "endChar": 53
+      },
+      "revId": "e2f53ffad6341ebbf0add0d4c83548dbb31c6b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849d58f6_bfddff00",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-29T14:06:06Z",
+      "side": 1,
+      "message": "and override the",
+      "parentUuid": "2bc96857_2b916bc9",
       "range": {
         "startLine": 2604,
         "startChar": 0,
