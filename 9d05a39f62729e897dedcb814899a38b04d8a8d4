@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "36d5e210_dd7164ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 2066470
+      },
+      "writtenOn": "2024-05-29T05:42:19Z",
+      "side": 1,
+      "message": "Acknowledged\nWill add the bug tracker ID before raising a new patchset.",
+      "parentUuid": "63cce7c2_b73c8dca",
+      "revId": "9d05a39f62729e897dedcb814899a38b04d8a8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3cc3460f_32ba17ef",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
