@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc712a8_34807533",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-29T15:27:26Z",
+      "side": 1,
+      "message": "I think the biggy is that the two are of different types -- once as a static and once as a shared library.  if they were both of the same type, i don\u0027t think it would have been a problem.\n\nthere are multiple places in the fuzzer\u0027s Android.bp where \nwe see libraries that are included both in static_libs and\nshared_libs.  I think we need some effort to clean up those other libraries that are referenced both ways...",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "e4f63f20d769837f571173de281b94d999e11c40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
