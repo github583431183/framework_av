@@ -46,6 +46,30 @@
       },
       "revId": "bc0e3bb3f2f8f7601c65b5c31b80551f2a3f73d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c11869e_212b1bdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2024-05-29T17:39:34Z",
+      "side": 1,
+      "message": "Ok, so it looks like we don\u0027t have a point in time where we only build the mainline modules from source because we have those other `ap.*a` releases, not just `next`.\n\nAnd `libvintf` won\u0027t allow multiple different modules to declare the same interface.\n\nSo we can include the fragment in `mediaserver` conditionally with product_variables/exclude_vintf_fragments like I added in aosp/3108297.\n\nHowever, that means that we will run into a problem when we finally update the mediaswcodec mainline module prebuilt to include the vintf_fragment. I don\u0027t know how this process is done. Is it possible to update the mainline module prebuilt and add a CL to the same topic to remove the `vintf_fragments` entry on `mediaserver`?",
+      "parentUuid": "765f403e_bacfa426",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "bc0e3bb3f2f8f7601c65b5c31b80551f2a3f73d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
