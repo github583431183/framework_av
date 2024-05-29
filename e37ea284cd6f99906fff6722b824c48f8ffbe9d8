@@ -1,0 +1,287 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d773c646_987866b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "DeviceEffectHandle",
+      "range": {
+        "startLine": 17,
+        "startChar": 59,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3538cabc_69870340",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "DeviceEffectHandle",
+      "range": {
+        "startLine": 19,
+        "startChar": 47,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a99aa05_866f118f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "AudioFlinger",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f54f75a_f1bd5ab3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "DeviceEffectHandle",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb541fe_b92ea76b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "temporarily",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f19fb4_28333b7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "minor nits.",
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3c98d3_d796d008",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "nit: why does this need to be a unique_lock?",
+      "range": {
+        "startLine": 76,
+        "startChar": 17,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d242b44_fe4450d6",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "nit: std::move() is better here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 45,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cbdb8de4_fa022c28",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/DeviceEffectManager.cpp",
+              "range": {
+                "startLine": 81,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": "                disconnectedHandles.push_back(std::move(disconnectedHandle));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a56e97e_69adc487",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 3472,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "nit: explicit initialization not needed.",
+      "range": {
+        "startLine": 3472,
+        "startChar": 42,
+        "endLine": 3472,
+        "endChar": 52
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc29d31_20dd7d1b",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 3476,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "nit: std::move(...)",
+      "range": {
+        "startLine": 3476,
+        "startChar": 32,
+        "endLine": 3476,
+        "endChar": 64
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e11e08bd_00dbf8be",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/Effects.cpp",
+              "range": {
+                "startLine": 3476,
+                "startChar": 0,
+                "endLine": 3477,
+                "endChar": 0
+              },
+              "replacement": "            disconnectedHandle \u003d std::move(mEffectHandles.at(patchHandle));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8faea77_6d4bade7",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-05-29T22:05:34Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"aggragating\" -- should it be \"aggregating\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"aggragating\" -- should it be \"aggregating\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 375,
+        "startChar": 50,
+        "endLine": 375,
+        "endChar": 61
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
