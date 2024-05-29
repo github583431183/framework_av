@@ -33,6 +33,23 @@
       "message": "lgtm",
       "revId": "52ff0f827a1eac2cbbbef33035971c7a1fba32ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e07d52_6e7b53eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2024-05-29T17:11:25Z",
+      "side": 1,
+      "message": "@elaurent fyi, we will probably get rid of this dep soon",
+      "revId": "52ff0f827a1eac2cbbbef33035971c7a1fba32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
