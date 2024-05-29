@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19efde58_d0d89fdb",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-29T14:27:34Z",
+      "side": 1,
+      "message": "having to change 2 places is error prone.\n\nit\u0027d be better to have a #define somewhere that both of these\nplaces use -- and then we manage that #define.\n\none possibility:  add -DKEEP_THREADS_ACTIVE  in the Android.bp\nand add something to this file that sets a default...\n#ifndef KEEP_THREADS_ACTIVE\n#define KEEP_THREADS_ACTIVE 0\n#endif",
+      "range": {
+        "startLine": 436,
+        "startChar": 41,
+        "endLine": 436,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5b0f65fa_78854459",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+              "range": {
+                "startLine": 436,
+                "startChar": 0,
+                "endLine": 437,
+                "endChar": 0
+              },
+              "replacement": "    s_fill_mem_ip.u4_keep_threads_active \u003d KEEP_THREADS_ACTIVE;\n"
+            },
+            {
+              "path": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+              "range": {
+                "startLine": 478,
+                "startChar": 0,
+                "endLine": 479,
+                "endChar": 0
+              },
+              "replacement": "    s_init_ip.u4_keep_threads_active \u003d KEEP_THREADS_ACTIVE;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fcd48fe4a1c143625403679853b250c36508aa25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
