@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb054f87_5d1e7a96",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-05-29T06:24:41Z",
+      "side": 1,
+      "message": "The variable kTokenId is passed as a parameter to the restoreCallingIdentity(). Inside restoreCallingIdentity(), the unpackCallingUid() is called, which right-shifts kTokenId by 32 bits and assigns the result to mCallingUid.\n\nWithin the MediaMetricsService::submitInternal(), there is a switch case that utilizes the value of mCallingUid through getCallingUid(). The value of kTokenId is chosen in such a way that it matches one of the cases in this switch statement.\n```\nstatus_t MediaMetricsService::submitInternal(mediametrics::Item *item, bool release)\n{\n    // calling PID is 0 for one-way calls.\n    const pid_t pid \u003d IPCThreadState::self()-\u003egetCallingPid();\n    const pid_t pid_given \u003d item-\u003egetPid();\n    const uid_t uid \u003d IPCThreadState::self()-\u003egetCallingUid();\n    const uid_t uid_given \u003d item-\u003egetUid();\n\n    //ALOGD(\"%s: caller pid\u003d%d uid\u003d%d,  item pid\u003d%d uid\u003d%d\", __func__,\n    //        (int)pid, (int)uid, (int) pid_given, (int)uid_given);\n\n    bool isTrusted;\n     switch (uid) {\n    case AID_AUDIOSERVER:\n    case AID_BLUETOOTH:\n    case AID_CAMERA:\n    case AID_DRM:\n    case AID_MEDIA:\n    case AID_MEDIA_CODEC:\n    case AID_MEDIA_EX:\n    case AID_MEDIA_DRM:\n    // case AID_SHELL: // DEBUG ONLY - used for mediametrics_tests to add new keys\n    case AID_SYSTEM:                \u003c--- (i)\n        // trusted source, only override default values\n[. . .]\n        break;\n    default:\n[. . .]\n        break;\n    }\n ```",
+      "parentUuid": "81fd7738_74bc7dbf",
+      "range": {
+        "startLine": 33,
+        "startChar": 35,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00e5313c_1651aa5b",
         "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
         "patchSetId": 1
@@ -94,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d329caa4_b0c2b3f7",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-05-29T06:24:41Z",
+      "side": 1,
+      "message": "Actions (lambda functions) are added to mAction in AudioAnalytics(). They are only executed when the key of the item variable matches, in a wildcard manner, with the URL added in mAction in AudioAnalytics(). A similar key is created here to pass these checks and ensure that the lambda functions are covered.\n```\n\nvoid AudioAnalytics::processActions(const std::shared_ptr\u003cconst mediametrics::Item\u003e\u0026 item)\n{\n    auto actions \u003d mActions.getActionsForItem(item); // internally locked.\n    // Execute actions with no lock held.\n    for (const auto\u0026 action : actions) {\n        (*action)(item);\n    }\n}\n\nAudioAnalytics::AudioAnalytics(const std::shared_ptr\u003cStatsdLog\u003e\u0026 statsdLog)\n[. . .]\n    mActions.addAction(\n        AMEDIAMETRICS_KEY_PREFIX_AUDIO_DEVICE\n        \"postBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent\"\n        \".\" AMEDIAMETRICS_PROP_STATE,\n        \"connected\",\n        std::make_shared\u003cAnalyticsActions::Function\u003e(\n            [this](const std::shared_ptr\u003cconst android::mediametrics::Item\u003e \u0026item){\n                mDeviceConnection.postBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent(item);\n            }));  \u003c--- postBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent() is called inside this lamda function.\n\n[. . ]\n```",
+      "parentUuid": "00e5313c_1651aa5b",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a726b602_137de60b",
         "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
         "patchSetId": 1
@@ -135,6 +183,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1abe82b_d0b5dd4e",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-05-29T06:24:41Z",
+      "side": 1,
+      "message": "Corrected commas.",
+      "parentUuid": "a726b602_137de60b",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61eba1f8_b1074d4e",
         "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
         "patchSetId": 1
@@ -170,6 +242,30 @@
           ]
         }
       ],
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c7b21c_6c8c1a68",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-05-29T06:24:41Z",
+      "side": 1,
+      "message": "typedef int64_t nsecs_t; // nano-seconds\n\nupdated.",
+      "parentUuid": "61eba1f8_b1074d4e",
+      "range": {
+        "startLine": 97,
+        "startChar": 58,
+        "endLine": 97,
+        "endChar": 72
+      },
       "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
