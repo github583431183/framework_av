@@ -14,6 +14,13 @@ flag {
 }
 
 flag {
+    name: "audiotrack_portid_volume_mngt"
+    namespace: "media_audio"
+    description: "Allows to manage volume by port id within audio flinger instead of legacy stream type."
+    bug: "317212590"
+}
+
+flag {
     name: "multi_zone_audio"
     namespace: "media_audio"
     description: "Enable multi-zone audio support in audio product strategies."
