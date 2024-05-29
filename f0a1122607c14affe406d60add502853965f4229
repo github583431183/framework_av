@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6e42c4e_7096ac52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-29T14:43:55Z",
+      "side": 1,
+      "message": "Can you please add the following as well?\nBug: 342651775",
+      "revId": "f0a1122607c14affe406d60add502853965f4229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750ed92c_26f423af",
+        "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-29T14:43:55Z",
+      "side": 1,
+      "message": "I think we would need to ignore this all the times and not just for first frame.",
+      "range": {
+        "startLine": 360,
+        "startChar": 82,
+        "endLine": 361,
+        "endChar": 49
+      },
+      "revId": "f0a1122607c14affe406d60add502853965f4229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0be7bb47_ac3d0f09",
         "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
         "patchSetId": 1
@@ -38,6 +78,30 @@
           ]
         }
       ],
+      "revId": "f0a1122607c14affe406d60add502853965f4229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a934960c_327603a5",
+        "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-29T14:43:55Z",
+      "side": 1,
+      "message": "Ray,\nVP9 and AV1 (the two video codecs supported in webm) do not have start codes and passing CSD to the file causes the resulting file to be invalid.\n(Please refer b/342651775 for more details on this).\n\nSo this change is valid.",
+      "parentUuid": "0be7bb47_ac3d0f09",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 367,
+        "endChar": 9
+      },
       "revId": "f0a1122607c14affe406d60add502853965f4229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
