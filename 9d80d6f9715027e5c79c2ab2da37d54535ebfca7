@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1478d39a_77079a3d",
+        "filename": "media/codec2/components/mpeg2/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1962427
+      },
+      "writtenOn": "2024-05-30T14:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d740a55_dc0f7c38",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "9d80d6f9715027e5c79c2ab2da37d54535ebfca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0f2d1c2_6e47e2ed",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "9d80d6f9715027e5c79c2ab2da37d54535ebfca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "193b0ad1_6d931217",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1962427
+      },
+      "writtenOn": "2024-05-30T14:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f2d1c2_6e47e2ed",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 28
+      },
       "revId": "9d80d6f9715027e5c79c2ab2da37d54535ebfca7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
