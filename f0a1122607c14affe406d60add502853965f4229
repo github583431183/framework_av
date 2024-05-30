@@ -170,6 +170,30 @@
       },
       "revId": "f0a1122607c14affe406d60add502853965f4229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b57406d_62ccecfe",
+        "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-30T00:25:48Z",
+      "side": 1,
+      "message": "as written, it seems to allow a CSD at a later point in the stream.\nso we could have\n\u003csome video frames\u003e \u003cnew csd\u003e \u003cmore video frames\u003e\nis it documented that the initial \u003csome video frames\u003e must be non-empty?\n\ni could see dropping the incoming CSD if the CSD we just parsed out of the bitstream is identical to the one that is currently in effect.\nSuch a situation amounts to \"I sent you a redundant CSD\".",
+      "parentUuid": "a934960c_327603a5",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 367,
+        "endChar": 9
+      },
+      "revId": "f0a1122607c14affe406d60add502853965f4229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
