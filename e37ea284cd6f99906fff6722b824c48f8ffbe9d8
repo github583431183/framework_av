@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2e6d45_a6505ca6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d773c646_987866b3",
+      "range": {
+        "startLine": 17,
+        "startChar": 59,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3538cabc_69870340",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-29T22:05:34Z",
       "side": 1,
       "message": "DeviceEffectHandle",
+      "range": {
+        "startLine": 19,
+        "startChar": 47,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63af5fd3_67ae891d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3538cabc_69870340",
       "range": {
         "startLine": 19,
         "startChar": 47,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1536e254_cc336cf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a99aa05_866f118f",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f54f75a_f1bd5ab3",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0c81e7_5ca3c064",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f54f75a_f1bd5ab3",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eb541fe_b92ea76b",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-05-29T22:05:34Z",
       "side": 1,
       "message": "temporarily",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556c86de_f4ded586",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb541fe_b92ea76b",
       "range": {
         "startLine": 30,
         "startChar": 11,
@@ -197,6 +317,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca6062a_e9362466",
+        "filename": "services/audioflinger/DeviceEffectManager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d242b44_fe4450d6",
+      "range": {
+        "startLine": 81,
+        "startChar": 45,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a56e97e_69adc487",
@@ -210,6 +354,30 @@
       "writtenOn": "2024-05-29T22:05:34Z",
       "side": 1,
       "message": "nit: explicit initialization not needed.",
+      "range": {
+        "startLine": 3472,
+        "startChar": 42,
+        "endLine": 3472,
+        "endChar": 52
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a425828f_45c24239",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 3472,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a56e97e_69adc487",
       "range": {
         "startLine": 3472,
         "startChar": 42,
@@ -261,6 +429,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f07dbe27_578b2127",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 3476,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddc29d31_20dd7d1b",
+      "range": {
+        "startLine": 3476,
+        "startChar": 32,
+        "endLine": 3476,
+        "endChar": 64
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8faea77_6d4bade7",
@@ -274,6 +466,30 @@
       "writtenOn": "2024-05-29T22:05:34Z",
       "side": 1,
       "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"aggragating\" -- should it be \"aggregating\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"aggragating\" -- should it be \"aggregating\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 375,
+        "startChar": 50,
+        "endLine": 375,
+        "endChar": 61
+      },
+      "revId": "e37ea284cd6f99906fff6722b824c48f8ffbe9d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b6458e_22a00f35",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-30T12:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8faea77_6d4bade7",
       "range": {
         "startLine": 375,
         "startChar": 50,
