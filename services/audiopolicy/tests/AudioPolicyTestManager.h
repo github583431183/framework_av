@@ -33,6 +33,7 @@ class AudioPolicyTestManager : public AudioPolicyManager {
     using AudioPolicyManager::getOutputs;
     using AudioPolicyManager::getAvailableOutputDevices;
     using AudioPolicyManager::getAvailableInputDevices;
+    using AudioPolicyManager::checkInputsForDevice;
     using AudioPolicyManager::setSurroundFormatEnabled;
     using AudioPolicyManager::releaseMsdOutputPatches;
     using AudioPolicyManager::setMsdOutputPatches;
@@ -43,6 +44,7 @@ class AudioPolicyTestManager : public AudioPolicyManager {
     using AudioPolicyManager::deviceToAudioPort;
     using AudioPolicyManager::handleDeviceConfigChange;
     uint32_t getAudioPortGeneration() const { return mAudioPortGeneration; }
+    HwModuleCollection getHwModules() const { return mHwModules; }
 };
 
 }  // namespace android
