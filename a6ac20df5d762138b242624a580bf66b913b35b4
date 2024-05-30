@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8352e66f_571482de",
+        "filename": "media/codec2/vndk/C2Fence.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-05-30T19:23:23Z",
+      "side": 1,
+      "message": "The proposed change creates a leak in fds.\n\nIn the original implementation\n\nSyncFenceImpl(fds[], mergedFd) creates:\n  { mListFences \u003d fds, mFence \u003d mergedFd }\n\nFor this: fds() \u003d\u003e fds, fd() \u003d\u003e mergedFd\n   handle() \u003d\u003e { fds + [ mergedFd ] }\n\nFrom this handle, CreateFromNH creates:\n  { mListFences \u003d fds, mFence \u003d mergedFd }\n\n**So everything works as expected.**\n\nWith the change, CreateFromNH would create, resulting in an additional fd in fds:\n  { mListFences \u003d fds + [mergedFd], mFence \u003d mergedFd }",
+      "revId": "a6ac20df5d762138b242624a580bf66b913b35b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
