@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3d0313_506625a9",
+        "filename": "media/codec2/components/avc/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-30T23:09:18Z",
+      "side": 1,
+      "message": "Srujan,\nIn today\u0027s call Ray suggested to set this to 1 and land the CL (same for HEVC too) to keep these consistent with mpeg 2 plugin.\n\nCan you please make the change and update the commit message accordingly?\n\nThanks.",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "53a4ba70c1f414fcf40f08db1a483852b60c7e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
