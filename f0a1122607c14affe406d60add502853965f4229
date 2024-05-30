@@ -194,6 +194,30 @@
       },
       "revId": "f0a1122607c14affe406d60add502853965f4229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cadde46f_b03c88c2",
+        "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-30T00:33:25Z",
+      "side": 1,
+      "message": "\u003e as written, it seems to allow a CSD at a later point in the stream\n\nPatchset 2 ignores all the CSDs in the video track.\n\n\u003e i could see dropping the incoming CSD if the CSD we just parsed out of the bitstream is identical to the one that is currently in effect.\n\nNone of the muxers do anything with the CSD data sent in writeSampleData().\nFor avc and HEVC it is not an issue as those bitstreams have start-codes, but for vp9 without start codes sending that CSD as is results in an invalid bitstream and hence must be ignored.",
+      "parentUuid": "8b57406d_62ccecfe",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 367,
+        "endChar": 9
+      },
+      "revId": "f0a1122607c14affe406d60add502853965f4229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
