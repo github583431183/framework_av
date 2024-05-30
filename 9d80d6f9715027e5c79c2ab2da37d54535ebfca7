@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d740a55_dc0f7c38",
+        "filename": "media/codec2/components/mpeg2/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-30T13:55:14Z",
+      "side": 1,
+      "message": "given what we do in the code, this is not needed.\n\nI would do one of the following here:\n(1) -DKEEP_THREADS_ACTIVE\u003d0\n(2) no definition at all.\n\ni have a slight preference to #1 -- so we explicitly know which behavior\nwe\u0027re getting rather than it only being discoverable from reading the code.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "9d80d6f9715027e5c79c2ab2da37d54535ebfca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f2d1c2_6e47e2ed",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-30T13:55:14Z",
+      "side": 1,
+      "message": "this means that my Android.bp is prevented (in a non-obvious way)\nfrom saying:\n\n-DKEEP_THREADS_ACTIVE\u003d0\n\ni would drop the #else clause here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "75bd5d00_b3b3069c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "9d80d6f9715027e5c79c2ab2da37d54535ebfca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
