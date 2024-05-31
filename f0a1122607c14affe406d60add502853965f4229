@@ -218,6 +218,30 @@
       },
       "revId": "f0a1122607c14affe406d60add502853965f4229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc5f7c9_51a4f22f",
+        "filename": "media/libstagefright/webm/WebmFrameThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-05-31T06:11:55Z",
+      "side": 1,
+      "message": "Discussed this with Ray over a call and explained the change.\nMarking this as resolved for now.",
+      "parentUuid": "cadde46f_b03c88c2",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 367,
+        "endChar": 9
+      },
+      "revId": "f0a1122607c14affe406d60add502853965f4229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
