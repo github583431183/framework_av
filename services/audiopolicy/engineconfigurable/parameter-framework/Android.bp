@@ -25,67 +25,14 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
-prebuilt_etc {
-    name: "PolicyClass.xml",
-    vendor: true,
-    src: ":PolicyClass",
-    sub_dir: "parameter-framework/Structure/Policy",
-}
-
-prebuilt_etc {
-    name: "PolicySubsystem.xml",
-    vendor: true,
-    src: ":PolicySubsystem",
-    sub_dir: "parameter-framework/Structure/Policy",
-}
-
-prebuilt_etc {
-    name: "PolicySubsystem-CommonTypes.xml",
-    vendor: true,
-    src: ":buildcommontypesstructure_gen",
-    sub_dir: "parameter-framework/Structure/Policy",
-}
-
-prebuilt_etc {
-    name: "ProductStrategies.xml",
-    vendor: true,
-    src: ":product_strategies_structure",
-    sub_dir: "parameter-framework/Structure/Policy",
-}
-
-genrule {
-    name: "buildcommontypesstructure_gen",
-    defaults: ["buildcommontypesstructurerule"],
-}
-
-filegroup {
-    name: "product_strategies_structure",
-    srcs: ["examples/common/Structure/ProductStrategies.xml"],
-}
-
 filegroup {
     name: "product_strategies_structure_template",
     srcs: ["examples/common/Structure/ProductStrategies.xml.in"],
 }
 
 filegroup {
-    name: "PolicySubsystem",
-    srcs: ["examples/common/Structure/PolicySubsystem.xml"],
-}
-
-filegroup {
     name: "PolicySubsystem-no-strategy",
     srcs: ["examples/common/Structure/PolicySubsystem-no-strategy.xml"],
-}
-
-filegroup {
-    name: "common_types_structure_template",
-    srcs: ["examples/common/Structure/PolicySubsystem-CommonTypes.xml.in"],
-}
-
-filegroup {
-    name: "PolicyClass",
-    srcs: ["examples/common/Structure/PolicyClass.xml"],
 }
 
 filegroup {
@@ -106,14 +53,4 @@ filegroup {
 filegroup {
     name: "ParameterFrameworkConfigurationPolicy.user.xml",
     srcs: ["examples/ParameterFrameworkConfigurationPolicy.user.xml"],
-}
-
-filegroup {
-    name: "ParameterFrameworkConfigurationPolicyAidl.userdebug.xml",
-    srcs: ["examples/ParameterFrameworkConfigurationPolicyAidl.userdebug.xml"],
-}
-
-filegroup {
-    name: "ParameterFrameworkConfigurationPolicyAidl.user.xml",
-    srcs: ["examples/ParameterFrameworkConfigurationPolicyAidl.user.xml"],
 }
