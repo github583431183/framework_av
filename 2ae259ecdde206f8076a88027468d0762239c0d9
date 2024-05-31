@@ -1,0 +1,134 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a28ddc_2899c91c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-31T15:24:53Z",
+      "side": 1,
+      "message": "EffectHandler?",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2489701f_a9a32892",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3788,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-31T15:24:53Z",
+      "side": 1,
+      "message": "can you explain why this is needed?",
+      "range": {
+        "startLine": 3788,
+        "startChar": 0,
+        "endLine": 3788,
+        "endChar": 22
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb7be9c_13f6ba62",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-31T15:24:53Z",
+      "side": 1,
+      "message": "I really would like to avoid this, or at lest do it only for internal handles",
+      "range": {
+        "startLine": 1874,
+        "startChar": 0,
+        "endLine": 1874,
+        "endChar": 98
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c811df_8acbdbc5",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-31T15:24:53Z",
+      "side": 1,
+      "message": "is there a way to make this explicit? For instance we could create a subclass InternalEffectHandle of EffectHandle that wold override the mutex() method and other locking method based on the requirements for internal effects.",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 77
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ecfd0c0d_ee2da62c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/Effects.h",
+              "range": {
+                "startLine": 331,
+                "startChar": 0,
+                "endLine": 332,
+                "endChar": 0
+              },
+              "replacement": "    bool isInternal() const { return mIsInternal; }\n"
+            },
+            {
+              "path": "services/audioflinger/Effects.h",
+              "range": {
+                "startLine": 369,
+                "startChar": 0,
+                "endLine": 369,
+                "endChar": 0
+              },
+              "replacement": "    void setIsInternal(bool isInternal) { mIsInternal \u003d isInternal; }\n\n"
+            },
+            {
+              "path": "services/audioflinger/Effects.h",
+              "range": {
+                "startLine": 410,
+                "startChar": 0,
+                "endLine": 410,
+                "endChar": 0
+              },
+              "replacement": "    bool mIsInternal \u003d false;                // true if handle is internal\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
