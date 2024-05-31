@@ -33,9 +33,6 @@ import xml.dom.minidom as MINIDOM
 # in order to discover all the strategies available for the current platform.
 #           --audiopolicyengineconfigurationfile <path/to/audio_policy_engine_configuration.xml>
 #
-# The reference file of ProductStrategies structure must also be set as an input of the script:
-#           --productstrategiesstructurefile <path/to/structure/file/ProductStrategies.xml.in>
-#
 # At last, the output of the script shall be set also:
 #           --outputfile <path/to/out/<system|vendor|odm>/etc/ProductStrategies.xml>
 #
@@ -50,11 +47,6 @@ def parseArgs():
                            metavar="(AUDIO_POLICY_ENGINE_CONFIGURATION_FILE)",
                            type=argparse.FileType('r'),
                            required=True)
-    argparser.add_argument('--productstrategiesstructurefile',
-                           help="Product Strategies Structure XML base file, Mandatory.",
-                           metavar="STRATEGIES_STRUCTURE_FILE",
-                           type=argparse.FileType('r'),
-                           required=True)
     argparser.add_argument('--outputfile',
                            help="Product Strategies Structure output file, Mandatory.",
                            metavar="STRATEGIES_STRUCTURE_OUTPUT_FILE",
@@ -66,26 +58,32 @@ def parseArgs():
     return argparser.parse_args()
 
 
-def generateXmlStructureFile(strategies, strategy_structure_in_file, output_file):
+def generateXmlStructureFile(strategies, output_file):
 
-    logging.info("Importing strategy_structure_in_file {}".format(strategy_structure_in_file))
-    strategies_in_tree = ET.parse(strategy_structure_in_file)
+    document = MINIDOM.Document()
 
-    strategies_root = strategies_in_tree.getroot()
-    strategy_components = strategies_root.find('ComponentType')
+    root = document.createElement('ComponentTypeSet')
+    root.setAttributeNS("xmls", "xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
+    root.setAttribute("xsi:noNamespaceSchemaLocation=", "Schemas/ComponentTypeSet.xsd")
+    document.appendChild(root)
+
+    strategiesChild = document.createElement('ComponentType')
+    strategiesChild.setAttribute('Name', 'ProductStrategies')
+    strategiesChild.setAttribute('Description=', '')
+    root.appendChild(strategiesChild)
 
     for strategy_name in strategies:
         context_mapping = "".join(map(str, ["Identifier:1000,Name:", strategy_name]))
         strategy_pfw_name = strategy_name.replace('STRATEGY_', '').lower()
-        ET.SubElement(strategy_components, "Component",
-                      Name=strategy_pfw_name, Type="ProductStrategy",
-                      Mapping=context_mapping)
 
-    xmlstr = ET.tostring(strategies_root, encoding='utf8', method='xml')
-    reparsed = MINIDOM.parseString(xmlstr)
-    prettyXmlStr = reparsed.toprettyxml(newl='\r\n')
-    prettyXmlStr = os.linesep.join([s for s in prettyXmlStr.splitlines() if s.strip()])
-    output_file.write(prettyXmlStr)
+        strategyChild = document.createElement('Component')
+        strategyChild.setAttribute('Name', strategy_pfw_name)
+        strategyChild.setAttribute('Type', 'ProductStrategy')
+        strategyChild.setAttribute('Mapping', context_mapping)
+        strategiesChild.appendChild(strategyChild)
+
+    xml_str = document.toprettyxml(indent ="\t")
+    output_file.write(xml_str)
 
 def capitalizeLine(line):
     return ' '.join((w.capitalize() for w in line.split(' ')))
@@ -131,9 +129,7 @@ def main():
     strategies = parseAndroidAudioPolicyEngineConfigurationFile(
         args.audiopolicyengineconfigurationfile)
 
-    product_strategies_structure = args.productstrategiesstructurefile
-
-    generateXmlStructureFile(strategies, product_strategies_structure, args.outputfile)
+    generateXmlStructureFile(strategies, args.outputfile)
 
 # If this file is directly executed
 if __name__ == "__main__":

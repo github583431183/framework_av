@@ -1,0 +1,90 @@
+/*
+ * Copyright (C) 2024 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_av_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_av_license"],
+}
+
+prebuilt_etc {
+    name: "PolicyClass.xml",
+    src: ":PolicyClass",
+    sub_dir: "parameter-framework/Structure/Policy",
+}
+
+prebuilt_etc {
+    name: "PolicySubsystem.xml",
+    src: ":PolicySubsystem",
+    sub_dir: "parameter-framework/Structure/Policy",
+}
+
+prebuilt_etc {
+    name: "PolicySubsystem-CommonTypes.xml",
+    src: ":buildcommontypesstructure_gen",
+    sub_dir: "parameter-framework/Structure/Policy",
+}
+
+prebuilt_etc {
+    name: "ProductStrategies.xml",
+    src: ":product_strategies_structure",
+    sub_dir: "parameter-framework/Structure/Policy",
+}
+
+prebuilt_etc {
+    name: "ParameterFrameworkConfigurationPolicy.xml",
+    src: ":ParameterFrameworkConfigurationPolicySrc",
+    sub_dir: "parameter-framework",
+}
+
+genrule {
+    name: "ParameterFrameworkConfigurationPolicySrc",
+    out: ["ParameterFrameworkConfigurationPolicy.xml"],
+    srcs: ["etc/ParameterFrameworkConfigurationPolicy.xml"],
+    product_variables: {
+        debuggable: {
+            cmd: "sed -e 's|TuningAllowed=\"false\"|TuningAllowed=\"true\" ServerPort=\"unix:///dev/socket/audioserver/policy_debug\"|g' <$(in) > $(out)",
+        },
+    },
+}
+
+genrule {
+    name: "buildcommontypesstructure_gen",
+    defaults: ["buildcommontypesstructurerule"],
+}
+
+filegroup {
+    name: "product_strategies_structure",
+    srcs: ["etc/Structure/ProductStrategies.xml"],
+}
+
+filegroup {
+    name: "PolicySubsystem",
+    srcs: ["etc/Structure/PolicySubsystem.xml"],
+}
+
+filegroup {
+    name: "common_types_structure_template",
+    srcs: ["etc/Structure/PolicySubsystem-CommonTypes.xml.in"],
+}
+
+filegroup {
+    name: "PolicyClass",
+    srcs: ["etc/Structure/PolicyClass.xml"],
+}
