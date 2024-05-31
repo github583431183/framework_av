@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3914907e_3933a5b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-31T16:22:08Z",
+      "side": 1,
+      "message": "Shunkai, could you please review? The functionality has been verified by the partner.",
+      "revId": "40618538671cb540f485fec790be6a4e1f020d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
