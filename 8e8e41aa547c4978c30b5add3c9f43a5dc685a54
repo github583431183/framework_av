@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e6408b_97402c5e",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-31T15:29:41Z",
+      "side": 1,
+      "message": "aidlDevice",
+      "range": {
+        "startLine": 320,
+        "startChar": 32,
+        "endLine": 320,
+        "endChar": 40
+      },
+      "revId": "8e8e41aa547c4978c30b5add3c9f43a5dc685a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a608bf34_7f0e7b37",
+        "filename": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-31T15:29:41Z",
+      "side": 1,
+      "message": "\u0026\u0026 0 \u003d\u003d deviceprocess.size()",
+      "range": {
+        "startLine": 351,
+        "startChar": 69,
+        "endLine": 351,
+        "endChar": 70
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "909256cd_95c5f2e7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudiohal/impl/EffectsFactoryHalAidl.cpp",
+              "range": {
+                "startLine": 351,
+                "startChar": 0,
+                "endLine": 352,
+                "endChar": 0
+              },
+              "replacement": "                if (0 \u003d\u003d preprocess.size() \u0026\u0026 0 \u003d\u003d postprocess.size() \u0026\u0026\n                    0 \u003d\u003d deviceprocess.size()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8e8e41aa547c4978c30b5add3c9f43a5dc685a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
