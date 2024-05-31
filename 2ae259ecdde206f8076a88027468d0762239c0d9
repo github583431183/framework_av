@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4412576a_0f52463a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1706828
+      },
+      "writtenOn": "2024-05-31T15:33:57Z",
+      "side": 1,
+      "message": "yes, Shunkai wanted to fakely speak about DeviceEffectHandle.\nHere it is a EffecTHandle with a client, other are \"internalEffectHandle\u0027.\nWill update",
+      "parentUuid": "d1a28ddc_2899c91c",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2489701f_a9a32892",
         "filename": "services/audioflinger/AudioFlinger.cpp",
         "patchSetId": 13
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65c24953_00489895",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3788,
+      "author": {
+        "id": 1706828
+      },
+      "writtenOn": "2024-05-31T15:33:57Z",
+      "side": 1,
+      "message": "I moved the Hardware lock down in term of prio in order to be able to take it while DeviceEffectManager/DeviceEffecTHandle locked while adding removing device effect to /from hal. It was too complicated to unlock for all path.\n\nThus, the patter hardware Lock -\u003e Threadclient was broken. As it was the only regression caught (so far?), i decided to unlock here.",
+      "parentUuid": "2489701f_a9a32892",
+      "range": {
+        "startLine": 3788,
+        "startChar": 0,
+        "endLine": 3788,
+        "endChar": 22
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fb7be9c_13f6ba62",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 13
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-31T15:24:53Z",
       "side": 1,
       "message": "I really would like to avoid this, or at lest do it only for internal handles",
+      "range": {
+        "startLine": 1874,
+        "startChar": 0,
+        "endLine": 1874,
+        "endChar": 98
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e971df_dd2833c9",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1706828
+      },
+      "writtenOn": "2024-05-31T15:33:57Z",
+      "side": 1,
+      "message": "will filter the unlock for internal only",
+      "parentUuid": "9fb7be9c_13f6ba62",
       "range": {
         "startLine": 1874,
         "startChar": 0,
@@ -127,6 +199,30 @@
           ]
         }
       ],
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c90d4f_094f82ee",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1706828
+      },
+      "writtenOn": "2024-05-31T15:33:57Z",
+      "side": 1,
+      "message": "It was one of my proposal. Will try this",
+      "parentUuid": "58c811df_8acbdbc5",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 77
+      },
       "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
