@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3845a2d0_27259aaf",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-31T19:42:20Z",
+      "side": 1,
+      "message": "unspecified should default to 0.",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cf82d1c3_479d4134",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": "#ifndef UNSPECIFIED_THREADS_ACTIVE\n#define UNSPECIFIED_THREADS_ACTIVE 1\n"
+            },
+            {
+              "path": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+              "range": {
+                "startLine": 422,
+                "startChar": 0,
+                "endLine": 423,
+                "endChar": 0
+              },
+              "replacement": "    s_create_ip.u4_keep_threads_active \u003d UNSPECIFIED_THREADS_ACTIVE;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f6f2e66b7efc4a6a23e54e6b33334ec9f2ebc429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
