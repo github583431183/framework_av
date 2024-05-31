@@ -121,12 +121,10 @@ genrule_defaults {
     cmd: "cp $(locations :audio_policy_engine_configuration_files) $(genDir) && ls -l $(genDir) &&" +
         "$(location buildStrategiesStructureFile) " +
         "--audiopolicyengineconfigurationfile $(genDir)/audio_policy_engine_configuration.xml " +
-        "--productstrategiesstructurefile $(location :product_strategies_structure_template) " +
         "--outputfile $(out)",
     srcs: [
         // The commented inputs must be provided to use this genrule_defaults
         // ":audio_policy_engine_configuration_files",
-        ":product_strategies_structure_template",
     ],
     out: ["ProductStrategies.xml"],
 }
