@@ -65,7 +65,43 @@ ConversionResult<AttributesGroup> aidl2legacy_AudioHalAttributeGroup_AttributesG
 ConversionResult<ProductStrategy> aidl2legacy_AudioHalProductStrategy_ProductStrategy(
         const media::audio::common::AudioHalProductStrategy& aidl) {
     ProductStrategy legacy;
-    legacy.name = "strategy_" + std::to_string(aidl.id);
+    using AudioProductStrategyType = media::audio::common::AudioProductStrategyType;
+    switch ((AudioProductStrategyType)aidl.id)
+    {
+        case AudioProductStrategyType::SYS_RESERVED_NONE:
+            legacy.name = "STRATEGY_NONE";
+            break;
+        case AudioProductStrategyType::MEDIA:
+            legacy.name = "STRATEGY_MEDIA";
+            break;
+        case AudioProductStrategyType::PHONE:
+            legacy.name = "STRATEGY_PHONE";
+            break;
+        case AudioProductStrategyType::SONIFICATION:
+            legacy.name = "STRATEGY_SONIFICATION";
+            break;
+        case AudioProductStrategyType::SONIFICATION_RESPECTFUL:
+            legacy.name = "STRATEGY_SONIFICATION_RESPECTFUL";
+            break;
+        case AudioProductStrategyType::DTMF:
+            legacy.name = "STRATEGY_DTMF";
+            break;
+        case AudioProductStrategyType::ENFORCED_AUDIBLE:
+            legacy.name = "STRATEGY_ENFORCED_AUDIBLE";
+            break;
+        case AudioProductStrategyType::TRANSMITTED_THROUGH_SPEAKER:
+            legacy.name = "STRATEGY_TRANSMITTED_THROUGH_SPEAKER";
+            break;
+        case AudioProductStrategyType::ACCESSIBILITY:
+            legacy.name = "STRATEGY_ACCESSIBILITY";
+            break;
+        case AudioProductStrategyType::SYS_RESERVED_REROUTING:
+            legacy.name = "STRATEGY_REROUTING";
+            break;
+        case AudioProductStrategyType::SYS_RESERVED_CALL_ASSISTANT:
+            legacy.name = "STRATEGY_CALL_ASSISTANT";
+            break;
+    }
     legacy.attributesGroups = VALUE_OR_RETURN(convertContainer<AttributesGroups>(
                     aidl.attributesGroups,
                     aidl2legacy_AudioHalAttributeGroup_AttributesGroup));
