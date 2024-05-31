@@ -22,6 +22,7 @@
 #include <string>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #define LOG_TAG "APM::AudioPolicyEngine/Config"
 //#define LOG_NDEBUG 0
@@ -51,6 +52,23 @@ static const char *const gReferenceAttributeName = "name";
 
 namespace {
 
+std::unordered_map<int, std::string>  mProductStrategyMap;
+
+void initProductStrategyMap() {
+    using AudioProductStrategyType = media::audio::common::AudioProductStrategyType;
+    #define STRATEGY_ENTRY(name) {static_cast<int>(AudioProductStrategyType::name), "STRATEGY_" #name}
+
+    mProductStrategyMap = {STRATEGY_ENTRY(MEDIA),
+                            STRATEGY_ENTRY(PHONE),
+                            STRATEGY_ENTRY(SONIFICATION),
+                            STRATEGY_ENTRY(SONIFICATION_RESPECTFUL),
+                            STRATEGY_ENTRY(DTMF),
+                            STRATEGY_ENTRY(ENFORCED_AUDIBLE),
+                            STRATEGY_ENTRY(TRANSMITTED_THROUGH_SPEAKER),
+                            STRATEGY_ENTRY(ACCESSIBILITY)};
+    #undef STRATEGY_ENTRY
+}
+
 ConversionResult<AttributesGroup> aidl2legacy_AudioHalAttributeGroup_AttributesGroup(
         const media::audio::common::AudioHalAttributesGroup& aidl) {
     AttributesGroup legacy;
@@ -65,7 +83,7 @@ ConversionResult<AttributesGroup> aidl2legacy_AudioHalAttributeGroup_AttributesG
 ConversionResult<ProductStrategy> aidl2legacy_AudioHalProductStrategy_ProductStrategy(
         const media::audio::common::AudioHalProductStrategy& aidl) {
     ProductStrategy legacy;
-    legacy.name = "strategy_" + std::to_string(aidl.id);
+    legacy.name = mProductStrategyMap[aidl.id];
     legacy.attributesGroups = VALUE_OR_RETURN(convertContainer<AttributesGroups>(
                     aidl.attributesGroups,
                     aidl2legacy_AudioHalAttributeGroup_AttributesGroup));
@@ -810,6 +828,7 @@ android::status_t parseLegacyVolumes(VolumeGroups &volumeGroups) {
 ParsingResult convert(const ::android::media::audio::common::AudioHalEngineConfig& aidlConfig) {
     auto config = std::make_unique<engineConfig::Config>();
     config->version = 1.0f;
+    initProductStrategyMap();
     if (auto conv = convertContainer<engineConfig::ProductStrategies>(
                     aidlConfig.productStrategies,
                     aidl2legacy_AudioHalProductStrategy_ProductStrategy); conv.ok()) {
