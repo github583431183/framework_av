@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d90b3159_254f6811",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-05-31T15:41:48Z",
+      "side": 1,
+      "message": "BTW: the sequence here is:\ndisconnect -\u003e ThreadBase::disconnectEffectHandle -\u003e AudioFlinger::updateOrphanEffectChains.\n\nSo, DeviceEffectManager -\u003e EffectHandle Mutex -\u003e AudioFlinger Mutex.\nI solved the lock of DeviceEffectManager by keeping a ref on released handle until lock of manager is released.",
+      "parentUuid": "41e971df_dd2833c9",
+      "range": {
+        "startLine": 1874,
+        "startChar": 0,
+        "endLine": 1874,
+        "endChar": 98
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58c811df_8acbdbc5",
         "filename": "services/audioflinger/Effects.h",
         "patchSetId": 13
