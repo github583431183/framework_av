@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a5f51f8_20431581",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-31T11:11:17Z",
+      "side": 1,
+      "message": "it seems to me that this constant should be initialized as:\n kTokenId \u003d  AID_SYSTEM \u003c\u003c 32\n \n initializing with the 4294967296000 literal value -- is not good.\n\nit seems that kPackedCallingUid is probably a better name here --\nit would  better explain what it represents and where it will be used.",
+      "parentUuid": "eb054f87_5d1e7a96",
+      "range": {
+        "startLine": 33,
+        "startChar": 35,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00e5313c_1651aa5b",
         "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
         "patchSetId": 1
