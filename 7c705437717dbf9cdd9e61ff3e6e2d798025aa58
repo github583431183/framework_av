@@ -33,6 +33,29 @@
       "message": "Hi AOSP team, can you help me to review? thank you!\n\n\"Review-Enforcement\nTwo Google employees must approve the change. Uploading the change or voting positively on Code-Review count as approval.\"",
       "revId": "7c705437717dbf9cdd9e61ff3e6e2d798025aa58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbef1f3_3c0cef2d",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-05-31T16:44:06Z",
+      "side": 1,
+      "message": "The aim of the solution is correct. Please consider implementing it in the same way as the reverse mapping which is here: https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/audio/aidl/default/EngineConfigXmlConverter.cpp;l\u003d56;drc\u003d394e2527b5618cfb12bb55e29640c84651467eb1. The main ideas are:\n\n1. Minimize risk of typos by using a macro which creates a mapping between the enum and the string.\n\n2. Do not include `SYS_RESERVED_` entries since these are restricted to the framework and must not appear in HAL configs and passed to the framework.\n\n3. Extract the conversion code into a dedicated function (`aidl2legacy_AudioHalProductStrategy_ProductStrategyType`) and call it from `aidl2legacy_AudioHalProductStrategy_ProductStrategy`.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "7c705437717dbf9cdd9e61ff3e6e2d798025aa58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
