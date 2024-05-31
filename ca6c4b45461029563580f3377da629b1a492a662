@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6770ed4a_3875972d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-31T19:41:53Z",
+      "side": 1,
+      "message": "i want the default-if-unspecified changed.",
+      "revId": "ca6c4b45461029563580f3377da629b1a492a662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd0f9c2_ef277c92",
+        "filename": "media/codec2/components/hevc/C2SoftHevcDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-05-31T19:41:53Z",
+      "side": 1,
+      "message": "i want the default if unspecified to be 0.\nso that mpeg, hevc, avc, etc all have the same defaults.",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e58c5791_97c342fd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/components/hevc/C2SoftHevcDec.cpp",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": "#define KEEP_THREADS_ACTIVE 0\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ca6c4b45461029563580f3377da629b1a492a662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
