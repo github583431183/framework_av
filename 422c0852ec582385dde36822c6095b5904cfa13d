@@ -16,6 +16,23 @@
       "message": "A CP of ag/27629973. There was a trivial conflict due to non-upstreamed code, hence manual CP was required.",
       "revId": "422c0852ec582385dde36822c6095b5904cfa13d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbc3568_af034bc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-06-03T22:03:03Z",
+      "side": 1,
+      "message": "Looks like still got merge conflict?",
+      "revId": "422c0852ec582385dde36822c6095b5904cfa13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
