@@ -64,6 +64,24 @@
       ],
       "revId": "d81602979a29333f015661ce5070db6e02a005bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12f587b_974da2b4",
+        "filename": "media/module/aidlpersistentsurface/wrapper/WAidlGraphicBufferSource.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-03T22:27:33Z",
+      "side": 1,
+      "message": "Since this is optional, the below error shows up.\n\n```frameworks/av/media/module/aidlpersistentsurface/wrapper/WAidlGraphicBufferSource.cpp:64:44: error: initializer list cannot be used on the right hand side of operator \u0027:\u0027\n   64 |               hBuffer ? std::move(hBuffer) : {},```",
+      "parentUuid": "93c3c22c_02348499",
+      "revId": "d81602979a29333f015661ce5070db6e02a005bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
