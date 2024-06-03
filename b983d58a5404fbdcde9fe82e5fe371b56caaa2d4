@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6696778_082edefd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-03T17:25:04Z",
+      "side": 1,
+      "message": "Thank you Xin! We are getting close, just some technical comments.",
+      "revId": "b983d58a5404fbdcde9fe82e5fe371b56caaa2d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f53098_54c84303",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-03T17:25:04Z",
+      "side": 1,
+      "message": "We prefer not to have such global static variables of non-trivial type. I would suggest replacing `initProductStrategyMap` with a function `aidl2legacy_AudioHalProductStrategy_ProductStrategyType` which holds the map as a static const variable, so that it will be initialized at the first use. Like this:\n\n```\nConversionResult\u003cstd::string\u003e aidl2legacy_AudioHalProductStrategy_ProductStrategyType(int id) {\n    static const std::unordered_map\u003cint, std::string\u003e productStrategyMap \u003d ...;\n    // fetching code from aidl2legacy_AudioHalProductStrategy_ProductStrategy\n}\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "b983d58a5404fbdcde9fe82e5fe371b56caaa2d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d081225_5f00f3c3",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-03T17:25:04Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 102
+      },
+      "revId": "b983d58a5404fbdcde9fe82e5fe371b56caaa2d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034828b8_27b503d4",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-03T17:25:04Z",
+      "side": 1,
+      "message": "Note that if the ID is not in the map, that will create an entry with an empty value. I don\u0027t think that\u0027s the desired behavior. Please follow the fix proposed by the AI.",
+      "range": {
+        "startLine": 86,
+        "startChar": 18,
+        "endLine": 86,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8680260d_695822e4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+              "range": {
+                "startLine": 86,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": "    auto it \u003d mProductStrategyMap.find(aidl.id);\n    if (it \u003d\u003d mProductStrategyMap.end()) {\n        return base::unexpected(BAD_VALUE);\n    }\n    legacy.name \u003d it-\u003esecond;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b983d58a5404fbdcde9fe82e5fe371b56caaa2d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
