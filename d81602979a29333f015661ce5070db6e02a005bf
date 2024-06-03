@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c3c22c_02348499",
+        "filename": "media/module/aidlpersistentsurface/wrapper/WAidlGraphicBufferSource.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-03T20:01:08Z",
+      "side": 1,
+      "message": "nit: is it possible to do something like: `hBuffer ? std::move(hBuffer) : {}`?",
+      "fixSuggestions": [
+        {
+          "fixId": "490ad3dd_ba5da11f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/module/aidlpersistentsurface/wrapper/WAidlGraphicBufferSource.cpp",
+              "range": {
+                "startLine": 55,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "        ::aidl::android::hardware::HardwareBuffer hBuffer;\n"
+            },
+            {
+              "path": "media/module/aidlpersistentsurface/wrapper/WAidlGraphicBufferSource.cpp",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "media/module/aidlpersistentsurface/wrapper/WAidlGraphicBufferSource.cpp",
+              "range": {
+                "startLine": 60,
+                "startChar": 0,
+                "endLine": 67,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "media/module/aidlpersistentsurface/wrapper/WAidlGraphicBufferSource.cpp",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": "              hBuffer ? std::move(hBuffer) : {},\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d81602979a29333f015661ce5070db6e02a005bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
