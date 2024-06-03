@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e51049_5429dd67",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-06-03T12:04:24Z",
+      "side": 1,
+      "message": "i don\u0027t understand the name change here.\nKEEP_THREADS_ACIVE was a very appropriate name.\n\nmy objection was that it should default to 0 if it was not specified\nin the android.bp",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5d5a9f18_08c93b24",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": "#ifndef KEEP_THREADS_ACTIVE\n#define KEEP_THREADS_ACTIVE 0\n"
+            },
+            {
+              "path": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+              "range": {
+                "startLine": 422,
+                "startChar": 0,
+                "endLine": 423,
+                "endChar": 0
+              },
+              "replacement": "    s_create_ip.u4_keep_threads_active \u003d KEEP_THREADS_ACTIVE;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "581085e61aee993fc31ae4426691b906848a37d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
