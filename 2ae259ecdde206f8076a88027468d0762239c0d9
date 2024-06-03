@@ -297,6 +297,30 @@
       },
       "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53103b3e_78efd6fd",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-03T09:23:19Z",
+      "side": 1,
+      "message": "cannot simply override mutex as disconnect is called from destructor. So member of deriated class are not destroyed, mutex() would return the member of EffectHandle.",
+      "parentUuid": "a4c90d4f_094f82ee",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 77
+      },
+      "revId": "2ae259ecdde206f8076a88027468d0762239c0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
