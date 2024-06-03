@@ -50,6 +50,30 @@
       ],
       "revId": "581085e61aee993fc31ae4426691b906848a37d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e523d56_ea342611",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1962427
+      },
+      "writtenOn": "2024-06-03T12:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3e51049_5429dd67",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "581085e61aee993fc31ae4426691b906848a37d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
