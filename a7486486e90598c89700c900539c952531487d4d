@@ -87,6 +87,24 @@
       "parentUuid": "aef1a9a5_d61adf4a",
       "revId": "a7486486e90598c89700c900539c952531487d4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1738fd77_aa7e04c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-06-03T10:36:49Z",
+      "side": 1,
+      "message": "Hi, just to let you know we\u0027re going to work internally on re-landing this fix after root-causing the decoder test failures and deciding how best to resolve them and the muxer failures too. \n\nI have re-opened the tracking bug for now to reflect this revert, and it will be re-closed after we re-land the change.\n\nhttps://issuetracker.google.com/329121650 Bug: Trimmed iPhone HDR file has wrong playback duration on Android device",
+      "parentUuid": "2e65aaa7_003e99fd",
+      "revId": "a7486486e90598c89700c900539c952531487d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
