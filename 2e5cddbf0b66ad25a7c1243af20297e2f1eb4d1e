@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc6ebf56_8f8c85ec",
+        "filename": "media/codec2/components/hevc/C2SoftHevcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-06-03T12:05:17Z",
+      "side": 1,
+      "message": "i don\u0027t understand the name change.\nKEEP_THREADS_ACTIVE was a wonderful name.\n\nI just wanted the default value to be 0 if it wasn\u0027t specified on the\ncommand line.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d907d37e_17b37cae",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/components/hevc/C2SoftHevcDec.cpp",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": "#ifndef UNSPECIFIED_NUM_CORES\n#define UNSPECIFIED_NUM_CORES 0\n"
+            },
+            {
+              "path": "media/codec2/components/hevc/C2SoftHevcDec.cpp",
+              "range": {
+                "startLine": 413,
+                "startChar": 0,
+                "endLine": 414,
+                "endChar": 0
+              },
+              "replacement": "    s_create_ip.u4_keep_threads_active \u003d UNSPECIFIED_NUM_CORES;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2e5cddbf0b66ad25a7c1243af20297e2f1eb4d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
