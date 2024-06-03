@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa7287f_ff508c96",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2024-06-03T14:14:15Z",
+      "side": 1,
+      "message": "name changed, but missed the initialized value\n\nkPackageCallingUid \u003d AID_SYSTEM \u003c\u003c32;",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "573c3988_0aab7770",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+              "range": {
+                "startLine": 34,
+                "startChar": 0,
+                "endLine": 35,
+                "endChar": 0
+              },
+              "replacement": "static constexpr size_t kPackageCallingUid \u003d AID_SYSTEM \u003c\u003c 32;\n"
+            },
+            {
+              "path": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+              "range": {
+                "startLine": 265,
+                "startChar": 0,
+                "endLine": 266,
+                "endChar": 0
+              },
+              "replacement": "        IPCThreadState::self()-\u003erestoreCallingIdentity(kPackageCallingUid);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3dd78463fc32aa38daa4097d68b3fdf38d1cf7f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
