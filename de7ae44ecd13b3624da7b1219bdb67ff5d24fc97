@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78299b9_e0ec91f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-03T22:21:26Z",
+      "side": 1,
+      "message": "Upstreaming ag/26142572 (clean CP) to clean up the automerge path.",
+      "revId": "de7ae44ecd13b3624da7b1219bdb67ff5d24fc97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
