@@ -88,6 +88,24 @@
       "parentUuid": "54ebe7c3_8d815073",
       "revId": "07687dbc4672e4146a22590dc08b79b64d364f04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc44bb4_6c2eac2f",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-06-03T23:03:36Z",
+      "side": 1,
+      "message": "\u003e \u003e \u003e James,\n\u003e \u003e \u003e I agree that level can be updated at the end of encoding based on the resulting bitrate etc, some modules in Android Media Framework do not support updating headers after encoding the frames.\n\u003e \u003e \u003e \n\u003e \u003e \u003e The encoders are expected to generate the header in the first call where there is no input (empty input is queued to generated the headers).\n\u003e \u003e \u003e \n\u003e \u003e \u003e Expectation is that, the encoders have everything needed when they are configured to generate the header before the first input is actually queued.\n\u003e \u003e \u003e \n\u003e \u003e \u003e Given that vp9 encoder in Android only supports 420p 8-bit encoding, profile, chroma sampling and bit-depth wouldn\u0027t change. Only level may change later, but that problem exists for all codecs and there isn\u0027t any use of sending an updated header at the end of encoding as MediaMuxer doesn\u0027t support changing header data at the end.\n\u003e \u003e \n\u003e \u003e Subsampling won\u0027t be reported in that case [1] and level will be incorrect. If this is acceptable then it\u0027s fine to move forward.\n\u003e \u003e \n\u003e \u003e [1]: https://chromium.googlesource.com/webm/libvpx/+/b1cf64c40b66047ab8b525cbfb70e6366a46c228/vp9/vp9_cx_iface.c#1716\n\u003e \n\u003e Note the default for subsampling is 1 (4:2:0 colocated) when it\u0027s unknown [2].\n\u003e \n\u003e [2]: https://www.webmproject.org/vp9/mp4/#codecs-parameter-string\n\nThen only the level can be wrong which is true for all codecs.\nMarking this as resolved as nothing can be done about this at the plugin level.",
+      "parentUuid": "0f128c55_57bd128d",
+      "revId": "07687dbc4672e4146a22590dc08b79b64d364f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
