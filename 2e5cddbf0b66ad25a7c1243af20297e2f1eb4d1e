@@ -50,6 +50,30 @@
       ],
       "revId": "2e5cddbf0b66ad25a7c1243af20297e2f1eb4d1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da3f4b0_98b527fa",
+        "filename": "media/codec2/components/hevc/C2SoftHevcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1962427
+      },
+      "writtenOn": "2024-06-03T12:13:58Z",
+      "side": 1,
+      "message": "Ray, the interface showed the suggested edit as UNSPECIFIED_THREADS_ACTIVE and you were mentioning unspecified in the comments so i thought it is recommended to change the name as well, all this led to the name change confusion. Thanks",
+      "parentUuid": "dc6ebf56_8f8c85ec",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "2e5cddbf0b66ad25a7c1243af20297e2f1eb4d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
