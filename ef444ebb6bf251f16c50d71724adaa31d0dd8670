@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8ab216_26bcb1d0",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioFlingerService.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-04T15:53:24Z",
+      "side": 1,
+      "message": "I would suggest naming this method `resetReferencesForTest` for better discoverability",
+      "range": {
+        "startLine": 300,
+        "startChar": 10,
+        "endLine": 300,
+        "endChar": 15
+      },
+      "revId": "ef444ebb6bf251f16c50d71724adaa31d0dd8670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
