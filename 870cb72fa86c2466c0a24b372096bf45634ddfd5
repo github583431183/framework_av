@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ffa633_73beed10",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2024-06-04T01:52:29Z",
+      "side": 1,
+      "message": "Do you mean \u0027in\u0027 instead of \u0027till\u0027 or maybe \u0027... as MediaMuxer did not handle CSD for VP9 correctly until this release\u0027 (meaning V).",
+      "range": {
+        "startLine": 880,
+        "startChar": 29,
+        "endLine": 880,
+        "endChar": 33
+      },
+      "revId": "870cb72fa86c2466c0a24b372096bf45634ddfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
