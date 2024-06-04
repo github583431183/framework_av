@@ -101,7 +101,7 @@ public:
      *          C2_CORRUPTED
      */
     c2_status_t allocate(uint32_t width, uint32_t height, PixelFormat format, uint64_t usage,
-                         AHardwareBuffer **buf, sp<Fence> *fence);
+                         AHardwareBuffer **buf, sp<Fence> *fence, int *rSlotId);
 
     /**
      * Deallocates a AHardwareBuffer

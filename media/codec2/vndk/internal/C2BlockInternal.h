@@ -341,6 +341,23 @@ struct _C2BlockFactory {
             int32_t* bqSlot = nullptr);
 
     /**
+     * Get bufferqueue slot from the blockpool data.
+     *
+     * Calling this function for the block coming from a igba(bufferqueue)-based
+     * blockpool.
+     *
+     * \param[in]  poolData   blockpool data.
+     * \param[out] bqSlot     Slot number of the buffer.
+     *
+     * \return \c true when there is valid bufferqueue data;
+     *         \c false otherwise.
+     */
+    static
+    bool GetBufferQueueSlot(
+            const std::shared_ptr<const _C2BlockPoolData>& poolData,
+            int32_t* bqSlot = nullptr);
+
+    /**
      * Hold a block from the designated bufferqueue. This causes the destruction
      * of the block to trigger a call to cancelBuffer().
      *

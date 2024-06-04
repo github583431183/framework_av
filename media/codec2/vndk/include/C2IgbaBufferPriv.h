@@ -92,7 +92,8 @@ struct C2IgbaBlockPoolData : public _C2BlockPoolData {
 
     C2IgbaBlockPoolData(
             const AHardwareBuffer *buffer,
-            std::shared_ptr<::aidl::android::hardware::media::c2::IGraphicBufferAllocator> &igba);
+            std::shared_ptr<::aidl::android::hardware::media::c2::IGraphicBufferAllocator> &igba,
+            int slot);
 
     virtual ~C2IgbaBlockPoolData() override;
 
@@ -108,7 +109,10 @@ private:
     void registerIgba(std::shared_ptr<
             ::aidl::android::hardware::media::c2::IGraphicBufferAllocator> &igba);
 
+    void getBufferQueueSlot(int32_t* slot) const;
+
     bool mOwned;
     const AHardwareBuffer *mBuffer;
     std::weak_ptr<::aidl::android::hardware::media::c2::IGraphicBufferAllocator> mIgba;
+    int32_t mSlot;
 };

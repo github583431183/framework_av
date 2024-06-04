@@ -49,10 +49,12 @@ public:
         IGraphicBufferAllocator::Allocation* _aidl_return) {
     AHardwareBuffer *buf;
     ::android::sp<::android::Fence> fence;
+    int slot;
     c2_status_t ret = allocate(
             in_desc.width, in_desc.height, in_desc.format, in_desc.usage,
-            &buf, &fence);
+            &buf, &fence, &slot);
     if (ret == C2_OK) {
+        _aidl_return->slot = slot;
         _aidl_return->buffer.reset(buf);
         _aidl_return->fence = ::ndk::ScopedFileDescriptor(fence->dup());
         return ::ndk::ScopedAStatus::ok();
@@ -119,8 +121,8 @@ void GraphicBufferAllocator::onBufferReleased(uint32_t generation) {
 
 c2_status_t GraphicBufferAllocator::allocate(
         uint32_t width, uint32_t height, ::android::PixelFormat format, uint64_t usage,
-        AHardwareBuffer **buf, ::android::sp<::android::Fence> *fence) {
-    return mGraphicsTracker->allocate(width, height, format, usage, buf, fence);
+        AHardwareBuffer **buf, ::android::sp<::android::Fence> *fence, int *slot) {
+    return mGraphicsTracker->allocate(width, height, format, usage, buf, fence, slot);
 }
 
 bool GraphicBufferAllocator::deallocate(const uint64_t id,

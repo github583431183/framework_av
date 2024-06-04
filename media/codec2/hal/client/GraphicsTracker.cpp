@@ -682,7 +682,7 @@ c2_status_t GraphicsTracker::_allocate(const std::shared_ptr<BufferCache> &cache
 
 c2_status_t GraphicsTracker::allocate(
         uint32_t width, uint32_t height, PixelFormat format, uint64_t usage,
-        AHardwareBuffer **buf, sp<Fence> *rFence) {
+        AHardwareBuffer **buf, sp<Fence> *rFence, int *rSlotId) {
     if (mStopped.load() == true) {
         ALOGE("cannot allocate due to being stopped");
         return C2_BAD_STATE;
@@ -701,6 +701,7 @@ c2_status_t GraphicsTracker::allocate(
     bool updateDequeue;
     res = _allocate(cache, width, height, format, usage, &cached, &slotId, &fence, &buffer);
     commitAllocate(res, cache, cached, slotId, fence, &buffer, &updateDequeue);
+    *rSlotId = slotId;
     if (res == C2_OK) {
         ALOGV("allocated a buffer width:%u height:%u pixelformat:%d usage:%llu",
               width, height, format, (unsigned long long)usage);

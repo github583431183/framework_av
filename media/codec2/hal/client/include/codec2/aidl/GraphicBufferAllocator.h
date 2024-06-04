@@ -107,7 +107,7 @@ public:
      */
     c2_status_t allocate(uint32_t width, uint32_t height,
                          ::android::PixelFormat format, uint64_t usage,
-                         AHardwareBuffer **buf, ::android::sp<::android::Fence> *fence);
+                         AHardwareBuffer **buf, ::android::sp<::android::Fence> *fence, int *slot);
 
     /**
      * De-allocate a buffer.

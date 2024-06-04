@@ -29,6 +29,17 @@
 using ::android::C2AllocatorAhwb;
 using C2IGBA = ::aidl::android::hardware::media::c2::IGraphicBufferAllocator;
 
+bool _C2BlockFactory::GetBufferQueueSlot(
+        const std::shared_ptr<const _C2BlockPoolData>& data, int32_t* bqSlot) {
+    if (data && data->getType() == _C2BlockPoolData::TYPE_AHWBUFFER) {
+        const std::shared_ptr<const C2IgbaBlockPoolData> poolData =
+                std::static_pointer_cast<const C2IgbaBlockPoolData>(data);
+        poolData->getBufferQueueSlot(bqSlot);
+        return true;
+    }
+    return false;
+}
+
 namespace {
 int32_t static inline ToAidl(uint32_t u) {return static_cast<int32_t>(u);}
 int64_t static inline ToAidl(uint64_t u) {return static_cast<int64_t>(u);}
@@ -39,7 +50,8 @@ c2_nsecs_t static constexpr kSyncFenceWaitNs = (1000000000LL / 60LL); // 60 fps 
 c2_status_t static CreateGraphicBlockFromAhwb(AHardwareBuffer *ahwb,
                                             const std::shared_ptr<C2Allocator> &allocator,
                                             const std::shared_ptr<C2IGBA> &igba,
-                                            std::shared_ptr<C2GraphicBlock> *block) {
+                                            std::shared_ptr<C2GraphicBlock> *block,
+                                            int slot = -1) {
     if (__builtin_available(android __ANDROID_API_T__, *)) {
         uint64_t origId = 0;
         CHECK(AHardwareBuffer_getId(ahwb, &origId) == ::android::OK);
@@ -68,7 +80,7 @@ c2_status_t static CreateGraphicBlockFromAhwb(AHardwareBuffer *ahwb,
         }
         std::shared_ptr<C2IgbaBlockPoolData> poolData =
                 std::make_shared<C2IgbaBlockPoolData>(
-                        ahwb, const_cast<std::shared_ptr<C2IGBA>&>(igba));
+                        ahwb, const_cast<std::shared_ptr<C2IGBA>&>(igba), slot);
         *block = _C2BlockFactory::CreateGraphicBlock(alloc, poolData);
         return C2_OK;
     } else {
@@ -80,7 +92,8 @@ c2_status_t static CreateGraphicBlockFromAhwb(AHardwareBuffer *ahwb,
 
 C2IgbaBlockPoolData::C2IgbaBlockPoolData(
         const AHardwareBuffer *buffer,
-        std::shared_ptr<C2IGBA> &igba) : mOwned(true), mBuffer(buffer), mIgba(igba) {
+        std::shared_ptr<C2IGBA> &igba,
+        int32_t slot) : mOwned(true), mBuffer(buffer), mIgba(igba), mSlot(slot) {
     CHECK(mBuffer);
     AHardwareBuffer_acquire(const_cast<AHardwareBuffer *>(mBuffer));
 }
@@ -110,6 +123,10 @@ C2IgbaBlockPoolData::type_t C2IgbaBlockPoolData::getType() const {
 
 void C2IgbaBlockPoolData::getAHardwareBuffer(AHardwareBuffer **pBuf) const {
     *pBuf = const_cast<AHardwareBuffer *>(mBuffer);
+}
+
+void C2IgbaBlockPoolData::getBufferQueueSlot(int32_t *slot) const {
+    *slot = mSlot;
 }
 
 void C2IgbaBlockPoolData::disown() {
@@ -280,7 +297,7 @@ c2_status_t C2IgbaBlockPool::_fetchGraphicBlock(
             return C2_TIMED_OUT;
         }
 
-        res = CreateGraphicBlockFromAhwb(ahwb, mAllocator, mIgba, block);
+        res = CreateGraphicBlockFromAhwb(ahwb, mAllocator, mIgba, block, allocation.slot);
         AHardwareBuffer_release(ahwb);
         if (res != C2_OK) {
             bool aidlRet = true;
