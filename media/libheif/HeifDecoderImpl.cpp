@@ -40,6 +40,8 @@ HeifDecoder* createHeifDecoder() {
 
 namespace android {
 
+static const size_t kDefaultRetryNum = 5;
+
 void initFrameInfo(HeifFrameInfo *info, const VideoFrame *videoFrame) {
     info->mWidth = videoFrame->mDisplayWidth;
     info->mHeight = videoFrame->mDisplayHeight;
@@ -317,7 +319,8 @@ HeifDecoderImpl::HeifDecoderImpl() :
     mAvailableLines(0),
     mNumSlices(1),
     mSliceHeight(0),
-    mAsyncDecodeDone(false) {
+    mAsyncDecodeDone(false),
+    mRetryLeft(kDefaultRetryNum) {
 }
 
 HeifDecoderImpl::~HeifDecoderImpl() {
@@ -540,9 +543,15 @@ bool HeifDecoderImpl::decodeAsync() {
             Mutex::Autolock autolock(mLock);
 
             if (frameMemory == nullptr || frameMemory->unsecurePointer() == nullptr) {
-                mAsyncDecodeDone = true;
-                mScanlineReady.signal();
-                break;
+                if (mRetryLeft > 0) {
+                    mRetryLeft--;
+                    i = 0;
+                    continue;
+                } else {
+                    mAsyncDecodeDone = true;
+                    mScanlineReady.signal();
+                    break;
+                }
             }
             mFrameMemory = frameMemory;
             mAvailableLines = bottom;
