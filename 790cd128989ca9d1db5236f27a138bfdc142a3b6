@@ -16,6 +16,23 @@
       "message": "Hello Mikhail, I have re-uploaded the modifications, please help me review it again, thank you.",
       "revId": "790cd128989ca9d1db5236f27a138bfdc142a3b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "575e7ab1_41d1bc42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-04T17:58:20Z",
+      "side": 1,
+      "message": "Thank you Xin!\n\nEric or JM, could you please re-approve the CL.",
+      "revId": "790cd128989ca9d1db5236f27a138bfdc142a3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
