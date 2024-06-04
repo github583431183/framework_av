@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93852002_d2ef37d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963880
+      },
+      "writtenOn": "2024-06-04T04:07:44Z",
+      "side": 1,
+      "message": "Hello Mikhail, I have re-uploaded the modifications, please help me review it again, thank you.",
+      "revId": "790cd128989ca9d1db5236f27a138bfdc142a3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
