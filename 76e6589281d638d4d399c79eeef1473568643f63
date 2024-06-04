@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f788b6ee_3358c04c",
+        "filename": "media/codec2/hal/hidl/1.0/utils/Component.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-04T20:45:13Z",
+      "side": 1,
+      "message": "this places a lot of implementation detail into the Component implementation. This also rests on the question on whether \"clearDeferredBuffers\" term is meaningful for the blockpool API (even if it is specialized.)\n\nQuestion: could we change the internal blockpool API flow to make this an official part of managing blockpools?",
+      "range": {
+        "startLine": 525,
+        "startChar": 4,
+        "endLine": 534,
+        "endChar": 5
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
