@@ -33,6 +33,25 @@
 namespace android {
 
 struct CodecCapabilities {
+
+    static bool SupportsBitrate(Range<int> bitrateRange,
+            const sp<AMessage> &format);
+
+    /**
+     * Returns the media type for which this codec-capability object was created.
+     */
+    std::string getMediaType();
+
+    /**
+     * Returns the supported profile levels.
+     */
+    std::vector<ProfileLevel> getProfileLevels();
+
+private:
+    std::string mMediaType;
+    std::vector<ProfileLevel> mProfileLevels;
+
+    std::shared_ptr<AudioCapabilities> mAudioCaps;
 };
 
 }  // namespace android

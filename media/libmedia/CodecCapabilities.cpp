@@ -26,4 +26,33 @@
 
 namespace android {
 
+bool CodecCapabilities::SupportsBitrate(Range<int> bitrateRange,
+        const sp<AMessage> &format) {
+    // consider max bitrate over average bitrate for support
+    int32_t maxBitrate = 0;
+    format->findInt32(KEY_MAX_BIT_RATE, &maxBitrate);
+    int32_t bitrate = 0;
+    format->findInt32(KEY_BIT_RATE, &bitrate);
+
+    if (bitrate == 0) {
+        bitrate = maxBitrate;
+    } else if (maxBitrate != 0) {
+        bitrate = std::max(bitrate, maxBitrate);
+    }
+
+    if (bitrate > 0) {
+        return bitrateRange.contains(bitrate);
+    }
+
+    return true;
+}
+
+std::string CodecCapabilities::getMediaType() {
+    return mMediaType;
+}
+
+std::vector<ProfileLevel> CodecCapabilities::getProfileLevels() {
+    return mProfileLevels;
+}
+
 }  // namespace android
