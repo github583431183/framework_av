@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a788b00e_5aa188b5",
+        "filename": "media/codec2/hal/hidl/1.0/utils/Component.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-05T10:19:27Z",
+      "side": 1,
+      "message": "Added some documentation to C2BqBlockPool. Would it suffice?",
+      "parentUuid": "f788b6ee_3358c04c",
+      "range": {
+        "startLine": 525,
+        "startChar": 4,
+        "endLine": 534,
+        "endChar": 5
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "469da808_2e4eb1f7",
         "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-04T20:54:19Z",
       "side": 1,
       "message": "Can we make this meaningful for the API spec here. Nowhere is the term \"deferred buffers\" described in this C2BufferQueueBlockPool definition.",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0072f2ee_1e16249d",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-05T10:19:27Z",
+      "side": 1,
+      "message": "Added documentation/comments on the interface and the constructor.",
+      "parentUuid": "469da808_2e4eb1f7",
       "range": {
         "startLine": 114,
         "startChar": 13,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82199d4c_ae9eda52",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-05T10:19:27Z",
+      "side": 1,
+      "message": "Moved to the C2Store implementation.\nAt first I thought moving this to the utils. But moving to C2Store seems to be cleaner.",
+      "parentUuid": "9c52805a_73abc072",
+      "range": {
+        "startLine": 606,
+        "startChar": 10,
+        "endLine": 607,
+        "endChar": 96
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d8df959_ac342c44",
         "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2024-06-04T20:54:19Z",
       "side": 1,
       "message": "this add yet another variation into the implementation details. Could we detect whether this pool is used by a swcodec into the decision on whether to set mDeferDeallocationAfterStop by the enable API?",
+      "range": {
+        "startLine": 782,
+        "startChar": 19,
+        "endLine": 782,
+        "endChar": 26
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8847b25_05b9a828",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-05T10:19:27Z",
+      "side": 1,
+      "message": "I injected the wanted behavior directly into the pool\u0027s ctor in order not to care whether this is swcodec or not.",
+      "parentUuid": "2d8df959_ac342c44",
       "range": {
         "startLine": 782,
         "startChar": 19,
