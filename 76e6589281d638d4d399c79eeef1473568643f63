@@ -48,6 +48,94 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f163eeef_1c0763a0",
+        "filename": "media/codec2/hal/hidl/1.0/utils/Component.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-06T23:02:46Z",
+      "side": 1,
+      "message": "Ack. I think we should consider streamlining this in the future, as this places BQBBP specific knowledge (and logic) into multiple places. The other way to handle this is to define this as a BP API and call it regardless of the pool. Raised b/345562865 to track this.",
+      "parentUuid": "a788b00e_5aa188b5",
+      "range": {
+        "startLine": 525,
+        "startChar": 4,
+        "endLine": 534,
+        "endChar": 5
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06061f4f_8cc1e322",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-06T23:02:46Z",
+      "side": 1,
+      "message": "could we add a doc header here? Specifically, it seems that this blockpool is meant to be used with an HGBP, but initially it will use an allocator.\n\nThis is where we would need to describe why deallocation would be deferrred. Perhaps by describing that upon component stop, framework will call configureProducer with nullptr(?).\n\nWe would also need to describe the impact of changing the producer during the runtime.",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "31a32494_79983f13",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/vndk/include/C2BqBufferPriv.h",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "/**\n * C2BufferQueueBlockPool is a block pool which is used to create blocks\n * from IGBP.\n *\n * If IGBP is not configured, blocks are created from allocator.\n *\n * \\param allocator     allocator to create blocks\n * \\param localId       local id of the block pool\n */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "667fcbe6_f927f0a8",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-06T23:02:46Z",
+      "side": 1,
+      "message": "it seems that nullptr is allowed here with a special meaning.",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 7
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "469da808_2e4eb1f7",

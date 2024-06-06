@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c4ee1d_7691ddfd",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-06T23:02:46Z",
+      "side": 1,
+      "message": "what is the plan for this removal? This has the unfortunate consequence of havingto know about deferDeallocAfterStop in multiple places. We could perhaps move reading the property into line 552 and remove deferDeallocAfterStop as a parameter, since deferDealloc only makes sense for BQBBP.",
+      "range": {
+        "startLine": 653,
+        "startChar": 11,
+        "endLine": 653,
+        "endChar": 47
+      },
+      "revId": "2fdf48448f070bb7c10fc737f8c4684b041a9beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
