@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8524c130_76fc6420",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-06T20:37:48Z",
+      "side": 1,
+      "message": "There is still a conflict on one of intermediate branches, both for this and the internal CL. I will work on a resolution.",
+      "revId": "9485120e9935627b083eb6ce4d8b912a24f29c1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
