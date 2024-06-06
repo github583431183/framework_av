@@ -1,0 +1,172 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7344b93_c3e03ea6",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-06-06T13:17:56Z",
+      "side": 1,
+      "message": "Are the +1s here worth a comment? I\u0027m a bit confused by it because I assume it can overflow so doesn\u0027t affect the actual range of the value.",
+      "range": {
+        "startLine": 163,
+        "startChar": 74,
+        "endLine": 163,
+        "endChar": 78
+      },
+      "revId": "d3c9b34023189707087aee1434ffb4901b2e2cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9ba9ab_0e6f050e",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-06-06T13:17:56Z",
+      "side": 1,
+      "message": "Super-nit: please treat acronyms as single words per go/android-cppstyle#symbol-names so `mFdp`.",
+      "range": {
+        "startLine": 28,
+        "startChar": 78,
+        "endLine": 28,
+        "endChar": 82
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c9d1f5ef_ac0e5a16",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "    FuzzSource(sp\u003cMetaData\u003e meta, FuzzedDataProvider* fdp) : mMetaData(meta), mFdp(fdp) {}\n"
+            },
+            {
+              "path": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+              "range": {
+                "startLine": 37,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": "        if (mFdp-\u003eremaining_bytes() \u003e 2) {\n            auto size \u003d mFdp-\u003eConsumeIntegralInRange\u003cuint8_t\u003e(2, INT8_MAX);\n            mBuffer \u003d mFdp-\u003eConsumeBytes\u003cuint8_t\u003e(size);\n"
+            },
+            {
+              "path": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": "            size_t length \u003d mFdp-\u003eConsumeIntegralInRange\u003csize_t\u003e(2, mbb-\u003esize());\n            size_t offset \u003d mFdp-\u003eConsumeIntegralInRange\u003csize_t\u003e(0, mbb-\u003esize() - length);\n"
+            },
+            {
+              "path": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 48,
+                "endChar": 0
+              },
+              "replacement": "            mbb-\u003emeta_data().setInt32(kKeyIsEndOfStream, mFdp-\u003eConsumeBool());\n            mbb-\u003emeta_data().setInt64(kKeyTime, mFdp-\u003eConsumeIntegral\u003cuint32_t\u003e() / 2);\n"
+            },
+            {
+              "path": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+              "range": {
+                "startLine": 60,
+                "startChar": 0,
+                "endLine": 61,
+                "endChar": 0
+              },
+              "replacement": "    FuzzedDataProvider* mFdp \u003d nullptr;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d3c9b34023189707087aee1434ffb4901b2e2cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae3aa4e_de72e1de",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-06-06T13:17:56Z",
+      "side": 1,
+      "message": "Nit: Can this be const? I\u0027m a bit rusty so sorry if this suggestion is off.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 6
+      },
+      "revId": "d3c9b34023189707087aee1434ffb4901b2e2cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed142d1_985536ce",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-06-06T13:17:56Z",
+      "side": 1,
+      "message": "Super-nit: similarly `kMpeg4MimeTypes`",
+      "range": {
+        "startLine": 80,
+        "startChar": 19,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a2d53696_5f519c27",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+              "range": {
+                "startLine": 80,
+                "startChar": 0,
+                "endLine": 81,
+                "endChar": 0
+              },
+              "replacement": "static const std::string kMPEG4MimeTypes[] \u003d {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d3c9b34023189707087aee1434ffb4901b2e2cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
