@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bbbb16a_df596f9a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-06-06T16:40:45Z",
+      "side": 1,
+      "message": "Other way around? If we are using multi-zone audio we want to use the `getOutputDevicesForAttributes` method with UID?",
+      "range": {
+        "startLine": 1287,
+        "startChar": 4,
+        "endLine": 1287,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d3856e70_abe6b9e5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 1284,
+                "startChar": 0,
+                "endLine": 1285,
+                "endChar": 0
+              },
+              "replacement": "     }\n"
+            },
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 1287,
+                "startChar": 0,
+                "endLine": 1288,
+                "endChar": 0
+              },
+              "replacement": "    if (!audio_flags::multi_zone_audio()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2a26c6993981054a3d894932b317646cdeeff371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce5e335_31a63be2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-06-06T16:40:45Z",
+      "side": 1,
+      "message": "Nit space between this and end of method above.",
+      "range": {
+        "startLine": 416,
+        "startChar": 8,
+        "endLine": 416,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4e0fb684_95c44761",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+              "range": {
+                "startLine": 416,
+                "startChar": 0,
+                "endLine": 416,
+                "endChar": 0
+              },
+              "replacement": "\n"
+            },
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+              "range": {
+                "startLine": 420,
+                "startChar": 0,
+                "endLine": 420,
+                "endChar": 0
+              },
+              "replacement": "\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2a26c6993981054a3d894932b317646cdeeff371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f2fd78_222107b3",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-06-06T16:40:45Z",
+      "side": 1,
+      "message": "Nit space between this and end of method above.",
+      "range": {
+        "startLine": 420,
+        "startChar": 8,
+        "endLine": 420,
+        "endChar": 15
+      },
+      "revId": "2a26c6993981054a3d894932b317646cdeeff371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
