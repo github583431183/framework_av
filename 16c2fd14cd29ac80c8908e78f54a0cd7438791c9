@@ -303,6 +303,30 @@
       },
       "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aec2bf7_7ad38526",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1943370
+      },
+      "writtenOn": "2024-06-06T15:41:43Z",
+      "side": 1,
+      "message": "Thanks @arakesh@google.com. Looks like we need one more vote. @jchowdhary@google.com/ @etalvala@google.com could you help with Code-Review vote?",
+      "parentUuid": "6a49c195_a6d298bf",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "16c2fd14cd29ac80c8908e78f54a0cd7438791c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
