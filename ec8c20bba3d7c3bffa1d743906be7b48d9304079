@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8b801d_eda42829",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-06T13:34:12Z",
+      "side": 1,
+      "message": "to be rework for A15",
+      "range": {
+        "startLine": 373,
+        "startChar": 3,
+        "endLine": 373,
+        "endChar": 65
+      },
+      "revId": "ec8c20bba3d7c3bffa1d743906be7b48d9304079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
