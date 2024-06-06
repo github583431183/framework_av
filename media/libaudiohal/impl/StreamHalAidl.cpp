@@ -643,6 +643,7 @@ status_t StreamHalAidl::updateCountersIfNeeded(
         if (statePositions != nullptr) {
             *statePositions = mStatePositions;
         }
+        reply->observable.timeNs = uptimeNanos();
     }
     return OK;
 }
