@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b13611_9ddea59a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-06T11:05:31Z",
+      "side": 1,
+      "message": "Mikhail, I remember you told me no more access to vendor partition is expected for APM. Need to move some mandatory generic config to system or any other if a preferred way to store the remaining xml.",
+      "revId": "3e2a9d9aa34910e966c20dd90d4d8f11a6ace2cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
