@@ -77,7 +77,15 @@ public:
 private:
     // ConnectionId = pid : (timestamp_created + seqId)
     // in order to guarantee uniqueness for each connection
-    static uint32_t sSeqId;
+    struct ConnectionIdGenerator {
+        int32_t mPid;
+        uint32_t mSeqId;
+        std::mutex mLock;
+
+        ConnectionIdGenerator();
+        ConnectionId getConnectionId();
+    };
+    static ConnectionIdGenerator sConnectionIdGenerator;
 
     const std::shared_ptr<BufferPoolAllocator> mAllocator;
 
