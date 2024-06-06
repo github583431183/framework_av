@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4215af_ce560ffe",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-06T17:58:45Z",
+      "side": 1,
+      "message": "Just a curiosity, mParamReflectors could be 2 at most? (one from mStore, one from GetFilterPlugin())",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "35940274_d9ee3026",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/codec2/hal/aidl/ComponentStore.cpp",
+              "range": {
+                "startLine": 147,
+                "startChar": 0,
+                "endLine": 147,
+                "endChar": 0
+              },
+              "replacement": "    // TODO: Add a way to add more param reflectors\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1105c579_c9dc97d9",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-06T17:58:45Z",
+      "side": 1,
+      "message": "When is idx 0 preferred?",
+      "range": {
+        "startLine": 233,
+        "startChar": 68,
+        "endLine": 233,
+        "endChar": 87
+      },
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a30b03_c686df13",
+        "filename": "media/codec2/hal/plugin/samples/SampleFilterPlugin.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-06T17:58:45Z",
+      "side": 1,
+      "message": "Is this good place for the definition? (C2Config or C2Param headers might be the better place?)\n\nIf not we need some explanation w.r.t. ```C2Param::TYPE_INDEX_VENDOR_START + 0x7000```\nAlso having some background may not confuse the readers. (Douglas Adams)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 72
+      },
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
