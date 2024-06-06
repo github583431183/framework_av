@@ -16,6 +16,46 @@
       "message": "Mikhail, I remember you told me no more access to vendor partition is expected for APM. Need to move some mandatory generic config to system or any other if a preferred way to store the remaining xml.",
       "revId": "3e2a9d9aa34910e966c20dd90d4d8f11a6ace2cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d865b5_91481bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-06T17:12:36Z",
+      "side": 1,
+      "message": "Thank you Francois! You are correct, every config file that the framework loads directly must be on the system partition. This allows making changes in the configuration that cause changes in the code w/o considering backward compatibility with old vendor images.",
+      "revId": "3e2a9d9aa34910e966c20dd90d4d8f11a6ace2cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d06970_b5cee3e5",
+        "filename": "services/audiopolicy/engineconfigurable/parameter-framework/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-06T17:12:36Z",
+      "side": 1,
+      "message": "What about this file? Could you please clarify why is it left out?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "3e2a9d9aa34910e966c20dd90d4d8f11a6ace2cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
