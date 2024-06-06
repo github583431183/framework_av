@@ -16,6 +16,23 @@
       "message": "There is still a conflict on one of intermediate branches, both for this and the internal CL. I will work on a resolution.",
       "revId": "9485120e9935627b083eb6ce4d8b912a24f29c1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac05915_08c79989",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2024-06-06T21:27:27Z",
+      "side": 1,
+      "message": "seems still have conflict",
+      "revId": "9485120e9935627b083eb6ce4d8b912a24f29c1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
