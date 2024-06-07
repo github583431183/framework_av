@@ -402,7 +402,7 @@ protected:
 class PatchTrackBase : public PatchProxyBufferProvider, public virtual IAfPatchTrackBase
 {
 public:
-                        PatchTrackBase(const sp<ClientProxy>& proxy,
+                        PatchTrackBase(const sp<AudioTrackClientProxy>& proxy,
                                        IAfThreadBase* thread,
                                        const Timeout& timeout);
             void setPeerTimeout(std::chrono::nanoseconds timeout) final;
@@ -424,7 +424,7 @@ public:
             bool        producesBufferOnDemand() const override { return false; }
 
 protected:
-    const sp<ClientProxy>       mProxy;
+    const sp<AudioTrackClientProxy>       mProxy;
     sp<RefBase>                 mPeerReferenceHold;   // keeps mPeerProxy alive during access.
     PatchProxyBufferProvider*   mPeerProxy = nullptr;
     struct timespec             mPeerTimeout{};
