@@ -1270,6 +1270,22 @@ void CCodec::configure(const sp<AMessage> &msg) {
             config->mISConfig->mPriority = INT_MAX;
         }
 
+        static int vendorSdkVersion = base::GetIntProperty(
+                "ro.vendor.build.version.sdk", android_get_device_api_level());
+        /*
+         * Add an undefined level if profile is set, but level is not for
+         * devices with VNDK version of Android U or earlier, as they may have
+         * assumed that level is always set.
+         */
+        if (vendorSdkVersion <= __ANDROID_API_U__) {
+            int32_t profile;
+            int32_t level;
+            if (msg->findInt32(KEY_PROFILE, &profile)
+                    && !msg->findInt32(KEY_LEVEL, &level)) {
+                msg->setInt32(KEY_LEVEL, 0);
+            }
+        }
+
         /*
          * Handle desired color format.
          */
@@ -1279,8 +1295,6 @@ void CCodec::configure(const sp<AMessage> &msg) {
             // Query vendor format for Flexible YUV
             std::vector<std::unique_ptr<C2Param>> heapParams;
             C2StoreFlexiblePixelFormatDescriptorsInfo *pixelFormatInfo = nullptr;
-            int vendorSdkVersion = base::GetIntProperty(
-                    "ro.vendor.build.version.sdk", android_get_device_api_level());
             if (mClient->query(
                         {},
                         {C2StoreFlexiblePixelFormatDescriptorsInfo::PARAM_TYPE},
