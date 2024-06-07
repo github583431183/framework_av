@@ -46,6 +46,30 @@
       },
       "revId": "2fdf48448f070bb7c10fc737f8c4684b041a9beb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f2b067_1ce3c68d",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-07T01:23:06Z",
+      "side": 1,
+      "message": "I mean removing this should be fine. But need to discuss abd verify this with wonsik@ before removal.",
+      "parentUuid": "49322106_347ff713",
+      "range": {
+        "startLine": 653,
+        "startChar": 11,
+        "endLine": 653,
+        "endChar": 47
+      },
+      "revId": "2fdf48448f070bb7c10fc737f8c4684b041a9beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
