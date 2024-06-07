@@ -2470,13 +2470,14 @@ PatchTrack::PatchTrack(IAfPlaybackThread* playbackThread,
                                                      size_t bufferSize,
                                                      audio_output_flags_t flags,
                                                      const Timeout& timeout,
-                                                     size_t frameCountToBeReady)
+                                                     size_t frameCountToBeReady,
+                                                     float speed)
     :   Track(playbackThread, NULL, streamType,
               audio_attributes_t{} /* currently unused for patch track */,
               sampleRate, format, channelMask, frameCount,
               buffer, bufferSize, nullptr /* sharedBuffer */,
               AUDIO_SESSION_NONE, getpid(), audioServerAttributionSource(getpid()), flags,
-              TYPE_PATCH, AUDIO_PORT_HANDLE_NONE, frameCountToBeReady),
+              TYPE_PATCH, AUDIO_PORT_HANDLE_NONE, frameCountToBeReady, speed),
         PatchTrackBase(mCblk ? new ClientProxy(mCblk, mBuffer, frameCount, mFrameSize, true, true)
                         : nullptr,
                        playbackThread, timeout)

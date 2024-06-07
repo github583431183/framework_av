@@ -5797,7 +5797,20 @@ PlaybackThread::mixer_state MixerThread::prepareTracks_l(
         // during last round
         size_t desiredFrames;
         const uint32_t sampleRate = track->audioTrackServerProxy()->getSampleRate();
-        const AudioPlaybackRate playbackRate = track->audioTrackServerProxy()->getPlaybackRate();
+        AudioPlaybackRate tempPlaybackRate;
+
+        if(track->isPatchTrack() && track->getSpeed() > 1.0f) {
+            tempPlaybackRate = {
+                /* .mSpeed = */ AUDIO_TIMESTRETCH_SPEED_NORMAL * (track->getSpeed()),
+                /* .mPitch = */ AUDIO_TIMESTRETCH_PITCH_NORMAL,
+                /* .mStretchMode = */ AUDIO_TIMESTRETCH_STRETCH_DEFAULT,
+                /* .mFallbackMode = */ AUDIO_TIMESTRETCH_FALLBACK_FAIL
+            };
+        } else {
+            tempPlaybackRate = track->mAudioTrackServerProxy->getPlaybackRate();
+        }
+
+        const AudioPlaybackRate playbackRate = tempPlaybackRate;
 
         desiredFrames = sourceFramesNeededWithTimestretch(
                 sampleRate, mNormalFrameCount, mSampleRate, playbackRate.mSpeed);
