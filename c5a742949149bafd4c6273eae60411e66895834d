@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f55dc00_36c3db36",
+        "filename": "media/module/bufferpool/2.0/AccessorImpl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-07T21:29:55Z",
+      "side": 1,
+      "message": "not in scope: maybe we want to timestamp the pid instead of seq id, as pid may get reused..",
+      "revId": "c5a742949149bafd4c6273eae60411e66895834d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fd0849_5e1f55b5",
+        "filename": "media/module/bufferpool/2.0/AccessorImpl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-07T21:29:55Z",
+      "side": 1,
+      "message": "nit: this essentially is a global with a non-trivial initialization; please consider using the pattern in https://cs.android.com/android/platform/superproject/main/+/main:system/libbase/include/android-base/no_destructor.h",
+      "revId": "c5a742949149bafd4c6273eae60411e66895834d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
