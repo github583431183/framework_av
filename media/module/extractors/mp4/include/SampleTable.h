@@ -93,6 +93,8 @@ public:
         mDefaultSampleSize = sampleSize;
     }
 
+    status_t getTotalDuration(int64_t *duration);
+
 protected:
     ~SampleTable();
 

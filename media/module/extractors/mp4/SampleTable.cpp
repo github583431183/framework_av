@@ -1005,6 +1005,23 @@ status_t SampleTable::getMetaDataForSample(
     return OK;
 }
 
+status_t SampleTable::getTotalDuration(int64_t *duration) {
+    Mutex::Autolock autoLock(mLock);
+
+    *duration = 0;
+    status_t err = OK;
+
+    for (int i = 0; i < mNumSampleSizes; i++) {
+        if ((err = mSampleIterator->seekTo(i)) != OK) {
+            return err;
+        }
+
+        *duration += mSampleIterator->getSampleDuration();
+    }
+
+    return OK;
+}
+
 int32_t SampleTable::getCompositionTimeOffset(uint32_t sampleIndex) {
     return mCompositionDeltaLookup->getCompositionTimeOffset(sampleIndex);
 }
