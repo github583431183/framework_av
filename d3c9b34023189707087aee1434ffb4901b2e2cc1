@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd1cefd6_2de62f80",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 2046581
+      },
+      "writtenOn": "2024-06-07T17:52:41Z",
+      "side": 1,
+      "message": "If `FuzzedDataProvider::ConsumeIntegral\u003cuint16_t\u003e()` returns `65535`(`UINT16_MAX`), then the highlighted arithmetic expression will treat it as a 32-bit integer and evaluate to `65536`.",
+      "parentUuid": "b2df8cf2_89f16cb3",
+      "range": {
+        "startLine": 163,
+        "startChar": 74,
+        "endLine": 163,
+        "endChar": 78
+      },
+      "revId": "d3c9b34023189707087aee1434ffb4901b2e2cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f9ba9ab_0e6f050e",
         "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
         "patchSetId": 4
