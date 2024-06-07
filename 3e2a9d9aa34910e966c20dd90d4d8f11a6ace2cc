@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ab4668_4eff2686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2024-06-07T09:21:02Z",
+      "side": 1,
+      "message": "I updated tool for HIDL version in order to remove the pain to generate pfw structure file.\nI guess in the end, the other tools need to be migrated to /hardware/interfaces.\nIt was also the main question for QCOMM to make a smooth transition to AIDL with tools to convert pfw into xml...",
+      "parentUuid": "c5d865b5_91481bc5",
+      "revId": "3e2a9d9aa34910e966c20dd90d4d8f11a6ace2cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40d06970_b5cee3e5",
