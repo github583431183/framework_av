@@ -527,10 +527,21 @@ media_status_t MPEG4Extractor::getTrackMetaData(
         int32_t samplerate;
         // Only for audio track.
         if (track->elst_needs_processing && mHeaderTimescale != 0 &&
-            AMediaFormat_getInt64(track->meta, AMEDIAFORMAT_KEY_DURATION, &duration) &&
             AMediaFormat_getInt32(track->meta, AMEDIAFORMAT_KEY_SAMPLE_RATE, &samplerate)) {
             // Elst has to be processed only the first time this function is called.
             track->elst_needs_processing = false;
+            int64_t sample_table_duration;
+            track->sampleTable->getTotalDuration(&sample_table_duration);
+            if (sample_table_duration != 0 && mLastTrack->timescale != 0) {
+                int64_t durationUs;
+                if (__builtin_mul_overflow(sample_table_duration, 1000000, &durationUs) ||
+                    durationUs < 0) {
+                    ALOGE("cannot represent %" PRId64 " * 1000000 / %d in 64 bits",
+                          sample_table_duration, mLastTrack->timescale);
+                    return;
+                }
+                duration = durationUs / mLastTrack->timescale;
+            }
 
             if (track->elst_segment_duration > INT64_MAX) {
                 return;
