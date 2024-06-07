@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdfe42f_99acfaff",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-07T01:21:34Z",
+      "side": 1,
+      "message": "Added basic documentation here.\nAdded TODO here also, more documentation will come as a separate CL.",
+      "parentUuid": "06061f4f_8cc1e322",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "667fcbe6_f927f0a8",
@@ -126,6 +150,30 @@
       "writtenOn": "2024-06-06T23:02:46Z",
       "side": 1,
       "message": "it seems that nullptr is allowed here with a special meaning.",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 7
+      },
+      "revId": "76e6589281d638d4d399c79eeef1473568643f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f620f0d_35cffd25",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-07T01:21:34Z",
+      "side": 1,
+      "message": "Documented.",
+      "parentUuid": "667fcbe6_f927f0a8",
       "range": {
         "startLine": 79,
         "startChar": 28,
