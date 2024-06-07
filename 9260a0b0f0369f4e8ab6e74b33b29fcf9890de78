@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81fe4d57_31e8725a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2024-06-07T23:42:41Z",
+      "side": 1,
+      "message": "slotId should not exist since underlying layer might not be BQ afterwards.\nyou should use AHardwareBuffer ID instead. If it\u0027s not exposed to you, please file an issue.",
+      "revId": "9260a0b0f0369f4e8ab6e74b33b29fcf9890de78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
