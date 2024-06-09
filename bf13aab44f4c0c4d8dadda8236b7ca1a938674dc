@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49c617a_13613fe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3459540
+      },
+      "writtenOn": "2024-06-09T11:41:05Z",
+      "side": 1,
+      "message": "Please check issue Id 345666452. Thanks!",
+      "parentUuid": "dee9b7eb_e23043bd",
+      "revId": "bf13aab44f4c0c4d8dadda8236b7ca1a938674dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3500244e_972d4014",
@@ -93,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c360303_777f89f9",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5802,
+      "author": {
+        "id": 3459540
+      },
+      "writtenOn": "2024-06-09T11:41:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3500244e_972d4014",
+      "range": {
+        "startLine": 5802,
+        "startChar": 0,
+        "endLine": 5802,
+        "endChar": 63
+      },
+      "revId": "bf13aab44f4c0c4d8dadda8236b7ca1a938674dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ed912a_747707dd",
@@ -106,6 +148,30 @@
       "writtenOn": "2024-06-07T18:20:32Z",
       "side": 1,
       "message": "would prefer you set the playback rate in the PatchTrack ctor.\n\n    if (mProxy) {\n        mProxy-\u003esetPlaybackRate({\n                /* .mSpeed \u003d */ speed,\n                /* .mPitch \u003d */ AUDIO_TIMESTRETCH_PITCH_NORMAL,\n                /* .mStretchMode \u003d */ AUDIO_TIMESTRETCH_STRETCH_DEFAULT,\n                /* .mFallbackMode \u003d */ AUDIO_TIMESTRETCH_FALLBACK_FAIL\n        });\n    }\n\nas there is no speed in the ServerProxy ctor, we manually set through the ClientProxy setPlaybackRate.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/include/private/media/AudioTrackShared.h;drc\u003d118c2715ddbb42fc872348512d37ad0c4828021c;l\u003d473",
+      "range": {
+        "startLine": 2484,
+        "startChar": 0,
+        "endLine": 2484,
+        "endChar": 1
+      },
+      "revId": "bf13aab44f4c0c4d8dadda8236b7ca1a938674dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "444c87df_f0b175f3",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2484,
+      "author": {
+        "id": 3459540
+      },
+      "writtenOn": "2024-06-09T11:41:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ed912a_747707dd",
       "range": {
         "startLine": 2484,
         "startChar": 0,

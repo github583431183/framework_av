@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61a9189_9f1b02ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3459540
+      },
+      "writtenOn": "2024-06-09T11:41:05Z",
+      "side": 1,
+      "message": "Hi Andy Hung, i get, and made changes according to your opinion. In the ctor of PatchTrack, I used AudioTrackClientProxy to set the speed, because ClientProxy (in PatchTrackBase) cannot access the setPlaybackRate of the subclass. Please help review again. Thank you.",
+      "revId": "e1b9a0f5425d14d5cde56be0b83275eabf850eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
