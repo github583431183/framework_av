@@ -16,6 +16,23 @@
       "message": "wonsik, what do you think about the value of this change? (see the QUESTION raised.)",
       "revId": "de3c8c087c3679fe2d2e65c198cbc111ad069bfe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09ff0b7_c486a65e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-10T23:28:04Z",
+      "side": 1,
+      "message": "I had a chance to think about this in the context of our API philosophy.",
+      "revId": "de3c8c087c3679fe2d2e65c198cbc111ad069bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
