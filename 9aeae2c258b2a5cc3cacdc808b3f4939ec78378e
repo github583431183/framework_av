@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eaf6404_5454d27f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-10T21:12:06Z",
+      "side": 1,
+      "message": "initial presubmit failure passed on retry: https://android-build.corp.google.com/builds/abtd/run/L40300030004424629",
+      "revId": "9aeae2c258b2a5cc3cacdc808b3f4939ec78378e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
