@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e33bac_67408517",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2024-06-10T09:16:11Z",
+      "side": 1,
+      "message": "Great, thanks for the info!",
+      "parentUuid": "cd1cefd6_2de62f80",
+      "range": {
+        "startLine": 163,
+        "startChar": 74,
+        "endLine": 163,
+        "endChar": 78
+      },
+      "revId": "d3c9b34023189707087aee1434ffb4901b2e2cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f9ba9ab_0e6f050e",
