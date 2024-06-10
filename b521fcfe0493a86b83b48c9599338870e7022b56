@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120d5c68_20f818cf",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2591,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-06-10T10:48:22Z",
+      "side": 1,
+      "message": "Is this final?\nSay the input format contains crop aspects, in that case the effective width and effective height are cropRight - cropLeft and cropBottom - cropTop. The roi dimensions are wrt to crop attributes or width, height attributes. The documentation is also incomplete in this part.",
+      "range": {
+        "startLine": 2588,
+        "startChar": 16,
+        "endLine": 2591,
+        "endChar": 81
+      },
+      "revId": "b521fcfe0493a86b83b48c9599338870e7022b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b09a1e6_c33658ec",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2596,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-06-10T10:48:22Z",
+      "side": 1,
+      "message": "nit; if (mapSize \u003e\u003d expectedMapSize) {\n   \u003cuse expectedMapSize\u003e here directly?\n}",
+      "range": {
+        "startLine": 2593,
+        "startChar": 16,
+        "endLine": 2596,
+        "endChar": 49
+      },
+      "revId": "b521fcfe0493a86b83b48c9599338870e7022b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb79a532_7634e65e",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2611,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-06-10T10:48:22Z",
+      "side": 1,
+      "message": "nit;\n\nALOGE(\"Ignoring param key %s as buffer size %d is less than expected buffer size %d\", PARAMETER_KEY_QP_OFFSET_MAP, mapSize, expectedMapSize);",
+      "range": {
+        "startLine": 2611,
+        "startChar": 27,
+        "endLine": 2611,
+        "endChar": 88
+      },
+      "revId": "b521fcfe0493a86b83b48c9599338870e7022b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf19e0f6_bf06e30a",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1893,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-06-10T10:48:22Z",
+      "side": 1,
+      "message": "same crop attributes?",
+      "range": {
+        "startLine": 1893,
+        "startChar": 16,
+        "endLine": 1893,
+        "endChar": 19
+      },
+      "revId": "b521fcfe0493a86b83b48c9599338870e7022b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9991dcea_291b8fe4",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-06-10T10:48:22Z",
+      "side": 1,
+      "message": "nit; for better error logging use box in aloge?",
+      "range": {
+        "startLine": 1912,
+        "startChar": 28,
+        "endLine": 1912,
+        "endChar": 33
+      },
+      "revId": "b521fcfe0493a86b83b48c9599338870e7022b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "152e07fc_92cdcc97",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-06-10T10:48:22Z",
+      "side": 1,
+      "message": "nit; for better error logging use box in aloge?",
+      "range": {
+        "startLine": 1915,
+        "startChar": 24,
+        "endLine": 1915,
+        "endChar": 29
+      },
+      "revId": "b521fcfe0493a86b83b48c9599338870e7022b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
