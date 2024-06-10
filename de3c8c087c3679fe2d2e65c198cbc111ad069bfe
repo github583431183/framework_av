@@ -33,6 +33,29 @@
       "message": "I had a chance to think about this in the context of our API philosophy.",
       "revId": "de3c8c087c3679fe2d2e65c198cbc111ad069bfe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f32bea_3701922b",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-10T23:33:50Z",
+      "side": 1,
+      "message": "In context of our API philosophy:\n\n\"graceful fallback instead of failure\" - this change allows on the surface apps to omit setting \"level\" across more devices, however, it may result in the incorrect profile to be encoded in the resulting file. That may cause playback compatibility issues down the line, so I would not qualify this fallback as \"graceful\".\n\nWithout this change, some upgrading devices encode incorrect level, encode the correct level, or outright fail. Therefore, it serves developers better to call this out explicitly: e.g. set proper level for chipsets launching \u003c\u003dUDC. From chipsets launching \u003e UDC, setting level is optional and is corrected by the devices as tested by CTS.",
+      "range": {
+        "startLine": 1290,
+        "startChar": 19,
+        "endLine": 1292,
+        "endChar": 74
+      },
+      "revId": "de3c8c087c3679fe2d2e65c198cbc111ad069bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
