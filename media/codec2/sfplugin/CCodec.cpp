@@ -1270,6 +1270,30 @@ void CCodec::configure(const sp<AMessage> &msg) {
             config->mISConfig->mPriority = INT_MAX;
         }
 
+        static int vendorSdkVersion = base::GetIntProperty(
+                "ro.vendor.build.version.sdk", android_get_device_api_level());
+        /*
+         * Add an undefined level if profile is set, but level is not for
+         * devices with VNDK version of Android U or earlier, as they may have
+         * assumed that level is always set.
+         */
+        if (vendorSdkVersion <= __ANDROID_API_U__) {
+            int32_t profile;
+            int32_t level;
+            if (msg->findInt32(KEY_PROFILE, &profile)
+                    && !msg->findInt32(KEY_LEVEL, &level)) {
+                // TRICKY: level 1 is the lowest level for most media types,
+                // except MPEG-2. We have never tested encoder level compliance
+                // for level 1, but have been using level 1 as default for HDR
+                // profiles (e.g. aosp/2837122) since Android 14 (U) CTS.
+
+                // QUESTION: this may actually encode level 1 into the bitstream,
+                // which is likely very incorrect. Is that better than failing
+                // the encoding session, which we are trying to avoid here?
+                msg->setInt32(KEY_LEVEL, 1);
+            }
+        }
+
         /*
          * Handle desired color format.
          */
@@ -1279,8 +1303,6 @@ void CCodec::configure(const sp<AMessage> &msg) {
             // Query vendor format for Flexible YUV
             std::vector<std::unique_ptr<C2Param>> heapParams;
             C2StoreFlexiblePixelFormatDescriptorsInfo *pixelFormatInfo = nullptr;
-            int vendorSdkVersion = base::GetIntProperty(
-                    "ro.vendor.build.version.sdk", android_get_device_api_level());
             if (mClient->query(
                         {},
                         {C2StoreFlexiblePixelFormatDescriptorsInfo::PARAM_TYPE},
