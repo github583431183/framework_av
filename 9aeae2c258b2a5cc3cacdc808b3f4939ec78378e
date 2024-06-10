@@ -16,6 +16,29 @@
       "message": "initial presubmit failure passed on retry: https://android-build.corp.google.com/builds/abtd/run/L40300030004424629",
       "revId": "9aeae2c258b2a5cc3cacdc808b3f4939ec78378e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14033128_1f7bacb0",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1285,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-10T22:02:53Z",
+      "side": 1,
+      "message": "according to Harish, setting this to 1 is safer. There was a runaround for the HDR level setting: r.android.com/2893508",
+      "range": {
+        "startLine": 1285,
+        "startChar": 41,
+        "endLine": 1285,
+        "endChar": 42
+      },
+      "revId": "9aeae2c258b2a5cc3cacdc808b3f4939ec78378e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
