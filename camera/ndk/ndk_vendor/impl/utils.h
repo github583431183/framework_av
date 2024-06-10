@@ -63,7 +63,7 @@ struct native_handle_ptr_wrapper {
 
     operator const native_handle_t *() const { return mWindow; }
 
-    bool operator ==(const native_handle_ptr_wrapper other) const {
+    bool operator ==(const native_handle_ptr_wrapper& other) const {
         return isWindowNativeHandleEqual(mWindow, other.mWindow);
     }
 
