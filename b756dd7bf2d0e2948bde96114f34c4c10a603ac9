@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "127db61e_01c44fc1",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-10T23:09:04Z",
+      "side": 1,
+      "message": "currently yes, but if we support multiple plugins there could be more",
+      "parentUuid": "9e4215af_ce560ffe",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "769e5aa1_591983f5",
         "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
         "patchSetId": 8
@@ -55,6 +79,30 @@
       "writtenOn": "2024-06-07T19:42:34Z",
       "side": 1,
       "message": "Out of curiosity:\n- Why do we add paramReflector from FilterWrapper here?\n- And also, why is this under __ANDROID_APEX__?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 51
+      },
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897421f0_5975a28e",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-10T23:09:04Z",
+      "side": 1,
+      "message": "\u003e Why do we add paramReflector from FilterWrapper here?\n\nIf a filter from the filter plugin takes a parameter that the component\u0027s param reflector does not describe, the framework fails to parse the param. So we take param reflectors for both the component and the filter to describe the full list of supported params.\n\n\u003e And also, why is this under ANDROID_APEX?\n\nThis is under `#ifndef __ANDROID_APEX__` because APEX cannot link against external lib. Due to the restriction the filter functionality is only supported for the vendor components.",
+      "parentUuid": "769e5aa1_591983f5",
       "range": {
         "startLine": 153,
         "startChar": 0,
@@ -88,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1450b011_bb2af559",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-10T23:09:04Z",
+      "side": 1,
+      "message": "added TODO",
+      "parentUuid": "1105c579_c9dc97d9",
+      "range": {
+        "startLine": 233,
+        "startChar": 68,
+        "endLine": 233,
+        "endChar": 87
+      },
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9496d89b_0e6ee470",
@@ -111,6 +183,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fe4b83_f70d2007",
+        "filename": "media/codec2/hal/aidl/ComponentStore.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-10T23:09:04Z",
+      "side": 1,
+      "message": "added TODO above",
+      "parentUuid": "9496d89b_0e6ee470",
+      "range": {
+        "startLine": 411,
+        "startChar": 52,
+        "endLine": 411,
+        "endChar": 60
+      },
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77a30b03_c686df13",
@@ -124,6 +220,30 @@
       "writtenOn": "2024-06-06T17:58:45Z",
       "side": 1,
       "message": "Is this good place for the definition? (C2Config or C2Param headers might be the better place?)\n\nIf not we need some explanation w.r.t. ```C2Param::TYPE_INDEX_VENDOR_START + 0x7000```\nAlso having some background may not confuse the readers. (Douglas Adams)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 72
+      },
+      "revId": "b756dd7bf2d0e2948bde96114f34c4c10a603ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a5b896_ba83c4aa",
+        "filename": "media/codec2/hal/plugin/samples/SampleFilterPlugin.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-10T23:09:04Z",
+      "side": 1,
+      "message": "For the purpose of the sample, I think it\u0027s sufficient to define the filter-specific vendor params here. Added more comments and context.",
+      "parentUuid": "77a30b03_c686df13",
       "range": {
         "startLine": 41,
         "startChar": 0,
