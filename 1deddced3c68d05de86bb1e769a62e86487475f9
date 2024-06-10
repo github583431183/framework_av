@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b9481c3_a7e8c968",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-06-10T05:47:48Z",
+      "side": 1,
+      "message": "The comment for concatenation of strings in the keyMediaValues array is added at\nline 44. Can you please review and let me know if more details are needed there.\nThanks.",
+      "parentUuid": "1886df87_ac3865ce",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a726b602_137de60b",
         "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
         "patchSetId": 1
