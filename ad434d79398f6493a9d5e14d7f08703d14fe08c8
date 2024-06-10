@@ -16,6 +16,23 @@
       "message": "ping for OWNERS...\n\n(this is a relatively interesting change, in that if you want your `operator\u003d\u003d`es to not fall foul of C++20\u0027s ambiguity rules, you\u0027ll need to make them `const`. but luckily that\u0027s a good idea anyway :-) )",
       "revId": "ad434d79398f6493a9d5e14d7f08703d14fe08c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd8f60b_d93ae45b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-06-10T21:14:02Z",
+      "side": 1,
+      "message": "Thanks for fixing this!",
+      "revId": "ad434d79398f6493a9d5e14d7f08703d14fe08c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
