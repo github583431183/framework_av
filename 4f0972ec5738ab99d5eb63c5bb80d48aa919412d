@@ -1,0 +1,125 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d281f1bd_9a6a9364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-10T18:48:34Z",
+      "side": 1,
+      "message": "nit: AudioPlaybackCapture: ...",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "4f0972ec5738ab99d5eb63c5bb80d48aa919412d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa9562d_676e755b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-10T18:48:34Z",
+      "side": 1,
+      "message": "Test:  \u003cplease describe how this is tested\u003e\nBug: 345666452",
+      "revId": "4f0972ec5738ab99d5eb63c5bb80d48aa919412d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa523ad_20961535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-10T18:48:34Z",
+      "side": 1,
+      "message": "Thanks, I think we are getting close.",
+      "revId": "4f0972ec5738ab99d5eb63c5bb80d48aa919412d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60148fa5_f2f2c4b4",
+        "filename": "services/audioflinger/PlaybackTracks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-10T18:48:34Z",
+      "side": 1,
+      "message": "No need to have this variable.  Please update the mProxy class in PatchTrackBase to be AudioTrackClientProxy.",
+      "range": {
+        "startLine": 516,
+        "startChar": 11,
+        "endLine": 516,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "767a31b7_b2e9a0b8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/PlaybackTracks.h",
+              "range": {
+                "startLine": 516,
+                "startChar": 0,
+                "endLine": 517,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4f0972ec5738ab99d5eb63c5bb80d48aa919412d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b496d79a_0433a467",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2489,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-10T18:48:34Z",
+      "side": 1,
+      "message": "update mProxy to be an AudioTrackClientProxy on line 2483 and in PatchTrackBase, then simply use \n\n    if (mProxy !\u003d nullptr) {\n        mProxy-\u003esetPlaybackRate(...);\n    }\n    \nthanks!",
+      "range": {
+        "startLine": 2488,
+        "startChar": 0,
+        "endLine": 2489,
+        "endChar": 41
+      },
+      "revId": "4f0972ec5738ab99d5eb63c5bb80d48aa919412d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
