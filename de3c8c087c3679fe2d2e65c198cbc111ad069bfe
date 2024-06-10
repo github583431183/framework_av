@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753beab2_c769b481",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-06-10T22:21:32Z",
+      "side": 1,
+      "message": "wonsik, what do you think about the value of this change? (see the QUESTION raised.)",
+      "revId": "de3c8c087c3679fe2d2e65c198cbc111ad069bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
