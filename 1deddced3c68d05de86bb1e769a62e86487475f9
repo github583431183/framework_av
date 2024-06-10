@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be09975f_81911fa2",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-06-10T15:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b6699c_a957e40d",
+      "range": {
+        "startLine": 33,
+        "startChar": 35,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00e5313c_1651aa5b",
@@ -349,6 +373,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91beb779_ed94ac90",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-06-10T15:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1abe82b_d0b5dd4e",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61eba1f8_b1074d4e",
@@ -404,6 +452,30 @@
       "side": 1,
       "message": "typedef int64_t nsecs_t; // nano-seconds\n\nupdated.",
       "parentUuid": "61eba1f8_b1074d4e",
+      "range": {
+        "startLine": 97,
+        "startChar": 58,
+        "endLine": 97,
+        "endChar": 72
+      },
+      "revId": "1deddced3c68d05de86bb1e769a62e86487475f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b3515a_3c8cd858",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1947108
+      },
+      "writtenOn": "2024-06-10T15:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c7b21c_6c8c1a68",
       "range": {
         "startLine": 97,
         "startChar": 58,
