@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e2a1d1_850a55c0",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-06-11T23:12:10Z",
+      "side": 1,
+      "message": "Do you think this will run into issue if channelMask and format are not specified but gain and sampleRate are?\n\nNot sure if that is even possible.",
+      "range": {
+        "startLine": 461,
+        "startChar": 16,
+        "endLine": 461,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e50e4987_353ddc31",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+              "range": {
+                "startLine": 461,
+                "startChar": 0,
+                "endLine": 462,
+                "endChar": 0
+              },
+              "replacement": "            if (p.sampleRate.has_value() \u0026\u0026 p.channelMask.has_value() \u0026\u0026\n                    p.format.has_value()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8e84a96b6f35bf6aa8f37531ce772e9194c0d8fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42980af0_4140778b",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1512908
+      },
+      "writtenOn": "2024-06-11T23:12:10Z",
+      "side": 1,
+      "message": "Do you think we should add a log statement for this case? It may help debug in the future.",
+      "range": {
+        "startLine": 470,
+        "startChar": 8,
+        "endLine": 470,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7461ecf9_9ee09283",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+              "range": {
+                "startLine": 471,
+                "startChar": 0,
+                "endLine": 471,
+                "endChar": 0
+              },
+              "replacement": "            ALOGD(\"%s: no config or gain specified for device port config: %s\",\n                    __func__, requestedPortConfig.toString().c_str());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8e84a96b6f35bf6aa8f37531ce772e9194c0d8fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
