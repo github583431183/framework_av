@@ -16,6 +16,41 @@
       "message": "I agree it\u0027s odd this wasn\u0027t caught by TH - why would this be an error only in some contexts?",
       "revId": "0c10122747744deba302fb9db2c01ba6bd20c99e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b94a198_445c5ccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-06-11T14:16:54Z",
+      "side": 1,
+      "message": "yeah, i have no idea what\u0027s going on there. it\u0027s possible that there\u0027s a bad interaction between two [supposedly] different frameworks/av/ changes ... i kept camera and media separate initially but for the reland [of both!] i\u0027ll try merging them instead.",
+      "parentUuid": "bcfd652e_32c8038f",
+      "revId": "0c10122747744deba302fb9db2c01ba6bd20c99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37337f68_0bbfa96e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-06-11T14:16:54Z",
+      "side": 1,
+      "message": "looks like this needs to go in internal first anyway...",
+      "revId": "0c10122747744deba302fb9db2c01ba6bd20c99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
