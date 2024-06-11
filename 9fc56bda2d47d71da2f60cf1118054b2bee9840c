@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880f33ca_5d74f6e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3459540
+      },
+      "writtenOn": "2024-06-11T06:49:36Z",
+      "side": 1,
+      "message": "Hi Andy Hung and Phil Burk, I get and have made changes based on your suggestions. Please help to review again. In addition, detailed test description, please see Bug: 345666452. Thank you.",
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
