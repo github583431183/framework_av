@@ -22,6 +22,30 @@
       },
       "revId": "382a02d11be1116a03f69e8ddd326f9057fcd8e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e4fe40_3c640987",
+        "filename": "media/libmedia/include/media/CodecCapabilities.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2024-06-11T22:56:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe933ef4_31b9e0a5",
+      "range": {
+        "startLine": 640,
+        "startChar": 8,
+        "endLine": 640,
+        "endChar": 15
+      },
+      "revId": "382a02d11be1116a03f69e8ddd326f9057fcd8e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
