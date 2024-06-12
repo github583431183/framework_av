@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3389d6f9_0ca6af79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-12T02:52:53Z",
+      "side": 1,
+      "message": "please remove this.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "880f33ca_5d74f6e1",
@@ -14,6 +37,172 @@
       "writtenOn": "2024-06-11T06:49:36Z",
       "side": 1,
       "message": "Hi Andy Hung and Phil Burk, I get and have made changes based on your suggestions. Please help to review again. In addition, detailed test description, please see Bug: 345666452. Thank you.",
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70182a56_7af123cd",
+        "filename": "services/audioflinger/TrackBase.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-12T02:52:53Z",
+      "side": 1,
+      "message": "this change not needed, please use sp\u003cClientProxy\u003e here.",
+      "range": {
+        "startLine": 405,
+        "startChar": 48,
+        "endLine": 405,
+        "endChar": 69
+      },
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb069b43_3aeb2412",
+        "filename": "services/audioflinger/TrackBase.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-12T02:52:53Z",
+      "side": 1,
+      "message": "ditto, this change not needed.",
+      "range": {
+        "startLine": 427,
+        "startChar": 13,
+        "endLine": 427,
+        "endChar": 34
+      },
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091e3de1_96672654",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2483,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-12T02:52:53Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.",
+      "range": {
+        "startLine": 2483,
+        "startChar": 0,
+        "endLine": 2483,
+        "endChar": 121
+      },
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be56b3d_213efe2b",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2487,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-12T02:52:53Z",
+      "side": 1,
+      "message": "nit: we prefer nullptr here.",
+      "range": {
+        "startLine": 2487,
+        "startChar": 18,
+        "endLine": 2487,
+        "endChar": 22
+      },
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3dc7de_f2459e87",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2488,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-12T02:52:53Z",
+      "side": 1,
+      "message": "sp\u003cAudioTrackClientProxy\u003e::cast(mProxy)-\u003esetPlaybackRate(...",
+      "range": {
+        "startLine": 2488,
+        "startChar": 8,
+        "endLine": 2488,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c5528a0e_783dfcae",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/audioflinger/Tracks.cpp",
+              "range": {
+                "startLine": 2488,
+                "startChar": 0,
+                "endLine": 2489,
+                "endChar": 0
+              },
+              "replacement": "        sp\u003cAudioTrackClientProxy\u003e proxy \u003d mProxy;\n        proxy-\u003esetPlaybackRate({\n"
+            },
+            {
+              "path": "services/audioflinger/Tracks.cpp",
+              "range": {
+                "startLine": 2490,
+                "startChar": 0,
+                "endLine": 2493,
+                "endChar": 0
+              },
+              "replacement": "                /* .mPitch \u003d */ AUDIO_TIMESTRET_PITCH_NORMAL,\n                /* .mStretchMode \u003d */ AUDIO_TIMEST_STRETCH_DEFAULT,\n                /* .mFallbackMode \u003d */ AUDIO_TIMEST_FALLBACK_FAIL\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e37e03c_7f8b3c31",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3164,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2024-06-12T02:52:53Z",
+      "side": 1,
+      "message": "no need for this change, sorry.  use ClientProxy here as before.",
+      "range": {
+        "startLine": 3164,
+        "startChar": 35,
+        "endLine": 3164,
+        "endChar": 56
+      },
       "revId": "9fc56bda2d47d71da2f60cf1118054b2bee9840c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
