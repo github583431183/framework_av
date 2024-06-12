@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b586006_8c90391a",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-12T01:31:31Z",
+      "side": 1,
+      "message": "I think, anything is possible :) It was a logical error, fixed! Thanks for pointing this out.",
+      "parentUuid": "17e2a1d1_850a55c0",
+      "range": {
+        "startLine": 461,
+        "startChar": 16,
+        "endLine": 461,
+        "endChar": 40
+      },
+      "revId": "8e84a96b6f35bf6aa8f37531ce772e9194c0d8fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42980af0_4140778b",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "8e84a96b6f35bf6aa8f37531ce772e9194c0d8fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48d69c0_71e8412e",
+        "filename": "media/libaudiohal/impl/Hal2AidlMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2024-06-12T01:31:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42980af0_4140778b",
+      "range": {
+        "startLine": 470,
+        "startChar": 8,
+        "endLine": 470,
+        "endChar": 16
+      },
       "revId": "8e84a96b6f35bf6aa8f37531ce772e9194c0d8fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
