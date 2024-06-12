@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b747905a_e974d16d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1725318
+      },
+      "writtenOn": "2024-06-12T07:30:36Z",
+      "side": 1,
+      "message": "will update buganizer id once owner raised",
+      "revId": "2922a8c25112d9ea637b2601dc18af3ad885b4bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
